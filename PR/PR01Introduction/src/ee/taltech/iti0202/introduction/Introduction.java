@@ -1,9 +1,6 @@
 package ee.taltech.iti0202.introduction;
 
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Locale;
+import java.util.*;
 
 
 public class Introduction {
@@ -110,13 +107,37 @@ public class Introduction {
      * System.out.println(introduction.countTripleChars("aaa"));  // 1
      * System.out.println(introduction.countTripleChars("aaaa"));  // 0
      * System.out.println(introduction.countTripleChars("aaaabbbabbbcCc"));  // 2
-     * aaabba
+     * aaaaaaa
      *
      * @param word String
      * @return The number of triples
      */
     public int countTripleChars(String word) {
-
+        String newWord = word;
+        int num = 1;
+        int counter = 0;
+        for (int i = counter; i < newWord.length() - 1; i += 0) {
+            if (newWord.charAt(i) != newWord.charAt(i + 1)) {
+                newWord = newWord.replaceFirst(String.valueOf(newWord.charAt(i)), "");
+            } else {
+                while (num < newWord.length()) {
+                    if (newWord.charAt(i) == newWord.charAt(num)) {
+                        num++;
+                    } else {
+                        if (num == 3) {
+                            counter++;
+                        }
+                        newWord = newWord.substring(num);
+                        num = 1;
+                    }
+                }
+                if (num == 3) {
+                    counter++;
+                }
+                return counter;
+            }
+        }
+//        System.out.println(counter);
         return 0;
     }
 
@@ -126,7 +147,7 @@ public class Introduction {
      * @param args Arguments from command line.
      */
     public static void main(String[] args) {
-//        Introduction introduction = new Introduction();
+        Introduction introduction = new Introduction();
 //        System.out.println(introduction.howIsOutcome(1, 10));//=>"bad"
 //        System.out.println(introduction.howIsOutcome(6, 12));//=>"good"
 //        System.out.println(introduction.howIsOutcome(8, 9));//=>"ok"
@@ -149,10 +170,10 @@ public class Introduction {
 //        System.out.println(introduction.findTheString("", "   "));  // FALSE
 //        System.out.println(introduction.findTheString("  ", "a"));  //  a  (with space in front)
 //
+//        System.out.println(introduction.countTripleChars("bbb"));  // 1
 //        System.out.println(introduction.countTripleChars("aaabbbabbb"));  // 3
 //        System.out.println(introduction.countTripleChars("aaa"));  // 1
 //        System.out.println(introduction.countTripleChars("aaaa"));  // 0
 //        System.out.println(introduction.countTripleChars("aaaabbbabbbcCc"));  // 2
     }
-
 }
