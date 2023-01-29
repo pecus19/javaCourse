@@ -1,7 +1,9 @@
 package ee.taltech.iti0202.introduction;
 
-import java.util.*;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 public class Introduction {
     public static final int FIVE = 5;
