@@ -13,7 +13,7 @@ public class Hello {
      * @return Greeting
      */
     public static String getGreeting(String name) {
-        return String.format("Hello %s!", name);
+        return name.length() > 0 ? String.format("Hello, %s!", name) : "Hello!";
     }
 
     /**
