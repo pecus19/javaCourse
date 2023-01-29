@@ -25,9 +25,8 @@ public class Introduction {
      * @return String based on the values of valueOne and valueTwo
      */
     public String howIsOutcome(int valueOne, int valueTwo) {
-        return valueOne < FIVE || valueTwo < FIVE ? "bad" : valueOne == valueTwo * TWO ||
-                valueTwo == valueOne * TWO ? "good" :
-                "ok";
+        return valueOne < FIVE || valueTwo < FIVE ? "bad" : valueOne == valueTwo * TWO
+                || valueTwo == valueOne * TWO ? "good" : "ok";
     }
 
     /**
@@ -96,11 +95,10 @@ public class Introduction {
         if (newFirst.length() == ZERO && newSecond.length() == ZERO) {
             return "FALSE";
         } else {
-            return newFirst.length() == newSecond.length() ? first + second : (first.length() > second.length() ?
-                    (first.substring(first.length() - second.length()) + second).toLowerCase(Locale.ROOT) :
-                    (first.length() < second.length()) ?
-                            (first + second.substring(second.length() -
-                                    first.length())).toUpperCase(Locale.ROOT) : "FALSE");
+            return newFirst.length() == newSecond.length() ? first + second
+                    : (first.length() > second.length() ? (first.substring(first.length() - second.length())
+                    + second).toLowerCase(Locale.ROOT) : (first.length() < second.length())
+                    ? (first + second.substring(second.length() - first.length())).toUpperCase(Locale.ROOT) : "FALSE");
         }
 
     }
