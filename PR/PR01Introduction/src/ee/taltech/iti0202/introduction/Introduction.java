@@ -5,7 +5,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Locale;
 
+
 public class Introduction {
+    public static final int FIVE = 5;
+    public static final int TWO = 2;
+    public static final int ZERO = 0;
 
 
     /**
@@ -21,8 +25,9 @@ public class Introduction {
      * @return String based on the values of valueOne and valueTwo
      */
     public String howIsOutcome(int valueOne, int valueTwo) {
-        return (valueOne < 5 || valueTwo < 5 ? "bad" : ((valueOne == valueTwo * 2 || valueTwo == valueOne * 2 ? "good" :
-                (valueOne >= 5 && valueTwo >= 5 ? "ok" : "nok"))));
+        return valueOne < FIVE || valueTwo < FIVE ? "bad" : valueOne == valueTwo * TWO ||
+                valueTwo == valueOne * TWO ? "good" :
+                "ok";
     }
 
     /**
@@ -35,8 +40,8 @@ public class Introduction {
      */
     public List<Integer> findEvenNumbersList(List<Integer> numbers) {
         ArrayList<Integer> output = new ArrayList<>();
-        for (int i = 0; i < numbers.size(); i++) {
-            if (numbers.get(i) % 2 == 0) {
+        for (int i = ZERO; i < numbers.size(); i++) {
+            if (numbers.get(i) % TWO == ZERO) {
                 output.add(numbers.get(i));
             }
         }
@@ -54,16 +59,16 @@ public class Introduction {
      * @return array of even numbers.
      */
     public int[] findEvenNumbersArray(int[] numbers) {
-        int counter = 0;
-        int len = 0;
-        for (int i = 0; i < numbers.length; i++) {
-            if (numbers[i] % 2 == 0) {
+        int counter = ZERO;
+        int len = ZERO;
+        for (int i = ZERO; i < numbers.length; i++) {
+            if (numbers[i] % TWO == ZERO) {
                 len++;
             }
         }
         int[] output = new int[len];
         for (int i = 0; i < numbers.length; i++) {
-            if (numbers[i] % 2 == 0) {
+            if (numbers[i] % TWO == ZERO) {
                 output[counter] = numbers[i];
                 counter++;
             }
@@ -74,7 +79,8 @@ public class Introduction {
     /**
      * Method gets two Strings as parameters.
      * If two words have the same length, just put them together. If the length is
-     * different, remove so many letters from the beginning of the longer word that the two words are the same length, and
+     * different, remove so many letters from the beginning of the longer word that the two words are the same
+     * length, and
      * then put them together.
      * If the first word was longer, return the answer in lower case. If the second word was longer,
      * return the answer in capital letters.
@@ -87,7 +93,7 @@ public class Introduction {
     public String findTheString(String first, String second) {
         String newFirst = first.trim();
         String newSecond = second.trim();
-        if (newFirst.length() == 0 && newSecond.length() == 0) {
+        if (newFirst.length() == ZERO && newSecond.length() == ZERO) {
             return "FALSE";
         } else {
             return newFirst.length() == newSecond.length() ? first + second : (first.length() > second.length() ?
@@ -122,32 +128,33 @@ public class Introduction {
      * @param args Arguments from command line.
      */
     public static void main(String[] args) {
-        Introduction introduction = new Introduction();
-        System.out.println(introduction.howIsOutcome(1, 10));//=>"bad"
-        System.out.println(introduction.howIsOutcome(6, 12));//=>"good"
-        System.out.println(introduction.howIsOutcome(8, 9));//=>"ok"
-
-        System.out.println(introduction.howIsOutcome(3, 6)); // "bad"
-
-        List<Integer> nums = new ArrayList<>(Arrays.asList(4, 7, 5, 2, 1, 2, -2, 0));
-        List<Integer> nums2 = new ArrayList<>(Arrays.asList(1, 3, 5, 7));
-        System.out.println(introduction.findEvenNumbersList(nums)); // [4, 2, 2, -2, 0]
-        System.out.println(introduction.findEvenNumbersList(nums2)); // [4, 2, 2, -2, 0]
-
-        int[] array = {9, 0, 24, -6, 3};
-        System.out.println(Arrays.toString(introduction.findEvenNumbersArray(array))); // [0, 24, -6]
-
-        String result = introduction.findTheString("Good", "afternoon");
-        System.out.println(result);  // GOODNOON
-        result = introduction.findTheString("Hello", "lo");
-        System.out.println(result);  // lolo
-        System.out.println(introduction.findTheString("", ""));  // FALSE
-        System.out.println(introduction.findTheString("", "   "));  // FALSE
-        System.out.println(introduction.findTheString("  ", "a"));  //  a  (with space in front)
-
-        System.out.println(introduction.countTripleChars("aaabbbabbb"));  // 3
-        System.out.println(introduction.countTripleChars("aaa"));  // 1
-        System.out.println(introduction.countTripleChars("aaaa"));  // 0
-        System.out.println(introduction.countTripleChars("aaaabbbabbbcCc"));  // 2
+//        Introduction introduction = new Introduction();
+//        System.out.println(introduction.howIsOutcome(1, 10));//=>"bad"
+//        System.out.println(introduction.howIsOutcome(6, 12));//=>"good"
+//        System.out.println(introduction.howIsOutcome(8, 9));//=>"ok"
+//
+//        System.out.println(introduction.howIsOutcome(3, 6)); // "bad"
+//
+//        List<Integer> nums = new ArrayList<>(Arrays.asList(4, 7, 5, 2, 1, 2, -2, 0));
+//        List<Integer> nums2 = new ArrayList<>(Arrays.asList(1, 3, 5, 7));
+//        System.out.println(introduction.findEvenNumbersList(nums)); // [4, 2, 2, -2, 0]
+//        System.out.println(introduction.findEvenNumbersList(nums2)); // [4, 2, 2, -2, 0]
+//
+//        int[] array = {9, 0, 24, -6, 3};
+//        System.out.println(Arrays.toString(introduction.findEvenNumbersArray(array))); // [0, 24, -6]
+//
+//        String result = introduction.findTheString("Good", "afternoon");
+//        System.out.println(result);  // GOODNOON
+//        result = introduction.findTheString("Hello", "lo");
+//        System.out.println(result);  // lolo
+//        System.out.println(introduction.findTheString("", ""));  // FALSE
+//        System.out.println(introduction.findTheString("", "   "));  // FALSE
+//        System.out.println(introduction.findTheString("  ", "a"));  //  a  (with space in front)
+//
+//        System.out.println(introduction.countTripleChars("aaabbbabbb"));  // 3
+//        System.out.println(introduction.countTripleChars("aaa"));  // 1
+//        System.out.println(introduction.countTripleChars("aaaa"));  // 0
+//        System.out.println(introduction.countTripleChars("aaaabbbabbbcCc"));  // 2
     }
+
 }
