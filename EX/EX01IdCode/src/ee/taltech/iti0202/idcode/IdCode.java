@@ -5,7 +5,7 @@ public class IdCode {
 
     private final String idCodeValue;
     public static final int ELEVEN = 11;
-    public static final int ONE = 11;
+    public static final int ONE = 1;
     public static final int TWELVE = 12;
     public static final int TWENTY = 20;
     public static final int TWENTY_ONE = 21;
@@ -121,28 +121,28 @@ public class IdCode {
         if (place >= 271 && place <= THREE_HUNDRED_SEVENTY) {
             return "Tartu";
         }
-        if (place >= THREE_HUNDRED_SEVENTY + ONE && place <= FOUR_HUNDRED_TWENTY) {
+        if (place >= (THREE_HUNDRED_SEVENTY + ONE) && place <= FOUR_HUNDRED_TWENTY) {
             return "Narva";
         }
-        if (place >= FOUR_HUNDRED_TWENTY + ONE && place <= FOUR_HUNDRED_SEVENTY) {
+        if (place >= (FOUR_HUNDRED_TWENTY + ONE) && place <= FOUR_HUNDRED_SEVENTY) {
             return "Pärnu";
         }
-        if (place >= FOUR_HUNDRED_SEVENTY + ONE && place <= FOUR_HUNDRED_NINETY) {
+        if (place >= (FOUR_HUNDRED_SEVENTY + ONE) && place <= FOUR_HUNDRED_NINETY) {
             return "Tallinn";
         }
         if (place >= FOUR_HUNDRED_NINETY + ONE && place <= FIVE_HUNDRED_TWENTY) {
             return "Paide";
         }
-        if (place >= FIVE_HUNDRED_TWENTY + ONE && place <= FIVE_HUNDRED_SEVENTY) {
+        if (place >= (FIVE_HUNDRED_TWENTY + ONE) && place <= FIVE_HUNDRED_SEVENTY) {
             return "Rakvere";
         }
-        if (place >= FIVE_HUNDRED_SEVENTY + ONE && place <= SIX_HUNDRED) {
+        if (place >= (FIVE_HUNDRED_SEVENTY + ONE) && place <= SIX_HUNDRED) {
             return "Valga";
         }
-        if (place >= SIX_HUNDRED + ONE && place <= SIX_HUNDRED_FIFTY) {
+        if (place >= (SIX_HUNDRED + ONE) && place <= SIX_HUNDRED_FIFTY) {
             return "Viljandi";
         }
-        if (place >= SIX_HUNDRED_FIFTY + ONE && place <= SEVEN_HUNDRED_TEN) {
+        if (place >= (SIX_HUNDRED_FIFTY) + ONE && place <= SEVEN_HUNDRED_TEN) {
             return "Võru";
         }
 
