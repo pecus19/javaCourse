@@ -5,12 +5,24 @@ public class IdCode {
 
     private final String idCodeValue;
     public static final int ELEVEN = 11;
+    public static final int ONE = 11;
     public static final int TWELVE = 12;
     public static final int TWENTY = 20;
     public static final int TWENTY_ONE = 21;
+    public static final int TWO_HUNDRED_TWENTY = 220;
+    public static final int SEVEN_HUNDRED_TEN = 710;
     public static final int TWO_HUNDRED_TWENTY_TWO = 221;
     public static final int SIX_HUNDRED = 600;
+    public static final int SIX_HUNDRED_FIFTY = 650;
+    public static final int TWO_HUNDRED_SEVENTY = 270;
+    public static final int THREE_HUNDRED_SEVENTY = 370;
+    public static final int FOUR_HUNDRED_SEVENTY = 470;
+    public static final int FIVE_HUNDRED_SEVENTY = 570;
+    public static final int FOUR_HUNDRED_NINETY = 490;
+    public static final int FIVE_HUNDRED_TWENTY = 520;
+    public static final int FOUR_HUNDRED_TWENTY = 420;
     public static final int FOUR_HUNDRED = 400;
+    ;
     public static final int TWO_THOUSAND = 2000;
     public static final int THOUSAND_EIGHT_HUNDRED = 1900;
     public static final int THIRTY_ONE = 31;
@@ -100,37 +112,37 @@ public class IdCode {
         if (place >= ELEVEN && place <= TWENTY) {
             return "Tartu";
         }
-        if (place >= TWENTY_ONE && place <= 220) {
+        if (place >= TWENTY_ONE && place <= TWO_HUNDRED_TWENTY) {
             return "Tallinn";
         }
-        if (place >= TWO_HUNDRED_TWENTY_TWO && place <= 270) {
+        if (place >= TWO_HUNDRED_TWENTY_TWO && place <= TWO_HUNDRED_SEVENTY) {
             return "Kohtla-Järve";
         }
-        if (place >= 271 && place <= 370) {
+        if (place >= 271 && place <= THREE_HUNDRED_SEVENTY) {
             return "Tartu";
         }
-        if (place >= 371 && place <= 420) {
+        if (place >= THREE_HUNDRED_SEVENTY + ONE && place <= FOUR_HUNDRED_TWENTY) {
             return "Narva";
         }
-        if (place >= 421 && place <= 470) {
+        if (place >= FOUR_HUNDRED_TWENTY + ONE && place <= FOUR_HUNDRED_SEVENTY) {
             return "Pärnu";
         }
-        if (place >= 471 && place <= 490) {
+        if (place >= FOUR_HUNDRED_SEVENTY + ONE && place <= FOUR_HUNDRED_NINETY) {
             return "Tallinn";
         }
-        if (place >= 491 && place <= 520) {
+        if (place >= FOUR_HUNDRED_NINETY + ONE && place <= FIVE_HUNDRED_TWENTY) {
             return "Paide";
         }
-        if (place >= 521 && place <= 570) {
+        if (place >= FIVE_HUNDRED_TWENTY + ONE && place <= FIVE_HUNDRED_SEVENTY) {
             return "Rakvere";
         }
-        if (place >= 571 && place <= SIX_HUNDRED) {
+        if (place >= FIVE_HUNDRED_SEVENTY + ONE && place <= SIX_HUNDRED) {
             return "Valga";
         }
-        if (place >= 601 && place <= 650) {
+        if (place >= SIX_HUNDRED + ONE && place <= SIX_HUNDRED_FIFTY) {
             return "Viljandi";
         }
-        if (place >= 651 && place <= 710) {
+        if (place >= SIX_HUNDRED_FIFTY + ONE && place <= SEVEN_HUNDRED_TEN) {
             return "Võru";
         }
 
