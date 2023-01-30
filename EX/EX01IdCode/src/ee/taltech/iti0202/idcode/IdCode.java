@@ -22,7 +22,6 @@ public class IdCode {
     public static final int FIVE_HUNDRED_TWENTY = 520;
     public static final int FOUR_HUNDRED_TWENTY = 420;
     public static final int FOUR_HUNDRED = 400;
-    ;
     public static final int TWO_THOUSAND = 2000;
     public static final int THOUSAND_EIGHT_HUNDRED = 1900;
     public static final int THIRTY_ONE = 31;
@@ -118,7 +117,7 @@ public class IdCode {
         if (place >= TWO_HUNDRED_TWENTY_TWO && place <= TWO_HUNDRED_SEVENTY) {
             return "Kohtla-Järve";
         }
-        if (place >= 271 && place <= THREE_HUNDRED_SEVENTY) {
+        if (place >= TWO_HUNDRED_SEVENTY + ONE && place <= THREE_HUNDRED_SEVENTY) {
             return "Tartu";
         }
         if (place >= (THREE_HUNDRED_SEVENTY + ONE) && place <= FOUR_HUNDRED_TWENTY) {
