@@ -5,10 +5,18 @@ public class IdCode {
 
     private final String idCodeValue;
     public static final int ELEVEN = 11;
+    public static final int TWELVE = 12;
     public static final int TWENTY = 20;
     public static final int TWENTY_ONE = 21;
     public static final int TWO_HUNDRED_TWENTY_TWO = 221;
     public static final int SIX_HUNDRED = 600;
+    public static final int FOUR_HUNDRED = 400;
+    public static final int TWO_THOUSAND = 2000;
+    public static final int THOUSAND_EIGHT_HUNDRED = 1900;
+    public static final int THIRTY_ONE = 31;
+    public static final int THIRTY = 30;
+    public static final int TWENTY_NINE = 29;
+    public static final int TWENTY_EIGHT = 28;
 
     enum Gender {
         MALE, FEMALE
@@ -48,7 +56,7 @@ public class IdCode {
                 counter++;
             }
         }
-        return Math.round(output) % ELEVEN == idCodeValue.charAt(10);
+        return Math.round(output) % ELEVEN == Integer.parseInt(String.valueOf(idCodeValue.charAt(10)));
     }
 
     /**
@@ -116,7 +124,7 @@ public class IdCode {
         if (place >= 521 && place <= 570) {
             return "Rakvere";
         }
-        if (place >= 571 && place <= 600) {
+        if (place >= 571 && place <= SIX_HUNDRED) {
             return "Valga";
         }
         if (place >= 601 && place <= 650) {
@@ -138,8 +146,8 @@ public class IdCode {
         int year = Integer.parseInt(idCodeValue.substring(1, 3));
         int sex = Integer.parseInt(String.valueOf(idCodeValue.charAt(0)));
         return switch (sex) {
-            case 1, 2, 3, 4 -> 1900 + year;
-            case 5, 6 -> 2000 + year;
+            case 1, 2, 3, 4 -> THOUSAND_EIGHT_HUNDRED + year;
+            case 5, 6 -> TWO_THOUSAND + year;
             default -> 0;
         };
 
@@ -171,7 +179,7 @@ public class IdCode {
     private boolean isMonthNumberCorrect() {
         int month = Integer.parseInt(idCodeValue.substring(3, 5));
         return switch (month) {
-            case 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, ELEVEN, 12 -> true;
+            case 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, ELEVEN, TWELVE -> true;
             default -> false;
         };
     }
@@ -184,43 +192,43 @@ public class IdCode {
     private boolean isDayNumberCorrect() {
         int day = Integer.parseInt(idCodeValue.substring(5, 7));
         int month = Integer.parseInt(idCodeValue.substring(3, 5));
-        if (month == 1 && day >= 1 && day <= 31) {
+        if (month == 1 && day >= 1 && day <= THIRTY_ONE) {
             return true;
         }
-        if (month == 2 && day >= 1 && day <= 28 && !isLeapYear(getFullYear())) {
+        if (month == 2 && day >= 1 && day <= TWENTY_EIGHT && !isLeapYear(getFullYear())) {
             return true;
         }
-        if (month == 2 && day >= 1 && day <= 29 && isLeapYear(getFullYear())) {
+        if (month == 2 && day >= 1 && day <= TWENTY_NINE && isLeapYear(getFullYear())) {
             return true;
         }
-        if (month == 3 && day >= 1 && day <= 31) {
+        if (month == 3 && day >= 1 && day <= THIRTY_ONE) {
             return true;
         }
-        if (month == 4 && day >= 1 && day <= 30) {
+        if (month == 4 && day >= 1 && day <= THIRTY) {
             return true;
         }
-        if (month == 5 && day >= 1 && day <= 31) {
+        if (month == 5 && day >= 1 && day <= THIRTY_ONE) {
             return true;
         }
-        if (month == 6 && day >= 1 && day <= 30) {
+        if (month == 6 && day >= 1 && day <= THIRTY) {
             return true;
         }
-        if (month == 7 && day >= 1 && day <= 31) {
+        if (month == 7 && day >= 1 && day <= THIRTY_ONE) {
             return true;
         }
-        if (month == 8 && day >= 1 && day <= 31) {
+        if (month == 8 && day >= 1 && day <= THIRTY_ONE) {
             return true;
         }
-        if (month == 9 && day >= 1 && day <= 30) {
+        if (month == 9 && day >= 1 && day <= THIRTY) {
             return true;
         }
-        if (month == 10 && day >= 1 && day <= 31) {
+        if (month == 10 && day >= 1 && day <= THIRTY_ONE) {
             return true;
         }
-        if (month == ELEVEN && day >= 1 && day <= 30) {
+        if (month == ELEVEN && day >= 1 && day <= THIRTY) {
             return true;
         }
-        if (month == 12 && day >= 1 && day <= 31) {
+        if (month == TWELVE && day >= 1 && day <= THIRTY_ONE) {
             return true;
         }
         return false;
@@ -244,7 +252,7 @@ public class IdCode {
     private boolean isLeapYear(int fullYear) {
         if (fullYear % 4 != 0) {
             return false;
-        } else if (fullYear % 400 == 0) {
+        } else if (fullYear % FOUR_HUNDRED == 0) {
             return true;
         } else return fullYear % 100 != 0;
     }
@@ -255,8 +263,7 @@ public class IdCode {
      * @param args info.
      */
     public static void main(String[] args) {
-//        IdCodeNew validMaleIdCode = new IdCodeNew("37605030299");
-        IdCode validMaleIdCode = new IdCode("49808270244");
+        IdCode validMaleIdCode = new IdCode("50402290232");
 //        System.out.println(validMaleIdCode.controlNumber("49808270244"));
         System.out.println(validMaleIdCode.isCorrect());
         System.out.println(validMaleIdCode.getInformation());
