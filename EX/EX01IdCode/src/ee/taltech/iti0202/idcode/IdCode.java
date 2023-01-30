@@ -4,6 +4,11 @@ package ee.taltech.iti0202.idcode;
 public class IdCode {
 
     private final String idCodeValue;
+    public static final int ELEVEN = 11;
+    public static final int TWENTY = 20;
+    public static final int TWENTY_ONE = 21;
+    public static final int TWO_HUNDRED_TWENTY_TWO = 221;
+    public static final int SIX_HUNDRED = 600;
 
     enum Gender {
         MALE, FEMALE
@@ -33,15 +38,17 @@ public class IdCode {
     }
 
     public boolean controlNumber(String idCodeValue) {
-        int counter = 2;
-        int output = 1;
-        for (int i = 0; i < idCodeValue.length(); i++) {
-            output *= idCodeValue.charAt(i) + counter;
-            counter++;
+        int counter = 1;
+        int output = 0;
+        for (int i = 0; i < idCodeValue.length() - 1; i++) {
+            output += Integer.parseInt(idCodeValue.substring(i, i + 1)) * counter;
+            if (counter == 9) {
+                counter = 1;
+            } else {
+                counter++;
+            }
         }
-        return Math.round(output) == idCodeValue.charAt(10) ? true : false;
-
-
+        return Math.round(output) % ELEVEN == idCodeValue.charAt(10);
     }
 
     /**
@@ -82,13 +89,13 @@ public class IdCode {
         if (place >= 1 && place <= 10) {
             return "Kuressaare";
         }
-        if (place >= 11 && place <= 20) {
+        if (place >= ELEVEN && place <= TWENTY) {
             return "Tartu";
         }
-        if (place >= 21 && place <= 220) {
+        if (place >= TWENTY_ONE && place <= 220) {
             return "Tallinn";
         }
-        if (place >= 221 && place <= 270) {
+        if (place >= TWO_HUNDRED_TWENTY_TWO && place <= 270) {
             return "Kohtla-Järve";
         }
         if (place >= 271 && place <= 370) {
@@ -112,7 +119,7 @@ public class IdCode {
         if (place >= 571 && place <= 600) {
             return "Valga";
         }
-        if (place >= 601 && place <= 660) {
+        if (place >= 601 && place <= 650) {
             return "Viljandi";
         }
         if (place >= 651 && place <= 710) {
@@ -164,7 +171,7 @@ public class IdCode {
     private boolean isMonthNumberCorrect() {
         int month = Integer.parseInt(idCodeValue.substring(3, 5));
         return switch (month) {
-            case 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 -> true;
+            case 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, ELEVEN, 12 -> true;
             default -> false;
         };
     }
@@ -210,7 +217,7 @@ public class IdCode {
         if (month == 10 && day >= 1 && day <= 31) {
             return true;
         }
-        if (month == 11 && day >= 1 && day <= 30) {
+        if (month == ELEVEN && day >= 1 && day <= 30) {
             return true;
         }
         if (month == 12 && day >= 1 && day <= 31) {
@@ -225,7 +232,7 @@ public class IdCode {
      * @return boolean describing whether the control number is correct.
      */
     private boolean isControlNumberCorrect() {
-        return idCodeValue.length() == 11;
+        return idCodeValue.length() == ELEVEN;
     }
 
     /**
@@ -239,11 +246,7 @@ public class IdCode {
             return false;
         } else if (fullYear % 400 == 0) {
             return true;
-        } else if (fullYear % 100 == 0) {
-            return false;
-        } else {
-            return true;
-        }
+        } else return fullYear % 100 != 0;
     }
 
     /**
@@ -253,7 +256,8 @@ public class IdCode {
      */
     public static void main(String[] args) {
 //        IdCodeNew validMaleIdCode = new IdCodeNew("37605030299");
-        IdCode validMaleIdCode = new IdCode("52002290299");
+        IdCode validMaleIdCode = new IdCode("49808270244");
+//        System.out.println(validMaleIdCode.controlNumber("49808270244"));
         System.out.println(validMaleIdCode.isCorrect());
         System.out.println(validMaleIdCode.getInformation());
         System.out.println(validMaleIdCode.getGender());
