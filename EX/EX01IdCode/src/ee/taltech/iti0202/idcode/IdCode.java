@@ -29,7 +29,19 @@ public class IdCode {
      */
     public boolean isCorrect() {
         return isControlNumberCorrect() && isDayNumberCorrect() && isMonthNumberCorrect() && isYearNumberCorrect()
-                && isDayNumberCorrect();
+                && isDayNumberCorrect() && controlNumber(idCodeValue);
+    }
+
+    public boolean controlNumber(String idCodeValue) {
+        int counter = 2;
+        int output = 1;
+        for (int i = 0; i < idCodeValue.length(); i++) {
+            output *= idCodeValue.charAt(i) + counter;
+            counter++;
+        }
+        return Math.round(output) == idCodeValue.charAt(10) ? true : false;
+
+
     }
 
     /**
@@ -241,7 +253,7 @@ public class IdCode {
      */
     public static void main(String[] args) {
 //        IdCodeNew validMaleIdCode = new IdCodeNew("37605030299");
-        IdCode validMaleIdCode = new IdCode("50202260892");
+        IdCode validMaleIdCode = new IdCode("52002290299");
         System.out.println(validMaleIdCode.isCorrect());
         System.out.println(validMaleIdCode.getInformation());
         System.out.println(validMaleIdCode.getGender());
