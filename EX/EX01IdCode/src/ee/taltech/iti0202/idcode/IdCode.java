@@ -41,7 +41,7 @@ public class IdCode {
         final String str_day = idCodeValue.substring(5, 7);
         final String str_month = idCodeValue.substring(3, 5);
 
-        return String.format("This is a %s born on %s.%s.%s in %s.", getGender(), str_day, str_month, getFullYear(),
+        return String.format("This is a %s born on %s.%s.%s in %s", getGender(), str_day, str_month, getFullYear(),
                 getBirthPlace());
     }
 
@@ -107,7 +107,7 @@ public class IdCode {
             return "Võru";
         }
 
-        return "Unknown";
+        return "unknown";
     }
 
     /**
