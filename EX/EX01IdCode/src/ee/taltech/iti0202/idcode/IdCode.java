@@ -1,4 +1,3 @@
-
 package ee.taltech.iti0202.idcode;
 
 public class IdCode {
@@ -43,10 +42,12 @@ public class IdCode {
     }
 
     public IdCode(String idCodeValue) throws IllegalArgumentException {
-        if (controlNumber(idCodeValue)) {
-            this.idCodeValue = idCodeValue;
-        } else {
-            throw new IllegalArgumentException();
+        for (int i = 0; i < idCodeValue.length(); i++) {
+            if (Character.isAlphabetic(idCodeValue.charAt(i)) && idCodeValue.length() != ELEVEN) {
+                throw new IllegalArgumentException();
+            } else {
+                this.idCodeValue = idCodeValue;
+            }
         }
     }
 
@@ -60,7 +61,7 @@ public class IdCode {
                 && isDayNumberCorrect() && controlNumber(idCodeValue)) {
             return true;
         } else {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("This is Id code is not correct!");
         }
 //        return isControlNumberCorrect() && isDayNumberCorrect() && isMonthNumberCorrect() && isYearNumberCorrect()
 //                && isDayNumberCorrect() && controlNumber(idCodeValue);
@@ -295,7 +296,7 @@ public class IdCode {
      * @param args info.
      */
     public static void main(String[] args) {
-        IdCode validMaleIdCode = new IdCode("47605030299");
+        IdCode validMaleIdCode = new IdCode("49808270242");
 //        System.out.println(validMaleIdCode.controlNumber("49808270244"));
         System.out.println(validMaleIdCode.isCorrect());
         System.out.println(validMaleIdCode.getInformation());
