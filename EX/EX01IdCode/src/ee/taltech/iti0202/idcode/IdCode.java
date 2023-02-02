@@ -42,12 +42,13 @@ public class IdCode {
     }
 
     public IdCode(String idCodeValue) throws IllegalArgumentException {
-        for (int i = 0; i < idCodeValue.length(); i++) {
-            if (Character.isAlphabetic(idCodeValue.charAt(i)) && idCodeValue.length() != ELEVEN) {
-                throw new IllegalArgumentException();
-            } else {
-                this.idCodeValue = idCodeValue;
-            }
+        this.idCodeValue = idCodeValue;
+        if (isControlNumberCorrect() && isDayNumberCorrect() && isMonthNumberCorrect() && isYearNumberCorrect()
+                && isDayNumberCorrect() && controlNumber(idCodeValue)) {
+            this.idCodeValue = idCodeValue;
+        } else {
+            this.idCodeValue = idCodeValue;
+            throw new IllegalArgumentException("This is Id code is not correct!");
         }
     }
 
@@ -310,5 +311,4 @@ public class IdCode {
         System.out.println(validMaleIdCode.isControlNumberCorrect());
         System.out.println(validMaleIdCode.isLeapYear(validMaleIdCode.getFullYear()));
     }
-
 }
