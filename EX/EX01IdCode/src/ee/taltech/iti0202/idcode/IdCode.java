@@ -51,9 +51,15 @@ public class IdCode {
      *
      * @return boolean describing whether or not the id code was correct.
      */
-    public boolean isCorrect() {
-        return isControlNumberCorrect() && isDayNumberCorrect() && isMonthNumberCorrect() && isYearNumberCorrect()
-                && isDayNumberCorrect() && controlNumber(idCodeValue);
+    public boolean isCorrect() throws IllegalArgumentException {
+        if (isControlNumberCorrect() && isDayNumberCorrect() && isMonthNumberCorrect() && isYearNumberCorrect()
+                && isDayNumberCorrect() && controlNumber(idCodeValue)) {
+            return true;
+        } else {
+            throw new IllegalArgumentException();
+        }
+//        return isControlNumberCorrect() && isDayNumberCorrect() && isMonthNumberCorrect() && isYearNumberCorrect()
+//                && isDayNumberCorrect() && controlNumber(idCodeValue);
     }
 
     public boolean controlNumber(String idCodeValue) {
