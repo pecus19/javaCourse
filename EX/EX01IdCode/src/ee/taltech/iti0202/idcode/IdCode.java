@@ -43,8 +43,7 @@ public class IdCode {
     }
 
     public IdCode(String idCodeValue) throws IllegalArgumentException {
-        this.idCodeValue = idCodeValue;
-        if (isCorrect()) {
+        if (controlNumber(idCodeValue)) {
             this.idCodeValue = idCodeValue;
         } else {
             throw new IllegalArgumentException();
@@ -297,7 +296,7 @@ public class IdCode {
      */
     public static void main(String[] args) {
         IdCode validMaleIdCode = new IdCode("47605030299");
-        System.out.println(validMaleIdCode.controlNumber("49808270244"));
+//        System.out.println(validMaleIdCode.controlNumber("49808270244"));
         System.out.println(validMaleIdCode.isCorrect());
         System.out.println(validMaleIdCode.getInformation());
         System.out.println(validMaleIdCode.getGender());
