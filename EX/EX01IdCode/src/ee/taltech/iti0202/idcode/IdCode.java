@@ -43,11 +43,9 @@ public class IdCode {
 
     public IdCode(String idCodeValue) throws IllegalArgumentException {
         this.idCodeValue = idCodeValue;
-        if (isControlNumberCorrect() && isDayNumberCorrect() && isMonthNumberCorrect() && isYearNumberCorrect()
-                && isDayNumberCorrect() && controlNumber(idCodeValue)) {
+        if (isCorrect()) {
             this.idCodeValue = idCodeValue;
         } else {
-            this.idCodeValue = idCodeValue;
             throw new IllegalArgumentException("This is Id code is not correct!");
         }
     }
@@ -57,15 +55,15 @@ public class IdCode {
      *
      * @return boolean describing whether or not the id code was correct.
      */
-    public boolean isCorrect() throws IllegalArgumentException {
-        if (isControlNumberCorrect() && isDayNumberCorrect() && isMonthNumberCorrect() && isYearNumberCorrect()
-                && isDayNumberCorrect() && controlNumber(idCodeValue)) {
-            return true;
-        } else {
-            throw new IllegalArgumentException("This is Id code is not correct!");
-        }
-//        return isControlNumberCorrect() && isDayNumberCorrect() && isMonthNumberCorrect() && isYearNumberCorrect()
-//                && isDayNumberCorrect() && controlNumber(idCodeValue);
+    public boolean isCorrect() {
+//        if (isControlNumberCorrect() && isDayNumberCorrect() && isMonthNumberCorrect() && isYearNumberCorrect()
+//                && isDayNumberCorrect() && controlNumber(idCodeValue)) {
+//            return true;
+//        } else {
+//            throw new IllegalArgumentException("This is Id code is not correct!");
+//        }
+        return isControlNumberCorrect() && isDayNumberCorrect() && isMonthNumberCorrect() && isYearNumberCorrect()
+                && isDayNumberCorrect() && controlNumber(idCodeValue);
     }
 
     public boolean controlNumber(String idCodeValue) {
@@ -297,7 +295,7 @@ public class IdCode {
      * @param args info.
      */
     public static void main(String[] args) {
-        IdCode validMaleIdCode = new IdCode("49808270242");
+        IdCode validMaleIdCode = new IdCode("47605030299");
 //        System.out.println(validMaleIdCode.controlNumber("49808270244"));
         System.out.println(validMaleIdCode.isCorrect());
         System.out.println(validMaleIdCode.getInformation());
