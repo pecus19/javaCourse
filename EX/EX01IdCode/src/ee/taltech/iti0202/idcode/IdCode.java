@@ -56,12 +56,6 @@ public class IdCode {
      * @return boolean describing whether or not the id code was correct.
      */
     public boolean isCorrect() {
-//        if (isControlNumberCorrect() && isDayNumberCorrect() && isMonthNumberCorrect() && isYearNumberCorrect()
-//                && isDayNumberCorrect() && controlNumber(idCodeValue)) {
-//            return true;
-//        } else {
-//            throw new IllegalArgumentException("This is Id code is not correct!");
-//        }
         return isControlNumberCorrect() && isDayNumberCorrect() && isMonthNumberCorrect() && isYearNumberCorrect()
                 && isDayNumberCorrect() && controlNumber(idCodeValue);
     }
@@ -77,7 +71,9 @@ public class IdCode {
                 counter++;
             }
         }
-        return Math.round(output) % ELEVEN == Integer.parseInt(String.valueOf(idCodeValue.charAt(10)));
+//        System.out.println(Math.round(output) % ELEVEN);
+        boolean res = Math.round(output) % ELEVEN >= 10;
+        return res || Math.round(output) % ELEVEN == Integer.parseInt(String.valueOf(idCodeValue.charAt(10)));
     }
 
     /**
@@ -295,7 +291,7 @@ public class IdCode {
      * @param args info.
      */
     public static void main(String[] args) {
-        IdCode validMaleIdCode = new IdCode("47605030299");
+        IdCode validMaleIdCode = new IdCode("37605036515");
 //        System.out.println(validMaleIdCode.controlNumber("49808270244"));
         System.out.println(validMaleIdCode.isCorrect());
         System.out.println(validMaleIdCode.getInformation());
@@ -307,6 +303,7 @@ public class IdCode {
         System.out.println(validMaleIdCode.isMonthNumberCorrect());
         System.out.println(validMaleIdCode.isDayNumberCorrect());
         System.out.println(validMaleIdCode.isControlNumberCorrect());
-        System.out.println(validMaleIdCode.isLeapYear(validMaleIdCode.getFullYear()));
+//        System.out.println(validMaleIdCode.isLeapYear(validMaleIdCode.getFullYear()));
+        System.out.println(validMaleIdCode.controlNumber("61305200000"));
     }
 }
