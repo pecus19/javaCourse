@@ -43,12 +43,12 @@ public class IdCode {
     }
 
     public IdCode(String idCodeValue) throws IllegalArgumentException {
-        for (int i = 0; i < idCodeValue.length(); i++) {
-            if (Character.isAlphabetic(idCodeValue.charAt(i)) && idCodeValue.length() != ELEVEN) {
-                throw new IllegalArgumentException();
-            } else {
-                this.idCodeValue = idCodeValue;
-            }
+        this.idCodeValue = idCodeValue;
+        if (isControlNumberCorrect() && isDayNumberCorrect() && isMonthNumberCorrect() && isYearNumberCorrect()
+                && isDayNumberCorrect() && controlNumber(idCodeValue)) {
+            this.idCodeValue = idCodeValue;
+        } else {
+            throw new IllegalArgumentException("This is Id code is not correct!");
         }
     }
 
@@ -299,17 +299,17 @@ public class IdCode {
     public static void main(String[] args) {
         IdCode validMaleIdCode = new IdCode("49808270242");
 //        System.out.println(validMaleIdCode.controlNumber("49808270244"));
-        System.out.println(validMaleIdCode.isCorrect());
-        System.out.println(validMaleIdCode.getInformation());
-        System.out.println(validMaleIdCode.getGender());
-        System.out.println(validMaleIdCode.getBirthPlace());
-        System.out.println(validMaleIdCode.getFullYear());
-        System.out.println(validMaleIdCode.isGenderNumberCorrect());
-        System.out.println(validMaleIdCode.isYearNumberCorrect());
-        System.out.println(validMaleIdCode.isMonthNumberCorrect());
-        System.out.println(validMaleIdCode.isDayNumberCorrect());
-        System.out.println(validMaleIdCode.isControlNumberCorrect());
-        System.out.println(validMaleIdCode.isLeapYear(validMaleIdCode.getFullYear()));
+//        System.out.println(validMaleIdCode.isCorrect());
+//        System.out.println(validMaleIdCode.getInformation());
+//        System.out.println(validMaleIdCode.getGender());
+//        System.out.println(validMaleIdCode.getBirthPlace());
+//        System.out.println(validMaleIdCode.getFullYear());
+//        System.out.println(validMaleIdCode.isGenderNumberCorrect());
+//        System.out.println(validMaleIdCode.isYearNumberCorrect());
+//        System.out.println(validMaleIdCode.isMonthNumberCorrect());
+//        System.out.println(validMaleIdCode.isDayNumberCorrect());
+//        System.out.println(validMaleIdCode.isControlNumberCorrect());
+//        System.out.println(validMaleIdCode.isLeapYear(validMaleIdCode.getFullYear()));
     }
 
 }
