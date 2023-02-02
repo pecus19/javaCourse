@@ -44,11 +44,10 @@ public class IdCode {
 
     public IdCode(String idCodeValue) throws IllegalArgumentException {
         this.idCodeValue = idCodeValue;
-        if (isControlNumberCorrect() && isDayNumberCorrect() && isMonthNumberCorrect() && isYearNumberCorrect()
-                && isDayNumberCorrect() && controlNumber(idCodeValue)) {
+        if (isCorrect()) {
             this.idCodeValue = idCodeValue;
         } else {
-            throw new IllegalArgumentException("This is Id code is not correct!");
+            throw new IllegalArgumentException();
         }
     }
 
@@ -62,7 +61,7 @@ public class IdCode {
                 && isDayNumberCorrect() && controlNumber(idCodeValue)) {
             return true;
         } else {
-            throw new IllegalArgumentException("This is Id code is not correct!");
+            throw new IllegalArgumentException();
         }
 //        return isControlNumberCorrect() && isDayNumberCorrect() && isMonthNumberCorrect() && isYearNumberCorrect()
 //                && isDayNumberCorrect() && controlNumber(idCodeValue);
@@ -297,19 +296,19 @@ public class IdCode {
      * @param args info.
      */
     public static void main(String[] args) {
-        IdCode validMaleIdCode = new IdCode("49808270242");
-//        System.out.println(validMaleIdCode.controlNumber("49808270244"));
-//        System.out.println(validMaleIdCode.isCorrect());
-//        System.out.println(validMaleIdCode.getInformation());
-//        System.out.println(validMaleIdCode.getGender());
-//        System.out.println(validMaleIdCode.getBirthPlace());
-//        System.out.println(validMaleIdCode.getFullYear());
-//        System.out.println(validMaleIdCode.isGenderNumberCorrect());
-//        System.out.println(validMaleIdCode.isYearNumberCorrect());
-//        System.out.println(validMaleIdCode.isMonthNumberCorrect());
-//        System.out.println(validMaleIdCode.isDayNumberCorrect());
-//        System.out.println(validMaleIdCode.isControlNumberCorrect());
-//        System.out.println(validMaleIdCode.isLeapYear(validMaleIdCode.getFullYear()));
+        IdCode validMaleIdCode = new IdCode("47605030299");
+        System.out.println(validMaleIdCode.controlNumber("49808270244"));
+        System.out.println(validMaleIdCode.isCorrect());
+        System.out.println(validMaleIdCode.getInformation());
+        System.out.println(validMaleIdCode.getGender());
+        System.out.println(validMaleIdCode.getBirthPlace());
+        System.out.println(validMaleIdCode.getFullYear());
+        System.out.println(validMaleIdCode.isGenderNumberCorrect());
+        System.out.println(validMaleIdCode.isYearNumberCorrect());
+        System.out.println(validMaleIdCode.isMonthNumberCorrect());
+        System.out.println(validMaleIdCode.isDayNumberCorrect());
+        System.out.println(validMaleIdCode.isControlNumberCorrect());
+        System.out.println(validMaleIdCode.isLeapYear(validMaleIdCode.getFullYear()));
     }
 
 }
