@@ -56,7 +56,7 @@ public class IdCode {
                 && isDayNumberCorrect() && controlNumber(idCodeValue)) {
             return true;
         } else {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("This is Id code is not correct!");
         }
 //        return isControlNumberCorrect() && isDayNumberCorrect() && isMonthNumberCorrect() && isYearNumberCorrect()
 //                && isDayNumberCorrect() && controlNumber(idCodeValue);
@@ -206,7 +206,14 @@ public class IdCode {
      *
      * @return boolean describing whether the day number is correct.
      */
-    private boolean isDayNumberCorrect() {
+    private boolean isDayNumberCorrect() throws IllegalArgumentException {
+        for (int i = 0; i < idCodeValue.length(); i++) {
+            if (Character.isAlphabetic(idCodeValue.charAt(i))) {
+                throw new IllegalArgumentException();
+            } else {
+                continue;
+            }
+        }
         int day = Integer.parseInt(idCodeValue.substring(5, 7));
         int month = Integer.parseInt(idCodeValue.substring(3, 5));
         if (month == 1 && day >= 1 && day <= THIRTY_ONE) {
@@ -256,8 +263,12 @@ public class IdCode {
      *
      * @return boolean describing whether the control number is correct.
      */
-    private boolean isControlNumberCorrect() {
-        return idCodeValue.length() == ELEVEN;
+    private boolean isControlNumberCorrect() throws IllegalArgumentException {
+        if (idCodeValue.length() == ELEVEN) {
+            return true;
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 
     /**
@@ -280,7 +291,7 @@ public class IdCode {
      * @param args info.
      */
     public static void main(String[] args) {
-        IdCode validMaleIdCode = new IdCode("50402290232");
+        IdCode validMaleIdCode = new IdCode("376o5030299");
 //        System.out.println(validMaleIdCode.controlNumber("49808270244"));
         System.out.println(validMaleIdCode.isCorrect());
         System.out.println(validMaleIdCode.getInformation());
