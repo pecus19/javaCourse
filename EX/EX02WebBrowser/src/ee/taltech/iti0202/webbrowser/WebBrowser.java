@@ -14,9 +14,9 @@ public class WebBrowser {
     private Integer counter = 0;
     private boolean homeCheck = false;
     private final Map<String, Integer> map = new TreeMap<>();
-    public final static int ONE = 1;
-    public final static int ZERO = 0;
-    public final static int THREE = 3;
+    public static final int ONE = 1;
+    public static final int ZERO = 0;
+    public static final int THREE = 3;
 
     /**
      * Goes to homepage.
@@ -114,9 +114,10 @@ public class WebBrowser {
             }
         }
         int sumToRet = 0;
+//        System.out.println(map);
         map.entrySet()
                 .stream()
-                .sorted(Map.Entry.<String, Integer>comparingByValue().thenComparing(Map.Entry::getKey).reversed())
+                .sorted(Map.Entry.<String, Integer>comparingByValue().thenComparing(Map.Entry::getKey))
                 .forEach(e -> finalMap.put(e.getKey(), e.getValue()));
         for (Map.Entry<String, Integer> el : finalMap.entrySet()) {
             output += String.format("%s - %s visits" + "\n", el.getKey(), el.getValue());
@@ -139,7 +140,6 @@ public class WebBrowser {
      * @return list of all visited pages
      */
     public List<String> getHistory() {
-        //TODO: implement
         return history;
     }
 
@@ -207,7 +207,10 @@ public class WebBrowser {
 //        test.addAsBookmark(); //
 //        System.out.println(test.getBookmarks()); // - > [facebook.com, neti.ee]
 //        test.goTo("taltech"); //
-//        System.out.println(test.getHistory()); //  - > [google.com, facebook.com, google.com, facebook.com, google.com, neti.ee]
+//        System.out.println(test.getHistory()); //  - > [google.com, facebook.com, google.com, facebook.com,
+//        google.com, neti.ee]
 //        System.out.println(test.getTop3VisitedPages());
+        test.goTo("twitter.com ");
+        System.out.println(test.getTop3VisitedPages());
     }
 }
