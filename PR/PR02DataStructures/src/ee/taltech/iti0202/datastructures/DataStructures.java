@@ -1,8 +1,6 @@
 package ee.taltech.iti0202.datastructures;
 
 import java.util.*;
-import java.util.stream.Collectors;
-
 
 public class DataStructures {
 
