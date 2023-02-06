@@ -117,10 +117,11 @@ public class WebBrowser {
 //        System.out.println(map);
         map.entrySet()
                 .stream()
-                .sorted(Map.Entry.<String, Integer>comparingByValue().thenComparing(Map.Entry::getKey))
+                .sorted(Map.Entry.<String, Integer>comparingByValue().thenComparing(Map.Entry::getKey).reversed())
                 .forEach(e -> finalMap.put(e.getKey(), e.getValue()));
         for (Map.Entry<String, Integer> el : finalMap.entrySet()) {
-            output += String.format("%s - %s visits" + "\n", el.getKey(), el.getValue());
+            String visit = el.getValue() == 1 ? "visit" : "visits";
+            output += String.format("%s - %s %s" + "\n", el.getKey(), el.getValue(), visit);
             sumToRet++;
             if (sumToRet == THREE) {
                 break;
