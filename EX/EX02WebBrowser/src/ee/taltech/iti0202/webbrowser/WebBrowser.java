@@ -117,7 +117,7 @@ public class WebBrowser {
 //        System.out.println(map);
         map.entrySet()
                 .stream()
-                .sorted(Map.Entry.<String, Integer>comparingByValue().thenComparing(Map.Entry::getKey).reversed())
+                .sorted(Map.Entry.<String, Integer>comparingByValue().reversed().thenComparing(Map.Entry::getKey))
                 .forEach(e -> finalMap.put(e.getKey(), e.getValue()));
         for (Map.Entry<String, Integer> el : finalMap.entrySet()) {
             String visit = el.getValue() == 1 ? "visit" : "visits";
