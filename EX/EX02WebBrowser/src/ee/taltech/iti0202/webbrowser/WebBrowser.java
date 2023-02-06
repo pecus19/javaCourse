@@ -8,7 +8,7 @@ import java.util.TreeMap;
 
 public class WebBrowser {
     private String homePage;
-    private final ArrayList<String> history = new ArrayList<>(List.of("google.com"));
+    private final ArrayList<String> history = new ArrayList<>();
     private final ArrayList<String> bookmarks = new ArrayList<>();
     private String currentPage = "google.com";
     private Integer counter = 0;
@@ -212,6 +212,12 @@ public class WebBrowser {
 //        google.com, neti.ee]
 //        System.out.println(test.getTop3VisitedPages());
         test.goTo("twitter.com ");
+        test.back();
+        test.back();
+        test.back();
+        test.back();
+        test.back();
         System.out.println(test.getTop3VisitedPages());
+
     }
 }
