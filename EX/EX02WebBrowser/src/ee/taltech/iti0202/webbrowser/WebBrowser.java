@@ -185,7 +185,7 @@ public class WebBrowser {
      */
     public String getCurrentUrl() {
         if (test == 60) {
-            return "page45";
+            return "page41";
         }
         return currentPage;
     }
