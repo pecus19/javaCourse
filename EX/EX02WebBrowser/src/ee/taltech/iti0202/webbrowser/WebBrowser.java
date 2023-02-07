@@ -9,7 +9,7 @@ public class WebBrowser {
     private String currentPage = "google.com";
     private Integer counter = 0;
     private boolean homeCheck = false;
-    private final Map<String, Integer> map = new TreeMap<>();
+    private final Map<String, Integer> map = new LinkedHashMap<>();
     public static final int ONE = 1;
     public static final int ZERO = 0;
     public static final int THREE = 3;
@@ -115,7 +115,7 @@ public class WebBrowser {
 //        System.out.println(map);
         map.entrySet()
                 .stream()
-                .sorted(Map.Entry.<String, Integer>comparingByValue().reversed().thenComparing(Map.Entry::getKey))
+                .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
                 .forEach(e -> finalMap.put(e.getKey(), e.getValue()));
         for (Map.Entry<String, Integer> el : finalMap.entrySet()) {
             String visit = el.getValue() == 1 ? "visit" : "visits";
@@ -210,9 +210,8 @@ public class WebBrowser {
 //        google.com, neti.ee]
 //        System.out.println(test.getTop3VisitedPages());
         System.out.println(test.getCurrentUrl());
-        test.goTo("neti.ee");
-        test.goTo("neti.ee");
-        test.goTo("neti.ee");
+        test.goTo("twitter.com");
+        test.goTo("facebook.com");
         System.out.println(test.getTop3VisitedPages());
 
 
