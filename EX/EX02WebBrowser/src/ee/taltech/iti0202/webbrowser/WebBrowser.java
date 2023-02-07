@@ -63,23 +63,24 @@ public class WebBrowser {
      */
     public void goTo(String url) {
         if (!Objects.equals(url, getCurrentUrl())) {
-//            if (!homeCheck) {
-            if (url != null) {
-                history.add(url);
-                counter++;
-                setCurrentPage(url);
+            if (!homeCheck) {
+                if (url != null) {
+                    history.add(url);
+                    counter++;
+                    setCurrentPage(url);
+                }
+            } else {
+                if (url != null) {
+                    history.add(url);
+                    counter = history.size();
+                    homeCheck = false;
+                    setCurrentPage(url);
+
+                }
             }
-//            } else {
-//                if (url != null) {
-//                    history.add(url);
-//                    counter = history.size();
-//                    homeCheck = false;
-//                    setCurrentPage(url);
-//
-//                }
-//            }
         }
     }
+
 
     /**
      * Add a webpage as a bookmark.
