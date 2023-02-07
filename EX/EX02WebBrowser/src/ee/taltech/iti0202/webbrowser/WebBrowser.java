@@ -49,10 +49,10 @@ public class WebBrowser {
      * Goes forward to next page.
      */
     public void forward() {
-        if (counter < history.size()) {
+        if (counter + ONE <= history.size() - ONE) {
             counter++;
-            setCurrentPage(history.get(counter));
-            history.add(history.get(counter));
+            setCurrentPage(history.get(counter + 1));
+            history.add(history.get(counter + 1));
         }
     }
 
