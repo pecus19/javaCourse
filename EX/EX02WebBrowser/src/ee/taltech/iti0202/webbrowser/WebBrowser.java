@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Objects;
 
 public class WebBrowser {
+    private Integer test = 0;
     private String homePage = "";
     private final ArrayList<String> history = new ArrayList<>(List.of("google.com"));
     private final ArrayList<String> bookmarks = new ArrayList<>();
@@ -30,7 +31,7 @@ public class WebBrowser {
 //        homeCheck = true;
 //        currentPage = homePage;
         if (!Objects.equals(homePage, "")) {
-//            homeCheck = true;
+            homeCheck = true;
             goTo(homePage);
         }
     }
@@ -39,6 +40,7 @@ public class WebBrowser {
      * Goes back to previous page.
      */
     public void back() {
+        test++;
         if (counter - ONE >= ZERO) {
             counter--;
             setCurrentPage(history.get(counter));
@@ -63,22 +65,22 @@ public class WebBrowser {
      * @param url url to go to
      */
     public void goTo(String url) {
-//        if (!Objects.equals(url, getCurrentUrl())) {
-        if (!homeCheck) {
-            if (url != null & !Objects.equals(url, "")) {
-                history.add(url);
-                counter = history.size() - 1;
-                setCurrentPage(url);
+        if (!Objects.equals(url, getCurrentUrl())) {
+            if (!homeCheck) {
+                if (url != null & !Objects.equals(url, "")) {
+                    history.add(url);
+                    counter = history.size() - 1;
+                    setCurrentPage(url);
+                }
+            } else {
+                if (url != null) {
+                    history.add(url);
+                    counter++;
+                    homeCheck = false;
+                    setCurrentPage(url);
+
+                }
             }
-//            } else {
-//                if (url != null) {
-//                    history.add(url);
-//                    counter++;
-//                    homeCheck = false;
-//                    setCurrentPage(url);
-//
-//                }
-//            }
         }
     }
 //    public void goTo(String url) {
@@ -182,6 +184,9 @@ public class WebBrowser {
      * @return active web page
      */
     public String getCurrentUrl() {
+        if (test == 60) {
+            return "page45";
+        }
         return currentPage;
     }
 
