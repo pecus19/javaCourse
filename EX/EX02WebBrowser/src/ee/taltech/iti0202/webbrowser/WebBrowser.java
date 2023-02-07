@@ -62,12 +62,31 @@ public class WebBrowser {
      *
      * @param url url to go to
      */
+    public void goTo(String url) {
+        if (!Objects.equals(url, getCurrentUrl())) {
+            if (!homeCheck) {
+                if (url != null & !Objects.equals(url, "")) {
+                    history.add(url);
+                    counter = history.size() - 1;
+                    setCurrentPage(url);
+                }
+            } else {
+                if (url != null) {
+                    history.add(url);
+                    counter = history.size() - 1;
+                    homeCheck = false;
+                    setCurrentPage(url);
+
+                }
+            }
+        }
+    }
 //    public void goTo(String url) {
 //        if (!Objects.equals(url, getCurrentUrl())) {
 //            if (!homeCheck) {
 //                if (url != null) {
 //                    history.add(url);
-//                    counter = history.size() - 1;
+//                    counter++;
 //                    setCurrentPage(url);
 //                }
 //            } else {
@@ -81,25 +100,6 @@ public class WebBrowser {
 //            }
 //        }
 //    }
-    public void goTo(String url) {
-        if (!Objects.equals(url, getCurrentUrl())) {
-            if (!homeCheck) {
-                if (url != null) {
-                    history.add(url);
-                    counter++;
-                    setCurrentPage(url);
-                }
-            } else {
-                if (url != null) {
-                    history.add(url);
-                    counter++;
-                    homeCheck = false;
-                    setCurrentPage(url);
-
-                }
-            }
-        }
-    }
 
 
     /**
