@@ -38,7 +38,6 @@ public class WebBrowser {
     public void back() {
         if (counter - ONE >= ZERO) {
             counter--;
-//            currentPage = history.get(counter);
             setCurrentPage(history.get(counter));
             history.add(history.get(counter));
         }
@@ -48,9 +47,8 @@ public class WebBrowser {
      * Goes forward to next page.
      */
     public void forward() {
-        if (counter + ONE <= history.size()) {
+        if (counter + ONE <= history.size() - ONE) {
             counter++;
-//            currentPage = history.get(counter);
             setCurrentPage(history.get(counter));
             history.add(history.get(counter));
         }
@@ -67,13 +65,12 @@ public class WebBrowser {
                 if (url != null) {
                     history.add(url);
                     counter++;
-//                currentPage = url;
                     setCurrentPage(url);
                 }
             } else {
                 if (url != null) {
                     history.add(url);
-                    counter = history.size();
+                    counter = history.size() - 1;
                     homeCheck = false;
                     setCurrentPage(url);
 
