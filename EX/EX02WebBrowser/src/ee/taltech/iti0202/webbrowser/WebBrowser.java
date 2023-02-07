@@ -1,9 +1,6 @@
 package ee.taltech.iti0202.webbrowser;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class WebBrowser {
     private String homePage = "";
@@ -34,7 +31,6 @@ public class WebBrowser {
      */
     public void homePage() {
         homeCheck = true;
-        setCurrentPage(homePage);
 //        currentPage = homePage;
         goTo(homePage);
     }
@@ -69,7 +65,7 @@ public class WebBrowser {
      * @param url url to go to
      */
     public void goTo(String url) {
-//        if (!Objects.equals(url, getCurrentUrl())) {
+        if (!Objects.equals(url, getCurrentUrl())) {
             if (!homeCheck) {
             if (url != null) {
                 history.add(url);
@@ -85,7 +81,7 @@ public class WebBrowser {
 
                 }
             }
-//        }
+        }
     }
 
     /**
