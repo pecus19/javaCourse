@@ -36,7 +36,7 @@ public class WebBrowser {
      * Goes back to previous page.
      */
     public void back() {
-        if (counter - ONE > ZERO) {
+        if (counter - ONE >= ZERO) {
             counter--;
 //            currentPage = history.get(counter);
             setCurrentPage(history.get(counter));
