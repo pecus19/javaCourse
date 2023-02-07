@@ -71,6 +71,7 @@ public class WebBrowser {
                     history.add(url);
                     counter = history.size();
                     homeCheck = false;
+                    setCurrentPage(url);
 
                 }
             }
@@ -224,14 +225,10 @@ public class WebBrowser {
 //        System.out.println(test.getCurrentUrl());
 //        test.goTo("twitter.com");
 //        test.goTo("facebook.com");
-        test.back();
-        test.back();
-        test.goTo("Java");
-        test.forward();
-        test.goTo("Java");
-        test.forward();
-        test.goTo("Java");
-        System.out.println(test.getTop3VisitedPages());
+        test.setHomePage("Java");
+        test.homePage();
+        System.out.println(test.getCurrentUrl());
+//        System.out.println(test.getTop3VisitedPages());
 
 //        test.setHomePage("neti.ee");
 //        System.out.println(test.homePage);
