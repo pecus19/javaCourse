@@ -51,7 +51,7 @@ public class WebBrowser {
      * @param url url to go to
      */
     public void goTo(String url) {
-//        if (!Objects.equals(url, getCurrentUrl())) {
+        if (!Objects.equals(url, getCurrentUrl())) {
             if (!homeCheck) {
                 if (url != null) {
                     history.add(url);
@@ -64,7 +64,7 @@ public class WebBrowser {
                     counter = history.size();
                     homeCheck = false;
 
-//                }
+                }
             }
         }
     }
