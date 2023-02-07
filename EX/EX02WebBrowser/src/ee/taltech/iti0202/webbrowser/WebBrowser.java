@@ -29,10 +29,10 @@ public class WebBrowser {
     public void homePage() {
 //        homeCheck = true;
 //        currentPage = homePage;
-//        if (!Objects.equals(homePage, "")) {
-        homeCheck = true;
-        goTo(homePage);
-//        }
+        if (!Objects.equals(homePage, "")) {
+//        homeCheck = true;
+            goTo(homePage);
+        }
     }
 
     /**
