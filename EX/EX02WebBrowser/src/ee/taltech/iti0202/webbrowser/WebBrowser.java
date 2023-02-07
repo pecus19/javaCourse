@@ -47,7 +47,7 @@ public class WebBrowser {
      * Goes forward to next page.
      */
     public void forward() {
-        if (counter + ONE <= history.size()) {
+        if (counter + ONE <= history.size() - ONE) {
             counter++;
             setCurrentPage(history.get(counter));
             history.add(history.get(counter));
