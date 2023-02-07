@@ -1,6 +1,10 @@
 package ee.taltech.iti0202.webbrowser;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 public class WebBrowser {
     private String homePage = "";
@@ -32,7 +36,7 @@ public class WebBrowser {
      * Goes back to previous page.
      */
     public void back() {
-        if (counter - ONE >= ZERO) {
+        if (counter - ONE > ZERO) {
             counter--;
 //            currentPage = history.get(counter);
             setCurrentPage(history.get(counter));
@@ -60,12 +64,12 @@ public class WebBrowser {
     public void goTo(String url) {
         if (!Objects.equals(url, getCurrentUrl())) {
             if (!homeCheck) {
-            if (url != null) {
-                history.add(url);
-                counter++;
+                if (url != null) {
+                    history.add(url);
+                    counter++;
 //                currentPage = url;
-                setCurrentPage(url);
-            }
+                    setCurrentPage(url);
+                }
             } else {
                 if (url != null) {
                     history.add(url);
@@ -167,79 +171,22 @@ public class WebBrowser {
 
     public static void main(String[] args) {
         WebBrowser test = new WebBrowser();
-//        System.out.println(test.getCurrentUrl()); // - > "google.com"
-//        test.setHomePage("neti.ee"); //
-//        test.goTo("facebook.com"); //
-//        test.back(); //
-//        test.back(); //
-//        System.out.println(test.getHistory()); // - > [google.com, facebook.com, google.com]
-//        test.setHomePage("neti.ee"); //
-//        test.goTo("facebook.com"); //
-//        test.forward(); //
-//        test.forward(); //
-//        System.out.println(test.getHistory()); //- > [google.com, facebook.com]
-
-//        test.setHomePage("neti.ee"); //
-//        test.goTo("facebook.com"); //
-//        test.back(); //
-//        test.homePage(); //
-//        test.forward(); //
-//        System.out.println(test.getHistory()); // - >[google.com, facebook.com, google.com, neti.ee]
-
-//        System.out.println(test.getCurrentUrl()); // - > "google.com"
-//        test.setHomePage("neti.ee"); //
-//        test.goTo("facebook.com"); //
-//        System.out.println(test.getCurrentUrl()); // - > "facebook.com"
-//        test.goTo("google.com"); //
-//        System.out.println(test.getCurrentUrl()); // - > "google.com"
-//        test.back(); //
-//        System.out.println(test.getCurrentUrl()); // - > "facebook.com"
-//        test.addAsBookmark(); //
-//        System.out.println(test.getBookmarks());
-//        test.goTo("neti.ee");
-//        test.goTo("jalgpall.ee");
-//        test.back();
-//        test.addAsBookmark();
-//        test.back();
-//        test.forward();
-//        System.out.println(test.getTop3VisitedPages());
-//        System.out.println(test.getCurrentUrl()); // - > "google.com"
-//        test.setHomePage("neti.ee"); //
-//        test.goTo("facebook.com"); //
-//        System.out.println(test.getCurrentUrl()); // - > "facebook.com"
-//        test.goTo("google.com"); //
-//        System.out.println(test.getCurrentUrl()); //  - > "google.com"
-//        test.back(); //
-//        System.out.println(test.getCurrentUrl()); //  - > "facebook.com"
-//        test.addAsBookmark(); //
-//        test.forward(); //
-//        System.out.println(test.getCurrentUrl()); //  - > "google.com"
-//        test.homePage(); //
-//        System.out.println(test.getCurrentUrl()); // - > "neti.ee"
-//        test.addAsBookmark(); //
-//        System.out.println(test.getBookmarks()); // - > [facebook.com, neti.ee]
-//        test.goTo("taltech"); //
-//        System.out.println(test.getHistory()); //  - > [google.com, facebook.com, google.com, facebook.com,
-//        google.com, neti.ee]
-//        System.out.println(test.getTop3VisitedPages());
-//        System.out.println(test.getCurrentUrl());
-//        test.goTo("twitter.com");
-//        test.goTo("facebook.com");
-        test.setHomePage("Java");
-        test.homePage();
-        System.out.println(test.getCurrentUrl());
-//        System.out.println(test.getTop3VisitedPages());
-
-//        test.setHomePage("neti.ee");
-//        System.out.println(test.homePage);
-//        test.goTo("facebook.com");
-//        test.back();
-//        test.homePage();
-//        test.forward();
-//        System.out.println(test.getHistory()); // - > [google.com, facebook.com, google.com, neti.ee]
-
-//        test.homePage();
-//        System.out.println(test.getTop3VisitedPages());
+        System.out.println(test.getCurrentUrl()); // - > "google.com"
+        test.setHomePage("neti.ee"); //
+        test.goTo("facebook.com"); //
+        System.out.println(test.getCurrentUrl()); // - > "facebook.com"
+        test.goTo("google.com"); //
+        System.out.println(test.getCurrentUrl()); //- > "google.com"
+        test.back(); //
+        System.out.println(test.getCurrentUrl()); //- > "facebook.com"
+        test.addAsBookmark(); //
+        test.forward(); //
+        System.out.println(test.getCurrentUrl()); // - > "google.com"
+        test.homePage(); //
+        System.out.println(test.getCurrentUrl()); //- > "neti.ee"
+        test.addAsBookmark(); //
+        test.getBookmarks(); // - > [facebook.com, neti.ee]
+        System.out.println(test.getHistory()); //- > [google.com, facebook.com, google.com, facebook.com, google.com, neti.ee]
     }
 
 }
