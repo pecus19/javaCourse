@@ -1,9 +1,12 @@
 package ee.taltech.iti0202.webbrowser;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 public class WebBrowser {
-    private String homePage;
+    private String homePage = "";
     private final ArrayList<String> history = new ArrayList<>(List.of("google.com"));
     private final ArrayList<String> bookmarks = new ArrayList<>();
     private String currentPage = "google.com";
@@ -14,12 +17,25 @@ public class WebBrowser {
     public static final int ZERO = 0;
     public static final int THREE = 3;
 
+    public String getHomePage() {
+        return homePage;
+    }
+
+    public String getCurrentPage() {
+        return currentPage;
+    }
+
+    public void setCurrentPage(String currentPage) {
+        this.currentPage = currentPage;
+    }
+
     /**
      * Goes to homepage.
      */
     public void homePage() {
         homeCheck = true;
-        currentPage = homePage;
+        setCurrentPage(homePage);
+//        currentPage = homePage;
         goTo(homePage);
     }
 
@@ -29,7 +45,8 @@ public class WebBrowser {
     public void back() {
         if (counter - ONE >= ZERO) {
             counter--;
-            currentPage = history.get(counter);
+//            currentPage = history.get(counter);
+            setCurrentPage(history.get(counter));
             history.add(history.get(counter));
         }
     }
@@ -40,7 +57,8 @@ public class WebBrowser {
     public void forward() {
         if (counter + ONE <= history.size() - ONE) {
             counter++;
-            currentPage = history.get(counter);
+//            currentPage = history.get(counter);
+            setCurrentPage(history.get(counter));
             history.add(history.get(counter));
         }
     }
@@ -51,13 +69,14 @@ public class WebBrowser {
      * @param url url to go to
      */
     public void goTo(String url) {
-        if (!Objects.equals(url, getCurrentUrl())) {
+//        if (!Objects.equals(url, getCurrentUrl())) {
             if (!homeCheck) {
-                if (url != null) {
-                    history.add(url);
-                    counter++;
-                    currentPage = url;
-                }
+            if (url != null) {
+                history.add(url);
+                counter++;
+//                currentPage = url;
+                setCurrentPage(url);
+            }
             } else {
                 if (url != null) {
                     history.add(url);
@@ -66,7 +85,7 @@ public class WebBrowser {
 
                 }
             }
-        }
+//        }
     }
 
     /**
@@ -94,6 +113,10 @@ public class WebBrowser {
     public void setHomePage(String homePage) {
         this.homePage = homePage;
     }
+
+//    public String getHomePage() {
+//        return homePage;
+//    }
 
 
     /**
@@ -209,11 +232,25 @@ public class WebBrowser {
 //        System.out.println(test.getHistory()); //  - > [google.com, facebook.com, google.com, facebook.com,
 //        google.com, neti.ee]
 //        System.out.println(test.getTop3VisitedPages());
-        System.out.println(test.getCurrentUrl());
-        test.goTo("twitter.com");
+//        System.out.println(test.getCurrentUrl());
+//        test.goTo("twitter.com");
+//        test.goTo("facebook.com");
+//        test.setHomePage("HOME");
+//        test.homePage();
+//        test.homePage();
+//        test.homePage();
+//        System.out.println(test.getTop3VisitedPages());
+
+        test.setHomePage("neti.ee");
+        System.out.println(test.homePage);
         test.goTo("facebook.com");
-        System.out.println(test.getTop3VisitedPages());
+        test.back();
+        test.homePage();
+        test.forward();
+        System.out.println(test.getHistory()); // - > [google.com, facebook.com, google.com, neti.ee]
 
-
+//        test.homePage();
+//        System.out.println(test.getTop3VisitedPages());
     }
+
 }
