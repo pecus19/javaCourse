@@ -70,7 +70,7 @@ public class WebBrowser {
             } else {
                 if (url != null) {
                     history.add(url);
-                    counter = history.size() - 1;
+                    counter = history.size();
                     homeCheck = false;
                     setCurrentPage(url);
 
@@ -183,7 +183,8 @@ public class WebBrowser {
         System.out.println(test.getCurrentUrl()); //- > "neti.ee"
         test.addAsBookmark(); //
         test.getBookmarks(); // - > [facebook.com, neti.ee]
-        System.out.println(test.getHistory()); //- > [google.com, facebook.com, google.com, facebook.com, google.com, neti.ee]
+        System.out.println(test.getHistory()); //- > [google.com, facebook.com, google.com, facebook.com, google.com,
+        // neti.ee]
     }
 
 }
