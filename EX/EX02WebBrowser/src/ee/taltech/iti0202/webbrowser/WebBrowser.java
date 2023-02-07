@@ -1,10 +1,6 @@
 package ee.taltech.iti0202.webbrowser;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 public class WebBrowser {
     private String homePage;
@@ -55,18 +51,20 @@ public class WebBrowser {
      * @param url url to go to
      */
     public void goTo(String url) {
-        if (!homeCheck) {
-            if (url != null) {
-                history.add(url);
-                counter++;
-                currentPage = url;
-            }
-        } else {
-            if (url != null) {
-                history.add(url);
-                counter = history.size();
-                homeCheck = false;
+        if (!Objects.equals(url, getCurrentUrl())) {
+            if (!homeCheck) {
+                if (url != null) {
+                    history.add(url);
+                    counter++;
+                    currentPage = url;
+                }
+            } else {
+                if (url != null) {
+                    history.add(url);
+                    counter = history.size();
+                    homeCheck = false;
 
+                }
             }
         }
     }
@@ -211,6 +209,11 @@ public class WebBrowser {
 //        System.out.println(test.getHistory()); //  - > [google.com, facebook.com, google.com, facebook.com,
 //        google.com, neti.ee]
 //        System.out.println(test.getTop3VisitedPages());
+        System.out.println(test.getCurrentUrl());
+        test.goTo("neti.ee");
+        test.goTo("neti.ee");
+        test.goTo("neti.ee");
+        System.out.println(test.getTop3VisitedPages());
 
 
     }
