@@ -29,10 +29,10 @@ public class WebBrowser {
     public void homePage() {
 //        homeCheck = true;
 //        currentPage = homePage;
-        if (!Objects.equals(homePage, "")) {
-            homeCheck = true;
-            goTo(homePage);
-        }
+//        if (!Objects.equals(homePage, "")) {
+        homeCheck = true;
+        goTo(homePage);
+//        }
     }
 
     /**
@@ -73,7 +73,7 @@ public class WebBrowser {
             } else {
                 if (url != null) {
                     history.add(url);
-                    counter = history.size();
+                    counter++;
                     homeCheck = false;
                     setCurrentPage(url);
 
