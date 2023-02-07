@@ -73,7 +73,7 @@ public class WebBrowser {
             } else {
                 if (url != null) {
                     history.add(url);
-                    counter++;
+                    counter = history.size() - 1;
                     homeCheck = false;
                     setCurrentPage(url);
 
@@ -108,10 +108,6 @@ public class WebBrowser {
     public void setHomePage(String homePage) {
         this.homePage = homePage;
     }
-
-//    public String getHomePage() {
-//        return homePage;
-//    }
 
 
     /**
