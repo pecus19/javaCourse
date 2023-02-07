@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.Objects;
 
 public class WebBrowser {
-    private Integer test = 0;
     private String homePage = "";
     private final ArrayList<String> history = new ArrayList<>(List.of("google.com"));
     private final ArrayList<String> bookmarks = new ArrayList<>();
@@ -28,8 +27,6 @@ public class WebBrowser {
      * Goes to homepage.
      */
     public void homePage() {
-//        homeCheck = true;
-//        currentPage = homePage;
         if (!Objects.equals(homePage, "")) {
             homeCheck = true;
             goTo(homePage);
@@ -40,7 +37,6 @@ public class WebBrowser {
      * Goes back to previous page.
      */
     public void back() {
-        test++;
         if (counter - ONE >= ZERO) {
             counter--;
             setCurrentPage(history.get(counter));
@@ -184,11 +180,7 @@ public class WebBrowser {
      * @return active web page
      */
     public String getCurrentUrl() {
-        if (test == 60) {
-            return "page41";
-        } else {
-            return currentPage;
-        }
+        return currentPage;
     }
 
     public static void main(String[] args) {
