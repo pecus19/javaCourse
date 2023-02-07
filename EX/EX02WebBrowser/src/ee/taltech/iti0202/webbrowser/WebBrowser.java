@@ -30,7 +30,7 @@ public class WebBrowser {
 //        homeCheck = true;
 //        currentPage = homePage;
         if (!Objects.equals(homePage, "")) {
-            homeCheck = true;
+//            homeCheck = true;
             goTo(homePage);
         }
     }
@@ -70,14 +70,14 @@ public class WebBrowser {
                     counter = history.size() - 1;
                     setCurrentPage(url);
                 }
-            } else {
-                if (url != null) {
-                    history.add(url);
-                    counter++;
-                    homeCheck = false;
-                    setCurrentPage(url);
-
-                }
+//            } else {
+//                if (url != null) {
+//                    history.add(url);
+//                    counter++;
+//                    homeCheck = false;
+//                    setCurrentPage(url);
+//
+//                }
             }
         }
     }
