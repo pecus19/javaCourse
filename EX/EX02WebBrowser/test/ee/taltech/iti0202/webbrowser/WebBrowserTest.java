@@ -1,6 +1,7 @@
 package ee.taltech.iti0202.webbrowser;
 
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class WebBrowserTest {
     WebBrowser webBrowser = new WebBrowser();
@@ -57,16 +58,22 @@ class WebBrowserTest {
         webBrowser.addAsBookmark();
         assertEquals(4, webBrowser.getHistory().size());
     }
-//    @org.junit.jupiter.api.Test
-//    void getTopThreeTest() {
-//        webBrowser.goTo("neti.ee");
-//        webBrowser.goTo("jalgpall.ee");
-//        webBrowser.back();
-//        webBrowser.addAsBookmark();
-//        webBrowser.back();
-//        webBrowser.forward();
-//        assertEquals(4, webBrowser.getTop3VisitedPages());
-//    }
 
+    @org.junit.jupiter.api.Test
+    void getTopThreeTest() {
+        webBrowser.goTo("neti.ee");
+        webBrowser.goTo("jalgpall.ee");
+        webBrowser.back();
+        webBrowser.addAsBookmark();
+        webBrowser.back();
+        webBrowser.forward();
+        String expected = "neti.ee - 3 visits" + "\n" + "google.com - 2 visits" + "\n" + "jalgpall.ee - 1 visit" + "\n";
+        assertEquals(expected, webBrowser.getTop3VisitedPages());
+    }
 
+    @org.junit.jupiter.api.Test
+    void getTopThreeTestOnlyGoogle() {
+        String expected = "google.com - 1 visit" + "\n";
+        assertEquals(expected, webBrowser.getTop3VisitedPages());
+    }
 }

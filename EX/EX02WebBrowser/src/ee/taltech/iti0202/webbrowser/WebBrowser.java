@@ -184,12 +184,12 @@ public class WebBrowser {
     }
 
     public static void main(String[] args) {
-        WebBrowser test = new WebBrowser();
-        test.goTo("java.com");
-        test.setHomePage("prog");
-        test.homePage();
-        System.out.println(test.getCurrentUrl());
-        System.out.println(test.getTop3VisitedPages());
+//        WebBrowser test = new WebBrowser();
+//        test.goTo("java.com");
+//        test.setHomePage("prog");
+//        test.homePage();
+//        System.out.println(test.getCurrentUrl());
+//        System.out.println(test.getTop3VisitedPages());
     }
 
 }
