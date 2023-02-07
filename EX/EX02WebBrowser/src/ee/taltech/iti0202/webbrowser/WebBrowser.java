@@ -72,7 +72,7 @@ public class WebBrowser {
             } else {
                 if (url != null) {
                     history.add(url);
-                    counter = history.size();
+                    counter++;
                     homeCheck = false;
                     setCurrentPage(url);
 
