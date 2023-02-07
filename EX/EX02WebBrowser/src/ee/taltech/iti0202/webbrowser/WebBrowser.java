@@ -14,13 +14,6 @@ public class WebBrowser {
     public static final int ZERO = 0;
     public static final int THREE = 3;
 
-    public String getHomePage() {
-        return homePage;
-    }
-
-    public String getCurrentPage() {
-        return currentPage;
-    }
 
     public void setCurrentPage(String currentPage) {
         this.currentPage = currentPage;
@@ -231,19 +224,22 @@ public class WebBrowser {
 //        System.out.println(test.getCurrentUrl());
 //        test.goTo("twitter.com");
 //        test.goTo("facebook.com");
-//        test.setHomePage("HOME");
-//        test.homePage();
-//        test.homePage();
-//        test.homePage();
-//        System.out.println(test.getTop3VisitedPages());
-
-        test.setHomePage("neti.ee");
-        System.out.println(test.homePage);
-        test.goTo("facebook.com");
         test.back();
-        test.homePage();
+        test.back();
+        test.goTo("Java");
         test.forward();
-        System.out.println(test.getHistory()); // - > [google.com, facebook.com, google.com, neti.ee]
+        test.goTo("Java");
+        test.forward();
+        test.goTo("Java");
+        System.out.println(test.getTop3VisitedPages());
+
+//        test.setHomePage("neti.ee");
+//        System.out.println(test.homePage);
+//        test.goTo("facebook.com");
+//        test.back();
+//        test.homePage();
+//        test.forward();
+//        System.out.println(test.getHistory()); // - > [google.com, facebook.com, google.com, neti.ee]
 
 //        test.homePage();
 //        System.out.println(test.getTop3VisitedPages());
