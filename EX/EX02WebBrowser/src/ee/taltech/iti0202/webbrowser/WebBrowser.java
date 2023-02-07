@@ -30,6 +30,7 @@ public class WebBrowser {
 //        homeCheck = true;
 //        currentPage = homePage;
         if (!Objects.equals(homePage, "")) {
+            homeCheck = true;
             goTo(homePage);
         }
     }
@@ -51,8 +52,8 @@ public class WebBrowser {
     public void forward() {
         if (counter + ONE <= history.size() - ONE) {
             counter++;
-            setCurrentPage(history.get(counter + 1));
-            history.add(history.get(counter + 1));
+            setCurrentPage(history.get(counter));
+            history.add(history.get(counter));
         }
     }
 
