@@ -27,9 +27,11 @@ public class WebBrowser {
      * Goes to homepage.
      */
     public void homePage() {
-        homeCheck = true;
+//        homeCheck = true;
 //        currentPage = homePage;
-        goTo(homePage);
+        if (!Objects.equals(homePage, "")) {
+            goTo(homePage);
+        }
     }
 
     /**
@@ -168,23 +170,11 @@ public class WebBrowser {
 
     public static void main(String[] args) {
         WebBrowser test = new WebBrowser();
-        System.out.println(test.getCurrentUrl()); // - > "google.com"
-        test.setHomePage("neti.ee"); //
-        test.goTo("facebook.com"); //
-        System.out.println(test.getCurrentUrl()); // - > "facebook.com"
-        test.goTo("google.com"); //
-        System.out.println(test.getCurrentUrl()); //- > "google.com"
-        test.back(); //
-        System.out.println(test.getCurrentUrl()); //- > "facebook.com"
-        test.addAsBookmark(); //
-        test.forward(); //
-        System.out.println(test.getCurrentUrl()); // - > "google.com"
-        test.homePage(); //
-        System.out.println(test.getCurrentUrl()); //- > "neti.ee"
-        test.addAsBookmark(); //
-        test.getBookmarks(); // - > [facebook.com, neti.ee]
-        System.out.println(test.getHistory()); //- > [google.com, facebook.com, google.com, facebook.com, google.com,
-        // neti.ee]
+        test.goTo("java.com");
+        test.setHomePage("prog");
+        test.homePage();
+        System.out.println(test.getCurrentUrl());
+        System.out.println(test.getTop3VisitedPages());
     }
 
 }
