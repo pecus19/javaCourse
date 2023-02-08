@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.Objects;
 
 public class WebBrowser {
-    private Integer hardCode = 0;
     private String homePage = "";
     private final List<String> history = new ArrayList<>(List.of("google.com"));
     private final List<String> bookmarks = new ArrayList<>();
@@ -38,7 +37,6 @@ public class WebBrowser {
      * Goes back to previous page.
      */
     public void back() {
-        hardCode++;
         if (counter - ONE >= ZERO) {
             counter--;
             setCurrentPage(history.get(counter));
@@ -166,19 +164,19 @@ public class WebBrowser {
     }
 
     public static void main(String[] args) {
-        WebBrowser test = new WebBrowser();
-        test.goTo("java.com");
-        System.out.println(test.counter + "!" + test.history.size());
-        test.goTo("java2.com");
-        System.out.println(test.counter + "!" + test.history.size());
-        test.goTo("java3.com");
-        System.out.println(test.counter + "!" + test.history.size());
-        test.setHomePage("prog");
-        test.homePage();
-        System.out.println(test.counter + "!" + test.history.size());
-        test.forward();
-        System.out.println(test.counter + "!" + test.history.size());
-        System.out.println(test.getCurrentUrl());
-        System.out.println(test.getTop3VisitedPages());
+//        WebBrowser test = new WebBrowser();
+//        test.goTo("java.com");
+//        System.out.println(test.counter + "!" + test.history.size());
+//        test.goTo("java2.com");
+//        System.out.println(test.counter + "!" + test.history.size());
+//        test.goTo("java3.com");
+//        System.out.println(test.counter + "!" + test.history.size());
+//        test.setHomePage("prog");
+//        test.homePage();
+//        System.out.println(test.counter + "!" + test.history.size());
+//        test.forward();
+//        System.out.println(test.counter + "!" + test.history.size());
+//        System.out.println(test.getCurrentUrl());
+//        System.out.println(test.getTop3VisitedPages());
     }
 }
