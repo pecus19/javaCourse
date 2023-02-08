@@ -63,7 +63,7 @@ public class WebBrowser {
     public void goTo(String url) {
         if (!Objects.equals(url, getCurrentUrl())) {
             if (!homeCheck) {
-                if (url != null & !Objects.equals(url, "")) {
+//                if (url != null & !Objects.equals(url, "")) {
                     history.add(url);
                     counter = history.size() - 1;
                     setCurrentPage(url);
@@ -76,7 +76,7 @@ public class WebBrowser {
                     setCurrentPage(url);
 
                 }
-            }
+//            }
         }
     }
 //    public void goTo(String url) {
