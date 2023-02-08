@@ -63,7 +63,7 @@ public class WebBrowser {
      * @param url url to go to
      */
     public void goTo(String url) {
-        if (hardCode <= 60) {
+        if (hardCode <= 30) {
             if (!Objects.equals(url, getCurrentUrl())) {
                 if (!homeCheck) {
                     if (url != null & !Objects.equals(url, "")) {
