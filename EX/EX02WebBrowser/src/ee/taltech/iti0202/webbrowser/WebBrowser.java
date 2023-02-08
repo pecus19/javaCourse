@@ -63,65 +63,24 @@ public class WebBrowser {
      * @param url url to go to
      */
     public void goTo(String url) {
-//        if (hardCode <= 30) {
         if (!Objects.equals(url, getCurrentUrl())) {
             if (!homeCheck) {
-                if (url != null & !Objects.equals(url, "")) {
+                if (url != null & url.length() != 0) {
                     history.add(url);
-//                    if (history.size() - ONE > counter) {
                     counter = history.size() - 1;
-//                    } else {
-//                        counter++;
-//                    }
                     setCurrentPage(url);
-//                }
-                } else {
-                    if (url != null) {
-                        history.add(url);
-                        counter++;
-                        homeCheck = false;
-                        setCurrentPage(url);
-
-                    }
                 }
-//            } else {
-//                if (!Objects.equals(url, getCurrentUrl())) {
-//                    if (!homeCheck) {
-//                        if (url != null) {
-//                            history.add(url);
-//                            counter++;
-//                            setCurrentPage(url);
-//                        }
-//                    } else {
-//                        if (url != null) {
-//                            history.add(url);
-//                            counter++;
-//                            homeCheck = false;
-//                            setCurrentPage(url);
-//
-//                        }
-//                    }
-//                }
+            } else {
+                if (url != null) {
+                    history.add(url);
+                    counter++;
+                    homeCheck = false;
+                    setCurrentPage(url);
+
+                }
             }
         }
     }
-// if (!Objects.equals(url, getCurrentUrl())) {
-//        if (!homeCheck) {
-//            if (url != null) {
-//                history.add(url);
-//                counter++;
-//                setCurrentPage(url);
-//            }
-//        } else {
-//            if (url != null) {
-//                history.add(url);
-//                counter++;
-//                homeCheck = false;
-//                setCurrentPage(url);
-//
-//            }
-//        }
-//    }
 
     /**
      * Add a webpage as a bookmark.
