@@ -29,7 +29,7 @@ public class WebBrowser {
      */
     public void homePage() {
         if (!Objects.equals(homePage, "")) {
-//            homeCheck = true;
+            homeCheck = true;
             goTo(homePage);
         }
     }
@@ -65,25 +65,25 @@ public class WebBrowser {
     public void goTo(String url) {
 //        if (hardCode <= 30) {
         if (!Objects.equals(url, getCurrentUrl())) {
-//            if (!homeCheck) {
-            if (url != null & !Objects.equals(url, "")) {
-                history.add(url);
-                if (history.size() - ONE > counter) {
-                    counter = history.size() - 1;
+            if (!homeCheck) {
+                if (url != null & !Objects.equals(url, "")) {
+                    history.add(url);
+                    if (history.size() - ONE > counter) {
+                        counter = history.size() - 1;
+                    } else {
+                        counter++;
+                    }
+                    setCurrentPage(url);
+//                }
                 } else {
-                    counter++;
+                    if (url != null) {
+                        history.add(url);
+                        counter++;
+                        homeCheck = false;
+                        setCurrentPage(url);
+
+                    }
                 }
-                setCurrentPage(url);
-//                }
-//            } else {
-//                if (url != null) {
-//                    history.add(url);
-//                    counter++;
-//                    homeCheck = false;
-//                    setCurrentPage(url);
-//
-//                }
-            }
 //            } else {
 //                if (!Objects.equals(url, getCurrentUrl())) {
 //                    if (!homeCheck) {
@@ -102,8 +102,8 @@ public class WebBrowser {
 //                        }
 //                    }
 //                }
+            }
         }
-//        }
     }
 // if (!Objects.equals(url, getCurrentUrl())) {
 //        if (!homeCheck) {
