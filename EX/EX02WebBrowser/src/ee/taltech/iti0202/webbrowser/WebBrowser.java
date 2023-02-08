@@ -8,8 +8,8 @@ import java.util.Objects;
 
 public class WebBrowser {
     private String homePage = "";
-    private final ArrayList<String> history = new ArrayList<>(List.of("google.com"));
-    private final ArrayList<String> bookmarks = new ArrayList<>();
+    private final List<String> history = new ArrayList<>(List.of("google.com"));
+    private final List<String> bookmarks = new ArrayList<>();
     private String currentPage = "google.com";
     private Integer counter = 0;
     private boolean homeCheck = false;
@@ -191,5 +191,4 @@ public class WebBrowser {
 //        System.out.println(test.getCurrentUrl());
 //        System.out.println(test.getTop3VisitedPages());
     }
-
 }
