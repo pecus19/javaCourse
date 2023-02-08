@@ -68,7 +68,7 @@ public class WebBrowser {
 //            if (!homeCheck) {
             if (url != null & !Objects.equals(url, "")) {
                 history.add(url);
-                counter = history.size() - 1;
+                counter ++;
                 setCurrentPage(url);
 //                }
 //            } else {
