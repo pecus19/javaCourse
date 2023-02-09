@@ -64,7 +64,7 @@ public class WebBrowser {
                 if (url != null & url.length() != 0) {
                     history.add(url);
                     listOfPages.add(url);
-                    counter++;
+                    counter = listOfPages.size() - 1;
                     setCurrentPage(url);
                 }
             } else {
@@ -198,29 +198,29 @@ public class WebBrowser {
 //        System.out.println(test.getTop3VisitedPages());
 //        public void test100Pages30Back5GoTo30Back() {
 //        String PAGE = "page";
-        for (int i = 1; i < 101; i++) {
-            test.goTo("PAGE" + i);
-        }
-        System.out.println(test.getCurrentUrl());
-        System.out.println(test.getHistory());
-        for (int i = 0; i < 30; i++) {
-            test.back();
-        }
-        System.out.println(test.getCurrentUrl());
-        System.out.println(test.getHistory());
-        for (String s : Arrays.asList("TWITTER_URL", "FACEBOOK_URL", "TALTECH_URL", "NETI_URL", "TWITTER_URL")) {
-            test.goTo(s);
-        }
-        System.out.println(test.getCurrentUrl());
-        System.out.println(test.getHistory());
-        for (int i = 0; i < 30; i++) {
-            test.back();
-        }
-        System.out.println(test.getCurrentUrl());
-        System.out.println(test.getHistory());
-//        assertEquals(test.getCurrentUrl(), "page45");
-        System.out.println(test.getCurrentUrl());
-        System.out.println(String.format("Size list: %s, PAGE95: %s", test.history.size(), test.history.indexOf("PAGE45")));
+//        for (int i = 1; i < 101; i++) {
+//            test.goTo("PAGE" + i);
+//        }
+//        System.out.println(test.getCurrentUrl());
+//        System.out.println(test.getHistory());
+//        for (int i = 0; i < 30; i++) {
+//            test.back();
+//        }
+//        System.out.println(test.getCurrentUrl());
+//        System.out.println(test.getHistory());
+//        for (String s : Arrays.asList("TWITTER_URL", "FACEBOOK_URL", "TALTECH_URL", "NETI_URL", "TWITTER_URL")) {
+//            test.goTo(s);
+//        }
+//        System.out.println(test.getCurrentUrl());
+//        System.out.println(test.getHistory());
+//        for (int i = 0; i < 30; i++) {
+//            test.back();
+//        }
+//        System.out.println(test.getCurrentUrl());
+//        System.out.println(test.getHistory());
+////        assertEquals(test.getCurrentUrl(), "page45");
+//        System.out.println(test.getCurrentUrl());
+//        System.out.println(String.format("Size list: %s, PAGE95: %s", test.history.size(), test.history.indexOf("PAGE45")));
     }
 //    }
 
