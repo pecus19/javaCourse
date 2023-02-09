@@ -1,12 +1,16 @@
 package ee.taltech.iti0202.webbrowser;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 public class WebBrowser {
     private String homePage = "";
     private final List<String> history = new ArrayList<>(List.of("google.com"));
     private final List<String> listOfPages = new ArrayList<>(List.of("google.com"));
-    private int indexOfPage = 0;
+    private final int indexOfPage = 0;
     private final List<String> bookmarks = new ArrayList<>();
     private String currentPage = "google.com";
     private Integer counter = 0;
@@ -37,8 +41,8 @@ public class WebBrowser {
     public void back() {
         if (counter - ONE >= ZERO) {
             counter--;
-            setCurrentPage(history.get(counter));
-            history.add(history.get(counter));
+            setCurrentPage(listOfPages.get(counter));
+            history.add(listOfPages.get(counter));
         }
     }
 
@@ -48,8 +52,8 @@ public class WebBrowser {
     public void forward() {
         if (counter + ONE <= listOfPages.size() - ONE) {
             counter++;
-            setCurrentPage(history.get(counter));
-            history.add(history.get(counter));
+            setCurrentPage(listOfPages.get(counter));
+            history.add(listOfPages.get(counter));
         }
     }
 
@@ -220,7 +224,8 @@ public class WebBrowser {
 //        System.out.println(test.getHistory());
 ////        assertEquals(test.getCurrentUrl(), "page45");
 //        System.out.println(test.getCurrentUrl());
-//        System.out.println(String.format("Size list: %s, PAGE95: %s", test.history.size(), test.history.indexOf("PAGE45")));
+//        System.out.println(String.format("Size list: %s, PAGE95: %s", test.history.size(),
+//        test.history.indexOf("PAGE45")));
     }
 //    }
 
