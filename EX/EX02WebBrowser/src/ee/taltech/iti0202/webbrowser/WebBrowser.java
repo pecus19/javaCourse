@@ -1,6 +1,10 @@
 package ee.taltech.iti0202.webbrowser;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 public class WebBrowser {
     private String homePage = "";
@@ -102,7 +106,6 @@ public class WebBrowser {
         this.homePage = homePage;
     }
 
-
     /**
      * Get top 3 visited pages.
      *
@@ -119,7 +122,6 @@ public class WebBrowser {
             }
         }
         int sumToRet = 0;
-//        System.out.println(map);
         map.entrySet()
                 .stream()
                 .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
@@ -160,7 +162,7 @@ public class WebBrowser {
     }
 
     public static void main(String[] args) {
-        WebBrowser test = new WebBrowser();
+//        WebBrowser test = new WebBrowser();
 //        test.goTo("java.com");
 //        System.out.println(test.counter + "!" + test.history.size());
 //        test.goTo("java2.com");
@@ -174,24 +176,6 @@ public class WebBrowser {
 //        System.out.println(test.counter + "!" + test.history.size());
 //        System.out.println(test.getCurrentUrl());
 //        System.out.println(test.getTop3VisitedPages());
-//        String PAGE = "page";
-//        for (int i = 1; i < 101; i++) {
-//            test.goTo("page" + i);
-//        }
-//        System.out.println(test.getCurrentUrl());
-//        for (int i = 0; i < 30; i++) {
-//            test.back();
-//        }
-//        System.out.println(test.getCurrentUrl());
-//        for (String s : Arrays.asList("TWITTER_URL", "FACEBOOK_URL", "TALTECH_URL", "NETI_URL", "TWITTER_URL")) {
-//            test.goTo(s);
-//        }
-//        System.out.println(test.getCurrentUrl());
-//        for (int i = 0; i < 30; i++) {
-//            test.back();
-//        }
-//        System.out.println(test.getCurrentUrl());
-//        assertEquals(test.getCurrentUrl(), "page45");
     }
 }
 
