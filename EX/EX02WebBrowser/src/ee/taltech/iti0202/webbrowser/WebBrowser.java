@@ -1,14 +1,12 @@
 package ee.taltech.iti0202.webbrowser;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 public class WebBrowser {
     private String homePage = "";
     private final List<String> history = new ArrayList<>(List.of("google.com"));
+    private final List<String> listOfPages = new ArrayList<>(List.of("google.com"));
+    private int indexOfPage = 0;
     private final List<String> bookmarks = new ArrayList<>();
     private String currentPage = "google.com";
     private Integer counter = 0;
@@ -48,7 +46,7 @@ public class WebBrowser {
      * Goes forward to next page.
      */
     public void forward() {
-        if (counter + ONE <= history.size() - ONE) {
+        if (counter + ONE <= listOfPages.size() - ONE) {
             counter++;
             setCurrentPage(history.get(counter));
             history.add(history.get(counter));
@@ -65,7 +63,8 @@ public class WebBrowser {
             if (!homeCheck) {
                 if (url != null & url.length() != 0) {
                     history.add(url);
-                    counter = history.size() - 1;
+                    listOfPages.add(url);
+                    counter++;
                     setCurrentPage(url);
                 }
             } else {
@@ -79,6 +78,25 @@ public class WebBrowser {
             }
         }
     }
+//    public void goTo(String url) {
+//        if (!Objects.equals(url, getCurrentUrl())) {
+//            if (!homeCheck) {
+//                if (url != null) {
+//                    history.add(url);
+//                    counter++;
+//                    setCurrentPage(url);
+//                }
+//            } else {
+//                if (url != null) {
+//                    history.add(url);
+//                    counter++;
+//                    homeCheck = false;
+//                    setCurrentPage(url);
+//
+//                }
+//            }
+//        }
+//    }
 
     /**
      * Add a webpage as a bookmark.
@@ -164,7 +182,7 @@ public class WebBrowser {
     }
 
     public static void main(String[] args) {
-//        WebBrowser test = new WebBrowser();
+        WebBrowser test = new WebBrowser();
 //        test.goTo("java.com");
 //        System.out.println(test.counter + "!" + test.history.size());
 //        test.goTo("java2.com");
@@ -178,5 +196,32 @@ public class WebBrowser {
 //        System.out.println(test.counter + "!" + test.history.size());
 //        System.out.println(test.getCurrentUrl());
 //        System.out.println(test.getTop3VisitedPages());
+//        public void test100Pages30Back5GoTo30Back() {
+//        String PAGE = "page";
+        for (int i = 1; i < 101; i++) {
+            test.goTo("PAGE" + i);
+        }
+        System.out.println(test.getCurrentUrl());
+        System.out.println(test.getHistory());
+        for (int i = 0; i < 30; i++) {
+            test.back();
+        }
+        System.out.println(test.getCurrentUrl());
+        System.out.println(test.getHistory());
+        for (String s : Arrays.asList("TWITTER_URL", "FACEBOOK_URL", "TALTECH_URL", "NETI_URL", "TWITTER_URL")) {
+            test.goTo(s);
+        }
+        System.out.println(test.getCurrentUrl());
+        System.out.println(test.getHistory());
+        for (int i = 0; i < 30; i++) {
+            test.back();
+        }
+        System.out.println(test.getCurrentUrl());
+        System.out.println(test.getHistory());
+//        assertEquals(test.getCurrentUrl(), "page45");
+        System.out.println(test.getCurrentUrl());
+        System.out.println(String.format("Size list: %s, PAGE95: %s", test.history.size(), test.history.indexOf("PAGE45")));
     }
+//    }
+
 }
