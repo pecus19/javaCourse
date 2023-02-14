@@ -4,20 +4,24 @@ public class Ring {
     private Type type;
     private Material material;
 
+    /**
+     * @param type
+     * @param material
+     */
     public Ring(Type type, Material material) {
         this.type = type;
         this.material = material;
     }
 
     /**
-     * @return smt.
+     * @return type.
      */
     public Type getType() {
         return type;
     }
 
     /**
-     * @return smt.
+     * set smt.
      */
     public void setType(Type type) {
         this.type = type;
@@ -31,21 +35,21 @@ public class Ring {
     }
 
     /**
-     * @return smt.
+     * set smt.
      */
     public void setMaterial(Material material) {
         this.material = material;
     }
 
     /**
-     * @return smt.
+     * Types.
      */
     public enum Type {
         THE_ONE, GOLDEN, NENYA, OTHER
     }
 
     /**
-     * @return smt.
+     * Materials.
      */
     public enum Material {
         GOLD, SILVER, BRONZE, PLASTIC, DIAMOND
