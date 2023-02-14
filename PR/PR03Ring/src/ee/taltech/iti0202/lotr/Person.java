@@ -36,12 +36,15 @@ public class Person {
         } else if (this.ring == null) {
             return "No";
         }
-        if (Objects.equals(getName(), "Sauron") && getRing().getMaterial() == Ring.Material.GOLD && getRing().getType() == Ring.Type.THE_ONE) {
+        if (Objects.equals(getName(), "Sauron") && getRing().getMaterial() == Ring.Material.GOLD
+                && getRing().getType() == Ring.Type.THE_ONE) {
             return "Affirmative";
-        } else if (ring != null && Objects.equals(getName(), "Sauron") && getRing().getMaterial() != Ring.Material.GOLD
+        } else if (ring != null && Objects.equals(getName(), "Sauron")
+                && getRing().getMaterial() != Ring.Material.GOLD
                 && getRing().getType() == Ring.Type.THE_ONE) {
             return "No, the ring is fake!";
-        } else if (ring != null && !Objects.equals(getName(), "Sauron") && getRing().getMaterial() == Ring.Material.GOLD
+        } else if (ring != null && !Objects.equals(getName(), "Sauron")
+                && getRing().getMaterial() == Ring.Material.GOLD
                 && getRing().getType() == Ring.Type.THE_ONE) {
             return "No, he just stole the ring";
         } else if (ring != null && Objects.equals(getName(), "Sauron") && getRing().getType() != Ring.Type.THE_ONE) {
