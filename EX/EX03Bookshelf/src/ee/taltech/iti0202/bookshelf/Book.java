@@ -97,9 +97,9 @@ public class Book {
                 buyer.setMoney(buyer.getMoney() - getPrice());
                 if (getOwner() != null) {
                     getOwner().setMoney(getOwner().getMoney() + getPrice());
-                    setOwner(buyer);
-                    return true;
                 }
+                setOwner(buyer);
+                return true;
             }
         } else {
             return false;

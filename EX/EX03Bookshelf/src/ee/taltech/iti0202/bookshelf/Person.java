@@ -55,7 +55,7 @@ public class Person {
         if (book != null && book.getOwner() == null) {
             return false;
         }
-        if (book.getOwner() == this & book != null) {
+        if (book != null && book.getOwner() == this) {
             setMoney(getMoney() + book.getPrice());
             book.setOwner(null);
             books.remove(book);
