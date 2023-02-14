@@ -33,31 +33,52 @@ public class Book {
         return idCounter++;
     }
 
-
+    /**
+     * @return title
+     */
     public String getTitle() {
         return title;
     }
 
+    /**
+     * @return author
+     */
     public String getAuthor() {
         return author;
     }
 
+    /**
+     * @return yearOfPublishing
+     */
     public int getYearOfPublishing() {
         return yearOfPublishing;
     }
 
+    /**
+     * @return owner
+     */
     public Person getOwner() {
         return owner;
     }
 
+    /**
+     * @return price
+     */
     public int getPrice() {
         return price;
     }
 
+    /**
+     * @return id
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * @param buyer buyer
+     * @return false
+     */
     public boolean buy(Person buyer) {
         if (buyer != null) {
             if (buyer.getMoney() >= getPrice() & getOwner() != buyer) {
@@ -74,23 +95,41 @@ public class Book {
         return false;
     }
 
-
+    /**
+     * @param title title
+     */
     public void setTitle(String title) {
         this.title = title;
     }
 
+    /**
+     * @param author author
+     */
     public void setAuthor(String author) {
         this.author = author;
     }
 
+    /**
+     * @param yearOfPublishing yearOfPublishing
+     */
     public void setYearOfPublishing(int yearOfPublishing) {
         this.yearOfPublishing = yearOfPublishing;
     }
 
+    /**
+     * @param price price
+     */
     public void setPrice(int price) {
         this.price = price;
     }
 
+    /**
+     * @param title            title
+     * @param author           author
+     * @param yearOfPublishing yearOfPublishing
+     * @param price            price
+     * @return null
+     */
     //Second part
     public static Book of(String title, String author, int yearOfPublishing, int price) {
         if (books.size() >= 1) {
@@ -116,6 +155,11 @@ public class Book {
         }
     }
 
+    /**
+     * @param title title
+     * @param price price
+     * @return null
+     */
     public static Book of(String title, int price) {
         if (prevAuthor.length() != 0 & prevYearOfPublishing != 0) {
             Book book1 = new Book(title, prevAuthor, prevYearOfPublishing, price);
@@ -126,7 +170,10 @@ public class Book {
         }
     }
 
-
+    /**
+     * @param owner owner
+     * @return output
+     */
     public static List<Book> getBooksByOwner(Person owner) {
         List<Book> output = new ArrayList<>();
         for (int i = 0; i < books.size(); i++) {
@@ -137,6 +184,10 @@ public class Book {
         return output;
     }
 
+    /**
+     * @param book book
+     * @return false
+     */
     public static boolean removeBook(Book book) {
         if (books.contains(book)) {
             book.getOwner().sellBook(book);
@@ -158,6 +209,10 @@ public class Book {
 //                '}';
 //    }
 
+    /**
+     * @param author author
+     * @return output
+     */
     public static List<Book> getBooksByAuthor(String author) {
         List<Book> output = new ArrayList<>();
         for (int i = 0; i < books.size(); i++) {
