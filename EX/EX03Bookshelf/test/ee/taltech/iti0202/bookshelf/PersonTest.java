@@ -7,12 +7,12 @@ public class PersonTest {
     public static final int BIG = 100000;
     public static final int NORMAL = 1000;
     public static final int ID = 30;
-    Person person3 = new Person("CR&", 1123233);
-    Person person2 = new Person("CR&", 1234);
+    Person person3 = new Person("CR&", BIG);
+    Person person2 = new Person("CR&", NORMAL);
 
     @org.junit.jupiter.api.Test
     void getBooksByOwnerTest() {
-        Book book99 = Book.of("Book", "Me", 2023, 100);
+        Book book99 = Book.of("Book", "Me", NORMAL, NORMAL);
         Book book98 = Book.of("Book", NORMAL);
         Book book97 = Book.of("Book", NORMAL);
         if (book98 != null && book97 != null && book99 != null) {

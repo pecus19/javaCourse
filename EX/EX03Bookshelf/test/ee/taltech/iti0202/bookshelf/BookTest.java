@@ -73,14 +73,14 @@ class BookTest {
 
     @org.junit.jupiter.api.Test
     void basicBookOf() {
-        assertEquals(100, Book.of("Book", "Me", 2023, 100).getPrice());
+        assertEquals(NORMAL, Book.of("Book", "Me", NORMAL, NORMAL).getPrice());
     }
 
     @org.junit.jupiter.api.Test
     void bookOfWithADoubleAdding() {
         Book.of("Book", "Me", NORMAL, NORMAL);
         Book.of("Book2", "Me2", NORMAL, NORMAL);
-        assertEquals("Me2", Book.of("Book3", 12).getAuthor());
+        assertEquals("Me2", Book.of("Book3", NORMAL).getAuthor());
     }
 
     @org.junit.jupiter.api.Test
@@ -101,7 +101,7 @@ class BookTest {
 
     @org.junit.jupiter.api.Test
     void allSetterTests() {
-        Book book100 = new Book("Pecus", "Pecus", 2023, 100);
+        Book book100 = new Book("Pecus", "Pecus", BIG, NORMAL);
         book100.setAuthor("Den");
         book100.setPrice(NORMAL);
         book100.setTitle("Title");
