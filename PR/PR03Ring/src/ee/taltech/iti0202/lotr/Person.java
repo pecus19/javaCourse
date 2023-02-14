@@ -31,8 +31,12 @@ public class Person {
      * @return smt.
      */
     public String isSauron() {
-        if (ring != null && Objects.equals(getName(), "Sauron") && getRing().getMaterial() == Ring.Material.GOLD
-                && getRing().getType() == Ring.Type.THE_ONE) {
+        if (this.ring == null && Objects.equals(name, "Sauron")) {
+            return "No, but he's claiming to be";
+        } else if (this.ring == null) {
+            return "No";
+        }
+        if (Objects.equals(getName(), "Sauron") && getRing().getMaterial() == Ring.Material.GOLD && getRing().getType() == Ring.Type.THE_ONE) {
             return "Affirmative";
         } else if (ring != null && Objects.equals(getName(), "Sauron") && getRing().getMaterial() != Ring.Material.GOLD
                 && getRing().getType() == Ring.Type.THE_ONE) {
@@ -57,7 +61,7 @@ public class Person {
     }
 
     /**
-     * set race.
+     * @param race race
      */
     public void setRace(String race) {
         this.race = race;
@@ -71,7 +75,7 @@ public class Person {
     }
 
     /**
-     * set name.
+     * @param name name
      */
     public void setName(String name) {
         this.name = name;
@@ -85,7 +89,7 @@ public class Person {
     }
 
     /**
-     * set ring.
+     * @param ring ring
      */
     public void setRing(Ring ring) {
         this.ring = ring;
