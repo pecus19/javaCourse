@@ -154,11 +154,12 @@ public class Book {
                     if (!books.contains(book1)) {
                         books.add(book1);
                         if (map.containsKey(book1.getAuthor().toLowerCase(Locale.ROOT))) {
-                            List<Book> list = new ArrayList<Book>(List.of(map.get(book1.getAuthor())));
+                            ArrayList<Book> list = new ArrayList<>(map.get(book1.getAuthor()));
+
                             list.add(book1);
                             map.put(book1.getAuthor(), list);
                         } else {
-                            List<Book> list = new ArrayList<>();
+                            ArrayList<Book> list = new ArrayList<>();
                             list.add(book1);
                             map.put(book1.getAuthor(), list);
                         }
