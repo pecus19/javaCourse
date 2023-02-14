@@ -18,6 +18,9 @@ public class Person {
         this.name = name;
     }
 
+    /**
+     * @return smt.
+     */
     public String isSauron() {
         if (Objects.equals(getName(), "Sauron") && getRing().getMaterial() == Ring.Material.GOLD
                 && getRing().getType() == Ring.Type.THE_ONE) {
@@ -36,26 +39,44 @@ public class Person {
         }
     }
 
+    /**
+     * @return smt.
+     */
     public String getRace() {
         return race;
     }
 
+    /**
+     * @return smt.
+     */
     public void setRace(String race) {
         this.race = race;
     }
 
+    /**
+     * @return smt.
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * @return smt.
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * @return smt.
+     */
     public Ring getRing() {
         return ring;
     }
 
+    /**
+     * @return smt.
+     */
     public void setRing(Ring ring) {
         this.ring = ring;
     }
