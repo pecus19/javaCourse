@@ -92,16 +92,22 @@ public class Book {
      * @return false
      */
     public boolean buy(Person buyer) {
-        if (buyer != null) {
-            if (buyer.getMoney() >= getPrice() && getOwner() != buyer) {
-                getOwner().sellBook(this);
-                buyer.buyBook(this);
-                return true;
-            }
-        } else {
+        if (getOwner() == buyer) {
             return false;
+        } else if (buyer == null) {
+            getOwner().sellBook(this);
+            return true;
+        } else if (getOwner() == null) {
+            buyer.buyBook(this);
+            return true;
+        } else if (getPrice() >= buyer.getMoney()) {
+            return false;
+        } else {
+            getOwner().sellBook(this);
+            buyer.buyBook(this);
+            return true;
         }
-        return false;
+
     }
 
     /**
