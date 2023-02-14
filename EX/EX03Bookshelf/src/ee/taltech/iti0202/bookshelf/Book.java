@@ -17,10 +17,19 @@ public class Book {
     private static String prevAuthor = "";
     private static Integer prevYearOfPublishing = 0;
 
+    /**
+     * @param owner owner
+     */
     public void setOwner(Person owner) {
         this.owner = owner;
     }
 
+    /**
+     * @param title            title
+     * @param author           author
+     * @param yearOfPublishing yearOfPublishing
+     * @param price            price
+     */
     public Book(String title, String author, int yearOfPublishing, int price) {
         this.title = title;
         this.author = author;
@@ -29,6 +38,9 @@ public class Book {
         id = getAndIncrementNextId();
     }
 
+    /**
+     * @return idCounter
+     */
     public static int getAndIncrementNextId() {
         return idCounter++;
     }
@@ -85,9 +97,9 @@ public class Book {
                 buyer.setMoney(buyer.getMoney() - getPrice());
                 if (getOwner() != null) {
                     getOwner().setMoney(getOwner().getMoney() + getPrice());
+                    setOwner(buyer);
+                    return true;
                 }
-                setOwner(buyer);
-                return true;
             }
         } else {
             return false;
@@ -134,7 +146,8 @@ public class Book {
     public static Book of(String title, String author, int yearOfPublishing, int price) {
         if (books.size() >= 1) {
             for (int i = 0; i < books.size(); i++) {
-                if (!Objects.equals(books.get(i).getTitle(), title) && !Objects.equals(books.get(i).getAuthor(), author)) {
+                if (!Objects.equals(books.get(i).getTitle(), title)
+                        && !Objects.equals(books.get(i).getAuthor(), author)) {
                     Book book1 = new Book(title, author, yearOfPublishing, price);
                     books.add(book1);
                     prevAuthor = author;
