@@ -200,9 +200,11 @@ public class Book {
      */
     public static List<Book> getBooksByOwner(Person owner) {
         List<Book> output = new ArrayList<>();
-        for (int i = 0; i < books.size(); i++) {
-            if (books.get(i).getOwner() == owner) {
-                output.add(books.get(i));
+        if (owner != null) {
+            for (int i = 0; i < books.size(); i++) {
+                if (books.get(i).getOwner() == owner) {
+                    output.add(books.get(i));
+                }
             }
         }
         return output;
@@ -213,12 +215,15 @@ public class Book {
      * @return false
      */
     public static boolean removeBook(Book book) {
-        if (books.contains(book)) {
-            book.getOwner().sellBook(book);
-            return true;
+        if (book != null) {
+            if (books.contains(book)) {
+                book.getOwner().sellBook(book);
+                return true;
+            }
         } else {
             return false;
         }
+        return false;
     }
 
 //    @Override
