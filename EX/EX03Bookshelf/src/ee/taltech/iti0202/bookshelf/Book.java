@@ -93,12 +93,9 @@ public class Book {
      */
     public boolean buy(Person buyer) {
         if (buyer != null) {
-            if (buyer.getMoney() >= getPrice() & getOwner() != buyer) {
-                buyer.setMoney(buyer.getMoney() - getPrice());
-                if (getOwner() != null) {
-                    getOwner().setMoney(getOwner().getMoney() + getPrice());
-                }
-                setOwner(buyer);
+            if (buyer.getMoney() >= getPrice() && getOwner() != buyer) {
+                getOwner().sellBook(this);
+                buyer.buyBook(this);
                 return true;
             }
         } else {
