@@ -5,8 +5,8 @@ public class Ring {
     private Material material;
 
     /**
-     * @param type
-     * @param material
+     * @param type type
+     * @param material material
      */
     public Ring(Type type, Material material) {
         this.type = type;

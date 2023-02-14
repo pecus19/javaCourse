@@ -8,9 +8,9 @@ public class Person {
     private Ring ring;
 
     /**
-     * @param race
-     * @param name
-     * @param ring
+     * @param race race
+     * @param name name
+     * @param ring ring
      */
     public Person(String race, String name, Ring ring) {
         this.race = race;
@@ -19,8 +19,8 @@ public class Person {
     }
 
     /**
-     * @param race
-     * @param name
+     * @param race race
+     * @param name name
      */
     public Person(String race, String name) {
         this.race = race;
@@ -41,8 +41,9 @@ public class Person {
             } else if (!Objects.equals(getName(), "Sauron") && getRing().getMaterial() == Ring.Material.GOLD
                     && getRing().getType() == Ring.Type.THE_ONE) {
                 return "No, he just stole the ring";
-            } else if (Objects.equals(getName(), "Sauron") && (getRing().getType() != Ring.Type.THE_ONE
-                    || getRing() == null)) {
+            } else if (Objects.equals(getName(), "Sauron") && getRing().getType() != Ring.Type.THE_ONE) {
+                return "No, but he's claiming to be";
+            } else if (Objects.equals(getName(), "Sauron") && getRing() == null) {
                 return "No, but he's claiming to be";
             }
         } else {
@@ -59,7 +60,7 @@ public class Person {
     }
 
     /**
-     * @return smt.
+     * set smt.
      */
     public void setRace(String race) {
         this.race = race;
