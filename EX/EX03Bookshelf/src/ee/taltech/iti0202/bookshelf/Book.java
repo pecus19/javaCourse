@@ -152,10 +152,12 @@ public class Book {
                 if (!Objects.equals(books.get(i).getTitle(), title)
                         && !Objects.equals(books.get(i).getAuthor(), author)) {
                     Book book1 = new Book(title, author, yearOfPublishing, price);
-                    books.add(book1);
-                    prevAuthor = author;
-                    prevYearOfPublishing = yearOfPublishing;
-                    return book1;
+                    if (!books.contains(book1)) {
+                        books.add(book1);
+                        prevAuthor = author;
+                        prevYearOfPublishing = yearOfPublishing;
+                        return book1;
+                    }
                 } else {
                     return null;
 
@@ -164,11 +166,14 @@ public class Book {
             return null;
         } else {
             Book book1 = new Book(title, author, yearOfPublishing, price);
-            books.add(book1);
-            prevAuthor = author;
-            prevYearOfPublishing = yearOfPublishing;
-            return book1;
+            if (!books.contains(book1)) {
+                books.add(book1);
+                prevAuthor = author;
+                prevYearOfPublishing = yearOfPublishing;
+                return book1;
+            }
         }
+        return null;
     }
 
     /**
@@ -179,11 +184,14 @@ public class Book {
     public static Book of(String title, int price) {
         if (prevAuthor.length() != 0 & prevYearOfPublishing != 0) {
             Book book1 = new Book(title, prevAuthor, prevYearOfPublishing, price);
-            books.add(book1);
-            return book1;
+            if (!books.contains(book1)) {
+                books.add(book1);
+                return book1;
+            }
         } else {
             return null;
         }
+        return null;
     }
 
     /**
