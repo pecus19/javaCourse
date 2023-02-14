@@ -176,6 +176,16 @@ public class Book {
         } else {
             Book book1 = new Book(title, author, yearOfPublishing, price);
             books.add(book1);
+            if (map.containsKey(book1.getAuthor().toLowerCase(Locale.ROOT))) {
+                ArrayList<Book> list = new ArrayList<>(map.get(book1.getAuthor()));
+
+                list.add(book1);
+                map.put(book1.getAuthor(), list);
+            } else {
+                ArrayList<Book> list = new ArrayList<>();
+                list.add(book1);
+                map.put(book1.getAuthor(), list);
+            }
             prevAuthor = author;
             prevYearOfPublishing = yearOfPublishing;
             return book1;
@@ -192,6 +202,16 @@ public class Book {
             Book book1 = new Book(title, prevAuthor, prevYearOfPublishing, price);
             if (!books.contains(book1)) {
                 books.add(book1);
+                if (map.containsKey(book1.getAuthor().toLowerCase(Locale.ROOT))) {
+                    ArrayList<Book> list = new ArrayList<>(map.get(book1.getAuthor()));
+
+                    list.add(book1);
+                    map.put(book1.getAuthor(), list);
+                } else {
+                    ArrayList<Book> list = new ArrayList<>();
+                    list.add(book1);
+                    map.put(book1.getAuthor(), list);
+                }
                 return book1;
             }
         } else {
