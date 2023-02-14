@@ -1,6 +1,9 @@
 package ee.taltech.iti0202.bookshelf;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
 
 public class Book {
     private String title;
@@ -11,7 +14,6 @@ public class Book {
     private final int id;
     private Person owner;
     private static List<Book> books = new ArrayList<>();
-    private static Map<String, ArrayList<Book>> map = new HashMap<>();
     private static String prevAuthor = "";
     private static Integer prevYearOfPublishing = 0;
 
@@ -146,23 +148,12 @@ public class Book {
     //Second part
     public static Book of(String title, String author, int yearOfPublishing, int price) {
         if (books.size() >= 1) {
-
             for (int i = 0; i < books.size(); i++) {
                 if (!Objects.equals(books.get(i).getTitle(), title)
                         && !Objects.equals(books.get(i).getAuthor(), author)) {
                     Book book1 = new Book(title, author, yearOfPublishing, price);
                     if (!books.contains(book1)) {
                         books.add(book1);
-                        if (map.containsKey(book1.getAuthor().toLowerCase(Locale.ROOT))) {
-                            ArrayList<Book> list = new ArrayList<>(map.get(book1.getAuthor()));
-
-                            list.add(book1);
-                            map.put(book1.getAuthor(), list);
-                        } else {
-                            ArrayList<Book> list = new ArrayList<>();
-                            list.add(book1);
-                            map.put(book1.getAuthor(), list);
-                        }
                         prevAuthor = author;
                         prevYearOfPublishing = yearOfPublishing;
                         return book1;
@@ -176,16 +167,6 @@ public class Book {
         } else {
             Book book1 = new Book(title, author, yearOfPublishing, price);
             books.add(book1);
-            if (map.containsKey(book1.getAuthor().toLowerCase(Locale.ROOT))) {
-                ArrayList<Book> list = new ArrayList<>(map.get(book1.getAuthor()));
-
-                list.add(book1);
-                map.put(book1.getAuthor(), list);
-            } else {
-                ArrayList<Book> list = new ArrayList<>();
-                list.add(book1);
-                map.put(book1.getAuthor(), list);
-            }
             prevAuthor = author;
             prevYearOfPublishing = yearOfPublishing;
             return book1;
@@ -202,16 +183,6 @@ public class Book {
             Book book1 = new Book(title, prevAuthor, prevYearOfPublishing, price);
             if (!books.contains(book1)) {
                 books.add(book1);
-                if (map.containsKey(book1.getAuthor().toLowerCase(Locale.ROOT))) {
-                    ArrayList<Book> list = new ArrayList<>(map.get(book1.getAuthor()));
-
-                    list.add(book1);
-                    map.put(book1.getAuthor(), list);
-                } else {
-                    ArrayList<Book> list = new ArrayList<>();
-                    list.add(book1);
-                    map.put(book1.getAuthor(), list);
-                }
                 return book1;
             }
         } else {
@@ -269,6 +240,12 @@ public class Book {
      * @return output
      */
     public static List<Book> getBooksByAuthor(String author) {
-        return map.get(author);
+        List<Book> output = new ArrayList<>();
+        for (int i = 0; i < books.size(); i++) {
+            if (books.get(i).getAuthor().toLowerCase(Locale.ROOT).equals(author.toLowerCase(Locale.ROOT))) {
+                output.add(books.get(i));
+            }
+        }
+        return output;
     }
 }
