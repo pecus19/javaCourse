@@ -223,17 +223,17 @@ public class Book {
         return false;
     }
 
-//    @Override
-//    public String toString() {
-//        return "Book{" +
-//                "title='" + title + '\'' +
-//                ", author='" + author + '\'' +
-//                ", yearOfPublishing=" + yearOfPublishing +
-//                ", price=" + price +
-//                ", id=" + id +
-//                ", owner=" + owner +
-//                '}';
-//    }
+    @Override
+    public String toString() {
+        return "Book{" +
+                "title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", yearOfPublishing=" + yearOfPublishing +
+                ", price=" + price +
+                ", id=" + id +
+                ", owner=" + owner +
+                '}';
+    }
 
     /**
      * @param author author

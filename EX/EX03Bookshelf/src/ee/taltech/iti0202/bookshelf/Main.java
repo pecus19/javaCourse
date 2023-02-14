@@ -1,5 +1,9 @@
 //package ee.taltech.iti0202.bookshelf;
 //
+//import java.math.BigDecimal;
+//import java.text.DecimalFormat;
+//import java.util.*;
+//
 //
 //import java.util.List;
 //
@@ -42,9 +46,9 @@
 //        Book b0 = Book.of("Java EX00", 1);
 //        System.out.println(b0); // null
 //        Book b1 = Book.of("Java EX01", "Ago Luberg", 2018, 3);
-//        Book b2 = Book.of("Java EX02",4);
+//        Book b2 = Book.of("Java EX02", 4);
 //        System.out.println(b2.getAuthor()); // Ago Luberg
-//        Book b3 = Book.of("Java EX03",7);
+//        Book b3 = Book.of("Java EX03", 7);
 //        Book b4 = Book.of("Java EX01", 11);
 //        System.out.println(b1);
 //        System.out.println(b4);
@@ -73,6 +77,5 @@
 //        System.out.println(personBooks.size()); // 1
 //        System.out.println(personBooks.contains(b1)); // false
 //        System.out.println(bonusPerson.getMoney()); // 9000
-//
 //    }
 //}
