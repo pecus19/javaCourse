@@ -36,15 +36,14 @@ public class Person {
      * @return false
      */
     public boolean buyBook(Book book) {
-        if (book != null && book.getPrice() <= getMoney()) {
-            if (book.getOwner() == null) {
-                setMoney(getMoney() - book.getPrice());
-                book.setOwner(this);
-                books.add(book);
-                return true;
-            }
+        if (book != null && book.getOwner() == null && book.getPrice() <= getMoney()) {
+            setMoney(getMoney() - book.getPrice());
+            book.setOwner(this);
+            books.add(book);
+            return true;
+        } else {
+            return false;
         }
-        return false;
     }
 
     /**
@@ -54,11 +53,14 @@ public class Person {
     public boolean sellBook(Book book) {
         if (book != null && book.getOwner() == null) {
             return false;
-        } else {
+        }
+        if (book != null && book.getOwner() == this) {
             setMoney(getMoney() + book.getPrice());
             book.setOwner(null);
             books.remove(book);
             return true;
+        } else {
+            return false;
         }
     }
 
