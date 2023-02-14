@@ -5,7 +5,7 @@ public class Ring {
     private Material material;
 
     /**
-     * @param type type
+     * @param type     type
      * @param material material
      */
     public Ring(Type type, Material material) {
@@ -21,7 +21,7 @@ public class Ring {
     }
 
     /**
-     * set smt.
+     * @param type type
      */
     public void setType(Type type) {
         this.type = type;
@@ -35,7 +35,7 @@ public class Ring {
     }
 
     /**
-     * set smt.
+     * @param material material
      */
     public void setMaterial(Material material) {
         this.material = material;

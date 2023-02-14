@@ -31,64 +31,61 @@ public class Person {
      * @return smt.
      */
     public String isSauron() {
-        if (ring != null) {
-            if (Objects.equals(getName(), "Sauron") && getRing().getMaterial() == Ring.Material.GOLD
-                    && getRing().getType() == Ring.Type.THE_ONE) {
-                return "Affirmative";
-            } else if (Objects.equals(getName(), "Sauron") && getRing().getMaterial() != Ring.Material.GOLD
-                    && getRing().getType() == Ring.Type.THE_ONE) {
-                return "No, the ring is fake!";
-            } else if (!Objects.equals(getName(), "Sauron") && getRing().getMaterial() == Ring.Material.GOLD
-                    && getRing().getType() == Ring.Type.THE_ONE) {
-                return "No, he just stole the ring";
-            } else if (Objects.equals(getName(), "Sauron") && getRing().getType() != Ring.Type.THE_ONE) {
-                return "No, but he's claiming to be";
-            } else if (Objects.equals(getName(), "Sauron") && getRing() == null) {
-                return "No, but he's claiming to be";
-            }
+        if (ring != null && Objects.equals(getName(), "Sauron") && getRing().getMaterial() == Ring.Material.GOLD
+                && getRing().getType() == Ring.Type.THE_ONE) {
+            return "Affirmative";
+        } else if (ring != null && Objects.equals(getName(), "Sauron") && getRing().getMaterial() != Ring.Material.GOLD
+                && getRing().getType() == Ring.Type.THE_ONE) {
+            return "No, the ring is fake!";
+        } else if (ring != null && !Objects.equals(getName(), "Sauron") && getRing().getMaterial() == Ring.Material.GOLD
+                && getRing().getType() == Ring.Type.THE_ONE) {
+            return "No, he just stole the ring";
+        } else if (ring != null && Objects.equals(getName(), "Sauron") && getRing().getType() != Ring.Type.THE_ONE) {
+            return "No, but he's claiming to be";
+        } else if (ring != null && Objects.equals(getName(), "Sauron") && getRing() == null) {
+            return "No, but he's claiming to be";
         } else {
             return "No";
         }
-        return "No";
     }
 
     /**
-     * @return smt.
+     * @return race.
      */
     public String getRace() {
         return race;
     }
 
     /**
-     * set smt.
+     * set race.
      */
     public void setRace(String race) {
         this.race = race;
     }
 
     /**
-     * @return smt.
+     * @return name.
      */
     public String getName() {
         return name;
     }
 
     /**
-     * set smt.
+     * set name.
      */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-     * @return smt.
+     * @return ring.
      */
     public Ring getRing() {
         return ring;
     }
 
     /**
-     * set smt.
+     * set ring.
      */
     public void setRing(Ring ring) {
         this.ring = ring;
