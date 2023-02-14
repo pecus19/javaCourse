@@ -54,14 +54,11 @@ public class Person {
     public boolean sellBook(Book book) {
         if (book != null && book.getOwner() == null) {
             return false;
-        }
-        if (book != null && book.getOwner() == this) {
+        } else {
             setMoney(getMoney() + book.getPrice());
             book.setOwner(null);
             books.remove(book);
             return true;
-        } else {
-            return false;
         }
     }
 
