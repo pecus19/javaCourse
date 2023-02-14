@@ -94,6 +94,9 @@ public class Book {
     public boolean buy(Person buyer) {
         if (getOwner() == buyer || getPrice() >= buyer.getMoney()) {
             return false;
+        } else if (buyer == null) {
+            getOwner().sellBook(this);
+            return true;
         } else if (getOwner() == null) {
             buyer.buyBook(this);
             return true;
