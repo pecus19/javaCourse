@@ -147,7 +147,13 @@ public class Book {
      */
     //Second part
     public static Book of(String title, String author, int yearOfPublishing, int price) {
-        if (books.size() >= 1) {
+        if (books.size() == 0) {
+            Book book1 = new Book(title, author, yearOfPublishing, price);
+            books.add(book1);
+            prevAuthor = author;
+            prevYearOfPublishing = yearOfPublishing;
+            return book1;
+        } else {
             for (int i = 0; i < books.size(); i++) {
                 if (!Objects.equals(books.get(i).getTitle(), title)
                         && !Objects.equals(books.get(i).getAuthor(), author)) {
@@ -158,18 +164,9 @@ public class Book {
                         prevYearOfPublishing = yearOfPublishing;
                         return book1;
                     }
-                } else {
-                    return null;
-
                 }
             }
             return null;
-        } else {
-            Book book1 = new Book(title, author, yearOfPublishing, price);
-            books.add(book1);
-            prevAuthor = author;
-            prevYearOfPublishing = yearOfPublishing;
-            return book1;
         }
     }
 
@@ -185,8 +182,6 @@ public class Book {
                 books.add(book1);
                 return book1;
             }
-        } else {
-            return null;
         }
         return null;
     }
@@ -212,28 +207,25 @@ public class Book {
      * @return false
      */
     public static boolean removeBook(Book book) {
-        if (book != null) {
-            if (books.contains(book)) {
-                book.getOwner().sellBook(book);
-                return true;
-            }
+        if (book != null && books.contains(book)) {
+            book.getOwner().sellBook(book);
+            return true;
         } else {
             return false;
         }
-        return false;
     }
 
-    @Override
-    public String toString() {
-        return "Book{" +
-                "title='" + title + '\'' +
-                ", author='" + author + '\'' +
-                ", yearOfPublishing=" + yearOfPublishing +
-                ", price=" + price +
-                ", id=" + id +
-                ", owner=" + owner +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Book{" +
+//                "title='" + title + '\'' +
+//                ", author='" + author + '\'' +
+//                ", yearOfPublishing=" + yearOfPublishing +
+//                ", price=" + price +
+//                ", id=" + id +
+//                ", owner=" + owner +
+//                '}';
+//    }
 
     /**
      * @param author author
