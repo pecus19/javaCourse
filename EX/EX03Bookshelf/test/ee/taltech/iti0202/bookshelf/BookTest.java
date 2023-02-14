@@ -1,23 +1,27 @@
 package ee.taltech.iti0202.bookshelf;
 
-import org.testng.annotations.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class BookTest {
 
-    Book book = new Book("Java", "Ago", 2023, 1);
-    Book book2 = new Book("Python", "Danila", 2002, 10);
-    Book book3 = new Book("C++", "Nikita", 2999, 1234);
+    public static final int SMALL = 1;
+    public static final int BIG = 100000;
+    public static final int NORMAL = 1000;
+    public static final int ID = 30;
 
-    Person person = new Person("Siiii", 9);
-    Person person2 = new Person("CR&", 1234);
-    Person person3 = new Person("CR&", 1123233);
+    Book book = new Book("Java", "Ago", BIG, SMALL);
+    Book book2 = new Book("Python", "Danila", BIG, NORMAL);
+    Book book3 = new Book("C++", "Nikita", BIG, BIG);
+
+    Person person = new Person("Siiii", SMALL);
+    Person person2 = new Person("CR&", NORMAL);
+    Person person3 = new Person("CR&", BIG);
 
     @org.junit.jupiter.api.Test
     void checkId() {
-        assertEquals(30, book3.getId());
+        assertEquals(ID, book3.getId());
     }
 
     @org.junit.jupiter.api.Test
@@ -44,20 +48,20 @@ class BookTest {
     @org.junit.jupiter.api.Test
     void checkMoneyAfterBuying() {
         person.buyBook(book);
-        assertEquals(8, person.getMoney());
+        assertEquals(0, person.getMoney());
     }
 
     @org.junit.jupiter.api.Test
     void checkMoneyAfterSelling() {
         person.buyBook(book);
         person.sellBook(book);
-        assertEquals(9, person.getMoney());
+        assertEquals(SMALL, person.getMoney());
     }
 
     @org.junit.jupiter.api.Test
     void bookOfReturnNull() {
-        Book.of("Book", "Me", 2023, 100);
-        assertEquals(null, Book.of("Book", "Me", 2023, 100));
+        Book.of("Book", "Me", BIG, NORMAL);
+        assertEquals(null, Book.of("Book", "Me", BIG, NORMAL));
     }
 
 
@@ -74,24 +78,24 @@ class BookTest {
 
     @org.junit.jupiter.api.Test
     void bookOfWithADoubleAdding() {
-        Book.of("Book", "Me", 2023, 100);
-        Book.of("Book2", "Me2", 2024, 120);
+        Book.of("Book", "Me", NORMAL, NORMAL);
+        Book.of("Book2", "Me2", NORMAL, NORMAL);
         assertEquals("Me2", Book.of("Book3", 12).getAuthor());
     }
 
     @org.junit.jupiter.api.Test
     void removeBook() {
-        Book.of("Book", "Me", 2023, 100);
-        Book book5 = new Book("Book", "Me", 2023, 100);
+        Book.of("Book", "Me", BIG, NORMAL);
+        Book book5 = new Book("Book", "Me", BIG, NORMAL);
         book5.buy(person2);
         assertEquals(false, Book.removeBook(book5));
     }
 
     @org.junit.jupiter.api.Test
     void getBooksByAuthorTest() {
-        Book.of("Pecus", "Pecus", 2023, 100);
-        Book.of("Pecus3", 150);
-        Book.of("Pecus4", 160);
+        Book.of("Pecus", "Pecus", NORMAL, NORMAL);
+        Book.of("Pecus3", NORMAL);
+        Book.of("Pecus4", NORMAL);
         assertEquals(3, Book.getBooksByAuthor("Pecus").size());
     }
 
@@ -99,13 +103,12 @@ class BookTest {
     void allSetterTests() {
         Book book100 = new Book("Pecus", "Pecus", 2023, 100);
         book100.setAuthor("Den");
-        book100.setPrice(0);
+        book100.setPrice(NORMAL);
         book100.setTitle("Title");
-        book100.setYearOfPublishing(2312);
+        book100.setYearOfPublishing(NORMAL);
         assertEquals("Den", book100.getAuthor());
-        assertEquals(0, book100.getPrice());
+        assertEquals(NORMAL, book100.getPrice());
         assertEquals("Title", book100.getTitle());
-        assertEquals(2312, book100.getYearOfPublishing());
+        assertEquals(NORMAL, book100.getYearOfPublishing());
     }
-
 }
