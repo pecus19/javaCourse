@@ -59,16 +59,19 @@ public class Book {
     }
 
     public boolean buy(Person buyer) {
-        if (buyer.getMoney() >= getPrice() & getOwner() != buyer) {
-            buyer.setMoney(buyer.getMoney() - getPrice());
-            if (getOwner() != null) {
-                getOwner().setMoney(getOwner().getMoney() + getPrice());
+        if (buyer != null) {
+            if (buyer.getMoney() >= getPrice() & getOwner() != buyer) {
+                buyer.setMoney(buyer.getMoney() - getPrice());
+                if (getOwner() != null) {
+                    getOwner().setMoney(getOwner().getMoney() + getPrice());
+                }
+                setOwner(buyer);
+                return true;
             }
-            setOwner(buyer);
-            return true;
         } else {
             return false;
         }
+        return false;
     }
 
 

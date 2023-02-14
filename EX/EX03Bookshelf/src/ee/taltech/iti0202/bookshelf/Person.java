@@ -22,7 +22,7 @@ public class Person {
     }
 
     public boolean buyBook(Book book) {
-        if (book.getPrice() <= getMoney() & book != null) {
+        if (book.getPrice() <= getMoney() && book != null) {
             if (book.getOwner() == null) {
                 setMoney(getMoney() - book.getPrice());
                 book.setOwner(this);
