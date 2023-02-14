@@ -166,14 +166,11 @@ public class Book {
             return null;
         } else {
             Book book1 = new Book(title, author, yearOfPublishing, price);
-            if (!books.contains(book1)) {
                 books.add(book1);
                 prevAuthor = author;
                 prevYearOfPublishing = yearOfPublishing;
                 return book1;
-            }
         }
-        return null;
     }
 
     /**
