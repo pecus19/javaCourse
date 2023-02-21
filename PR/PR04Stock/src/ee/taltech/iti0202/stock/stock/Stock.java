@@ -3,10 +3,7 @@ package ee.taltech.iti0202.stock.stock;
 import ee.taltech.iti0202.stock.exceptions.StockException;
 import ee.taltech.iti0202.stock.product.Product;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * The stock class.
@@ -92,9 +89,19 @@ public class Stock {
      */
 
     public Optional<Product> removeProduct(String name) {
-        getProducts(name);
-        products.remove(getProducts(name).get(0));
+        for (int i = 0; i < products.size(); i++) {
+            if (name != null) {
+                if (!Objects.equals(products.get(i).getName(), name)) {
+                    return Optional.empty();
+                } else {
+                    Optional<Product> ret = Optional.ofNullable(getProducts(name).get(0));
+                    products.remove(getProducts(name).get(0));
+                    return ret;
+                }
+            }
+        }
         return Optional.empty();
+
     }
 
     /**
@@ -115,9 +122,14 @@ public class Stock {
      * @return List
      */
     public List<Product> getProducts(String name) {
-        return products.stream()
-                .filter(p -> p.getName().contains(name))
-                .sorted(Comparator.comparing(Product::getPrice).thenComparing(Product::getId)).toList();
+        if (name != null) {
+            return products.stream()
+                    .filter(p -> p.getName().contains(name))
+                    .sorted(Comparator.comparing(Product::getPrice).thenComparing(Product::getId)).toList();
+        } else {
+            return null;
+        }
+
     }
 
     /**
