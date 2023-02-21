@@ -25,7 +25,6 @@ import java.util.stream.Collectors;
  */
 
 public class Stock {
-    public static final int ONE = 1;
     private String name;
     private int maxCapacity;
     private List<Product> products = new ArrayList<>();
@@ -53,7 +52,6 @@ public class Stock {
      * @param product to be added
      * @throws StockException STOCK_ALREADY_CONTAINS_PRODUCT, STOCK_IS_FULL
      */
-//    private int sum = numOfProducts += ONE;
     public void addProduct(Product product) throws StockException {
         if (!products.contains(product)) {
             int check = (++numOfProducts);
@@ -79,7 +77,6 @@ public class Stock {
      * @return Optional
      */
     public Optional<Product> getProduct(String name) {
-        getProducts(name);
         return Optional.of(getProducts(name).get(0));
     }
 
