@@ -6,8 +6,8 @@ public class Product {
     public static final int ONE = 1;
     private String name;
     private int price;
-    public int idCounter = 0;
-    private static int id = 0;
+    public static int idCounter = 0;
+    private final int id;
 
     /**
      * Create a new product with the given name and price.
@@ -25,7 +25,7 @@ public class Product {
         } else {
             this.price = price;
         }
-        idCounter = getNextId();
+        id = getNextId();
     }
 
     /**
@@ -36,7 +36,7 @@ public class Product {
      * @return The next id.
      */
     public static int getNextId() {
-        return id += 1;
+        return idCounter++;
     }
 
     /**
@@ -45,7 +45,7 @@ public class Product {
      * @return id of the product.
      */
     public int getId() {
-        return idCounter;
+        return id;
     }
 
     /**
