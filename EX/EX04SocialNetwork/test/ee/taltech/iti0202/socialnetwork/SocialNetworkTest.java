@@ -42,7 +42,7 @@ class SocialNetworkTest {
         User user3 = new User("User3", AGE);
         User user4 = new User("User4", AGE);
         assertEquals("User3", user3.getName());
-        assertEquals(99, user3.getAge());
+        assertEquals(AGE, user3.getAge());
         Message message3 = new Message("", "", user3);
         message3.setMessage("This is message");
         message3.setAuthor(user4);
