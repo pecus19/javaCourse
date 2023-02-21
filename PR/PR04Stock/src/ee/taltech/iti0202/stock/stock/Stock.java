@@ -56,17 +56,13 @@ public class Stock {
      */
 
     public void addProduct(Product product) throws StockException {
-        if (!products.contains(product)) {
-//            int check = numOfProducts += ONE;
-            if (sum <= maxCapacity) {
-                products.add(product);
-                totalPrice += product.getPrice();
-            } else {
-                throw new StockException(StockException.Reason.STOCK_IS_FULL);
-            }
-
+        if (products.contains(product)) {
+            throw new StockException(StockException.Reason.STOCK_IS_FULL);
+        } else if (sum >= maxCapacity) {
+            throw new StockException(StockException.Reason.STOCK_IS_FULL);
         } else {
-            throw new StockException(StockException.Reason.STOCK_ALREADY_CONTAINS_PRODUCT);
+            products.add(product);
+            totalPrice += product.getPrice();
         }
     }
 
