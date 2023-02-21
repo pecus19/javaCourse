@@ -25,6 +25,7 @@ import java.util.stream.Collectors;
  */
 
 public class Stock {
+    public static final int ONE = 1;
     private String name;
     private int maxCapacity;
     private List<Product> products = new ArrayList<>();
@@ -55,7 +56,7 @@ public class Stock {
 
     public void addProduct(Product product) throws StockException {
         if (!products.contains(product)) {
-            int check = numOfProducts += 1;
+            int check = numOfProducts += ONE;
             if (check <= maxCapacity) {
                 products.add(product);
                 totalPrice += product.getPrice();
@@ -98,6 +99,7 @@ public class Stock {
         boolean check = false;
         for (int i = 0; i < products.size(); i++) {
             if (!Objects.equals(products.get(i).getName(), name)) {
+                continue;
             }
             check = true;
         }
@@ -137,7 +139,7 @@ public class Stock {
         if (name != null) {
             return products.stream()
                     .filter(p -> p.getName().contains(name))
-                    .sorted(Comparator.comparing(Product::getPrice).thenComparing(Product::getId))
+                    .sorted(Comparator.comparing(Product::getId).thenComparing(Product::getPrice))
                     .collect(Collectors.toList());
         } else {
             return null;

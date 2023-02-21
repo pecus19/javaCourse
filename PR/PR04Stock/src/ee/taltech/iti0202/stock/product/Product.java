@@ -3,6 +3,7 @@ package ee.taltech.iti0202.stock.product;
 import ee.taltech.iti0202.stock.exceptions.StockException;
 
 public class Product {
+    public static final int ONE = 1;
     private String name;
     private int price;
     public int idCounter = 0;
@@ -19,12 +20,12 @@ public class Product {
      */
     public Product(String name, int price) throws StockException {
         this.name = name;
-        if (price <= -1) {
+        if (price <= -ONE) {
             throw new StockException(StockException.Reason.NEGATIVE_PRICE);
         } else {
             this.price = price;
         }
-        idCounter = id += 1;
+        idCounter = id += ONE;
     }
 
     /**
@@ -65,11 +66,11 @@ public class Product {
         return price;
     }
 
-//    @Override
-//    public String toString() {
-//        return "Product{" +
-//                "name='" + name + '\'' +
-//                ", price=" + price +
-//                '}';
-//    }
+    @Override
+    public String toString() {
+        return "Product{" +
+                "name='" + name + '\'' +
+                ", price=" + price + ", id=" + getId() +
+                '}';
+    }
 }
