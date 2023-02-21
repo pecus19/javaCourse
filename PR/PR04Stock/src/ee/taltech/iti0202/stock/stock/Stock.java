@@ -59,10 +59,10 @@ public class Stock {
             throw new StockException(StockException.Reason.STOCK_ALREADY_CONTAINS_PRODUCT);
         } else if (numOfProducts == maxCapacity) {
             throw new StockException(StockException.Reason.STOCK_IS_FULL);
-        } else {
-            products.add(product);
-            totalPrice += product.getPrice();
         }
+        products.add(product);
+        totalPrice += product.getPrice();
+
     }
 
     /**
