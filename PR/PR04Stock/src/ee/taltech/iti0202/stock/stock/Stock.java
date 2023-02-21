@@ -3,7 +3,11 @@ package ee.taltech.iti0202.stock.stock;
 import ee.taltech.iti0202.stock.exceptions.StockException;
 import ee.taltech.iti0202.stock.product.Product;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * The stock class.
@@ -96,6 +100,8 @@ public class Stock {
                 } else {
                     Optional<Product> ret = Optional.ofNullable(getProducts(name).get(0));
                     products.remove(getProducts(name).get(0));
+                    numOfProducts -= 1;
+                    totalPrice -= getProducts(name).get(0).getPrice();
                     return ret;
                 }
             }
@@ -149,5 +155,4 @@ public class Stock {
     public boolean isFull() {
         return numOfProducts == maxCapacity;
     }
-
 }
