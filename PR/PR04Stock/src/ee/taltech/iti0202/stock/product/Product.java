@@ -5,6 +5,7 @@ import ee.taltech.iti0202.stock.exceptions.StockException;
 public class Product {
     private String name;
     private int price;
+    public int idCounter = 0;
     private static int id = 0;
 
     /**
@@ -23,7 +24,7 @@ public class Product {
         } else {
             this.price = price;
         }
-        id++;
+        idCounter = id += 1;
     }
 
     /**
@@ -43,7 +44,7 @@ public class Product {
      * @return id of the product.
      */
     public int getId() {
-        return id;
+        return idCounter;
     }
 
     /**
