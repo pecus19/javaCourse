@@ -31,6 +31,7 @@ public class Stock {
     private List<Product> products = new ArrayList<>();
     private int numOfProducts = 0;
     private int totalPrice;
+    private int sum = numOfProducts + 1;
 
     /**
      * Create a new stock with the given name and the max capacity for the products.
@@ -56,7 +57,7 @@ public class Stock {
 
     public void addProduct(Product product) throws StockException {
         if (!products.contains(product)) {
-            int check = numOfProducts += ONE;
+//            int check = numOfProducts += ONE;
             if (check <= maxCapacity) {
                 products.add(product);
                 totalPrice += product.getPrice();
