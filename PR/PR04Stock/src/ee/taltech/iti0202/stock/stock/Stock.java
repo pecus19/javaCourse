@@ -139,7 +139,7 @@ public class Stock {
         if (name != null) {
             return products.stream()
                     .filter(p -> p.getName().equals(name))
-                    .sorted(Comparator.comparing(Product::getId).thenComparing(Product::getPrice))
+                    .sorted(Comparator.comparing(Product::getPrice).thenComparing(Product::getId))
                     .collect(Collectors.toList());
         } else {
             return null;
