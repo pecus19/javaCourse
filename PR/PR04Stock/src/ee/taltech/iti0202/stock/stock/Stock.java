@@ -57,7 +57,7 @@ public class Stock {
 
     public void addProduct(Product product) throws StockException {
         if (products.contains(product)) {
-            throw new StockException(StockException.Reason.STOCK_IS_FULL);
+            throw new StockException(StockException.Reason.STOCK_ALREADY_CONTAINS_PRODUCT);
         } else if (sum >= maxCapacity) {
             throw new StockException(StockException.Reason.STOCK_IS_FULL);
         } else {
