@@ -14,6 +14,10 @@ public class Group {
     private final Set<User> users = new HashSet<>();
     private final List<Message> messages = new ArrayList<>();
 
+    /**
+     * @param name  name
+     * @param owner owner
+     */
     public Group(String name, User owner) {
         this.name = name;
         this.owner = owner;
@@ -25,17 +29,25 @@ public class Group {
         return name;
     }
 
-
+    /**
+     * @param user user
+     */
     public void addUser(User user) {
         if (user != null) {
             users.add(user);
         }
     }
 
+    /**
+     * @return User
+     */
     public Set<User> getParticipants() {
         return users;
     }
 
+    /**
+     * @param message message
+     */
     public void publishMessage(Message message) {
         if (users.contains(message.getAuthor())) {
             messages.add(message);
