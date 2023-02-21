@@ -55,14 +55,18 @@ public class Stock {
      */
 
     public void addProduct(Product product) throws StockException {
-        if (products.contains(product)) {
-            throw new StockException(StockException.Reason.STOCK_ALREADY_CONTAINS_PRODUCT);
-        } else if (numOfProducts == maxCapacity) {
-            throw new StockException(StockException.Reason.STOCK_IS_FULL);
-        }
-        products.add(product);
-        totalPrice += product.getPrice();
+        if (!products.contains(product)) {
+            int check = numOfProducts += ONE;
+            if (check <= maxCapacity) {
+                products.add(product);
+                totalPrice += product.getPrice();
+            } else {
+                throw new StockException(StockException.Reason.STOCK_IS_FULL);
+            }
 
+        } else {
+            throw new StockException(StockException.Reason.STOCK_ALREADY_CONTAINS_PRODUCT);
+        }
     }
 
     /**
@@ -135,7 +139,7 @@ public class Stock {
         if (name != null) {
             return products.stream()
                     .filter(p -> p.getName().contains(name))
-                    .sorted(Comparator.comparing(Product::getPrice).thenComparing(Product::getId))
+                    .sorted(Comparator.comparing(Product::getId).thenComparing(Product::getPrice))
                     .collect(Collectors.toList());
         } else {
             return null;
