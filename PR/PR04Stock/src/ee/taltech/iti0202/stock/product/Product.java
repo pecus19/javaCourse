@@ -6,7 +6,7 @@ public class Product {
     public static final int ONE = 1;
     private String name;
     private int price;
-    public static int idCounter = 0;
+    public static int idCounter = 1;
     private final int id;
 
     /**
