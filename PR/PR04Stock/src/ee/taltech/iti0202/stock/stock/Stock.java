@@ -53,12 +53,12 @@ public class Stock {
      * @param product to be added
      * @throws StockException STOCK_ALREADY_CONTAINS_PRODUCT, STOCK_IS_FULL
      */
-    private int sum = numOfProducts += ONE;
+//    private int sum = numOfProducts += ONE;
 
     public void addProduct(Product product) throws StockException {
         if (!products.contains(product)) {
-//            int check = numOfProducts += ONE;
-            if (sum <= maxCapacity) {
+            int check = numOfProducts += ONE;
+            if (check <= maxCapacity) {
                 products.add(product);
                 totalPrice += product.getPrice();
             } else {
