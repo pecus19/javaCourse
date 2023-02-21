@@ -8,6 +8,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * The stock class.
@@ -136,7 +137,8 @@ public class Stock {
         if (name != null) {
             return products.stream()
                     .filter(p -> p.getName().contains(name))
-                    .sorted(Comparator.comparing(Product::getPrice).thenComparing(Product::getId).reversed()).toList();
+                    .sorted(Comparator.comparing(Product::getPrice).thenComparing(Product::getId))
+                    .collect(Collectors.toList());
         } else {
             return null;
         }
