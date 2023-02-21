@@ -54,7 +54,8 @@ public class Stock {
 
     public void addProduct(Product product) throws StockException {
         if (!products.contains(product)) {
-            if ((numOfProducts += 1) <= maxCapacity) {
+            int check = numOfProducts += 1;
+            if (check <= maxCapacity) {
                 products.add(product);
                 totalPrice += product.getPrice();
             } else {
@@ -96,7 +97,6 @@ public class Stock {
         boolean check = false;
         for (int i = 0; i < products.size(); i++) {
             if (!Objects.equals(products.get(i).getName(), name)) {
-                System.out.println(products.get(i).getName() + " " + name);
             }
             check = true;
         }
@@ -136,7 +136,7 @@ public class Stock {
         if (name != null) {
             return products.stream()
                     .filter(p -> p.getName().contains(name))
-                    .sorted(Comparator.comparing(Product::getPrice).thenComparing(Product::getId)).toList();
+                    .sorted(Comparator.comparing(Product::getPrice).thenComparing(Product::getId).reversed()).toList();
         } else {
             return null;
         }
