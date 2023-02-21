@@ -33,12 +33,4 @@ public class Feed {
     public void setMessages(Set<Message> messages) {
         this.messages = messages;
     }
-
-//    @Override
-//    public String toString() {
-//        return "Feed{" +
-//                "user=" + user +
-//                ", messages=" + messages +
-//                '}';
-//    }
 }

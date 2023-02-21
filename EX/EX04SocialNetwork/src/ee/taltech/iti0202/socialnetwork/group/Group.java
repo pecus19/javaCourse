@@ -69,14 +69,4 @@ public class Group {
     public void setOwner(User owner) {
         this.owner = owner;
     }
-
-//    @Override
-//    public String toString() {
-//        return "Group{" +
-//                "name='" + name + '\'' +
-//                ", owner=" + owner +
-//                ", users=" + users +
-//                ", messages=" + messages +
-//                '}';
-//    }
 }
