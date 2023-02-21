@@ -9,6 +9,10 @@ public class Feed {
     private User user;
     private Set<Message> messages;
 
+    /**
+     * @param user     ser
+     * @param messages messages
+     */
     public Feed(User user, Set<Message> messages) {
         this.user = user;
         this.messages = messages;

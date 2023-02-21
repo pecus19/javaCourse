@@ -11,6 +11,9 @@ import java.util.Set;
 public class SocialNetwork {
     private final Set<Group> groups = new HashSet<>();
 
+    /**
+     * @param group group
+     */
     public void registerGroup(Group group) {
         if (group != null) {
             groups.add(group);
@@ -22,6 +25,10 @@ public class SocialNetwork {
         return groups;
     }
 
+    /**
+     * @param user user
+     * @return Feed
+     */
     public Feed getFeedForUser(User user) {
         HashSet<Message> newGroup = new HashSet<>();
         for (Group group : groups) {

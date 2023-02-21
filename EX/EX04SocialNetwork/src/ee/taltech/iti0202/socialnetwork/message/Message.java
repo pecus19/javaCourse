@@ -7,6 +7,11 @@ public class Message {
     private String message;
     private User author;
 
+    /**
+     * @param title   title
+     * @param message message
+     * @param author  author
+     */
     public Message(String title, String message, User author) {
         this.title = title;
         this.message = message;
