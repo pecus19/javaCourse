@@ -56,7 +56,8 @@ public class Stock {
 
     public void addProduct(Product product) throws StockException {
         if (!products.contains(product)) {
-            if (numOfProducts != maxCapacity) {
+            int check = numOfProducts += ONE;
+            if (numOfProducts < (maxCapacity - 1)) {
                 products.add(product);
                 totalPrice += product.getPrice();
             } else {
