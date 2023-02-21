@@ -30,12 +30,12 @@ public class SocialNetwork {
      * @return Feed
      */
     public Feed getFeedForUser(User user) {
-        HashSet<Message> newGroup = new HashSet<>();
+        HashSet<Message> messages = new HashSet<>();
         for (Group group : groups) {
             if (group.getParticipants().contains(user)) {
-                newGroup.addAll(group.getMessages());
+                messages.add((Message) group.getMessages());
             }
         }
-        return new Feed(user, newGroup);
+        return new Feed(user, messages);
     }
 }
