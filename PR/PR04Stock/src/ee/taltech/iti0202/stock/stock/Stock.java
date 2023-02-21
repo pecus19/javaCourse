@@ -54,7 +54,6 @@ public class Stock {
      * @throws StockException STOCK_ALREADY_CONTAINS_PRODUCT, STOCK_IS_FULL
      */
 //    private int sum = numOfProducts += ONE;
-
     public void addProduct(Product product) throws StockException {
         if (!products.contains(product)) {
             int check = (++numOfProducts);
@@ -139,13 +138,12 @@ public class Stock {
     public List<Product> getProducts(String name) {
         if (name != null) {
             return products.stream()
-                    .filter(p -> p.getName().contains(name))
+                    .filter(p -> p.getName().equals(name))
                     .sorted(Comparator.comparing(Product::getId).thenComparing(Product::getPrice))
                     .collect(Collectors.toList());
         } else {
             return null;
         }
-
     }
 
     /**
