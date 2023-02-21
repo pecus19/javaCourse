@@ -93,21 +93,26 @@ public class Stock {
      */
 
     public Optional<Product> removeProduct(String name) {
+        boolean check = false;
         for (int i = 0; i < products.size(); i++) {
-            if (name != null) {
-                if (!Objects.equals(products.get(i).getName(), name)) {
-                    return Optional.empty();
-                } else {
-                    Optional<Product> ret = Optional.ofNullable(getProducts(name).get(0));
-                    products.remove(getProducts(name).get(0));
-                    numOfProducts -= 1;
-                    totalPrice -= getProducts(name).get(0).getPrice();
-                    return ret;
-                }
+            if (!Objects.equals(products.get(i).getName(), name)) {
+                System.out.println(products.get(i).getName() + " " + name);
             }
+            check = true;
+        }
+        if (name == null) {
+            return Optional.empty();
+        }
+        if (check) {
+            Optional<Product> ret = Optional.of(getProducts(name).get(0));
+            products.remove(getProducts(name).get(0));
+            numOfProducts -= 1;
+            if (getProducts(name).size() > 1) {
+                totalPrice -= getProducts(name).get(0).getPrice();
+            }
+            return ret;
         }
         return Optional.empty();
-
     }
 
     /**

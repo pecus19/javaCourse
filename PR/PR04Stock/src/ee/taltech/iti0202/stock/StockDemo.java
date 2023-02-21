@@ -43,12 +43,14 @@
 //            System.out.println(e.getReason()); // STOCK_ALREADY_CONTAINS_PRODUCT
 //        }
 //
-//        Optional<Product> removedMango = fruitStock.removeProduct("mango"); // Optional.of(mango)
-//        removedMango.ifPresent(System.out::println);
+//        System.out.println(fruitStock.removeProduct("mango")); // Optional.of(mango)
+//        System.out.println(fruitStock.removeProduct("orange")); // Optional.of(mango)
+////        System.out.println(fruitStock.removeProduct("apple")); // Optional.of(mango)
+////        removedMango.ifPresent(System.out::println);
 //
-//        System.out.println(fruitStock.removeProduct("apple")); // Optional["apple", 3);]
-//        System.out.println(fruitStock.removeProduct("apple").get()); // Optional["apple", 9);]
-//        System.out.println(fruitStock.removeProduct("dumpling")); // Optional.empty
+////        System.out.println(fruitStock.removeProduct("apple")); // Optional["apple", 3);]
+////        System.out.println(fruitStock.removeProduct("apple").get()); // Optional["apple", 9);]
+////        System.out.println(fruitStock.removeProduct("dumpling")); // Optional.empty
 //
 //    }
 //}
