@@ -2,7 +2,6 @@ package ee.taltech.iti0202.stream;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.OptionalDouble;
 import java.util.stream.Collectors;
@@ -71,7 +70,7 @@ public class KittenStatistics {
      * @return Optional<Kitten>
      */
     public Optional<Kitten> findFirstKittenWithGivenName(String givenName) {
-        return kittens.stream().filter(kitten -> kitten.getName().equals(givenName)).findFirst();
+        return kittens.stream().filter(i -> i.getName().toUpperCase().equals(givenName.toUpperCase())).findFirst();
     }
 
     /**
