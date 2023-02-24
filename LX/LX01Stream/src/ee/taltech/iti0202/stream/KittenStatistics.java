@@ -36,7 +36,8 @@ public class KittenStatistics {
      * @return List<Kitten>
      */
     public List<Kitten> findYoungestKittens() {
-        return kittens.stream().min(Comparator.comparing(Kitten::getAge)).stream().toList();
+//        return kittens.stream().min(Comparator.comparing(Kitten::getAge)).stream().toList();
+        return null;
     }
 
     /**
