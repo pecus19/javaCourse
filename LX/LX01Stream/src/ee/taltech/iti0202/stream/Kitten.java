@@ -6,6 +6,12 @@ public class Kitten {
     private int age;
     public enum Gender { MALE, FEMALE }
 
+    /**
+     *
+     * @param name name
+     * @param gender gender
+     * @param age age
+     */
     public Kitten(String name, Gender gender, int age) {
         this.name = name;
         this.gender = gender;
