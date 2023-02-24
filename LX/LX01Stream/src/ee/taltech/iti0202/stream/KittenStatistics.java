@@ -36,7 +36,15 @@ public class KittenStatistics {
      * @return List<Kitten>
      */
     public List<Kitten> findYoungestKittens() {
-        return kittens.stream().min(Comparator.comparing(Kitten::getAge)).stream().collect(Collectors.toList());
+//        return kittens.stream().min(Comparator.comparing(Kitten::getAge)).stream().collect(Collectors.toList());
+        int minAge = kittens.stream()
+                .mapToInt(Kitten::getAge)
+                .min()
+                .orElseThrow(() -> new IllegalArgumentException("List is empty"));
+
+        return kittens.stream()
+                .filter(kitten -> kitten.getAge() == minAge)
+                .collect(Collectors.toList());
     }
 
     /**
@@ -63,7 +71,7 @@ public class KittenStatistics {
      * @return Optional<Kitten>
      */
     public Optional<Kitten> findFirstKittenWithGivenName(String givenName) {
-        return kittens.stream().filter(kitten -> Objects.equals(kitten.getName(), givenName)).findFirst();
+        return kittens.stream().filter(kitten -> kitten.getName().equals(givenName)).findFirst();
     }
 
     /**
