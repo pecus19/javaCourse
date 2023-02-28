@@ -10,7 +10,12 @@ public class Oven {
     protected ResourceStorage resourceStorage;
     protected Integer balls;
     protected Orb orb;
+    public final static int INT = 15;
 
+    /**
+     * @param name            name
+     * @param resourceStorage resourceStorage
+     */
     public Oven(String name, ResourceStorage resourceStorage) {
         this.name = name;
         this.resourceStorage = resourceStorage;
@@ -22,7 +27,7 @@ public class Oven {
     }
 
     public boolean isBroken() {
-        return balls >= 15;
+        return balls >= INT;
     }
 
     public Optional<Orb> craftOrb() {

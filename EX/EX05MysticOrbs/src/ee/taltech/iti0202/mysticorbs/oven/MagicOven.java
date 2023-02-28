@@ -7,6 +7,12 @@ import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
 import java.util.Optional;
 
 public class MagicOven extends Oven {
+    /**
+     * \
+     *
+     * @param name            name
+     * @param resourceStorage resourceStorage
+     */
     public MagicOven(String name, ResourceStorage resourceStorage) {
         super(name, resourceStorage);
         super.balls = 0;
