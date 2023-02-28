@@ -100,16 +100,10 @@ public class OrbFactory {
         return null;
     }
 
-    /**
-     * smt.
-     */
     public void getRidOfOvensThatCannotBeFixed() {
-
     }
 
-    /**
-     * smt.
-     */
+
     public void optimizeOvensOrder() {
 
     }
