@@ -1,6 +1,8 @@
 package ee.taltech.iti0202.mysticorbs.factory;
 
+import ee.taltech.iti0202.mysticorbs.exceptions.CannotFixException;
 import ee.taltech.iti0202.mysticorbs.orb.Orb;
+import ee.taltech.iti0202.mysticorbs.oven.Fixable;
 import ee.taltech.iti0202.mysticorbs.oven.Oven;
 import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
 
@@ -18,7 +20,6 @@ public class OrbFactory {
      */
     public OrbFactory(ResourceStorage resourceStorage) {
         this.resourceStorage = resourceStorage;
-
     }
 
     /**
@@ -61,8 +62,16 @@ public class OrbFactory {
     public int produceOrbs() {
         for (int i = 0; i < getOvens().size(); i++) {
             Optional<Orb> newOrb = getOvens().get(i).craftOrb();
+            if (getOvens().get(i).isBroken() && getOvens().get(i) instanceof Fixable) {
+                try {
+                    ((Fixable) getOvens().get(i)).fix();
+                } catch (CannotFixException e) {
+                    e.printStackTrace();
+                }
+            }
             newOrb.ifPresent(orb -> orbs.add(orb));
         }
+
         return orbs.size();
     }
 
@@ -74,7 +83,7 @@ public class OrbFactory {
         for (int i = 0; i < cycles; i++) {
             for (int j = 0; j < getOvens().size(); j++) {
                 Optional<Orb> newOrb = getOvens().get(j).craftOrb();
-//                System.out.println(newOrb.toString());
+                System.out.println(newOrb.toString());
                 newOrb.ifPresent(orb -> orbs.add(orb));
 
             }
@@ -85,8 +94,7 @@ public class OrbFactory {
     // second part
 
     /**
-     * //     * @return List
-     * //
+     * @return List
      */
     public List<Oven> getOvensThatCannotBeFixed() {
         return null;
@@ -96,6 +104,7 @@ public class OrbFactory {
      * smt.
      */
     public void getRidOfOvensThatCannotBeFixed() {
+
     }
 
     /**
