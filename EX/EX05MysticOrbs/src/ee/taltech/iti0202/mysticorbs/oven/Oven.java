@@ -73,7 +73,7 @@ public class Oven {
      * @return int
      */
     public int compareTo(Oven o) {
-        return 1;
+        return this.getName().compareTo(o.getName());
     }
 
     public boolean isDied() {

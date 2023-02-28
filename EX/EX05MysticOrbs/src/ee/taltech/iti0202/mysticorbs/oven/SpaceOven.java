@@ -68,7 +68,7 @@ public class SpaceOven extends Oven implements Fixable {
 
     @Override
     public void fix() throws CannotFixException {
-        int num = ++times;;
+        int num = ++times;
         if (!isBroken()) {
             throw new CannotFixException(this, CannotFixException.Reason.IS_NOT_BROKEN);
         } else if (getTimesFixed() == 5) {
@@ -91,6 +91,7 @@ public class SpaceOven extends Oven implements Fixable {
     public int getTimesFixed() {
         return times;
     }
+
     @Override
     public boolean isDied() {
         return times >= 5;
