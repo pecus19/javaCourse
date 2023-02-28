@@ -40,21 +40,18 @@ public class MagicOven extends Oven implements Fixable {
         if (!isBroken() && !getResourceStorage().isEmpty()) {
             if (getResourceStorage().hasEnoughResource("gold", 1)) {
                 if (getResourceStorage().hasEnoughResource("dust", 3)) {
-                    if (++balls % 2 == 0) {
-                        Orb orb = new MagicOrb(getName());
-                        getResourceStorage().takeResource("gold", 1);
-                        getResourceStorage().takeResource("dust", 3);
-                        orb.charge("gold", 1);
-                        orb.charge("dust", 3);
-                        return Optional.of(orb);
+                    Orb orb;
+                    if ((balls + 1) % 2 == 0) {
+                        orb = new MagicOrb(getName());
                     } else {
-                        Orb orb = new Orb(getName());
-                        getResourceStorage().takeResource("gold", 1);
-                        getResourceStorage().takeResource("dust", 3);
-                        orb.charge("gold", 1);
-                        orb.charge("dust", 3);
-                        return Optional.of(orb);
+                        orb = new Orb(getName());
                     }
+                    balls++;
+                    getResourceStorage().takeResource("gold", 1);
+                    getResourceStorage().takeResource("dust", 3);
+                    orb.charge("gold", 1);
+                    orb.charge("dust", 3);
+                    return Optional.of(orb);
                 }
             }
         }
