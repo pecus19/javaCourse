@@ -79,6 +79,7 @@ public class Oven {
         if (this.getName().length() < o.getName().length()) {
             return -1;
         }
+
         return 0;
     }
 
