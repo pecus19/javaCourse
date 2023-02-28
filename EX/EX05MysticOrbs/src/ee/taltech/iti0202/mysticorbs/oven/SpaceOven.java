@@ -1,7 +1,6 @@
 package ee.taltech.iti0202.mysticorbs.oven;
 
 import ee.taltech.iti0202.mysticorbs.exceptions.CannotFixException;
-import ee.taltech.iti0202.mysticorbs.factory.OrbFactory;
 import ee.taltech.iti0202.mysticorbs.orb.Orb;
 import ee.taltech.iti0202.mysticorbs.orb.SpaceOrb;
 import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
