@@ -63,7 +63,6 @@ public class OrbFactory {
             Optional<Orb> newOrb = getOvens().get(i).craftOrb();
             newOrb.ifPresent(orb -> orbs.add(orb));
         }
-
         return orbs.size();
     }
 
@@ -86,8 +85,9 @@ public class OrbFactory {
     // second part
 
     /**
-//     * @return List
-//     */
+     * //     * @return List
+     * //
+     */
     public List<Oven> getOvensThatCannotBeFixed() {
         return null;
     }
