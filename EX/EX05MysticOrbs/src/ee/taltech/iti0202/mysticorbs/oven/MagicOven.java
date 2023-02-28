@@ -82,6 +82,11 @@ public class MagicOven extends Oven implements Fixable {
         balls *= 0;
 
     }
+    @Override
+    public boolean isDied() {
+        return times >= 10;
+    }
+
 
     @Override
     public int getTimesFixed() {

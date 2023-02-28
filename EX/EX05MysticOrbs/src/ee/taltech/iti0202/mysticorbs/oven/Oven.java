@@ -75,4 +75,8 @@ public class Oven {
     public int compareTo(Oven o) {
         return 1;
     }
+
+    public boolean isDied() {
+        return isBroken();
+    }
 }

@@ -13,6 +13,7 @@ import java.util.Optional;
 public class OrbFactory {
     protected ResourceStorage resourceStorage;
     protected List<Oven> ovens = new ArrayList<>();
+    protected List<Oven> diedOvens = new ArrayList<>();
     protected List<Orb> orbs = new ArrayList<>();
 
     /**
@@ -98,7 +99,12 @@ public class OrbFactory {
      * @return List
      */
     public List<Oven> getOvensThatCannotBeFixed() {
-        return null;
+        for (int i = 0; i < getOvens().size(); i++) {
+            if (ovens.get(i).isDied()) {
+                diedOvens.add(ovens.get(i));
+            }
+        }
+        return diedOvens;
     }
 
     /**

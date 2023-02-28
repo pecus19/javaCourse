@@ -1,6 +1,7 @@
 package ee.taltech.iti0202.mysticorbs.oven;
 
 import ee.taltech.iti0202.mysticorbs.exceptions.CannotFixException;
+import ee.taltech.iti0202.mysticorbs.factory.OrbFactory;
 import ee.taltech.iti0202.mysticorbs.orb.Orb;
 import ee.taltech.iti0202.mysticorbs.orb.SpaceOrb;
 import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
@@ -68,8 +69,7 @@ public class SpaceOven extends Oven implements Fixable {
 
     @Override
     public void fix() throws CannotFixException {
-        int num = ++times;
-        System.out.println(times);
+        int num = ++times;;
         if (!isBroken()) {
             throw new CannotFixException(this, CannotFixException.Reason.IS_NOT_BROKEN);
         } else if (getTimesFixed() == 5) {
@@ -91,5 +91,9 @@ public class SpaceOven extends Oven implements Fixable {
     @Override
     public int getTimesFixed() {
         return times;
+    }
+    @Override
+    public boolean isDied() {
+        return times >= 5;
     }
 }
