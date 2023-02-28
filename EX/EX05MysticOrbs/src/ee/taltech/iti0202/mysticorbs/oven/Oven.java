@@ -4,7 +4,6 @@ import ee.taltech.iti0202.mysticorbs.orb.Orb;
 import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
 
 import java.util.Optional;
-import java.util.stream.Stream;
 
 public class Oven {
     protected String name;
@@ -75,6 +74,6 @@ public class Oven {
      * @return int
      */
     public int compareTo(Oven o) {
-        return 1;
+        return -1;
     }
 }
