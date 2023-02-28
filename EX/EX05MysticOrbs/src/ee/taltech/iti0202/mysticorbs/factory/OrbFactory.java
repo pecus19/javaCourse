@@ -85,6 +85,7 @@ public class OrbFactory {
                 Optional<Orb> newOrb = getOvens().get(j).craftOrb();
                 System.out.println(newOrb.toString());
                 newOrb.ifPresent(orb -> orbs.add(orb));
+
             }
         }
         return orbs.size();
