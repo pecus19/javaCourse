@@ -1,14 +1,18 @@
 package ee.taltech.iti0202.mysticorbs.oven;
 
+import ee.taltech.iti0202.mysticorbs.exceptions.CannotFixException;
 import ee.taltech.iti0202.mysticorbs.orb.Orb;
 import ee.taltech.iti0202.mysticorbs.orb.SpaceOrb;
 import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
 
 import java.util.Optional;
 
-public class SpaceOven extends Oven {
+public class SpaceOven extends Oven implements Fixable {
+    protected int times;
     public static final int INT = 15;
     public static final int INT2 = 25;
+    protected int balls = 0;
+
 
     /**
      * @param name            name
@@ -16,7 +20,7 @@ public class SpaceOven extends Oven {
      */
     public SpaceOven(String name, ResourceStorage resourceStorage) {
         super(name, resourceStorage);
-        balls = 0;
+        times = 0;
     }
 
     @Override
@@ -26,6 +30,14 @@ public class SpaceOven extends Oven {
 
     @Override
     public Optional<Orb> craftOrb() {
+        if (isBroken()) {
+            try {
+                fix(); // Call the fix() method to attempt to fix the orb
+            } catch (CannotFixException e) {
+//            System.out.println("Cannot craft orb: " + e.getMessage());
+//            return Optional.empty();
+            }
+        }
         if (!isBroken() && !getResourceStorage().isEmpty()
                 && getResourceStorage().hasEnoughResource("meteorite stone", 1)
                 && getResourceStorage().hasEnoughResource("star fragment", INT)) {
@@ -51,6 +63,33 @@ public class SpaceOven extends Oven {
             }
             return Optional.empty();
         }
+    }
+
+    @Override
+    public void fix() throws CannotFixException {
+        int num = ++times;
+        System.out.println(times);
+        if (!isBroken()) {
+            throw new CannotFixException(this, CannotFixException.Reason.IS_NOT_BROKEN);
+        } else if (getTimesFixed() == 5) {
+            throw new CannotFixException(this, CannotFixException.Reason.FIXED_MAXIMUM_TIMES);
+        } else if (!getResourceStorage().hasEnoughResource("liquid silver", (num) * 40)) {
+            if (!getResourceStorage().hasEnoughResource("star essence", (num) * 10)) {
+                throw new CannotFixException(this, CannotFixException.Reason.NOT_ENOUGH_RESOURCES);
+            }
+        }
+        if (getResourceStorage().hasEnoughResource("liquid silver", (num) * 40)) {
+            resourceStorage.takeResource("liquid silver", (num) * 40);
+        } else {
+            resourceStorage.takeResource("star essence", (num) * 10);
+        }
+        balls *= 0;
+
+    }
+
+    @Override
+    public int getTimesFixed() {
+        return times;
     }
 
 }

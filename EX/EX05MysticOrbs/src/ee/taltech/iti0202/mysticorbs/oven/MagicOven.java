@@ -1,30 +1,42 @@
 package ee.taltech.iti0202.mysticorbs.oven;
 
+import ee.taltech.iti0202.mysticorbs.exceptions.CannotFixException;
 import ee.taltech.iti0202.mysticorbs.orb.MagicOrb;
 import ee.taltech.iti0202.mysticorbs.orb.Orb;
 import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
 
 import java.util.Optional;
 
-public class MagicOven extends Oven {
+public class MagicOven extends Oven implements Fixable {
     /**
      * \
      *
      * @param name            name
      * @param resourceStorage resourceStorage
      */
+    protected int times;
+    protected int balls = 0;
+
     public MagicOven(String name, ResourceStorage resourceStorage) {
         super(name, resourceStorage);
-        super.balls = 0;
+        times = 0;
     }
 
     @Override
     public boolean isBroken() {
-        return super.balls >= 5;
+        return balls == 5;
     }
 
     @Override
     public Optional<Orb> craftOrb() {
+        if (isBroken()) {
+            try {
+                fix(); // Call the fix() method to attempt to fix the orb
+            } catch (CannotFixException e) {
+//            System.out.println("Cannot craft orb: " + e.getMessage());
+//            return Optional.empty();
+            }
+        }
         if (!isBroken() && !getResourceStorage().isEmpty()) {
             if (getResourceStorage().hasEnoughResource("gold", 1)) {
                 if (getResourceStorage().hasEnoughResource("dust", 3)) {
@@ -39,5 +51,30 @@ public class MagicOven extends Oven {
             }
         }
         return Optional.empty();
+    }
+
+    @Override
+    public void fix() throws CannotFixException {
+        if (!isBroken()) {
+            throw new CannotFixException(this, CannotFixException.Reason.IS_NOT_BROKEN);
+        } else if (getTimesFixed() == 10) {
+            throw new CannotFixException(this, CannotFixException.Reason.FIXED_MAXIMUM_TIMES);
+        } else if (!getResourceStorage().hasEnoughResource("clay", (++times) * 25)
+                && !getResourceStorage().hasEnoughResource("freezing powder", (++times + 1) * 100)) {
+            --times;
+            --times;
+            throw new CannotFixException(this, CannotFixException.Reason.NOT_ENOUGH_RESOURCES);
+        }
+        resourceStorage.takeResource("clay", (++times) * 25);
+        resourceStorage.takeResource("freezing powder", (++times) * 100);
+        times--;
+        times--;
+        balls *= 0;
+
+    }
+
+    @Override
+    public int getTimesFixed() {
+        return times;
     }
 }

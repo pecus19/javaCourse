@@ -6,7 +6,7 @@ import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
 
 import java.util.Optional;
 
-public class Oven implements Fixable {
+public class Oven {
     protected String name;
     protected ResourceStorage resourceStorage;
     protected Integer balls;
@@ -67,15 +67,6 @@ public class Oven implements Fixable {
         this.resourceStorage = resourceStorage;
     }
 
-    @Override
-    public void fix() throws CannotFixException {
-
-    }
-
-    @Override
-    public int getTimesFixed() {
-        return 0;
-    }
 
     //second part
 
