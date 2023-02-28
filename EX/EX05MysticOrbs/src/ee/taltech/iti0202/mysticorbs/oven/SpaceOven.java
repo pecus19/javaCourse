@@ -26,7 +26,7 @@ public class SpaceOven extends Oven implements Fixable {
 
     @Override
     public boolean isBroken() {
-        return balls == INT2;
+        return balls >= INT2;
     }
 
     @Override
