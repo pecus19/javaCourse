@@ -66,7 +66,6 @@ public class Oven {
         this.resourceStorage = resourceStorage;
     }
 
-
     //second part
 
     /**
