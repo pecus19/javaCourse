@@ -49,13 +49,19 @@ public class SpaceOven extends Oven implements Fixable {
             balls++;
             return Optional.of(orb);
         } else {
-            Orb orb2 = new Orb(getName());
-            getResourceStorage().takeResource("meteorite stone", 1);
-            getResourceStorage().takeResource("star fragment", INT);
-            orb2.charge("meteorite stone", 1);
-            orb2.charge("star fragment", INT);
-            balls++;
-            return Optional.of(orb2);
+            if (getResourceStorage().hasEnoughResource("meteorite stone", 1)) {
+                if (getResourceStorage().hasEnoughResource("star fragment", INT)) {
+                    Orb orb = new Orb(getName());
+                    getResourceStorage().takeResource("meteorite stone", 1);
+                    getResourceStorage().takeResource("star fragment", INT);
+                    orb.charge("meteorite stone", 1);
+                    orb.charge("star fragment", INT);
+                    balls++;
+                    return Optional.of(orb);
+                }
+                return Optional.empty();
+            }
+            return Optional.empty();
         }
     }
 
