@@ -76,4 +76,14 @@ public class Oven implements Fixable {
     public int getTimesFixed() {
         return 0;
     }
+
+    //second part
+
+    /**
+     * @param o o
+     * @return int
+     */
+    public int compareTo(Oven o) {
+        return 0;
+    }
 }

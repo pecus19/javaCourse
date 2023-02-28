@@ -80,14 +80,24 @@ public class OrbFactory {
     }
 
     // second part
+
+    /**
+     * @return List
+     */
     public List<Oven> getOvensThatCannotBeFixed() {
         return null;
     }
 
+    /**
+     * smt.
+     */
     public void getRidOfOvensThatCannotBeFixed() {
 
     }
 
+    /**
+     * smt.
+     */
     public void optimizeOvensOrder() {
 
     }
