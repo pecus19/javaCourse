@@ -29,6 +29,7 @@ public class ResourceStorage {
      */
     public void addResource(String resource, int amount) {
         if (resource.isBlank()) {
+
             return;
         }
         if (!resources.containsKey(resource.toLowerCase(Locale.ROOT))) {
