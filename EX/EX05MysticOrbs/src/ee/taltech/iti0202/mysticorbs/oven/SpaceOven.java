@@ -11,6 +11,7 @@ public class SpaceOven extends Oven implements Fixable {
     protected int times;
     public static final int INT = 15;
     public static final int INT2 = 25;
+    public static final int INT3 = 40;
     protected int balls = 0;
 
 
@@ -68,13 +69,13 @@ public class SpaceOven extends Oven implements Fixable {
             throw new CannotFixException(this, CannotFixException.Reason.IS_NOT_BROKEN);
         } else if (getTimesFixed() == 5) {
             throw new CannotFixException(this, CannotFixException.Reason.FIXED_MAXIMUM_TIMES);
-        } else if (!getResourceStorage().hasEnoughResource("liquid silver", (num) * 40)) {
+        } else if (!getResourceStorage().hasEnoughResource("liquid silver", (num) * INT3)) {
             if (!getResourceStorage().hasEnoughResource("star essence", (num) * 10)) {
                 throw new CannotFixException(this, CannotFixException.Reason.NOT_ENOUGH_RESOURCES);
             }
         }
-        if (getResourceStorage().hasEnoughResource("liquid silver", (num) * 40)) {
-            resourceStorage.takeResource("liquid silver", (num) * 40);
+        if (getResourceStorage().hasEnoughResource("liquid silver", (num) * INT3)) {
+            resourceStorage.takeResource("liquid silver", (num) * INT3);
         } else {
             resourceStorage.takeResource("star essence", (num) * 10);
         }
