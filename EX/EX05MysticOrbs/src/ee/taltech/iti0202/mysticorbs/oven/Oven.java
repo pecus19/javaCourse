@@ -10,7 +10,7 @@ public class Oven {
     protected ResourceStorage resourceStorage;
     protected Integer balls;
     protected Orb orb;
-    public final static int INT = 15;
+    public static final int INT = 15;
 
     /**
      * @param name            name
@@ -30,6 +30,10 @@ public class Oven {
         return balls >= INT;
     }
 
+    /**
+     *
+     * @return Orb
+     */
     public Optional<Orb> craftOrb() {
         if (!isBroken() && !getResourceStorage().isEmpty()) {
             if (getResourceStorage().hasEnoughResource("pearl", 1)) {

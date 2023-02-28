@@ -7,9 +7,13 @@ import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
 import java.util.Optional;
 
 public class SpaceOven extends Oven {
-    public final static int INT = 15;
-    public final static int INT2 = 25;
+    public static final int INT = 15;
+    public static final int INT2 = 25;
 
+    /**
+     * @param name            name
+     * @param resourceStorage resourceStorage
+     */
     public SpaceOven(String name, ResourceStorage resourceStorage) {
         super(name, resourceStorage);
         balls = 0;
