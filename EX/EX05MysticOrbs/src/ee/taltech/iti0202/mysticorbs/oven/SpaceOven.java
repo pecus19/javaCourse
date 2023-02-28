@@ -41,28 +41,24 @@ public class SpaceOven extends Oven implements Fixable {
         if (!isBroken() && !getResourceStorage().isEmpty()
                 && getResourceStorage().hasEnoughResource("meteorite stone", 1)
                 && getResourceStorage().hasEnoughResource("star fragment", INT)) {
-            SpaceOrb orb = new SpaceOrb(getName());
+            Orb orb = new SpaceOrb(getName());
             getResourceStorage().takeResource("meteorite stone", 1);
             getResourceStorage().takeResource("star fragment", INT);
             orb.charge("meteorite stone", 1);
             orb.charge("star fragment", INT);
             balls++;
             return Optional.of(orb);
-        } else {
-            if (getResourceStorage().hasEnoughResource("meteorite stone", 1)) {
-                if (getResourceStorage().hasEnoughResource("star fragment", INT)) {
-                    Orb orb = new Orb(getName());
-                    getResourceStorage().takeResource("meteorite stone", 1);
-                    getResourceStorage().takeResource("star fragment", INT);
-                    orb.charge("meteorite stone", 1);
-                    orb.charge("star fragment", INT);
-                    balls++;
-                    return Optional.of(orb);
-                }
-                return Optional.empty();
-            }
-            return Optional.empty();
+        } else if (getResourceStorage().hasEnoughResource("pearl", 1)
+                && getResourceStorage().hasEnoughResource("silver", 1)) {
+            Orb orb = new Orb(getName());
+            getResourceStorage().takeResource("pearl", 1);
+            getResourceStorage().takeResource("silver", 1);
+            orb.charge("pearl", 1);
+            orb.charge("silver", 1);
+            balls++;
+            return Optional.of(orb);
         }
+        return Optional.empty();
     }
 
     @Override
