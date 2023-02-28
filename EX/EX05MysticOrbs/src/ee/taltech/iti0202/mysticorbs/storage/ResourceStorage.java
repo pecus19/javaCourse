@@ -28,15 +28,14 @@ public class ResourceStorage {
      * @param amount   amount
      */
     public void addResource(String resource, int amount) {
-//        if (resource.isBlank()) {
-//            return;
-//        }
-        if (!resources.containsKey(resource.toLowerCase(Locale.ROOT))) {
-            resources.put(resource.toLowerCase(Locale.ROOT).trim(), Math.max(amount, 0));
-        } else {
-            if (resources.containsKey(resource.toLowerCase(Locale.ROOT))) {
-                resources.put(resource.toLowerCase(Locale.ROOT), resources.get(resource.toLowerCase(Locale.ROOT))
-                        + amount);
+        if (!resource.toLowerCase().trim().isEmpty() && amount > 0) {
+            if (!resources.containsKey(resource.toLowerCase(Locale.ROOT))) {
+                resources.put(resource.toLowerCase(Locale.ROOT), resources.get(resource.toLowerCase(Locale.ROOT)) + amount);
+            } else {
+                if (resources.containsKey(resource.toLowerCase(Locale.ROOT))) {
+                    resources.put(resource.toLowerCase(Locale.ROOT), resources.get(resource.toLowerCase(Locale.ROOT))
+                            + amount);
+                }
             }
         }
     }
