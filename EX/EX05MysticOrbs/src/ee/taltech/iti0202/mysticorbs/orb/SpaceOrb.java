@@ -7,6 +7,7 @@ public class SpaceOrb extends Orb {
     public SpaceOrb(String creator) {
         super(creator);
         super.energy = 100;
+
     }
 
     @Override
