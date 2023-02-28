@@ -62,13 +62,6 @@ public class OrbFactory {
     public int produceOrbs() {
         for (int i = 0; i < getOvens().size(); i++) {
             Optional<Orb> newOrb = getOvens().get(i).craftOrb();
-            if (getOvens().get(i).isBroken() && getOvens().get(i) instanceof Fixable) {
-                try {
-                    ((Fixable) getOvens().get(i)).fix();
-                } catch (CannotFixException e) {
-                    e.printStackTrace();
-                }
-            }
             newOrb.ifPresent(orb -> orbs.add(orb));
         }
 
@@ -93,23 +86,23 @@ public class OrbFactory {
 
     // second part
 
-//    /**
-////     * @return List
-////     */
-//    public List<Oven> getOvensThatCannotBeFixed() {
-//        return null;
-//    }
-//
-//    /**
-//     * smt.
+    /**
+//     * @return List
 //     */
-//    public void getRidOfOvensThatCannotBeFixed() {
-//    }
-//
-//    /**
-//     * smt.
-//     */
-//    public void optimizeOvensOrder() {
-//
-//    }
+    public List<Oven> getOvensThatCannotBeFixed() {
+        return null;
+    }
+
+    /**
+     * smt.
+     */
+    public void getRidOfOvensThatCannotBeFixed() {
+    }
+
+    /**
+     * smt.
+     */
+    public void optimizeOvensOrder() {
+
+    }
 }
