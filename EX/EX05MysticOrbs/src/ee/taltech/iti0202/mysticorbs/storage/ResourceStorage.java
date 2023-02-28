@@ -29,7 +29,7 @@ public class ResourceStorage {
      */
     public void addResource(String resource, int amount) {
         if (!resources.containsKey(resource.toLowerCase(Locale.ROOT))) {
-            resources.put(resource.toLowerCase(Locale.ROOT), Math.max(amount, 1));
+            resources.put(resource.toLowerCase(Locale.ROOT), Math.max(amount, 0));
         } else {
             if (resources.containsKey(resource.toLowerCase(Locale.ROOT))) {
                 resources.put(resource.toLowerCase(Locale.ROOT), resources.get(resource.toLowerCase(Locale.ROOT))
