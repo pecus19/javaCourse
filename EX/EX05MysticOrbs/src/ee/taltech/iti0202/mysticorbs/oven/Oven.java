@@ -1,11 +1,12 @@
 package ee.taltech.iti0202.mysticorbs.oven;
 
+import ee.taltech.iti0202.mysticorbs.exceptions.CannotFixException;
 import ee.taltech.iti0202.mysticorbs.orb.Orb;
 import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
 
 import java.util.Optional;
 
-public class Oven {
+public class Oven implements Fixable {
     protected String name;
     protected ResourceStorage resourceStorage;
     protected Integer balls;
@@ -31,7 +32,6 @@ public class Oven {
     }
 
     /**
-     *
      * @return Orb
      */
     public Optional<Orb> craftOrb() {
@@ -65,5 +65,15 @@ public class Oven {
 
     public void setResourceStorage(ResourceStorage resourceStorage) {
         this.resourceStorage = resourceStorage;
+    }
+
+    @Override
+    public void fix() throws CannotFixException {
+
+    }
+
+    @Override
+    public int getTimesFixed() {
+        return 0;
     }
 }
