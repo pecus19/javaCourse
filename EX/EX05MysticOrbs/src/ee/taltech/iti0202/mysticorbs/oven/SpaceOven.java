@@ -37,6 +37,7 @@ public class SpaceOven extends Oven implements Fixable {
 //            System.out.println("Cannot craft orb: " + e.getMessage());
 //            return Optional.empty();
             }
+
         }
         if (!isBroken() && !getResourceStorage().isEmpty()
                 && getResourceStorage().hasEnoughResource("meteorite stone", 1)
