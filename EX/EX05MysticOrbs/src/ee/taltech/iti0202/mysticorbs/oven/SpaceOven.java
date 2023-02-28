@@ -30,14 +30,14 @@ public class SpaceOven extends Oven implements Fixable {
 
     @Override
     public Optional<Orb> craftOrb() {
-//        if (isBroken()) {
-//            try {
-//                fix(); // Call the fix() method to attempt to fix the orb
-//            } catch (CannotFixException e) {
-////            System.out.println("Cannot craft orb: " + e.getMessage());
-////            return Optional.empty();
-//            }
-//        }
+        if (isBroken()) {
+            try {
+                fix(); // Call the fix() method to attempt to fix the orb
+            } catch (CannotFixException e) {
+//            System.out.println("Cannot craft orb: " + e.getMessage());
+//            return Optional.empty();
+            }
+        }
         if (!isBroken() && !getResourceStorage().isEmpty()
                 && getResourceStorage().hasEnoughResource("meteorite stone", 1)
                 && getResourceStorage().hasEnoughResource("star fragment", INT)) {
