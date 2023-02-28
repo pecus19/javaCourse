@@ -16,7 +16,6 @@ public class MagicOven extends Oven implements Fixable {
      */
     protected int times;
     protected int balls = 0;
-    protected static int numForCreation = 1;
 
     public MagicOven(String name, ResourceStorage resourceStorage) {
         super(name, resourceStorage);
@@ -39,34 +38,29 @@ public class MagicOven extends Oven implements Fixable {
             }
         }
         if (!isBroken() && !getResourceStorage().isEmpty()) {
-            if (numForCreation % 2 == 0) {
-                if (getResourceStorage().hasEnoughResource("gold", 1)) {
-                    if (getResourceStorage().hasEnoughResource("dust", 3)) {
-                        MagicOrb orb2 = new MagicOrb(getName());
+            if (getResourceStorage().hasEnoughResource("gold", 1)) {
+                if (getResourceStorage().hasEnoughResource("dust", 3)) {
+                    if ((balls + 1) % 2 == 0) {
+                        Orb orb2 = new MagicOrb(getName());
                         getResourceStorage().takeResource("gold", 1);
                         getResourceStorage().takeResource("dust", 3);
                         orb2.charge("gold", 1);
                         orb2.charge("dust", 3);
                         balls++;
-                        numForCreation++;
                         return Optional.of(orb2);
-                    }
-                }
-            } else {
-                if (getResourceStorage().hasEnoughResource("pearl", 1)) {
-                    if (getResourceStorage().hasEnoughResource("silver", 1)) {
+                    } else {
                         Orb orb = new Orb(getName());
-                        getResourceStorage().takeResource("pearl", 1);
-                        getResourceStorage().takeResource("silver", 1);
-                        orb.charge("pearl", 1);
-                        orb.charge("silver", 1);
+                        getResourceStorage().takeResource("gold", 1);
+                        getResourceStorage().takeResource("dust", 3);
+                        orb.charge("gold", 1);
+                        orb.charge("dust", 3);
                         balls++;
-                        numForCreation++;
                         return Optional.of(orb);
+
+
                     }
                 }
             }
-
         }
         return Optional.empty();
     }
