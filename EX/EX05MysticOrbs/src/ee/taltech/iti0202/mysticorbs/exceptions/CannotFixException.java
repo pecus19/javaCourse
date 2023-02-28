@@ -19,7 +19,6 @@ public class CannotFixException extends Throwable {
     public CannotFixException(Oven oven, Reason reason) {
         this.oven = oven;
         this.reason = reason;
-
     }
 
     public Oven getOven() {
