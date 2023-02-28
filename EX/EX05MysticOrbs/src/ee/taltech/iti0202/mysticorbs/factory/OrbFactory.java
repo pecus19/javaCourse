@@ -1,8 +1,6 @@
 package ee.taltech.iti0202.mysticorbs.factory;
 
-import ee.taltech.iti0202.mysticorbs.exceptions.CannotFixException;
 import ee.taltech.iti0202.mysticorbs.orb.Orb;
-import ee.taltech.iti0202.mysticorbs.oven.Fixable;
 import ee.taltech.iti0202.mysticorbs.oven.Oven;
 import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
 
@@ -77,7 +75,7 @@ public class OrbFactory {
         for (int i = 0; i < cycles; i++) {
             for (int j = 0; j < getOvens().size(); j++) {
                 Optional<Orb> newOrb = getOvens().get(j).craftOrb();
-                System.out.println(newOrb.toString());
+//                System.out.println(newOrb.toString());
                 newOrb.ifPresent(orb -> orbs.add(orb));
 
             }
