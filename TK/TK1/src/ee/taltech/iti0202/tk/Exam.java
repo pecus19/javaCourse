@@ -1,5 +1,6 @@
 package ee.taltech.iti0202.tk;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -17,7 +18,18 @@ public class Exam {
      * ) => "Hello", "Heyo!", "yo!", "Hi"
      */
     public static List<String> compileWords(List<String> parts, List<String> words) {
-        return null;
+        List<String> newParts = new ArrayList<>(parts);
+        List<String> output = new ArrayList<>();
+        newParts.addAll(parts);
+        for (int j = 0; j < newParts.size(); j++) {
+            for (int i = j + 1; i < newParts.size(); i++) {
+                String str = newParts.get(j) + newParts.get(i);
+                if (words.contains(str) && !output.contains(str)) {
+                    output.add(str);
+                }
+            }
+        }
+        return output;
     }
 
     /**
@@ -103,9 +115,12 @@ public class Exam {
 
     public static void main(String[] args) {
         //1
-        System.out.println(centeredAverage(List.of(1, 2, 3, 4, 100))); // → 3
-        System.out.println(centeredAverage(List.of(1, 1, 5, 5, 10, 8, 7))); // → 5
-        System.out.println(centeredAverage(List.of(-10, -4, -2, -4, -2, 0))); // → -3
+        System.out.println(compileWords(List.of("He", "llo", "y", "!", "yo", "i", "H", "yo!"),
+                List.of("Hello", "yo!", "Heyo!", "Hi!", "World", "yooo", "Hi", "llo")));
+        // => "Hello", "Heyo!", "yo!", "Hi"
+//        System.out.println(centeredAverage(List.of(1, 2, 3, 4, 100))); // → 3
+//        System.out.println(centeredAverage(List.of(1, 1, 5, 5, 10, 8, 7))); // → 5
+//        System.out.println(centeredAverage(List.of(-10, -4, -2, -4, -2, 0))); // → -3
         //2
 //        System.out.println(blackjack(19, 21)); // 21
 //        System.out.println(blackjack(21, 19)); // 21
