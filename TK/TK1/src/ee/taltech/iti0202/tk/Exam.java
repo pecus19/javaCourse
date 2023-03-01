@@ -5,9 +5,10 @@ import java.util.List;
 import java.util.Map;
 
 public class Exam {
-    public final static int BIG = -9999999;
-    public final static int SMALL = 9999999;
-    public final static int TO = 21;
+    public static final int BIG = -9999999;
+    public static final int SMALL = 9999999;
+    public static final int TO = 21;
+
     /**
      * Filter out the words that can be created with exactly 2 parts.
      * Each part can only be used only once.
