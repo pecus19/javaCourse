@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 public class Exam {
+    public final static int BIG = -9999999;
+    public final static int SMALL = 9999999;
+    public final static int TO = 21;
     /**
      * Filter out the words that can be created with exactly 2 parts.
      * Each part can only be used only once.
@@ -43,8 +46,8 @@ public class Exam {
      * centeredAverage([-10, -4, -2, -4, -2, 0]) → -3
      */
     public static int centeredAverage(List<Integer> nums) {
-        int min = 999999999;
-        int max = -999999999;
+        int min = SMALL;
+        int max = BIG;
         int output = 0;
         for (int i = 0; i < nums.size(); i++) {
             min = Math.min(min, nums.get(i));
@@ -65,11 +68,11 @@ public class Exam {
      * blackjack(19, 22) → 19
      */
     public static int blackjack(int a, int b) {
-        if (a > 21 && b > 21) {
+        if (a > TO && b > TO) {
             return 0;
         } else {
-            int newA = 21 - a;
-            int newB = 21 - b;
+            int newA = TO - a;
+            int newB = TO - b;
             if (newA < 0 && newB >= 0) {
                 return b;
             }
