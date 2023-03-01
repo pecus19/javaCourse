@@ -23,13 +23,15 @@ public class Exam {
      */
     public static List<String> compileWords(List<String> parts, List<String> words) {
         List<String> newParts = new ArrayList<>(parts);
+        List<String> usedParts = new ArrayList<>(parts);
         List<String> output = new ArrayList<>();
         newParts.addAll(parts);
         for (int j = 0; j < newParts.size(); j++) {
             for (int i = j + 1; i < newParts.size(); i++) {
                 String str = newParts.get(j) + newParts.get(i);
-                if (words.contains(str) && !output.contains(str)) {
+                if (words.contains(str) && !output.contains(str) && !usedParts.contains(str)) {
                     output.add(str);
+                    usedParts.add(str);
                 }
             }
         }
