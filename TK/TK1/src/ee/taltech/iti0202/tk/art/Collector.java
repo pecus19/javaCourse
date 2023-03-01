@@ -42,9 +42,12 @@ public class Collector {
      */
     public boolean sellPainting(Painting painting, Collector fellowCollector) {
         if (paintingList.contains(painting) && fellowCollector != this) {
-            fellowCollector.addPainting(painting);
-            paintingList.remove(painting);
-            return true;
+            if (fellowCollector.addPainting(painting)) {
+                paintingList.remove(painting);
+                return true;
+            } else {
+                return false;
+            }
         } else {
             return false;
         }
