@@ -1,4 +1,4 @@
-package ee.taltech.iti0202.tk1;
+package ee.taltech.iti0202.tk;
 
 import java.util.List;
 import java.util.Map;
@@ -40,7 +40,7 @@ public class Exam {
             output += nums.get(i);
         }
         output -= min + max;
-        return  output / (nums.size() - 2);
+        return output / (nums.size() - 2);
     }
 
 
@@ -80,6 +80,7 @@ public class Exam {
      */
     public static String repeatEnd(String str, int n) {
         return str.substring(str.length() - n).repeat(n);
+
     }
 
     /**
