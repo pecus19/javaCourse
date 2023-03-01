@@ -6,7 +6,10 @@ import java.util.List;
 public class Collector {
     List<Painting> paintingList = new ArrayList<>();
 
-    boolean addPainting(Painting painting) {
+    public Collector() {
+    }
+
+    public boolean addPainting(Painting painting) {
         if (!paintingList.contains(painting)) {
             if (paintingList.size() > 0) {
                 for (int i = 0; i < paintingList.size(); i++) {
@@ -25,7 +28,7 @@ public class Collector {
         }
     }
 
-    boolean sellPainting(Painting painting, Collector fellowCollector) {
+    public boolean sellPainting(Painting painting, Collector fellowCollector) {
         if (paintingList.contains(painting) && fellowCollector != this) {
             fellowCollector.addPainting(painting);
             paintingList.remove(painting);
@@ -35,7 +38,7 @@ public class Collector {
         }
     }
 
-    List<Painting> getPaintings() {
+    public List<Painting> getPaintings() {
         return paintingList;
     }
 
