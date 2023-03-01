@@ -6,9 +6,16 @@ import java.util.List;
 public class Collector {
     List<Painting> paintingList = new ArrayList<>();
 
-    public Collector() {
-    }
+//    /**
+//     *
+//     */
+//    public Collector() {
+//    }
 
+    /**
+     * @param painting painting
+     * @return false
+     */
     public boolean addPainting(Painting painting) {
         if (!paintingList.contains(painting)) {
             if (paintingList.size() > 0) {
@@ -28,6 +35,11 @@ public class Collector {
         }
     }
 
+    /**
+     * @param painting        painting
+     * @param fellowCollector fellowCollector
+     * @return false
+     */
     public boolean sellPainting(Painting painting, Collector fellowCollector) {
         if (paintingList.contains(painting) && fellowCollector != this) {
             fellowCollector.addPainting(painting);
@@ -38,6 +50,9 @@ public class Collector {
         }
     }
 
+    /**
+     * @return List
+     */
     public List<Painting> getPaintings() {
         return paintingList;
     }
@@ -47,7 +62,8 @@ public class Collector {
 //        Painting painting1 = new Painting("The last supper", "Leonardo");
 //        System.out.println(painting1);  // This is a painting named The last supper and made by Leonardo.
 //        Painting painting2 = new Painting("Woman with Red Head Scarf");
-//        System.out.println(painting2);  // This is a painting named Woman with Red Head Scarf and made by an unknown artist.
+//        System.out.println(painting2);  // This is a painting named Woman with Red Head Scarf
+//        and made by an unknown artist.
 //
 //        Painting forgery = new Painting("The last supper", "Leonerdo");
 //        System.out.println(forgery);  // This is a painting named The last supper and made by Leonerdo.
