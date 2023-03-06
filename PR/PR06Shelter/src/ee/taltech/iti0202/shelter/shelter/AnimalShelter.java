@@ -34,20 +34,22 @@ public class AnimalShelter {
      */
     public List<Animal> getAnimals(Animal.Type animalType, String color, int count) {
         List<Animal> animals = new ArrayList<>();
-        List<Animal> listOfAnimals = this.animalProvider.provide(animalType);
-        if (listOfAnimals.isEmpty()) {
-            return animals;
-        }
         int counter = 0;
-        for (Animal animal : listOfAnimals) {
-            if (animals.size() >= count) {
+        while (animals.size() < count) {
+            List<Animal> listOfAnimals = this.animalProvider.provide(animalType);
+            if (listOfAnimals.isEmpty()) {
                 break;
             }
-            if (!animal.getColor().equals(color)) {
-                continue;
+            for (Animal animal : listOfAnimals) {
+                if (animal.getColor().equals(color) && !animals.contains(animal)) {
+                    animals.add(animal);
+                    counter++;
+
+                    if (counter >= count) {
+                        break;
+                    }
+                }
             }
-            animals.add(animal);
-            counter++;
         }
         return animals;
     }
