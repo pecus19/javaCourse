@@ -3,10 +3,17 @@ package ee.taltech.iti0202.shelter.shelter;
 import ee.taltech.iti0202.shelter.animal.Animal;
 import ee.taltech.iti0202.shelter.animalprovider.AnimalProvider;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AnimalShelter {
+    private final AnimalProvider animalProvider;
+
+    /**
+     * @param animalProvider animalProvider
+     */
     public AnimalShelter(AnimalProvider animalProvider) {
+        this.animalProvider = animalProvider;
     }
 
     /**
@@ -21,11 +28,26 @@ public class AnimalShelter {
      * and return whatever you have by that point.
      *
      * @param animalType Type.
-     * @param color Color used when filtering.
-     * @param count Maximum number of result to return.
+     * @param color      Color used when filtering.
+     * @param count      Maximum number of result to return.
      * @return Maximum {count} number of animals with the given type and color.
      */
     public List<Animal> getAnimals(Animal.Type animalType, String color, int count) {
-        return null;
+        List<Animal> animals = new ArrayList<>();
+        int counter = 0;
+        List<Animal> listOfAnimals = this.animalProvider.provide(animalType);
+        if (listOfAnimals.size() != 0) {
+            for (int i = 0; i < listOfAnimals.size(); i++) {
+                if (animals.size() < count && !animals.contains(listOfAnimals.get(i))
+                        && listOfAnimals.get(i).getColor().equals(color)) {
+                    animals.add(listOfAnimals.get(i));
+                    counter += 1;
+                }
+                if (counter > count) {
+                    break;
+                }
+            }
+        }
+        return animals;
     }
 }
