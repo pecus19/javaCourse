@@ -16,9 +16,9 @@ public class OutputFilesWriter {
         try {
             FileWriter writer = new FileWriter(filename);
             for (String line : lines) {
-                writer.write(line + System.lineSeparator());
+                writer.write(line);
+                writer.write("\n");
             }
-            writer.close();
             return true;
         } catch (IOException e) {
             throw new FileReaderException("No such file", e);
