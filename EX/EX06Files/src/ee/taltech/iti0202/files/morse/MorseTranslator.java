@@ -64,19 +64,18 @@ public class MorseTranslator {
      * @return null
      */
     private String translateLineToMorse(String line) {
-        String output = "";
+        StringBuilder output = new StringBuilder();
         for (int i = 0; i < line.length(); i++) {
             char char1 = line.charAt(i);
             String charStr = String.valueOf(char1).toLowerCase();
             if (charStr.equals(" ")) {
-                int size = output.length();
-                output = output.substring(0, size - 1) + "\t";
+                output.append("\t");
             } else {
-                output += morseMap.get(charStr);
-                output += " ";
+                output.append(morseMap.get(charStr));
+                output.append(" ");
             }
         }
-        return output;
+        return output.toString();
 
     }
 
