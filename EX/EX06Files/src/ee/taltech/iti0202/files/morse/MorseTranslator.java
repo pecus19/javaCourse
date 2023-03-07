@@ -87,14 +87,15 @@ public class MorseTranslator {
      * @return null
      */
     public String translateLineFromMorse(String line) {
+//        System.out.println(fromMap);
         StringBuilder output = new StringBuilder();
         String[] words = line.split("\\t");
         for (int i = 0; i < words.length; i++) {
             String[] splt = words[i].split(" ");
             for (int j = 0; j < splt.length; j++) {
-                output.append(fromMap.get(splt[i]));
+                output.append(fromMap.get(splt[j]));
             }
-            if (i < words.length - 1) {
+            if (i != words.length - 1) {
                 output.append(" ");
             }
         }

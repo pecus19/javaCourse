@@ -33,9 +33,7 @@ public class MorseFilesController {
         morseLines.forEach(System.out::println); //your input lines in Morse
         System.out.println("--------------");
 //        List<String> normalLines = translator.translateLinesFromMorse(morseLines);
-        System.out.println(translator.translateLineFromMorse(".-.. --- .-. . --\\t.. .--. ... ..- --\\" +
-                "t-.. --- .-.. --- .-.\\t... .. -\\t.- -- . - --..--\\" +
-                "t-.-. --- -. ... . -.-. - . - ..- .-.\\t.- -.. .. .--. .. ... -.-. .. -. --.\\t. .-.. .. - --.."));
+        System.out.println(translator.translateLineFromMorse(".-.. --- .-. . --\t.. .--. ... ..- --\t-.. --- .-.. --- .-.\t... .. -\t.- -- . - --..--\t-.-. --- -. ... . -.-. - . - ..- .-.\t.- -.. .. .--. .. ... -.-. .. -. --.\t. .-.. .. - --..--"));
 //        normalLines.forEach(System.out::println); //your input lines in regular text
 //
 //        OutputFilesWriter writer = new OutputFilesWriter();
