@@ -49,6 +49,7 @@ public class MorseTranslator {
             for (int i = 0; i < lines.size(); i++) {
                 output.add(translateLineFromMorse(lines.get(i)));
             }
+
         }
         return output;
     }
