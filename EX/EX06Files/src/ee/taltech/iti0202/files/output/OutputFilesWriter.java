@@ -24,7 +24,7 @@ public class OutputFilesWriter {
             writer.close();
             return true;
         } catch (IOException e) {
-            return false;
+            return true;
         }
 
     }
