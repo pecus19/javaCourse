@@ -77,6 +77,7 @@ public class MorseTranslator {
                 output.append(" ");
             }
         }
+
         return output.toString();
     }
 
