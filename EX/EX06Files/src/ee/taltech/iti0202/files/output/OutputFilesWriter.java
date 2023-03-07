@@ -1,13 +1,15 @@
 package ee.taltech.iti0202.files.output;
 
-import ee.taltech.iti0202.files.input.FileReaderException;
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
 public class OutputFilesWriter {
-
+    /**
+     * @param lines    lines
+     * @param filename filename
+     * @return false
+     */
     public boolean writeLinesToFile(List<String> lines, String filename) {
         if (lines.isEmpty()) {
             return false;

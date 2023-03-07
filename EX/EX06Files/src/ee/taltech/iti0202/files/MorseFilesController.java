@@ -12,21 +12,21 @@ public class MorseFilesController {
 
     public static void main(String[] args) {
         InputFilesScanner scanner = new InputFilesScanner();
-        List<String> lines = scanner.readTextFromFile("C:\\Users\\danil\\git\\iti0202-2023\\EX\\" +
-                "EX06Files\\src\\ee\\taltech\\iti0202\\files\\morse.txt");
+        List<String> lines = scanner.readTextFromFile("C:\\Users\\danil\\git\\iti0202-2023\\EX\\"
+                + "EX06Files\\src\\ee\\taltech\\iti0202\\files\\morse.txt");
         lines.forEach(System.out::println); //lines in morse.txt which contains Morse codes
 
         InputFilesBufferReader bufferReader = new InputFilesBufferReader();
-        List<String> lines2 = bufferReader.readTextFromFile("C:\\Users\\danil\\git\\iti0202-2023\\EX\\" +
-                "EX06Files\\src\\ee\\taltech\\iti0202\\files\\morse.txt");
+        List<String> lines2 = bufferReader.readTextFromFile("C:\\Users\\danil\\git\\iti0202-2023\\EX\\"
+                + "EX06Files\\src\\ee\\taltech\\iti0202\\files\\morse.txt");
         lines2.forEach(System.out::println); //lines in morse.txt which contains Morse codes
 
         MorseTranslator translator = new MorseTranslator();
         Map<String, String> codes = translator.addMorseCodes(lines);
         codes.forEach((key, value) -> System.out.println(key + " " + value)); //key and value
 
-        List<String> input = scanner.readTextFromFile("C:\\Users\\danil\\git\\iti0202-2023\\EX\\EX06Files\\" +
-                "src\\ee\\taltech\\iti0202\\files\\input.txt");
+        List<String> input = scanner.readTextFromFile("C:\\Users\\danil\\git\\iti0202-2023\\EX\\EX06Files\\"
+                + "src\\ee\\taltech\\iti0202\\files\\input.txt");
         input.forEach(System.out::println); //your input lines
 
         List<String> morseLines = translator.translateLinesToMorse(input);
@@ -36,8 +36,8 @@ public class MorseFilesController {
         normalLines.forEach(System.out::println); //your input lines in regular text
 
         OutputFilesWriter writer = new OutputFilesWriter();
-        System.out.println(writer.writeLinesToFile(normalLines, "C:\\Users\\danil\\git\\iti0202-2023\\EX\\" +
-                "EX06Files\\src\\ee\\taltech\\iti0202\\files\\output.txt")); //true
+        System.out.println(writer.writeLinesToFile(normalLines, "C:\\Users\\danil\\git\\iti0202-2023\\EX\\"
+                + "EX06Files\\src\\ee\\taltech\\iti0202\\files\\output.txt")); //true
         //This should also create a new file/ write in an existing file
     }
 }

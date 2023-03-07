@@ -1,6 +1,10 @@
 package ee.taltech.iti0202.files.morse;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 public class MorseTranslator {
     private Map<String, String> morseMap = new HashMap<>();
@@ -18,7 +22,7 @@ public class MorseTranslator {
                     morseMap.put(split[0].toLowerCase(Locale.ROOT), split[1].toLowerCase(Locale.ROOT));
                 }
                 if (!fromMap.containsKey(split[1].toLowerCase(Locale.ROOT))) {
-                    morseMap.put(split[1].toLowerCase(Locale.ROOT), split[0].toLowerCase(Locale.ROOT));
+                    fromMap.put(split[1].toLowerCase(Locale.ROOT), split[0].toLowerCase(Locale.ROOT));
                 }
             }
         }
@@ -49,7 +53,6 @@ public class MorseTranslator {
             for (int i = 0; i < lines.size(); i++) {
                 output.add(translateLineFromMorse(lines.get(i)));
             }
-
         }
         return output;
     }
@@ -95,10 +98,4 @@ public class MorseTranslator {
         }
         return output.toString();
     }
-
-//    public static void main(String[] args) {
-//        MorseTranslator morseTranslator = new MorseTranslator();
-//        morseTranslator.addMorseCodes(List.of("Lorem ipsum dolor sit amet, consectetur adipiscing elit,"));
-//        System.out.println(morseTranslator.translateLineToMorse("Lorem ipsum dolor sit amet, consectetur adipiscing elit,"));
-//    }
 }
