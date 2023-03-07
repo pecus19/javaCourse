@@ -29,13 +29,17 @@
 //                + "src\\ee\\taltech\\iti0202\\files\\input.txt");
 //        input.forEach(System.out::println); //your input lines
 //        System.out.println(translator.translateLineToMorse("lelit,"));
-////        System.out.println(translator.translateLineToMorse2("lorem ipsum dolor sit amet, consectetur adipiscing elit,"));
-//        System.out.println(".-.. --- .-. . --\t.. .--. ... ..- --\t-.. --- .-.. --- .-.\t... .. -\t.- -- . - --..--\t-.-. --- -. ... . -.-. - . - ..- .-.\t.- -.. .. .--. .. ... -.-. .. -. --.\t. .-.. .. - --..--");
+////        System.out.println(translator.translateLineToMorse2("lorem ipsum dolor sit amet, consectetur adipiscing
+// elit,"));
+//        System.out.println(".-.. --- .-. . --\t.. .--. ... ..- --\t-.. --- .-.. --- .-.\t... .. -\t.- -- . - --..--\t
+//        -.-. --- -. ... . -.-. - . - ..- .-.\t.- -.. .. .--. .. ... -.-. .. -. --.\t. .-.. .. - --..--");
 ////        List<String> morseLines = translator.translateLinesToMorse(input);
 ////        morseLines.forEach(System.out::println); //your input lines in Morse
 //        System.out.println("--------------");
 ////        List<String> normalLines = translator.translateLinesFromMorse(morseLines);
-//        System.out.println(translator.translateLineFromMorse(".-.. --- .-. . --\t.. .--. ... ..- --\t-.. --- .-.. --- .-.\t... .. -\t.- -- . - --..--\t-.-. --- -. ... . -.-. - . - ..- .-.\t.- -.. .. .--. .. ... -.-. .. -. --.\t. .-.. .. - --..--"));
+//        System.out.println(translator.translateLineFromMorse(".-.. --- .-. . --\t.. .--. ... ..- --\t-.. --- .-.. ---
+//        .-.\t... .. -\t.- -- . - --..--\t-.-. --- -. ... . -.-. - . - ..- .-.\t.- -.. .. .--. .. ... -.-. .. -. --.\
+//        t. .-.. .. - --..--"));
 ////        normalLines.forEach(System.out::println); //your input lines in regular text
 ////
 ////        OutputFilesWriter writer = new OutputFilesWriter();
