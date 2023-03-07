@@ -67,17 +67,13 @@ public class MorseTranslator {
         StringBuilder output = new StringBuilder();
         for (int i = 0; i < line.length(); i++) {
             char char1 = line.charAt(i);
-            String str = String.valueOf(char1);
-            if (str.equals(" ")) {
-                output.append("\t");
+            String charStr = String.valueOf(char1).toLowerCase();
+            if (charStr.equals(" ")) {
+                output = new StringBuilder(output.substring(0, output.length() - 1) + "\t");
+            } else {
+                output.append(morseMap.get(charStr));
+                output.append(" ");
             }
-            if (morseMap.containsKey(str.toLowerCase(Locale.ROOT))) {
-                output.append(morseMap.get(str.toLowerCase(Locale.ROOT)));
-                if (i != line.length() - 1) {
-                    output.append(" ");
-                }
-            }
-
         }
         return output.toString();
     }
