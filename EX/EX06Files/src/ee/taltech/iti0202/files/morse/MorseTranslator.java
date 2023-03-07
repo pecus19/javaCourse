@@ -26,6 +26,8 @@ public class MorseTranslator {
                 }
             }
         }
+        System.out.println(morseMap);
+        System.out.println(fromMap);
         return morseMap;
     }
 
@@ -84,17 +86,15 @@ public class MorseTranslator {
      * @param line line
      * @return null
      */
-    private String translateLineFromMorse(String line) {
+    public String translateLineFromMorse(String line) {
         StringBuilder output = new StringBuilder();
-        for (int i = 0; i < line.length(); i++) {
-            char char1 = line.charAt(i);
-            String str = String.valueOf(char1);
-            if (str.equals(" ")) {
-                output.append("\t");
-                continue;
+        String[] words = line.split("\\t");
+        for (int i = 0; i < words.length; i++) {
+            String[] splt = words[i].split(" ");
+            for (int j = 0; j < splt.length; j++) {
+                output.append(fromMap.get(splt[i]));
             }
-            if (fromMap.containsKey(str.toLowerCase(Locale.ROOT))) {
-                output.append(fromMap.get(str.toLowerCase(Locale.ROOT)));
+            if (i < words.length - 1) {
                 output.append(" ");
             }
         }

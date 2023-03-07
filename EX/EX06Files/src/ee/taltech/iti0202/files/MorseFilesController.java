@@ -31,13 +31,16 @@ public class MorseFilesController {
 
         List<String> morseLines = translator.translateLinesToMorse(input);
         morseLines.forEach(System.out::println); //your input lines in Morse
-
-        List<String> normalLines = translator.translateLinesFromMorse(morseLines);
-        normalLines.forEach(System.out::println); //your input lines in regular text
-
-        OutputFilesWriter writer = new OutputFilesWriter();
-        System.out.println(writer.writeLinesToFile(normalLines, "C:\\Users\\danil\\git\\iti0202-2023\\EX\\"
-                + "EX06Files\\src\\ee\\taltech\\iti0202\\files\\output.txt")); //true
-        //This should also create a new file/ write in an existing file
+        System.out.println("--------------");
+//        List<String> normalLines = translator.translateLinesFromMorse(morseLines);
+        System.out.println(translator.translateLineFromMorse(".-.. --- .-. . --\\t.. .--. ... ..- --\\" +
+                "t-.. --- .-.. --- .-.\\t... .. -\\t.- -- . - --..--\\" +
+                "t-.-. --- -. ... . -.-. - . - ..- .-.\\t.- -.. .. .--. .. ... -.-. .. -. --.\\t. .-.. .. - --.."));
+//        normalLines.forEach(System.out::println); //your input lines in regular text
+//
+//        OutputFilesWriter writer = new OutputFilesWriter();
+//        System.out.println(writer.writeLinesToFile(normalLines, "C:\\Users\\danil\\git\\iti0202-2023\\EX\\"
+//                + "EX06Files\\src\\ee\\taltech\\iti0202\\files\\output.txt")); //true
+//        //This should also create a new file/ write in an existing file
     }
 }
