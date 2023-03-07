@@ -18,10 +18,9 @@ public class OutputFilesWriter {
             for (String line : lines) {
                 writer.write(line + System.lineSeparator());
             }
-            writer.close();
-            return false;
-        } catch (IOException e) {
             return true;
+        } catch (IOException e) {
+            return false;
         }
     }
 }
