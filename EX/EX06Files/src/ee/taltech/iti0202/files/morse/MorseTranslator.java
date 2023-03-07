@@ -66,8 +66,8 @@ public class MorseTranslator {
     private String translateLineToMorse(String line) {
         String output = "";
         for (int i = 0; i < line.length(); i++) {
-            char el = line.charAt(i);
-            String charStr = String.valueOf(el).toLowerCase();
+            char char1 = line.charAt(i);
+            String charStr = String.valueOf(char1).toLowerCase();
             if (charStr.equals(" ")) {
                 output = output.substring(0, output.length() - 1) + "\t";
             } else {
@@ -75,7 +75,7 @@ public class MorseTranslator {
                 output += " ";
             }
         }
-        return output.substring(0, output.length() - 1);
+        return output;
 
     }
 
