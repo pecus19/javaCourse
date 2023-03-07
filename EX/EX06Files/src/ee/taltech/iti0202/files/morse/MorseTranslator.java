@@ -63,19 +63,19 @@ public class MorseTranslator {
      * @param line line
      * @return null
      */
-    private String translateLineToMorse(String line) {
+    public String translateLineToMorse(String line) {
         StringBuilder output = new StringBuilder();
         for (int i = 0; i < line.length(); i++) {
             char char1 = line.charAt(i);
             String str = String.valueOf(char1);
             if (str.equals(" ")) {
-                output.append(" ");
+                output.append("\t");
                 continue;
             }
             if (morseMap.containsKey(str.toLowerCase(Locale.ROOT))) {
                 output.append(morseMap.get(str.toLowerCase(Locale.ROOT)));
                 if (i != line.length() - 1) {
-                    output.append("\\t");
+                    output.append(" ");
                 }
             }
         }
