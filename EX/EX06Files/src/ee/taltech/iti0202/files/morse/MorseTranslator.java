@@ -64,18 +64,21 @@ public class MorseTranslator {
      * @return null
      */
     private String translateLineToMorse(String line) {
-        StringBuilder output = new StringBuilder();
+        String transLine = "";
         for (int i = 0; i < line.length(); i++) {
-            char char1 = line.charAt(i);
-            String charStr = String.valueOf(char1).toLowerCase();
+            char el = line.charAt(i);
+            String charStr = String.valueOf(el).toLowerCase();
             if (charStr.equals(" ")) {
-                output = new StringBuilder(output.substring(0, output.length() - 1) + "\t");
+                int size = transLine.length();
+                transLine = transLine.substring(0, size - 1) + "\t";
             } else {
-                output.append(morseMap.get(charStr));
-                output.append(" ");
+                transLine += morseMap.get(charStr);
+                transLine += " ";
             }
         }
-        return output.toString();
+        int size = transLine.length();
+        return transLine.substring(0, size - 1);
+
     }
 
     /**
