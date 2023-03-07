@@ -19,9 +19,9 @@ public class OutputFilesWriter {
                 writer.write(line + System.lineSeparator());
             }
             writer.close();
-            return true;
-        } catch (IOException e) {
             return false;
+        } catch (IOException e) {
+            return true;
         }
     }
 }
