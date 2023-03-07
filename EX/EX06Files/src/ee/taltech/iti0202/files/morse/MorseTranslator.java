@@ -72,6 +72,7 @@ public class MorseTranslator {
                 output.append("\t");
                 continue;
             }
+
             if (morseMap.containsKey(str.toLowerCase(Locale.ROOT))) {
                 output.append(morseMap.get(str.toLowerCase(Locale.ROOT)));
                 if (i != line.length() - 1) {
