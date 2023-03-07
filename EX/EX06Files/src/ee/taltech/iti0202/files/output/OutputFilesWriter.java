@@ -14,6 +14,7 @@ public class OutputFilesWriter {
      * @return false
      */
     public boolean writeLinesToFile(List<String> lines, String filename) {
+
         try (FileWriter writer = new FileWriter(filename);
              BufferedWriter bw = new BufferedWriter(writer)) {
             for (String line : lines) {
