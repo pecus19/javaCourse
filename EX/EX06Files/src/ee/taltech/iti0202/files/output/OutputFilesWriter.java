@@ -13,7 +13,7 @@ public class OutputFilesWriter {
      * @return false
      */
     public boolean writeLinesToFile(List<String> lines, String filename) {
-        if (lines.isEmpty()) {
+        if (filename == null || lines == null) {
             return false;
         }
         try {
@@ -24,7 +24,7 @@ public class OutputFilesWriter {
             writer.close();
             return true;
         } catch (IOException e) {
-            throw new FileReaderException("No such file", e);
+            return false;
         }
     }
 }
