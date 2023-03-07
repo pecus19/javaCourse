@@ -15,8 +15,7 @@ public class OutputFilesWriter {
         try (FileWriter writer = new FileWriter(filename);
              BufferedWriter bw = new BufferedWriter(writer)) {
             for (String line : lines) {
-                bw.write(line);
-                bw.write("\n");
+                bw.write(line + System.lineSeparator());
             }
             return true;
         } catch (IOException e) {
