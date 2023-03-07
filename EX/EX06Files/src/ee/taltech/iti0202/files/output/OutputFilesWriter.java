@@ -2,6 +2,7 @@ package ee.taltech.iti0202.files.output;
 
 import ee.taltech.iti0202.files.input.FileReaderException;
 
+import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
@@ -13,11 +14,11 @@ public class OutputFilesWriter {
      * @return false
      */
     public boolean writeLinesToFile(List<String> lines, String filename) {
-        try {
-            FileWriter writer = new FileWriter(filename);
+        try (FileWriter writer = new FileWriter(filename);
+             BufferedWriter bw = new BufferedWriter(writer)) {
             for (String line : lines) {
-                writer.write(line);
-                writer.write("\n");
+                bw.write(line);
+                bw.write("\n");
             }
             return true;
         } catch (IOException e) {
