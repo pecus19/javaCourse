@@ -68,13 +68,14 @@ public class MorseTranslator {
         for (int i = 0; i < line.length(); i++) {
             char char1 = line.charAt(i);
             String str = String.valueOf(char1);
+            if (str.equals(" ")) {
+                output.append("\t");
+            }
             if (morseMap.containsKey(str.toLowerCase(Locale.ROOT))) {
                 output.append(morseMap.get(str.toLowerCase(Locale.ROOT)));
                 if (i != line.length() - 1) {
                     output.append(" ");
                 }
-            } else {
-                output.append("\\t");
             }
 
         }
