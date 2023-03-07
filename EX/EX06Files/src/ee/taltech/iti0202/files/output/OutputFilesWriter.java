@@ -22,7 +22,7 @@ public class OutputFilesWriter {
             }
             return true;
         } catch (IOException e) {
-            throw new FileReaderException("No such file", e);
+            return false;
         }
     }
 }
