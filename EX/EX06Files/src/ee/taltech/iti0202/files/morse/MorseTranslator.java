@@ -72,10 +72,12 @@ public class MorseTranslator {
                 output = new StringBuilder(output.substring(0, output.length() - 1) + "\t");
             } else {
                 output.append(morseMap.get(str));
-                output.append(" ");
+                if (output.length() != i) {
+                    output.append(" ");
+                }
             }
         }
-        return output.substring(0, output.length() - 1);
+        return output.toString();
 
     }
 
