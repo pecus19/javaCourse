@@ -63,7 +63,7 @@ public class MorseTranslator {
      * @param line line
      * @return null
      */
-    public String translateLineToMorse(String line) {
+    private String translateLineToMorse(String line) {
         StringBuilder output = new StringBuilder();
         for (int i = 0; i < line.length(); i++) {
             char char1 = line.charAt(i);
