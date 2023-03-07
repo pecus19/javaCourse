@@ -28,7 +28,8 @@ public class MorseFilesController {
         List<String> input = scanner.readTextFromFile("C:\\Users\\danil\\git\\iti0202-2023\\EX\\EX06Files\\"
                 + "src\\ee\\taltech\\iti0202\\files\\input.txt");
         input.forEach(System.out::println); //your input lines
-        System.out.println(translator.translateLineToMorse("lorem ipsum dolor sit amet, consectetur adipiscing elit,"));
+        System.out.println(translator.translateLineToMorse("lelit,"));
+//        System.out.println(translator.translateLineToMorse2("lorem ipsum dolor sit amet, consectetur adipiscing elit,"));
         System.out.println(".-.. --- .-. . --\t.. .--. ... ..- --\t-.. --- .-.. --- .-.\t... .. -\t.- -- . - --..--\t-.-. --- -. ... . -.-. - . - ..- .-.\t.- -.. .. .--. .. ... -.-. .. -. --.\t. .-.. .. - --..--");
 //        List<String> morseLines = translator.translateLinesToMorse(input);
 //        morseLines.forEach(System.out::println); //your input lines in Morse

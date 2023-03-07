@@ -69,7 +69,7 @@ public class MorseTranslator {
             char char1 = line.charAt(i);
             String str = String.valueOf(char1).toLowerCase();
             if (str.equals(" ")) {
-                output.append("\t");
+                output = new StringBuilder(output.substring(0, output.length() - 1) + "\t");
             } else {
                 output.append(morseMap.get(str));
                 if (i != line.length() - 1) {
@@ -85,7 +85,6 @@ public class MorseTranslator {
      * @return null
      */
     public String translateLineFromMorse(String line) {
-//        System.out.println(fromMap);
         StringBuilder output = new StringBuilder();
         String[] words = line.split("\\t");
         for (int i = 0; i < words.length; i++) {
