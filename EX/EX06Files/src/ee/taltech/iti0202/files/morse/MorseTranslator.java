@@ -76,7 +76,7 @@ public class MorseTranslator {
                 }
             } else {
                 output.append(morseMap.get(str));
-                if (output.length() - 1 != i) {
+                if (line.length() - 1 != i) {
                     output.append(" ");
                 }
             }
