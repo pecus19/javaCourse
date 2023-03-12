@@ -1,7 +1,15 @@
 package ee.taltech.iti0202.zoo;
 
-import ee.taltech.iti0202.zoo.animal.*;
-import ee.taltech.iti0202.zoo.builder.*;
+import ee.taltech.iti0202.zoo.animal.Animal;
+import ee.taltech.iti0202.zoo.animal.Lamb;
+import ee.taltech.iti0202.zoo.animal.Monkey;
+import ee.taltech.iti0202.zoo.animal.Turtle;
+import ee.taltech.iti0202.zoo.animal.Type;
+import ee.taltech.iti0202.zoo.builder.AnimalBuilder;
+import ee.taltech.iti0202.zoo.builder.CaretakerBuilder;
+import ee.taltech.iti0202.zoo.builder.LambBuilder;
+import ee.taltech.iti0202.zoo.builder.MonkeyBuilder;
+import ee.taltech.iti0202.zoo.builder.TurtleBuilder;
 import ee.taltech.iti0202.zoo.caretaker.Caretaker;
 import org.junit.jupiter.api.Test;
 
@@ -14,6 +22,31 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class ZooTest {
+    @Test
+    void unusualAnimalsVoicesTest() {
+        Monkey monkey7 = new MonkeyBuilder()
+                .setName("Monkey")
+                .setTimeBeforeFeeding(1)
+                .createMonkey();
+        monkey7.setVoice("Gaaavv");
+        String check = monkey7.getVoice();
+        if (check.equals("uuh")) {
+            assertEquals(check, monkey7.getVoice());
+        } else {
+            assertEquals("ääh", monkey7.getVoice());
+        }
+        Lamb lamb7 = new LambBuilder()
+                .setName("Lamb")
+                .createLamb();
+        lamb7.setVoice("AAAAAAA");
+        assertEquals("Mää", lamb7.getVoice());
+        Turtle turtle7 = new TurtleBuilder()
+                .setName("Turtle")
+                .setTimeBeforeFeeding(0)
+                .createTurtle();
+        turtle7.setVoice("Beeeee");
+        assertEquals("", turtle7.getVoice());
+    }
 
     @Test
     void getAllAnimalsVoicesTest() {
@@ -73,6 +106,7 @@ class ZooTest {
         zoo.addAnimal(monkey1);
         zoo.addAnimal(turtle1);
         zoo.addAnimal(lamb1);
+
         List<Animal> checkList = zoo.getHungryAnimal();
         if (checkList.contains(turtle1)) {
             List<Animal> array1 = new ArrayList<>(List.of(animal1, monkey1, turtle1));
@@ -166,6 +200,7 @@ class ZooTest {
         zoo3.addHungryAnimal();
         assertEquals(3, caretaker3.getAnimalsToFeed().size());
     }
+
     @Test
     void caretakerFeedAnimalsTest() {
         Zoo zoo4 = new Zoo();
@@ -192,6 +227,7 @@ class ZooTest {
         zoo4.feedAllHungryAnimals();
         assertFalse(animal4.isHungry());
     }
+
     @Test
     void cantAddAnimalToCaretakersHungryListTest() {
         Zoo zoo4 = new Zoo();
@@ -213,4 +249,59 @@ class ZooTest {
         assertFalse(caretaker5.checkType(animal5));
     }
 
+    @Test
+    void bestCaretakerTest() {
+        Zoo zoo4 = new Zoo();
+        Caretaker caretaker4 = new CaretakerBuilder()
+                .setName("Den")
+                .setType(Type.MAMMAL)
+                .createCaretaker();
+        Animal animal4 = new AnimalBuilder()
+                .setName("Animal")
+                .setVoice("")
+                .setType(Type.MAMMAL)
+                .setTimeBeforeFeeding(0)
+                .createAnimal();
+        Monkey monkey4 = new MonkeyBuilder()
+                .setName("Monkey")
+                .setTimeBeforeFeeding(1)
+                .createMonkey();
+        monkey4.setVoice("BANANA");
+        monkey4.setType(Type.MAMMAL);
+        Animal animal33 = new AnimalBuilder()
+                .setName("Koer")
+                .setVoice("")
+                .setType(Type.MAMMAL)
+                .setTimeBeforeFeeding(0)
+                .createAnimal();
+        Animal animal34 = new AnimalBuilder()
+                .setName("Pen")
+                .setVoice("")
+                .setType(Type.AMPHIBIAN)
+                .setTimeBeforeFeeding(0)
+                .createAnimal();
+        Animal animal35 = new AnimalBuilder()
+                .setName("Kva")
+                .setVoice("")
+                .setType(Type.BIRD)
+                .setTimeBeforeFeeding(0)
+                .createAnimal();
+        Monkey monkey6 = new MonkeyBuilder()
+                .setName("Monkey")
+                .setTimeBeforeFeeding(1)
+                .createMonkey();
+        monkey6.setVoice("Gaaav");
+        zoo4.addCaretaker(caretaker4);
+        zoo4.addAnimal(animal4);
+        zoo4.addAnimal(monkey4);
+        zoo4.addAnimal(animal33);
+        zoo4.addAnimal(animal34);
+        zoo4.addAnimal(animal35);
+        zoo4.addAnimal(monkey6);
+        zoo4.addHungryAnimal();
+        String output = "Oletame, et meil on " + 5 + " näljast looma. " + caretaker4.getName() + " oskab toita " +
+                caretaker4.getAnimalsToFeed().size() + " " + 5 + "st.";
+        System.out.println(output);
+        assertEquals(output, zoo4.bestCaretaker());
+    }
 }

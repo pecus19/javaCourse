@@ -4,7 +4,7 @@ import ee.taltech.iti0202.zoo.animal.Animal;
 import ee.taltech.iti0202.zoo.animal.Type;
 
 import java.util.ArrayList;
-import java.util.logging.Logger;
+
 
 public class Caretaker {
     private String name;
@@ -12,6 +12,10 @@ public class Caretaker {
 
     private ArrayList<Animal> animalsToFeed = new ArrayList<>();
 
+    /**
+     * @param name name
+     * @param type type
+     */
     public Caretaker(String name, Type type) {
         this.name = name;
         this.type = type;
@@ -21,6 +25,10 @@ public class Caretaker {
         return animalsToFeed;
     }
 
+    /**
+     * @param animal animal
+     * @return false
+     */
     public boolean checkType(Animal animal) {
         if (animal != null & animal.getType() != null) {
             return animal.getType().equals(getType());
@@ -28,8 +36,10 @@ public class Caretaker {
         return false;
     }
 
-
-    public void addAnimalsToFeed(Animal animal) throws IllegalArgumentException {
+    /**
+     * @param animal animal
+     */
+    public void addAnimalsToFeed(Animal animal) {
         if (checkType(animal)) {
             if (animal.isHungry() && !animalsToFeed.contains(animal)) {
                 animalsToFeed.add(animal);
@@ -50,6 +60,9 @@ public class Caretaker {
         }
     }
 
+    /**
+     * @return name
+     */
     public String getName() {
         return name;
     }
@@ -58,6 +71,9 @@ public class Caretaker {
         this.name = name;
     }
 
+    /**
+     * @return type
+     */
     public Type getType() {
         return type;
     }

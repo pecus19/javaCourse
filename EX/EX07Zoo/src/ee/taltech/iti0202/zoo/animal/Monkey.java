@@ -1,11 +1,14 @@
 package ee.taltech.iti0202.zoo.animal;
 
-import ee.taltech.iti0202.zoo.Zoo;
-
 import java.util.Objects;
 import java.util.Random;
 
 public class Monkey extends Animal {
+    /**
+     *
+     * @param name name
+     * @param timeBeforeFeeding timeBeforeFeeding
+     */
     public Monkey(String name, Integer timeBeforeFeeding) {
         super(name, Type.MAMMAL, "uuh", timeBeforeFeeding);
     }

@@ -9,6 +9,12 @@ public class Animal {
     private Integer timeBeforeFeeding;
     private Type type;
 
+    /**
+     * @param name              name
+     * @param type              type
+     * @param voice             voice
+     * @param timeBeforeFeeding timeBeforeFeeding
+     */
     public Animal(String name, Type type, String voice, Integer timeBeforeFeeding) {
         this.name = name;
         this.voice = voice;
@@ -16,6 +22,9 @@ public class Animal {
         this.type = type;
     }
 
+    /**
+     * @return name
+     */
     public String getName() {
         return name;
     }
@@ -35,23 +44,20 @@ public class Animal {
         this.voice = voice;
     }
 
+    /**
+     * @return false
+     */
     public boolean isHungry() {
         return this.getVoice().length() == 0;
     }
 
-    public void feeding() throws IllegalArgumentException {
+
+    public void feeding() {
         if (this.isHungry()) {
             setVoice("Brrr!");
             setTimeBeforeFeeding(1);
             logger.info(String.format("The animal with the name %s has been fed", this.getName()));
-        } else {
-            throw new IllegalArgumentException(String.format("The animal with the name %s doesn't want to eat"
-                    , this.getName()));
         }
-    }
-
-    public Integer getTimeBeforeFeeding() {
-        return timeBeforeFeeding;
     }
 
     public void setTimeBeforeFeeding(Integer timeBeforeFeeding) {
@@ -70,4 +76,7 @@ public class Animal {
         this.type = type;
     }
 
+    public Integer getTimeBeforeFeeding() {
+        return timeBeforeFeeding;
+    }
 }

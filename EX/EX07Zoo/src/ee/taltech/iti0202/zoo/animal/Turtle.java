@@ -4,7 +4,10 @@ import java.util.Objects;
 import java.util.Random;
 
 public class Turtle extends Animal {
-
+    /**
+     * @param name              name
+     * @param timeBeforeFeeding timeBeforeFeeding
+     */
     public Turtle(String name, Integer timeBeforeFeeding) {
         super(name, Type.AMPHIBIAN, "", timeBeforeFeeding);
     }
