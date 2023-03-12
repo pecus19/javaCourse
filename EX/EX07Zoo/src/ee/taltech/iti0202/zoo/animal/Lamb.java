@@ -5,8 +5,10 @@ public class Lamb extends Animal {
     /**
      * @param name name
      */
+    public final static int time = 10000;
+
     public Lamb(String name) {
-        super(name, Type.MAMMAL, "Mää", 10000);
+        super(name, Type.MAMMAL, "Mää", time);
     }
 
     @Override
@@ -16,7 +18,7 @@ public class Lamb extends Animal {
 
     @Override
     public void setTimeBeforeFeeding(Integer timeBeforeFeeding) {
-        super.setTimeBeforeFeeding(1000);
+        super.setTimeBeforeFeeding(time);
     }
 
     @Override

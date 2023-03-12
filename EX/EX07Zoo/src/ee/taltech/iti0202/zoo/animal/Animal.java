@@ -33,6 +33,9 @@ public class Animal {
         this.name = name;
     }
 
+    /**
+     * @return voice
+     */
     public String getVoice() {
         return voice;
     }
@@ -51,7 +54,9 @@ public class Animal {
         return this.getVoice().length() == 0;
     }
 
-
+    /**
+     * smt.
+     */
     public void feeding() {
         if (this.isHungry()) {
             setVoice("Brrr!");
@@ -60,6 +65,9 @@ public class Animal {
         }
     }
 
+    /**
+     * @param timeBeforeFeeding timeBeforeFeeding
+     */
     public void setTimeBeforeFeeding(Integer timeBeforeFeeding) {
         if (this.getVoice().length() == 0) {
             this.timeBeforeFeeding = 0;
@@ -68,14 +76,23 @@ public class Animal {
         }
     }
 
+    /**
+     * @return type
+     */
     public Type getType() {
         return type;
     }
 
+    /**
+     * @param type type
+     */
     public void setType(Type type) {
         this.type = type;
     }
 
+    /**
+     * @return timeBeforeFeeding
+     */
     public Integer getTimeBeforeFeeding() {
         return timeBeforeFeeding;
     }

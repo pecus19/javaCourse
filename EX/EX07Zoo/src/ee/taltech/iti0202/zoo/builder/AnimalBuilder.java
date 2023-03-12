@@ -2,7 +2,6 @@ package ee.taltech.iti0202.zoo.builder;
 
 import ee.taltech.iti0202.zoo.animal.Animal;
 import ee.taltech.iti0202.zoo.animal.Type;
-import ee.taltech.iti0202.zoo.caretaker.Caretaker;
 
 public class AnimalBuilder {
     private String name;

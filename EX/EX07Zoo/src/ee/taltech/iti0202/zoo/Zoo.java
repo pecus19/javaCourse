@@ -61,6 +61,9 @@ public class Zoo {
         return voicesMap;
     }
 
+    /**
+     * add Hungry Animal
+     */
     public void addHungryAnimal() {
         for (int i = 0; i < getAllAnimals().size(); i++) {
             if (!hungryAnimals.contains(animals.get(i)) & animals.get(i).isHungry()) {
@@ -74,14 +77,17 @@ public class Zoo {
                         caretakers.get(i).addAnimalsToFeed(animals.get(j));
                     }
                 }
-                String output = "Oletame, et meil on " + hungryAnimals.size() + " näljast looma. " +
-                        caretakers.get(i).getName() + " oskab toita " +
-                        caretakers.get(i).getAnimalsToFeed().size() + " " + hungryAnimals.size() + "st.";
+                String output = "Oletame, et meil on " + hungryAnimals.size() + " näljast looma. "
+                        + caretakers.get(i).getName() + " oskab toita "
+                        + caretakers.get(i).getAnimalsToFeed().size() + " " + hungryAnimals.size() + "st.";
                 topList.add(output);
             }
         }
     }
 
+    /**
+     * feedAllHungryAnimals
+     */
     public void feedAllHungryAnimals() {
         for (int i = 0; i < getAllCaretakers().size(); i++) {
             addHungryAnimal();
@@ -89,6 +95,9 @@ public class Zoo {
         }
     }
 
+    /**
+     * nextDayButton
+     */
     public void nextDayButton() {
         for (int i = 0; i < getAllAnimals().size(); i++) {
             animals.get(i).setVoice("");
@@ -104,7 +113,6 @@ public class Zoo {
     }
 
     /**
-     *
      * @return topList
      */
     public String bestCaretaker() {

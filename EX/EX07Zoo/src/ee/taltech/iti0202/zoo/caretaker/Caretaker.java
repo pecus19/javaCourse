@@ -47,6 +47,9 @@ public class Caretaker {
         }
     }
 
+    /**
+     * feedAnimals
+     */
     public void feedAnimals() {
         for (int i = 0; i < animalsToFeed.size(); i++) {
             animalsToFeed.get(i).feeding();
@@ -54,7 +57,10 @@ public class Caretaker {
         }
     }
 
-    public void deleteAnimal(Animal animal) throws IllegalArgumentException {
+    /**
+     * @param animal animal
+     */
+    public void deleteAnimal(Animal animal) {
         if (animal != null & animalsToFeed.contains(animal)) {
             animalsToFeed.remove(animal);
         }

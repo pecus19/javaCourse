@@ -1,6 +1,5 @@
 package ee.taltech.iti0202.zoo.animal;
 
-import java.util.Objects;
 import java.util.Random;
 
 public class Turtle extends Animal {
