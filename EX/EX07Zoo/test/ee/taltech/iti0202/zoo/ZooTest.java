@@ -299,8 +299,8 @@ class ZooTest {
         zoo4.addAnimal(animal35);
         zoo4.addAnimal(monkey6);
         zoo4.addHungryAnimal();
-        String output = "Oletame, et meil on " + 5 + " näljast looma. " + caretaker4.getName() + " oskab toita " +
-                caretaker4.getAnimalsToFeed().size() + " " + 5 + "st.";
+        String output = "Oletame, et meil on " + 5 + " näljast looma. " + caretaker4.getName() + " oskab toita "
+                + caretaker4.getAnimalsToFeed().size() + " " + 5 + "st.";
         System.out.println(output);
         assertEquals(output, zoo4.bestCaretaker());
     }

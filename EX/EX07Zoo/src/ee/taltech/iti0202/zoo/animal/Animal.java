@@ -40,6 +40,9 @@ public class Animal {
         return voice;
     }
 
+    /**
+     * @param voice voice
+     */
     public void setVoice(String voice) {
         if (voice.length() == 0) {
             setTimeBeforeFeeding(0);
