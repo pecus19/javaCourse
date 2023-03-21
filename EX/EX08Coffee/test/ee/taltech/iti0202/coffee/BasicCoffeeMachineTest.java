@@ -11,7 +11,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 class BasicCoffeeMachineTest {
-
+    public static final int FIFTY = 50;
+    public static final int FIVE_THOUSAND = 5000;
+    public static final int FIVE_HUNDRED = 500;
+    public static final int TWO_HUNDRED = 200;
+    public static final int THOUSAND = 1000;
 
     @org.junit.jupiter.api.Test
     void makeCoffeeUsingBasicCoffeeMachineTest() throws CannotMakeACoffeeException {
@@ -19,11 +23,11 @@ class BasicCoffeeMachineTest {
         Drinks drinks = new Drinks();
         WaterTank waterTank = new WaterTank();
         BasicCoffeeMachine coffeeMachine = new BasicCoffeeMachineBuilder()
-                .setAmountOfGrains(1000)
+                .setAmountOfGrains(THOUSAND)
                 .setDrink(drinks)
                 .setTrash(0)
                 .setWaterTank(waterTank)
-                .setAmountOfMilk(5000)
+                .setAmountOfMilk(FIVE_THOUSAND)
                 .createBasicCoffeeMachine();
         kitchen.addCoffeeMachines(coffeeMachine);
         assertEquals(new Drinks(Drinks.Types.Cappuccino).getTypes(),
@@ -36,11 +40,11 @@ class BasicCoffeeMachineTest {
         Drinks drinks = new Drinks();
         WaterTank waterTank = new WaterTank();
         BasicCoffeeMachine coffeeMachine = new BasicCoffeeMachineBuilder()
-                .setAmountOfGrains(1000)
+                .setAmountOfGrains(THOUSAND)
                 .setDrink(drinks)
                 .setTrash(4)
                 .setWaterTank(waterTank)
-                .setAmountOfMilk(5000)
+                .setAmountOfMilk(FIVE_THOUSAND)
                 .createBasicCoffeeMachine();
         kitchen.addCoffeeMachines(coffeeMachine);
         kitchen.acceptOrder(coffeeMachine, Drinks.Types.Cappuccino);
@@ -57,11 +61,11 @@ class BasicCoffeeMachineTest {
         Drinks drinks = new Drinks();
         WaterTank waterTank = new WaterTank();
         BasicCoffeeMachine coffeeMachine = new BasicCoffeeMachineBuilder()
-                .setAmountOfGrains(1000)
+                .setAmountOfGrains(THOUSAND)
                 .setDrink(drinks)
                 .setTrash(4)
                 .setWaterTank(waterTank)
-                .setAmountOfMilk(5000)
+                .setAmountOfMilk(FIVE_THOUSAND)
                 .createBasicCoffeeMachine();
         kitchen.addCoffeeMachines(coffeeMachine);
         kitchen.acceptOrder(coffeeMachine, Drinks.Types.Cappuccino);
@@ -81,15 +85,15 @@ class BasicCoffeeMachineTest {
         Drinks drinks = new Drinks();
         WaterTank waterTank = new WaterTank();
         BasicCoffeeMachine coffeeMachine = new BasicCoffeeMachineBuilder()
-                .setAmountOfGrains(1000)
+                .setAmountOfGrains(THOUSAND)
                 .setDrink(drinks)
                 .setTrash(0)
                 .setWaterTank(waterTank)
-                .setAmountOfMilk(200)
+                .setAmountOfMilk(TWO_HUNDRED)
                 .createBasicCoffeeMachine();
         kitchen.addCoffeeMachines(coffeeMachine);
         kitchen.acceptOrder(coffeeMachine, Drinks.Types.Cappuccino);
-        assertEquals(50, coffeeMachine.getAmountOfMilk());
+        assertEquals(FIFTY, coffeeMachine.getAmountOfMilk());
         try {
             kitchen.acceptOrder(coffeeMachine, Drinks.Types.Latte);
         } catch (CannotMakeACoffeeException ex) {
@@ -103,13 +107,13 @@ class BasicCoffeeMachineTest {
         Drinks drinks = new Drinks();
         WaterTank waterTank = new WaterTank();
         BasicCoffeeMachine coffeeMachine = new BasicCoffeeMachineBuilder()
-                .setAmountOfGrains(1000)
+                .setAmountOfGrains(THOUSAND)
                 .setDrink(drinks)
                 .setTrash(0)
                 .setWaterTank(waterTank)
-                .setAmountOfMilk(500)
+                .setAmountOfMilk(FIVE_HUNDRED)
                 .createBasicCoffeeMachine();
-        waterTank.setAmountOfWater(50);
+        waterTank.setAmountOfWater(FIFTY);
         kitchen.addCoffeeMachines(coffeeMachine);
         try {
             kitchen.acceptOrder(coffeeMachine, Drinks.Types.Cappuccino);
@@ -124,13 +128,13 @@ class BasicCoffeeMachineTest {
         Drinks drinks = new Drinks();
         WaterTank waterTank = new WaterTank();
         BasicCoffeeMachine coffeeMachine = new BasicCoffeeMachineBuilder()
-                .setAmountOfGrains(1000)
+                .setAmountOfGrains(THOUSAND)
                 .setDrink(drinks)
                 .setTrash(0)
                 .setWaterTank(waterTank)
-                .setAmountOfMilk(500)
+                .setAmountOfMilk(FIVE_HUNDRED)
                 .createBasicCoffeeMachine();
-        waterTank.setAmountOfWater(50);
+        waterTank.setAmountOfWater(FIFTY);
         kitchen.addCoffeeMachines(coffeeMachine);
         try {
             kitchen.acceptOrder(coffeeMachine, Drinks.Types.Cappuccino);
@@ -148,13 +152,13 @@ class BasicCoffeeMachineTest {
         Drinks drinks = new Drinks();
         WaterTank waterTank = new WaterTank();
         BasicCoffeeMachine coffeeMachine = new BasicCoffeeMachineBuilder()
-                .setAmountOfGrains(50)
+                .setAmountOfGrains(FIFTY)
                 .setDrink(drinks)
                 .setTrash(0)
                 .setWaterTank(waterTank)
-                .setAmountOfMilk(500)
+                .setAmountOfMilk(FIVE_HUNDRED)
                 .createBasicCoffeeMachine();
-        waterTank.setAmountOfWater(50);
+        waterTank.setAmountOfWater(FIFTY);
         kitchen.addCoffeeMachines(coffeeMachine);
         try {
             kitchen.acceptOrder(coffeeMachine, Drinks.Types.Espresso);
@@ -169,13 +173,13 @@ class BasicCoffeeMachineTest {
         Drinks drinks = new Drinks();
         WaterTank waterTank = new WaterTank();
         BasicCoffeeMachine coffeeMachine = new BasicCoffeeMachineBuilder()
-                .setAmountOfGrains(50)
+                .setAmountOfGrains(FIFTY)
                 .setDrink(drinks)
                 .setTrash(0)
                 .setWaterTank(waterTank)
-                .setAmountOfMilk(500)
+                .setAmountOfMilk(FIVE_HUNDRED)
                 .createBasicCoffeeMachine();
-        waterTank.setAmountOfWater(50);
+        waterTank.setAmountOfWater(FIFTY);
         kitchen.addCoffeeMachines(coffeeMachine);
         try {
             kitchen.acceptOrder(coffeeMachine, Drinks.Types.Espresso);

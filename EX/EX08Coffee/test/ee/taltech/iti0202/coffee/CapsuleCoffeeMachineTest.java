@@ -6,7 +6,7 @@ import ee.taltech.iti0202.coffee.builder.BasicCoffeeMachineBuilder;
 import ee.taltech.iti0202.coffee.builder.CapsuleMachineBuilder;
 import ee.taltech.iti0202.coffee.coffeeMachine.AutomaticCoffeeMachine;
 import ee.taltech.iti0202.coffee.coffeeMachine.BasicCoffeeMachine;
-import ee.taltech.iti0202.coffee.coffeeMachine.CapsuleMachine;
+import ee.taltech.iti0202.coffee.coffeeMachine.CapsuleCoffeeMachine;
 import ee.taltech.iti0202.coffee.drinks.Drinks;
 import ee.taltech.iti0202.coffee.kitchen.Kitchen;
 import ee.taltech.iti0202.coffee.waterTank.WaterTank;
@@ -14,20 +14,24 @@ import ee.taltech.iti0202.coffee.waterTank.WaterTank;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class CapsuleMachineTest {
+class CapsuleCoffeeMachineTest {
+    public static final int TEN = 10;
+    public static final int BIG = 9780;
+    public static final int FIVE_HUNDRED = 500;
+    public static final int NINETY_NINE = 99;
 
     @org.junit.jupiter.api.Test
     void thereIsNoSuchCoffeeMachineTest() {
         Kitchen kitchen = new Kitchen();
         Drinks drinks = new Drinks();
         WaterTank waterTank = new WaterTank();
-        CapsuleMachine coffeeMachine = new CapsuleMachineBuilder()
+        CapsuleCoffeeMachine coffeeMachine = new CapsuleMachineBuilder()
                 .setDrink(drinks)
                 .setTrash(0)
                 .setWaterTank(waterTank)
                 .setCapsuleIn(false)
                 .createCapsuleMachine();
-        CapsuleMachine coffeeMachine2 = new CapsuleMachineBuilder()
+        CapsuleCoffeeMachine coffeeMachine2 = new CapsuleMachineBuilder()
                 .setDrink(drinks)
                 .setTrash(0)
                 .setWaterTank(waterTank)
@@ -46,7 +50,7 @@ class CapsuleMachineTest {
         Kitchen kitchen = new Kitchen();
         Drinks drinks = new Drinks();
         WaterTank waterTank = new WaterTank();
-        CapsuleMachine coffeeMachine = new CapsuleMachineBuilder()
+        CapsuleCoffeeMachine coffeeMachine = new CapsuleMachineBuilder()
                 .setDrink(drinks)
                 .setTrash(0)
                 .setCapsuleIn(false)
@@ -62,7 +66,7 @@ class CapsuleMachineTest {
         Kitchen kitchen = new Kitchen();
         Drinks drinks = new Drinks();
         WaterTank waterTank = new WaterTank();
-        CapsuleMachine coffeeMachine = new CapsuleMachineBuilder()
+        CapsuleCoffeeMachine coffeeMachine = new CapsuleMachineBuilder()
                 .setDrink(drinks)
                 .setTrash(0)
                 .setCapsuleIn(false)
@@ -79,7 +83,7 @@ class CapsuleMachineTest {
         Kitchen kitchen = new Kitchen();
         Drinks drinks = new Drinks();
         WaterTank waterTank = new WaterTank();
-        CapsuleMachine coffeeMachine = new CapsuleMachineBuilder()
+        CapsuleCoffeeMachine coffeeMachine = new CapsuleMachineBuilder()
                 .setDrink(drinks)
                 .setTrash(0)
                 .setCapsuleIn(false)
@@ -98,7 +102,7 @@ class CapsuleMachineTest {
         Kitchen kitchen = new Kitchen();
         Drinks drinks = new Drinks();
         WaterTank waterTank = new WaterTank();
-        CapsuleMachine coffeeMachine = new CapsuleMachineBuilder()
+        CapsuleCoffeeMachine coffeeMachine = new CapsuleMachineBuilder()
                 .setDrink(drinks)
                 .setTrash(0)
                 .setCapsuleIn(false)
@@ -119,14 +123,14 @@ class CapsuleMachineTest {
         Kitchen kitchen = new Kitchen();
         Drinks drinks = new Drinks();
         WaterTank waterTank = new WaterTank();
-        CapsuleMachine coffeeMachine = new CapsuleMachineBuilder()
+        CapsuleCoffeeMachine coffeeMachine = new CapsuleMachineBuilder()
                 .setDrink(drinks)
                 .setTrash(0)
                 .setCapsuleIn(false)
                 .setWaterTank(waterTank)
                 .createCapsuleMachine();
         kitchen.addCoffeeMachines(coffeeMachine);
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < TEN; i++) {
             kitchen.acceptOrder(coffeeMachine, Drinks.Types.Cappuccino);
         }
         try {
@@ -141,7 +145,7 @@ class CapsuleMachineTest {
         Kitchen kitchen = new Kitchen();
         Drinks drinks = new Drinks();
         WaterTank waterTank = new WaterTank();
-        CapsuleMachine coffeeMachine = new CapsuleMachineBuilder()
+        CapsuleCoffeeMachine coffeeMachine = new CapsuleMachineBuilder()
                 .setDrink(drinks)
                 .setTrash(0)
                 .setCapsuleIn(false)
@@ -165,10 +169,10 @@ class CapsuleMachineTest {
                 .setDrink(drinks)
                 .setTrash(0)
                 .setWaterTank(waterTank)
-                .setAmountOfMilk(1000)
-                .setAmountOfGrains(500)
+                .setAmountOfMilk(BIG)
+                .setAmountOfGrains(FIVE_HUNDRED)
                 .createBasicCoffeeMachine();
-        CapsuleMachine coffeeMachine = new CapsuleMachineBuilder()
+        CapsuleCoffeeMachine coffeeMachine = new CapsuleMachineBuilder()
                 .setDrink(drinks)
                 .setTrash(0)
                 .setCapsuleIn(false)
@@ -185,7 +189,7 @@ class CapsuleMachineTest {
         kitchen.acceptOrder(coffeeMachine, Drinks.Types.Cappuccino);
         kitchen.acceptOrder(automaticCoffeeMachine, Drinks.Types.Latte);
         kitchen.acceptOrder(basicCoffeeMachine, Drinks.Types.Espresso);
-        assertEquals(9780, waterTank.getAmountOfWater());
+        assertEquals(BIG, waterTank.getAmountOfWater());
     }
 
     @org.junit.jupiter.api.Test
@@ -200,7 +204,7 @@ class CapsuleMachineTest {
                 .createAutomaticCoffeeMachine();
         kitchen.addCoffeeMachines(automaticCoffeeMachine);
         kitchen.acceptOrder(automaticCoffeeMachine, Drinks.Types.Latte);
-        for (int i = 0; i < 99; i++) {
+        for (int i = 0; i < NINETY_NINE; i++) {
             if (automaticCoffeeMachine.isEmpty()) {
                 automaticCoffeeMachine.throwAwayWaste();
                 kitchen.acceptOrder(automaticCoffeeMachine, Drinks.Types.Cappuccino);

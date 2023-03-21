@@ -10,6 +10,7 @@ import ee.taltech.iti0202.coffee.waterTank.WaterTank;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class AutomaticCoffeeMachineTest {
+    public static final int FIFTY = 50;
     @org.junit.jupiter.api.Test
     void automaticCoffeeMachineCheckTrashTest() throws CannotMakeACoffeeException {
         Kitchen kitchen = new Kitchen();
@@ -61,7 +62,7 @@ class AutomaticCoffeeMachineTest {
                 .createAutomaticCoffeeMachine();
         kitchen.addCoffeeMachines(coffeeMachine);
         int counter = 0;
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < FIFTY; i++) {
             kitchen.acceptOrder(coffeeMachine, Drinks.Types.Cappuccino);
             if (coffeeMachine.isEmpty()) {
                 coffeeMachine.throwAwayWaste();
@@ -70,6 +71,6 @@ class AutomaticCoffeeMachineTest {
                 counter++;
             }
         }
-        assertEquals(50, counter);
+        assertEquals(FIFTY, counter);
     }
 }
