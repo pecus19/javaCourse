@@ -36,10 +36,6 @@ public class BasicCoffeeMachine {
         return waterTank;
     }
 
-    public void setWaterTank(WaterTank waterTank) {
-        this.waterTank = waterTank;
-    }
-
     public BasicCoffeeMachine(int trash, int amountOfGrains, WaterTank waterTank, int amountOfMilk, Drinks drink) {
         this.trash = trash;
         this.amountOfGrains = amountOfGrains;
@@ -136,9 +132,5 @@ public class BasicCoffeeMachine {
 
     public Drinks getDrink() {
         return drink;
-    }
-
-    public void setDrink(Drinks drink) {
-        this.drink = drink;
     }
 }

@@ -17,24 +17,22 @@ public class CapsuleMachine extends BasicCoffeeMachine {
     public Drinks start(Drinks.Types types) throws CannotMakeACoffeeException {
         if (isEmpty()) {
             if (chooseDrink(types) != null) {
-                    if (isUsed) {
-                        useWater(getDrink(), Drinks.Types.WATER);
-                        coffeeGrounds();
-                        setUsed(false);
-                        logger.info(String.format("%s is ready!", types));
-                        return new Drinks(Drinks.Types.WATER);
-                    } else {
-                        useWater(getDrink(), types);
-                        coffeeGrounds();
-                        logger.info(String.format("%s is ready!", types));
-                        setUsed(true);
-                        return new Drinks(types);
-                    }
+                if (isUsed()) {
+                    useWater(getDrink(), Drinks.Types.WATER);
+                    coffeeGrounds();
+                    setUsed(false);
+                    logger.info(String.format("%s is ready!", types));
+                    return new Drinks(Drinks.Types.WATER);
+                } else {
+                    useWater(getDrink(), types);
+                    coffeeGrounds();
+                    logger.info(String.format("%s is ready!", types));
+                    setUsed(true);
+                    return new Drinks(types);
+                }
             }
-        } else {
-            throw new CannotMakeACoffeeException(this, CannotMakeACoffeeException.Reason.TRASH_IS_FULL);
         }
-        return null;
+        throw new CannotMakeACoffeeException(this, CannotMakeACoffeeException.Reason.TRASH_IS_FULL);
     }
 
     public void throwAwayTheCapsules() throws CannotMakeACoffeeException {
@@ -51,23 +49,22 @@ public class CapsuleMachine extends BasicCoffeeMachine {
             setUsed(false);
             logger.info("The capsule is inserted!");
         } else {
-            throw new CannotMakeACoffeeException(this, CannotMakeACoffeeException.Reason.THERE_IS_ALREADY_A_CAPSULE_INSIDE);
+            throw new CannotMakeACoffeeException(this,
+                    CannotMakeACoffeeException.Reason.THERE_IS_ALREADY_A_CAPSULE_INSIDE);
         }
     }
 
-    public boolean checkCapsule() throws CannotMakeACoffeeException {
+    public boolean checkCapsule() {
         return !getCapsuleIn();
     }
 
-
     @Override
-
     public Drinks.Types chooseDrink(Drinks.Types types) throws CannotMakeACoffeeException {
         if (types != null && checkWater(getDrink(), types)) {
             logger.info("Сoffee is being prepared....");
             return types;
         }
-        return null;
+        throw new CannotMakeACoffeeException(this, CannotMakeACoffeeException.Reason.NOT_WATER);
     }
 
     @Override

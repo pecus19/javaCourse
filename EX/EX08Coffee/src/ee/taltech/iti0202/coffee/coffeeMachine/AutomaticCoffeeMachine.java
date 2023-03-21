@@ -22,10 +22,8 @@ public class AutomaticCoffeeMachine extends BasicCoffeeMachine {
                 logger.info(String.format("%s is ready!", types));
                 return new Drinks(types);
             }
-        } else {
-            throw new CannotMakeACoffeeException(this, CannotMakeACoffeeException.Reason.TRASH_IS_FULL);
         }
-        return null;
+        throw new CannotMakeACoffeeException(this, CannotMakeACoffeeException.Reason.TRASH_IS_FULL);
     }
 
 

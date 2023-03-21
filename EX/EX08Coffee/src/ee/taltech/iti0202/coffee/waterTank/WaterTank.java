@@ -2,6 +2,8 @@ package ee.taltech.iti0202.coffee.waterTank;
 
 
 public class WaterTank {
+    public static final int ZERO = 0;
+    public static final int BIG = 10000;
     private int amountOfWater = 10000;
 
     public void takeWater(int amount) {
@@ -19,12 +21,12 @@ public class WaterTank {
     }
 
     public boolean canWeTake(int amount) {
-        return getAmountOfWater() - amount >= 0;
+        return getAmountOfWater() - amount >= ZERO;
     }
 
     public void topUpWaterTank() {
-        if (getAmountOfWater() < 10000) {
-            setAmountOfWater(10000);
+        if (getAmountOfWater() < BIG) {
+            setAmountOfWater(BIG);
         }
     }
 }

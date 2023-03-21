@@ -9,12 +9,12 @@ import ee.taltech.iti0202.coffee.waterTank.WaterTank;
 
 public class Main {
     public static void main(String[] args) throws CannotMakeACoffeeException {
-        Kitchen kitchen = new Kitchen();
-        WaterTank waterTank = new WaterTank();
-        Drinks drinks = new Drinks();
-        BasicCoffeeMachine coffeeMachine = new BasicCoffeeMachineBuilder().setTrash(0).setAmountOfGrains(1000).setWaterTank(waterTank).setAmountOfMilk(5000).setDrink(drinks).createBasicCoffeeMachine();
-        coffeeMachine.start(Drinks.Types.Americano);
-        coffeeMachine.start(Drinks.Types.Cappuccino);
+//        Kitchen kitchen = new Kitchen();
+//        WaterTank waterTank = new WaterTank();
+//        Drinks drinks = new Drinks();
+//        BasicCoffeeMachine coffeeMachine = new BasicCoffeeMachineBuilder().setTrash(0).setAmountOfGrains(1000).setWaterTank(waterTank).setAmountOfMilk(5000).setDrink(drinks).createBasicCoffeeMachine();
+//        coffeeMachine.start(Drinks.Types.Americano);
+//        coffeeMachine.start(Drinks.Types.Cappuccino);
 //        coffeeMachine.start(Drinks.Types.Mocha);
 //        coffeeMachine.start(Drinks.Types.Americano);
 //        coffeeMachine.start(Drinks.Types.Americano);

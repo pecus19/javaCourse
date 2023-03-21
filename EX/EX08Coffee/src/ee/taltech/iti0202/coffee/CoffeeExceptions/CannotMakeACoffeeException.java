@@ -1,10 +1,9 @@
 package ee.taltech.iti0202.coffee.CoffeeExceptions;
 
-import ee.taltech.iti0202.coffee.coffeeMachine.AutomaticCoffeeMachine;
 import ee.taltech.iti0202.coffee.coffeeMachine.BasicCoffeeMachine;
 
 public class CannotMakeACoffeeException extends Throwable {
-    private Reason reason;
+    private final Reason reason;
     private BasicCoffeeMachine basicCoffeeMachine;
 
     public enum Reason {
