@@ -1,7 +1,8 @@
-package ee.taltech.iti0202.coffee.coffeeMachine;
+package ee.taltech.iti0202.coffee;
 
 import ee.taltech.iti0202.coffee.CoffeeExceptions.CannotMakeACoffeeException;
 import ee.taltech.iti0202.coffee.builder.AutomaticCoffeeMachineBuilder;
+import ee.taltech.iti0202.coffee.coffeeMachine.AutomaticCoffeeMachine;
 import ee.taltech.iti0202.coffee.drinks.Drinks;
 import ee.taltech.iti0202.coffee.kitchen.Kitchen;
 import ee.taltech.iti0202.coffee.waterTank.WaterTank;
