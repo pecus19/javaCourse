@@ -12,7 +12,8 @@
 ////        Kitchen kitchen = new Kitchen();
 ////        WaterTank waterTank = new WaterTank();
 ////        Drinks drinks = new Drinks();
-////        BasicCoffeeMachine coffeeMachine = new BasicCoffeeMachineBuilder().setTrash(0).setAmountOfGrains(1000).setWaterTank(waterTank).setAmountOfMilk(5000).setDrink(drinks).createBasicCoffeeMachine();
+////        BasicCoffeeMachine coffeeMachine = new BasicCoffeeMachineBuilder().setTrash(0).setAmountOfGrains(1000)
+// .setWaterTank(waterTank).setAmountOfMilk(5000).setDrink(drinks).createBasicCoffeeMachine();
 ////        coffeeMachine.start(Drinks.Types.Americano);
 ////        coffeeMachine.start(Drinks.Types.Cappuccino);
 ////        coffeeMachine.start(Drinks.Types.Mocha);

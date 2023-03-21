@@ -8,6 +8,7 @@ import ee.taltech.iti0202.coffee.waterTank.WaterTank;
 import java.util.logging.Logger;
 
 public class BasicCoffeeMachine {
+    public static final int FIVE_THOUSAND = 5000;
     Logger logger = Logger.getLogger(BasicCoffeeMachine.class.getName());
     private int trash;
     private int amountOfGrains;
@@ -73,8 +74,8 @@ public class BasicCoffeeMachine {
     }
 
     public void addGrains() {
-        if (getAmountOfGrains() < 5000) {
-            setAmountOfGrains(5000);
+        if (getAmountOfGrains() < FIVE_THOUSAND) {
+            setAmountOfGrains(FIVE_THOUSAND);
         }
     }
 
@@ -103,7 +104,8 @@ public class BasicCoffeeMachine {
     }
 
     public Drinks.Types chooseDrink(Drinks.Types types) throws CannotMakeACoffeeException {
-        if (types != null && checkGrains(getDrink(), types) && checkWater(getDrink(), types) && checkMilk(getDrink(), types)) {
+        if (types != null && checkGrains(getDrink(), types) && checkWater(getDrink(), types)
+                && checkMilk(getDrink(), types)) {
             logger.info("Сoffee is being prepared....");
             return types;
         }

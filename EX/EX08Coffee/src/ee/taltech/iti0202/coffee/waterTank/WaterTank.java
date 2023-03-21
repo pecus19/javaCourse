@@ -4,7 +4,7 @@ package ee.taltech.iti0202.coffee.waterTank;
 public class WaterTank {
     public static final int ZERO = 0;
     public static final int BIG = 10000;
-    private int amountOfWater = 10000;
+    private int amountOfWater = BIG;
 
     public void takeWater(int amount) {
         if (canWeTake(amount)) {
