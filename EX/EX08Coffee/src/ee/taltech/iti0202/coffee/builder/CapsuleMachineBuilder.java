@@ -1,6 +1,6 @@
 package ee.taltech.iti0202.coffee.builder;
 
-import ee.taltech.iti0202.coffee.coffeeMachine.CapsuleMachine;
+import ee.taltech.iti0202.coffee.coffeeMachine.CapsuleCoffeeMachine;
 import ee.taltech.iti0202.coffee.drinks.Drinks;
 import ee.taltech.iti0202.coffee.waterTank.WaterTank;
 
@@ -30,7 +30,7 @@ public class CapsuleMachineBuilder {
         return this;
     }
 
-    public CapsuleMachine createCapsuleMachine() {
-        return new CapsuleMachine(trash, waterTank, drink, capsuleIn);
+    public CapsuleCoffeeMachine createCapsuleMachine() {
+        return new CapsuleCoffeeMachine(trash, waterTank, drink, capsuleIn);
     }
 }

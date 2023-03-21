@@ -4,11 +4,11 @@ import ee.taltech.iti0202.coffee.CoffeeExceptions.CannotMakeACoffeeException;
 import ee.taltech.iti0202.coffee.drinks.Drinks;
 import ee.taltech.iti0202.coffee.waterTank.WaterTank;
 
-public class CapsuleMachine extends BasicCoffeeMachine {
+public class CapsuleCoffeeMachine extends BasicCoffeeMachine {
     private boolean capsuleIn;
     private boolean isUsed;
 
-    public CapsuleMachine(int trash, WaterTank waterTank, Drinks drink, boolean capsuleIn) {
+    public CapsuleCoffeeMachine(int trash, WaterTank waterTank, Drinks drink, boolean capsuleIn) {
         super(trash, 0, waterTank, 0, drink);
         this.capsuleIn = capsuleIn;
     }

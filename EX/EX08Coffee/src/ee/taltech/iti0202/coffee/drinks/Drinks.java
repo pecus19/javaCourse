@@ -7,6 +7,7 @@ public class Drinks {
     public static final int FIFTY = 50;
     public static final int SEVENTY_FIVE = 75;
     public static final int HUNDRED = 100;
+    public static final int BIG = 300;
     public static final int TWENTY = 20;
     public static final int ZERO = 0;
     public static final int TEN = 10;
@@ -51,7 +52,7 @@ public class Drinks {
         water.put(Drinks.Types.Latte, HUNDRED);
         water.put(Drinks.Types.Espresso, TWENTY);
         water.put(Drinks.Types.Mocha, HUNDRED);
-        water.put(Types.WATER, 300);
+        water.put(Types.WATER, BIG);
     }
 
     public void addMilk() {
