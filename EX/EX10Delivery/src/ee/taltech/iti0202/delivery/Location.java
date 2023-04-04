@@ -25,8 +25,8 @@ public class Location {
 
     public Optional<Packet> getPacket(String name) {
         if (name != null && packets.containsKey(name)) {
-            packets.remove(name);
             Packet packet = packets.get(name);
+            packets.remove(name);
             return Optional.of(packet);
         }
         return Optional.empty();
