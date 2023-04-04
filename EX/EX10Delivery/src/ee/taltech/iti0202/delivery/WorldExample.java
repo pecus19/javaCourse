@@ -14,7 +14,7 @@ public class WorldExample {
         Packet packetTartu1 = new Packet("tartu1", tallinn);
         Packet packetTartu2 = new Packet("tartu2", tallinn);
         tallinn.addPacket(packetTallinn1);
-        tallinn.addPacket(packetTallinn2); 
+//        tallinn.addPacket(packetTallinn2);
         tartu.addPacket(packetTartu1);
         tartu.addPacket(packetTartu2);
 //

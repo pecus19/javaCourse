@@ -13,11 +13,11 @@ public class Packet {
     }
 
     public Packet(String name, Location target) {
-        this.name=name;
-        this.target=target;
+        this.name = name;
+        this.target = target;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 

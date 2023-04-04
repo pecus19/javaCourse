@@ -43,7 +43,8 @@ public class World {
     }
 
     public Optional<Courier> addCourier(String name, String locationName) {
-        if (name != null && locationName != null && !courierMap.containsKey(name) & locationMap.containsKey(locationName)) {
+        if (name != null && locationName != null && !courierMap.containsKey(name)
+                & locationMap.containsKey(locationName)) {
             Courier courier = new Courier(name);
             courier.setLocation(locationMap.get(locationName));
             courierMap.put(name, courier);
@@ -72,5 +73,17 @@ public class World {
 //                            System.out.println("location does not exist");
 //                        }
 //                );
+//        for (String courier : courierMap.keySet()) {
+//            for (String location : locationMap.keySet()) {
+//                if (courierMap.get(courier).getLocation().isPresent()) {
+//                    if (courierMap.get(courier).getLocation().get()
+//                            .addDistance(courierMap.get(courier).getLocation(),
+//                                    courierMap.get(courier).getLocation().get().getDistanceTo(location)
+//                                            + 1
+//                            ))
+//                        courierMap.get(i).setLocation();
+//                }
+//            }
+//        }
     }
 }
