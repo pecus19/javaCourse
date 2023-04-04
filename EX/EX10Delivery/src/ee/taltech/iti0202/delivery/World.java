@@ -11,7 +11,7 @@ public class World {
 
     public Optional<Location> addLocation(String name, List<String> otherLocations, List<Integer> distances) {
         Set<String> newLocations = new HashSet<>(otherLocations);
-        if (!locationMap.containsKey(name)) {
+        if (locationMap.containsKey(name)) {
             return Optional.empty();
         }
 
