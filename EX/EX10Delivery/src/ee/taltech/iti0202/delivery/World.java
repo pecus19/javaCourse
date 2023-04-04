@@ -10,13 +10,13 @@ public class World {
     private static final Logger LOGGER = Logger.getLogger(World.class.getName());
 
     public Optional<Location> addLocation(String name, List<String> otherLocations, List<Integer> distances) {
-//        if (locationMap.containsKey(name) || otherLocations.size() != distances.size()) {
-//            return Optional.empty();
-//        }
-        Set<String> loc = new HashSet<String>(otherLocations);
-        if (locationMap.containsKey(name) || otherLocations.size() != distances.size()
-                || !loc.containsAll(locationMap.keySet())) {
+        if (locationMap.containsKey(name) || otherLocations.size() != distances.size()) {
             return Optional.empty();
+        }
+        for (int i = 0; i < otherLocations.size(); i++) {
+            if (!locationMap.containsKey(otherLocations.get(i))) {
+                return Optional.empty();
+            }
         }
         Location location = new Location(name);
         for (int i = 0; i < otherLocations.size(); i++) {
