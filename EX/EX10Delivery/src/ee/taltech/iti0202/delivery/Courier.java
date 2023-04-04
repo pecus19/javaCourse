@@ -1,6 +1,5 @@
 package ee.taltech.iti0202.delivery;
 
-import java.util.HashMap;
 import java.util.Optional;
 
 public class Courier {
@@ -32,6 +31,6 @@ public class Courier {
     }
 
     public Optional<Location> getLocation() {
-        return Optional.empty();
+        return location == null ? Optional.empty() : Optional.of(location);
     }
 }
