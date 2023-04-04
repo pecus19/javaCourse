@@ -18,9 +18,7 @@ public class Location {
     }
 
     public void addPacket(Packet packet) {
-        if (!packets.containsKey(packet.getName())) {
-            packets.put(packet.getName(), packet);
-        }
+        packets.put(packet.getName(), packet);
     }
 
     public Optional<Packet> getPacket(String name) {
