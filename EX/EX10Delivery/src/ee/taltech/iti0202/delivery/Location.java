@@ -18,21 +18,22 @@ public class Location {
     }
 
     public void addPacket(Packet packet) {
-        packets.put(packet.getName(), packet);
+        if (!packets.containsKey(packet.getName())) {
+            packets.put(packet.getName(), packet);
+        }
     }
 
     public Optional<Packet> getPacket(String name) {
         if (name != null && packets.containsKey(name)) {
-            packets.remove(name);
-            return Optional.of(packets.get(name));
+            Packet packet = this.packets.get(name);
+            this.packets.remove(name);
+            return Optional.of(packet);
         }
         return Optional.empty();
     }
 
     public void addDistance(String location, int distance) {
-        if (!(location.equals("") && distance != 0)) {
-            distances.put(location, distance);
-        }
+        distances.put(location, distance);
     }
 
     public String getName() {
