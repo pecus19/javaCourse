@@ -32,7 +32,7 @@ public class Location {
     }
 
     public void addDistance(String location, int distance) {
-        if (!(location.equals("") && distance != 0) && !distances.containsKey(location)) {
+        if (!(location.equals("") && distance != 0)) {
             distances.put(location, distance);
         }
     }
