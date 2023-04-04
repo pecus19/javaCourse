@@ -26,7 +26,7 @@ public class World {
     }
 
     public Optional<Courier> addCourier(String name, String locationName) {
-        if (courierMap.containsKey(name) & locationMap.containsKey(locationName)) {
+        if (!courierMap.containsKey(name) & locationMap.containsKey(locationName)) {
             Courier courier = new Courier(name);
             courier.setLocation(locationMap.get(locationName));
             courierMap.put(name, courier);
