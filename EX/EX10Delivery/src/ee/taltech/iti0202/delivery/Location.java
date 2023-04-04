@@ -24,7 +24,7 @@ public class Location {
     }
 
     public Optional<Packet> getPacket(String name) {
-        if (packets.containsKey(name) && name != null) {
+        if (name != null && packets.containsKey(name)) {
             packets.remove(name);
             return Optional.of(packets.get(name));
         }
@@ -32,7 +32,7 @@ public class Location {
     }
 
     public void addDistance(String location, int distance) {
-        if (!distances.containsKey(location) && !(location.equals("") && distance != 0)) {
+        if (!(location.equals("") && distance != 0) && !distances.containsKey(location)) {
             distances.put(location, distance);
         }
     }
