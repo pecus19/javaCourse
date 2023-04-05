@@ -1,6 +1,5 @@
 package ee.taltech.iti0202.kt.registration.service;
 
-import ee.taltech.iti0202.kt.registration.client.Client;
 import ee.taltech.iti0202.kt.registration.employee.Employee;
 
 import java.time.LocalDateTime;
