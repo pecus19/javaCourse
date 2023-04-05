@@ -40,64 +40,23 @@ public class Service {
         return type;
     }
 
-    public void setType(ServiceType type) {
-        this.type = type;
-    }
 
     public Employee getEmployee() {
         return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
     }
 
     public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
-        this.price = price;
-    }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public LocalDateTime getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(LocalDateTime startTime) {
-        this.startTime = startTime;
-    }
-
-    public double getDuration() {
-        return duration;
-    }
-
-    public void setDuration(double duration) {
-        this.duration = duration;
-    }
 
     public Significance getSignificance() {
         return significance;
     }
 
-    public void setSignificance(Significance significance) {
-        this.significance = significance;
-    }
-
-
-    public Client getClientToBeServed() {
-        return clientToBeServed;
-    }
-
-    public void setClientToBeServed(Client clientToBeServed) {
-        this.clientToBeServed = clientToBeServed;
-    }
 }

@@ -9,7 +9,11 @@ public class Employee {
     private String lastName;
     private List<ServiceType> types;
 
-
+    /**
+     * @param name     name
+     * @param lastName lastName
+     * @param types    types
+     */
     public Employee(String name, String lastName, List<ServiceType> types) {
         this.name = name;
         this.lastName = lastName;
@@ -20,24 +24,14 @@ public class Employee {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
 
     public List<ServiceType> getTypes() {
         return types;
-    }
-
-    public void setTypes(List<ServiceType> types) {
-        this.types = types;
     }
 
 }

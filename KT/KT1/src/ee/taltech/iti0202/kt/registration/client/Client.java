@@ -10,6 +10,10 @@ public class Client {
     private Integer money;
     private List<Service> serviceList = new ArrayList<>();
 
+    /**
+     * @param name  name
+     * @param price price
+     */
     public Client(String name, Integer price) {
         this.name = name;
         this.money = price;
@@ -28,15 +32,25 @@ public class Client {
         this.money = money;
     }
 
+    /**
+     * @param service service
+     * @return this
+     */
     public boolean isEnoughMoney(Service service) {
         return (getMoney() - service.getPrice()) >= 0;
     }
 
+    /**
+     * @param service service
+     */
     public void buyService(Service service) {
         setMoney(getMoney() - service.getPrice());
         serviceList.add(service);
     }
 
+    /**
+     * @return serviceList
+     */
     public List<Service> getServiceList() {
         return serviceList;
     }
