@@ -22,6 +22,10 @@ public class BeautySalon {
     private List<Service> bookedServiceList = new ArrayList<>();
     private List<Service> unBookedServiceList = new ArrayList<>();
 
+    /**
+     * @param name  name
+     * @param types types
+     */
     public BeautySalon(String name, List<ServiceType> types) {
         this.name = name;
         this.types = types;
@@ -31,6 +35,13 @@ public class BeautySalon {
         return name;
     }
 
+    /**
+     * @param service service
+     * @param client  client
+     * @return this
+     * @throws NotTheCorrectEmployeeForTheService
+     * @throws BookedService
+     */
     public Service serviceBooking(Service service, Client client) throws NotTheCorrectEmployeeForTheService,
             BookedService {
         if (!client.isEnoughMoney(service)) {
@@ -45,6 +56,11 @@ public class BeautySalon {
         return service;
     }
 
+    /**
+     * @param service service
+     * @param client  client
+     * @throws UnBookedService U
+     */
     public void cancelServiceForClient(Service service, Client client) throws UnBookedService {
         if (!service.isBooked()) {
             throw new UnBookedService();
@@ -57,6 +73,13 @@ public class BeautySalon {
                 service.getName(), client.getName()));
     }
 
+    /**
+     * @param employee employee
+     * @param service  service
+     * @param client   client
+     * @throws UnBookedService
+     * @throws ThisIsVIPService
+     */
     public void cancelServiceForEmployee(Employee employee, Service service, Client client) throws UnBookedService,
             ThisIsVIPService {
         if (!service.isBooked()) {
@@ -73,6 +96,9 @@ public class BeautySalon {
                 service.getName(), employee.getName()));
     }
 
+    /**
+     * @param service service
+     */
     public void removeBookedServiceFromUnBooked(Service service) {
         if (unBookedServiceList.contains(service) && service.isBooked()) {
             bookedServiceList.add(service);
@@ -81,6 +107,10 @@ public class BeautySalon {
         }
     }
 
+    /**
+     * @param type type
+     * @return this
+     */
     public Service findServiceByType(ServiceType type) {
         List<Service> result = new ArrayList<>();
         for (int i = 0; i < unBookedServiceList.size(); i++) {
@@ -103,7 +133,11 @@ public class BeautySalon {
         return result.get(0);
     }
 
-
+    /**
+     * @param service service
+     * @throws NotTheCorrectEmployeeForTheService
+     * @throws BookedService
+     */
     public void addService(Service service) throws NotTheCorrectEmployeeForTheService, BookedService {
         if (!unBookedServiceList.contains(service)) {
             if (!service.isBooked()) {
@@ -121,6 +155,9 @@ public class BeautySalon {
         }
     }
 
+    /**
+     * @param employee employee
+     */
     public void addEmployee(Employee employee) {
         if (!employeeList.contains(employee)) {
             employeeList.add(employee);

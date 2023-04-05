@@ -14,8 +14,16 @@ public class Service {
     private Integer price;
     private Significance significance;
     private boolean isBooked = false;
-    private Client clientToBeServed = null;
 
+    /**
+     * @param name         name
+     * @param type         type
+     * @param startTime    startTime
+     * @param duration     duration
+     * @param employee     employee
+     * @param price        price
+     * @param significance significance
+     */
     public Service(String name, ServiceType type, LocalDateTime startTime, double duration,
                    Employee employee, Integer price, Significance significance) {
         this.name = name;
