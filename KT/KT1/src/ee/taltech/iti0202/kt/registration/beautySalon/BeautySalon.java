@@ -17,9 +17,8 @@ import java.util.logging.Logger;
 public class BeautySalon {
     Logger logger = Logger.getLogger(BeautySalon.class.getName());
     private String name;
-    private List<ServiceType> types = new ArrayList<>();
+    private List<ServiceType> types;
     private List<Employee> employeeList = new ArrayList<>();
-    //    private List<Service> serviceList = new ArrayList<>();
     private List<Service> bookedServiceList = new ArrayList<>();
     private List<Service> unBookedServiceList = new ArrayList<>();
 
@@ -32,20 +31,7 @@ public class BeautySalon {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<ServiceType> getTypes() {
-        return types;
-    }
-
-    public void setTypes(List<ServiceType> types) {
-        this.types = types;
-    }
-
-
-    public void serviceBooking(Service service, Client client) throws NotTheCorrectEmployeeForTheService,
+    public Service serviceBooking(Service service, Client client) throws NotTheCorrectEmployeeForTheService,
             BookedService {
         if (!client.isEnoughMoney(service)) {
             throw new NotTheCorrectEmployeeForTheService();
@@ -56,7 +42,7 @@ public class BeautySalon {
         service.setBooked(true);
         removeBookedServiceFromUnBooked(service);
         client.buyService(service);
-
+        return service;
     }
 
     public void cancelServiceForClient(Service service, Client client) throws UnBookedService {
@@ -66,7 +52,7 @@ public class BeautySalon {
         service.setBooked(false);
         bookedServiceList.remove(service);
         unBookedServiceList.add(service);
-        client.setPrice(client.getPrice() + service.getPrice());
+        client.setMoney(client.getMoney() + service.getPrice());
         logger.info(String.format("The service %s has been canceled by Client with name %s",
                 service.getName(), client.getName()));
     }
@@ -82,7 +68,7 @@ public class BeautySalon {
         service.setBooked(false);
         bookedServiceList.remove(service);
         unBookedServiceList.add(service);
-        client.setPrice(client.getPrice() + service.getPrice());
+        client.setMoney(client.getMoney() + service.getPrice());
         logger.info(String.format("The service %s has been canceled by Employee with name %s",
                 service.getName(), employee.getName()));
     }
@@ -120,17 +106,19 @@ public class BeautySalon {
 
     public void addService(Service service) throws NotTheCorrectEmployeeForTheService, BookedService {
         if (!unBookedServiceList.contains(service)) {
-            if (service.isBooked()) {
+            if (!service.isBooked()) {
                 if (service.getEmployee().getTypes().contains(service.getType())) {
                     unBookedServiceList.add(service);
                     logger.info(String.format("The service %s, employee %s %s was added to the services of the %s",
                             service.getName(), service.getEmployee().getName(), service.getEmployee().getLastName(),
                             this.getName()));
+                } else {
+                    throw new NotTheCorrectEmployeeForTheService();
                 }
-                throw new NotTheCorrectEmployeeForTheService();
             }
+        } else {
+            throw new BookedService();
         }
-        throw new BookedService();
     }
 
     public void addEmployee(Employee employee) {

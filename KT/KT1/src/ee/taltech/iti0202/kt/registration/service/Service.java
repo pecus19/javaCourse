@@ -92,19 +92,6 @@ public class Service {
         this.significance = significance;
     }
 
-    @Override
-    public String toString() {
-        return "Service{" +
-                "name='" + name + '\'' +
-                ", startTime=" + startTime +
-                ", type=" + type +
-                ", duration=" + duration +
-                ", employee=" + employee +
-                ", price=" + price +
-                ", significance=" + significance +
-                ", isBooked=" + isBooked +
-                '}';
-    }
 
     public Client getClientToBeServed() {
         return clientToBeServed;

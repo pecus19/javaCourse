@@ -7,36 +7,33 @@ import java.util.List;
 
 public class Client {
     private String name;
-    private Integer price;
+    private Integer money;
     private List<Service> serviceList = new ArrayList<>();
 
     public Client(String name, Integer price) {
         this.name = name;
-        this.price = price;
+        this.money = price;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+
+    public Integer getMoney() {
+        return money;
     }
 
-    public Integer getPrice() {
-        return price;
-    }
-
-    public void setPrice(Integer price) {
-        this.price = price;
+    public void setMoney(Integer money) {
+        this.money = money;
     }
 
     public boolean isEnoughMoney(Service service) {
-        return (getPrice() - service.getPrice()) >= 0;
+        return (getMoney() - service.getPrice()) >= 0;
     }
 
     public void buyService(Service service) {
-        setPrice(getPrice() - service.getPrice());
+        setMoney(getMoney() - service.getPrice());
         serviceList.add(service);
     }
 

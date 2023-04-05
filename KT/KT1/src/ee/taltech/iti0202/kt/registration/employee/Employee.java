@@ -2,13 +2,12 @@ package ee.taltech.iti0202.kt.registration.employee;
 
 import ee.taltech.iti0202.kt.registration.service.ServiceType;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Employee {
     private String name;
     private String lastName;
-    private List<ServiceType> types = new ArrayList<>();
+    private List<ServiceType> types;
 
 
     public Employee(String name, String lastName, List<ServiceType> types) {
@@ -41,12 +40,4 @@ public class Employee {
         this.types = types;
     }
 
-    @Override
-    public String toString() {
-        return "Cosmetic{" +
-                "name='" + name + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", types=" + types +
-                '}';
-    }
 }
