@@ -1,8 +1,8 @@
-package ee.taltech.iti0202.springboot.controller;
+package ee.taltech.iti0202.controller;
 
-import ee.taltech.iti0202.springboot.repository.EmployeeRepository;
-import ee.taltech.iti0202.springboot.service.EmployeeService;
-import ee.taltech.iti0202.springboot.repository.Employee;
+import ee.taltech.iti0202.repository.EmployeeRepository;
+import ee.taltech.iti0202.service.EmployeeService;
+import ee.taltech.iti0202.repository.Employee;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,12 +27,20 @@ public class EmployeeController {
         return employeeService.findAllEmployees();
     }
 
+    /**
+     * @param id
+     * @return Employee
+     */
     @GetMapping(value = "/employee/{id}")
     public Optional<Employee> getEmployeeById(@PathVariable("id") long id) {
         return Optional.ofNullable(employeeService.findEmployeeById(id));
 
     }
 
+    /**
+     * @param employee employee
+     * @return String
+     */
     @PostMapping("/employee/add")
     public String addEmployee(@RequestBody Employee employee) {
         if (employeeRepository.findByEmailIgnoreCase(employee.getEmail()).isPresent()) {
@@ -43,6 +51,10 @@ public class EmployeeController {
         }
     }
 
+    /**
+     * @param id id
+     * @return String
+     */
     @DeleteMapping("/employee/{id}")
     public String deleteEmployee(@PathVariable("id") long id) {
         Employee employee = employeeService.findEmployeeById(id);
@@ -54,6 +66,11 @@ public class EmployeeController {
         }
     }
 
+    /**
+     * @param id       id
+     * @param employee employee
+     * @return String
+     */
     @PutMapping("/employee/{id}")
     public String updateEmployee(@PathVariable long id, @RequestBody Employee employee) {
         Employee existingEmployee = employeeService.findEmployeeById(id);
@@ -76,6 +93,10 @@ public class EmployeeController {
         return "Employee data overwritten..";
     }
 
+    /**
+     * @param company company
+     * @return List
+     */
     @GetMapping("/employee")
     public List<Employee> sortEmployee(@RequestParam String company) {
         return employeeService.findEmployeesByCompany(company);

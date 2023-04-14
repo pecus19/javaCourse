@@ -1,4 +1,4 @@
-package ee.taltech.iti0202.springboot.repository;
+package ee.taltech.iti0202.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

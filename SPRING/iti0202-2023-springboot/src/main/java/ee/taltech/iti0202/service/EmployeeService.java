@@ -1,7 +1,7 @@
-package ee.taltech.iti0202.springboot.service;
+package ee.taltech.iti0202.service;
 
-import ee.taltech.iti0202.springboot.repository.Employee;
-import ee.taltech.iti0202.springboot.repository.EmployeeRepository;
+import ee.taltech.iti0202.repository.Employee;
+import ee.taltech.iti0202.repository.EmployeeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
