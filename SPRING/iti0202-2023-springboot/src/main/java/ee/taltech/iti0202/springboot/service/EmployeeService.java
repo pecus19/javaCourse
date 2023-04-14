@@ -5,7 +5,8 @@ import ee.taltech.iti0202.springboot.repository.EmployeeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor // loob konstuktori ise parameetriga EmployeeRepository 
 @Service
