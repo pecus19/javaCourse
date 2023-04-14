@@ -1,4 +1,4 @@
-package ee.taltech.iti0202.repository;
+package ee.taltech.iti0202.springboot.repository;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

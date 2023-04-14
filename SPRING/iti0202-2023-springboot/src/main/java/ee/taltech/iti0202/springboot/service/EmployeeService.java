@@ -1,14 +1,14 @@
-package ee.taltech.iti0202.service;
+package ee.taltech.iti0202.springboot.service;
 
-import ee.taltech.iti0202.repository.Employee;
-import ee.taltech.iti0202.repository.EmployeeRepository;
+import ee.taltech.iti0202.springboot.repository.Employee;
+import ee.taltech.iti0202.springboot.repository.EmployeeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-@RequiredArgsConstructor // loob konstuktori ise parameetriga EmployeeRepository 
+@RequiredArgsConstructor // loob konstuktori ise parameetriga EmployeeRepository
 @Service
 public class EmployeeService {
 

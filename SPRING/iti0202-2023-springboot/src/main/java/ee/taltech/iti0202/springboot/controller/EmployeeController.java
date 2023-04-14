@@ -1,8 +1,8 @@
-package ee.taltech.iti0202.controller;
+package ee.taltech.iti0202.springboot.controller;
 
-import ee.taltech.iti0202.repository.EmployeeRepository;
-import ee.taltech.iti0202.service.EmployeeService;
-import ee.taltech.iti0202.repository.Employee;
+import ee.taltech.iti0202.springboot.repository.Employee;
+import ee.taltech.iti0202.springboot.repository.EmployeeRepository;
+import ee.taltech.iti0202.springboot.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
