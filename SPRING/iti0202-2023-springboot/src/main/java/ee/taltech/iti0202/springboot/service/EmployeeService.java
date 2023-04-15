@@ -1,3 +1,6 @@
+/**
+ * EmployeeService
+ */
 package ee.taltech.iti0202.springboot.service;
 
 import ee.taltech.iti0202.springboot.repository.Employee;

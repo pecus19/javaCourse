@@ -43,8 +43,10 @@ public class EmployeeController {
      */
     @PostMapping("/employee/add")
     public String addEmployee(@RequestBody Employee employee) {
-        if (employeeRepository.findByEmailIgnoreCase(employee.getEmail()).isPresent()) {
-            return "This email is already in database or something went wrong!";
+        if (employeeRepository.findByEmailIgnoreCase(
+                employee.getEmail()).isPresent()) {
+            return "This email is already in" +
+                    " database or something went wrong!";
         } else {
             employeeService.addEmployee(employee);
             return "Employee added to database";
@@ -73,13 +75,14 @@ public class EmployeeController {
      */
     @PutMapping("/employee/{id}")
     public String updateEmployee(@PathVariable long id, @RequestBody Employee employee) {
-        Employee existingEmployee = employeeService.findEmployeeById(id);
+        final Employee existingEmployee = employeeService.findEmployeeById(id);
         if (existingEmployee == null) {
             return "Cannot overwrite employee data!";
         }
         String newEmail = employee.getEmail();
         if (!existingEmployee.getEmail().equals(newEmail)) {
-            Optional<Employee> employeeWithEmail = employeeRepository.findByEmailIgnoreCase(newEmail);
+            Optional<Employee> employeeWithEmail
+                    = employeeRepository.findByEmailIgnoreCase(newEmail);
             if (employeeWithEmail.isPresent()) {
                 return "Cannot overwrite employee data!";
             }
