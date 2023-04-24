@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public final class Database {
+public class Database {
     private final Map<Integer, Component> components = new HashMap<>();
     private static Database instance = null;
 
@@ -29,75 +29,59 @@ public final class Database {
             instance = new Database();
         }
         return instance;
-
     }
 
     public void saveComponent(Component component) throws ProductAlreadyExistsException {
-        if (components.containsKey(component.getId())) {
+        boolean check = components.containsKey(component.getId());
+        if (check) {
             throw new ProductAlreadyExistsException();
-        } else {
-            components.put(component.getId(), component);
-
         }
+        components.put(component.getId(), component);
     }
 
     public void deleteComponent(int id) throws ProductNotFoundException {
-        if (components.containsKey(id)) {
-            components.remove(id);
-        } else {
+        boolean check = components.containsKey(id);
+        if (check) {
             throw new ProductNotFoundException();
         }
-
-
+        components.remove(id);
     }
 
     public void increaseComponentStock(int id, int amount) throws ProductNotFoundException {
-        if (amount > 0) {
-            if (components.containsKey(id)) {
-                components.get(id).setAmount(components.get(id).getAmount() + amount);
-            } else {
-                throw new ProductNotFoundException();
-            }
-        } else {
-            throw new IllegalArgumentException();
-        }
-    }
-
-
-    public void decreaseComponentStock(int id, int amount) throws OutOfStockException, ProductNotFoundException {
-        try {
-            if (amount <= 0) {
-                throw new IllegalArgumentException();
-            } else {
-                if (components.get(id).getAmount() < amount) {
-                    throw new OutOfStockException();
-                }
-                if (components.get(id).getAmount() >= amount) {
-                    components.get(id).setAmount(components.get(id).getAmount() - amount);
-                } else {
-                    throw new ProductNotFoundException();
-                }
-            }
-        } catch (NullPointerException e) {
+        boolean check = components.containsKey(id);
+        if (check) {
             throw new ProductNotFoundException();
         }
+        Component component = components.get(id);
+        if (component.getAmount() <= 0) {
+            throw new IllegalArgumentException();
+        }
+        component.setAmount(component.getAmount() + amount);
+    }
+
+    public void decreaseComponentStock(int id, int amount) throws OutOfStockException, ProductNotFoundException {
+        boolean check = components.containsKey(id);
+        if (check) {
+            throw new ProductNotFoundException();
+        }
+        Component component = components.get(id);
+        if (component.getAmount() <= 0) {
+            throw new IllegalArgumentException();
+        }
+        if (component.getAmount() > amount) {
+            throw new OutOfStockException();
+        }
+        component.setAmount(component.getAmount() + amount);
     }
 
     public Map<Integer, Component> getComponents() {
         return components;
     }
 
-    public Component getComponent(int id) {
-        if (components.get(id) != null) {
-            return components.get(id);
-        }
-        return null;
-    }
-
-
     public void resetEntireDatabase() {
-        Component.setCounter(0);
+        Component.setCounter();
         components.clear();
+
     }
 
     public void saveToFile(String location) {
@@ -125,4 +109,3 @@ public final class Database {
         }
     }
 }
-

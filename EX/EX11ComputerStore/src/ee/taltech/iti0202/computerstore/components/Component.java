@@ -11,15 +11,14 @@ public class Component {
     private String manufacturer;
     private int performancePoints;
     private int powerConsumption;
-    private static int counter = 0;
+    private static int counter = -1;
 
     public enum Type {
         CPU, GPU, RAM, MOTHERBOARD, HDD, SSD, PSU, KEYBOARD, TOUCHPAD, SCREEN, BATTERY, FAN
     }
 
-    public Component(String name, Type type, BigDecimal price, String manufacturer,
-                     int performancePoints, int powerConsumption) {
-        this.id = counter;
+    public Component(String name, Type type, BigDecimal price, String manufacturer, int performancePoints, int powerConsumption) {
+        this.id = -1;
         this.name = name;
         this.type = type;
         this.price = price;
@@ -27,14 +26,43 @@ public class Component {
         this.performancePoints = performancePoints;
         this.powerConsumption = powerConsumption;
         counter++;
+        setId(counter);
+    }
+
+    public static void setCounter() {
+        counter = -1;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public void setId(int id) {
         this.id = id;
     }
 
-    public int getId() {
-        return id;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
     public int getAmount() {
@@ -45,56 +73,28 @@ public class Component {
         this.amount = amount;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public Type getType() {
-        return type;
+    public String getManufacturer() {
+        return manufacturer;
     }
 
     public void setManufacturer(String manufacturer) {
         this.manufacturer = manufacturer;
     }
 
-    public void setPerformancePoints(int performancePoints) {
-        this.performancePoints = performancePoints;
-    }
-
-    public void setPowerConsumption(int powerConsumption) {
-        this.powerConsumption = powerConsumption;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public String getManufacturer() {
-        return manufacturer;
-    }
-
     public int getPerformancePoints() {
         return performancePoints;
+    }
+
+    public void setPerformancePoints(int performancePoints) {
+        this.performancePoints = performancePoints;
     }
 
     public int getPowerConsumption() {
         return powerConsumption;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPowerConsumption(int powerConsumption) {
+        this.powerConsumption = powerConsumption;
     }
 
-    public void setType(Type type) {
-        this.type = type;
-    }
-
-    public static void setCounter(int counter) {
-        Component.counter = counter;
-    }
 }
-
