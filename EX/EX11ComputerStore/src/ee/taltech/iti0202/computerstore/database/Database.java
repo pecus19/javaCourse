@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Database {
+public final class Database {
     private final Map<Integer, Component> components = new HashMap<>();
     private static Database instance = null;
 
@@ -29,62 +29,75 @@ public class Database {
             instance = new Database();
         }
         return instance;
+
     }
 
     public void saveComponent(Component component) throws ProductAlreadyExistsException {
-        boolean check = components.containsKey(component.getId());
-        if (check) {
+        if (components.containsKey(component.getId())) {
             throw new ProductAlreadyExistsException();
+        } else {
+            components.put(component.getId(), component);
+
         }
-        components.put(component.getId(), component);
     }
 
     public void deleteComponent(int id) throws ProductNotFoundException {
-        boolean check = components.containsKey(id);
-        if (check) {
+        if (components.containsKey(id)) {
+            components.remove(id);
+        } else {
             throw new ProductNotFoundException();
         }
-        components.remove(id);
+
+
     }
 
     public void increaseComponentStock(int id, int amount) throws ProductNotFoundException {
-        boolean check = components.containsKey(id);
-        if (check) {
-            throw new ProductNotFoundException();
-        }
-        Component component = components.get(id);
-        if (component.getAmount() <= 0) {
+        if (amount > 0) {
+            if (components.containsKey(id)) {
+                components.get(id).setAmount(components.get(id).getAmount() + amount);
+            } else {
+                throw new ProductNotFoundException();
+            }
+        } else {
             throw new IllegalArgumentException();
         }
-        component.setAmount(component.getAmount() + amount);
     }
 
+
     public void decreaseComponentStock(int id, int amount) throws OutOfStockException, ProductNotFoundException {
-        boolean check = components.containsKey(id);
-        if (check) {
+        try {
+            if (amount <= 0) {
+                throw new IllegalArgumentException();
+            } else {
+                if (components.get(id).getAmount() < amount) {
+                    throw new OutOfStockException();
+                }
+                if (components.get(id).getAmount() >= amount) {
+                    components.get(id).setAmount(components.get(id).getAmount() - amount);
+                } else {
+                    throw new ProductNotFoundException();
+                }
+            }
+        } catch (NullPointerException e) {
             throw new ProductNotFoundException();
         }
-        Component component = components.get(id);
-        if (component.getAmount() <= 0) {
-            throw new IllegalArgumentException();
-        }
-        if (component.getAmount() > amount) {
-            throw new OutOfStockException();
-        }
-        component.setAmount(component.getAmount() + amount);
     }
 
     public Map<Integer, Component> getComponents() {
         return components;
     }
 
-    public void resetEntireDatabase() {
-        BigDecimal myBigDecimal = new BigDecimal(12);
-        Component component = new Component("1", Component.Type.GPU, myBigDecimal,
-                "Man", 1, 2);
-        component.setCounter();
-        components.clear();
+    public Component getComponent(int id) {
+        if (components.get(id) != null) {
+            return components.get(id);
+        }
+        return null;
+    }
 
+
+    public void resetEntireDatabase() {
+        Component.setCounter();
+        components.clear();
     }
 
     public void saveToFile(String location) {
@@ -112,3 +125,4 @@ public class Database {
         }
     }
 }
+
