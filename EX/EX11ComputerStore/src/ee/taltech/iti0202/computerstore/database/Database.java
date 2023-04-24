@@ -96,7 +96,7 @@ public final class Database {
 
 
     public void resetEntireDatabase() {
-        Component.setCounter();
+        Component.setCounter(0);
         components.clear();
     }
 
