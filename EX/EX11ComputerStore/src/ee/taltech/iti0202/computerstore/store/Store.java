@@ -27,11 +27,6 @@ public class Store {
     }
 
     public void setProfitMargin(BigDecimal profitMargin) {
-        BigDecimal bg1 = new BigDecimal("1");
-        int res = profitMargin.compareTo(bg1);
-        if (res < 1) {
-            throw new IllegalArgumentException();
-        }
         this.profitMargin = profitMargin;
     }
 
