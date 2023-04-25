@@ -9,7 +9,6 @@ import ee.taltech.iti0202.computerstore.exceptions.ProductNotFoundException;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -52,15 +51,6 @@ public final class Database {
     }
 
     public void increaseComponentStock(int id, int amount) throws ProductNotFoundException {
-//        if (amount > 0) {
-//            if (components.containsKey(id)) {
-//                components.get(id).setAmount(components.get(id).getAmount() + amount);
-//            } else {
-//                throw new ProductNotFoundException();
-//            }
-//        } else {
-//            throw new IllegalArgumentException();
-//        }
         boolean check = components.containsKey(id);
         if (!check) {
             throw new ProductNotFoundException();
@@ -75,7 +65,7 @@ public final class Database {
 
     public void decreaseComponentStock(int id, int amount) throws OutOfStockException, ProductNotFoundException {
         boolean check = components.containsKey(id);
-        if (check) {
+        if (!check) {
             throw new ProductNotFoundException();
         }
         Component component = components.get(id);

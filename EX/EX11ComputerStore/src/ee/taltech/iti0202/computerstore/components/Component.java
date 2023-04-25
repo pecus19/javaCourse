@@ -96,5 +96,4 @@ public class Component {
     public void setPowerConsumption(int powerConsumption) {
         this.powerConsumption = powerConsumption;
     }
-
 }
