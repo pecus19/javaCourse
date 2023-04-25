@@ -72,10 +72,10 @@ public final class Database {
         if (amount <= 0) {
             throw new IllegalArgumentException();
         }
-        if (component.getAmount() < amount) {
+        if (component.getAmount() >= amount) {
             throw new OutOfStockException();
         }
-        component.setAmount(component.getAmount() + amount);
+        component.setAmount(component.getAmount() - amount);
     }
 
     public Map<Integer, Component> getComponents() {
