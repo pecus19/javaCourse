@@ -56,7 +56,7 @@ public final class Database {
             throw new ProductNotFoundException();
         }
         Component component = components.get(id);
-        if (component.getAmount() <= 0) {
+        if (amount <= 0) {
             throw new IllegalArgumentException();
         }
         component.setAmount(component.getAmount() + amount);
@@ -69,7 +69,7 @@ public final class Database {
             throw new ProductNotFoundException();
         }
         Component component = components.get(id);
-        if (component.getAmount() <= 0) {
+        if (amount <= 0) {
             throw new IllegalArgumentException();
         }
         if (component.getAmount() < amount) {
