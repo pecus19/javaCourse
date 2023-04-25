@@ -52,15 +52,24 @@ public final class Database {
     }
 
     public void increaseComponentStock(int id, int amount) throws ProductNotFoundException {
-        if (amount > 0) {
-            if (components.containsKey(id)) {
-                components.get(id).setAmount(components.get(id).getAmount() + amount);
-            } else {
-                throw new ProductNotFoundException();
-            }
-        } else {
+//        if (amount > 0) {
+//            if (components.containsKey(id)) {
+//                components.get(id).setAmount(components.get(id).getAmount() + amount);
+//            } else {
+//                throw new ProductNotFoundException();
+//            }
+//        } else {
+//            throw new IllegalArgumentException();
+//        }
+        boolean check = components.containsKey(id);
+        if (!check) {
+            throw new ProductNotFoundException();
+        }
+        Component component = components.get(id);
+        if (component.getAmount() <= 0) {
             throw new IllegalArgumentException();
         }
+        component.setAmount(component.getAmount() + amount);
     }
 
 
