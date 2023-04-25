@@ -56,13 +56,14 @@ public class Store {
         BigDecimal price = profitMargin.multiply(component.getPrice());
         if (price.compareTo(customer.getBalance()) > 0) {
             throw new NotEnoughMoneyException();
-        }
-        database.decreaseComponentStock(component.getId(), 1);
-        customer.addComponents(component);
+        } else {
+            database.decreaseComponentStock(component.getId(), 1);
 //        database.deleteComponent(id);
-        balance = balance.add(price);
-        customer.setBalance(customer.getBalance().subtract(price));
-        return component;
+            balance = balance.add(price);
+            customer.setBalance(customer.getBalance().subtract(price));
+            customer.addComponents(component);
+            return component;
+        }
     }
 
     public List<Component> getAvailableComponents() {
