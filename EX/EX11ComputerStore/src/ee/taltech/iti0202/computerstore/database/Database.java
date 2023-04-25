@@ -65,17 +65,16 @@ public final class Database {
 
     public void decreaseComponentStock(int id, int amount) throws OutOfStockException, ProductNotFoundException {
         boolean check = components.containsKey(id);
+        Component component = components.get(id);
         if (amount <= 0) {
             throw new IllegalArgumentException();
-        }
-        if (!check) {
+        } else if (!check) {
             throw new ProductNotFoundException();
-        }
-        Component component = components.get(id);
-        if (component.getAmount() >= amount) {
+        } else if (component.getAmount() >= amount) {
             throw new OutOfStockException();
+        } else {
+            component.setAmount(component.getAmount() - amount);
         }
-        component.setAmount(component.getAmount() - amount);
     }
 
 
