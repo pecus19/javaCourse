@@ -82,13 +82,6 @@ public final class Database {
         return components;
     }
 
-    public Component getComponent(int id) {
-        if (components.get(id) != null) {
-            return components.get(id);
-        }
-        return null;
-    }
-
 
     public void resetEntireDatabase() {
         Component.setCounter();
