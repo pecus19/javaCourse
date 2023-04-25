@@ -31,9 +31,17 @@ public class Store {
     }
 
     public Store(String name, BigDecimal balance, BigDecimal profitMargin) {
+//        BigDecimal one = new BigDecimal("1");
+//        if (profitMargin.compareTo(one) > -1) {
+//            throw new IllegalArgumentException();
+//        }
+//        this.name = name;
+//        this.balance = balance;
+//        this.profitMargin = profitMargin;
+//        this.database = Database.getInstance();
         BigDecimal bg1 = new BigDecimal("1");
         int res = profitMargin.compareTo(bg1);
-        if (res < 1) {
+        if (res < 0) {
             throw new IllegalArgumentException();
         } else {
             this.name = name;
@@ -98,7 +106,7 @@ public class Store {
     }
 
     public String getName() {
-        return null;
+        return name;
     }
 
 
