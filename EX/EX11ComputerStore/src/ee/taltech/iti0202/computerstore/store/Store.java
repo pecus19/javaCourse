@@ -41,7 +41,7 @@ public class Store {
 //        this.database = Database.getInstance();
         BigDecimal bg1 = new BigDecimal("1");
         int res = profitMargin.compareTo(bg1);
-        if (res < 0) {
+        if (res < 1) {
             throw new IllegalArgumentException();
         } else {
             this.name = name;
