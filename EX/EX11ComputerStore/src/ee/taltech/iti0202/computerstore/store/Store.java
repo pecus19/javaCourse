@@ -31,16 +31,14 @@ public class Store {
     }
 
     public Store(String name, BigDecimal balance, BigDecimal profitMargin) {
-        BigDecimal bg1 = new BigDecimal("1");
-        int res = profitMargin.compareTo(bg1);
-        if (res < 1) {
+        BigDecimal one = new BigDecimal("1");
+        if (profitMargin.compareTo(one) < 1) {
             throw new IllegalArgumentException();
-        } else {
-            this.name = name;
-            this.balance = balance;
-            this.profitMargin = profitMargin;
-            this.database = Database.getInstance();
         }
+        this.name = name;
+        this.balance = balance;
+        this.profitMargin = profitMargin;
+        this.database = Database.getInstance();
     }
 
     public Component purchaseComponent(int id, Customer customer) throws OutOfStockException,
