@@ -7,7 +7,7 @@ import ee.taltech.iti0202.computerstore.exceptions.NotEnoughMoneyException;
 import ee.taltech.iti0202.computerstore.exceptions.OutOfStockException;
 import ee.taltech.iti0202.computerstore.exceptions.ProductNotFoundException;
 
-import java.math.MathContext;
+import java.math.RoundingMode;
 import java.util.Comparator;
 import java.util.List;
 import java.math.BigDecimal;
@@ -101,13 +101,11 @@ public class Store {
         BigDecimal sum = BigDecimal.valueOf(0);
         for (int i = 0; i < database.getComponents().values().size(); i++) {
             Component component = database.getComponents().get(i);
-            sum = sum.multiply(component.getPrice().multiply(new BigDecimal(component.getAmount()))
+            sum = sum.add(component.getPrice().multiply(new BigDecimal(component.getAmount()))
                     .multiply(profitMargin));
 
         }
-        int six = 6;
-        MathContext mc = new MathContext(six);
-        return sum.round(mc);
+        return sum.setScale(2, RoundingMode.HALF_UP);
     }
 
     public String getName() {
