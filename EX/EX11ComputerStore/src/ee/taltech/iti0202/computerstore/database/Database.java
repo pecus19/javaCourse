@@ -42,11 +42,13 @@ public final class Database {
     }
 
     public void deleteComponent(int id) throws ProductNotFoundException {
-        boolean check = components.containsKey(id);
-        if (check) {
+        if (components.containsKey(id)) {
+            components.remove(id);
+        } else {
             throw new ProductNotFoundException();
         }
-        components.remove(id);
+
+
     }
 
     public void increaseComponentStock(int id, int amount) throws ProductNotFoundException {
