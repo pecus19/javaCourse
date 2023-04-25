@@ -57,8 +57,9 @@ public class Store {
         if (price.compareTo(customer.getBalance()) > 0) {
             throw new NotEnoughMoneyException();
         }
+        database.decreaseComponentStock(component.getId(), 1);
         customer.addComponents(component);
-        database.deleteComponent(id);
+//        database.deleteComponent(id);
         balance = balance.add(price);
         customer.setBalance(customer.getBalance().subtract(price));
         return component;
