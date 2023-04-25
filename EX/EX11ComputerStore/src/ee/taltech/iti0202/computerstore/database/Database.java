@@ -72,7 +72,7 @@ public final class Database {
         if (component.getAmount() <= 0) {
             throw new IllegalArgumentException();
         }
-        if (component.getAmount() > amount) {
+        if (component.getAmount() < amount) {
             throw new OutOfStockException();
         }
         component.setAmount(component.getAmount() + amount);
