@@ -70,7 +70,7 @@ public final class Database {
             throw new IllegalArgumentException();
         } else if (!check) {
             throw new ProductNotFoundException();
-        } else if (component.getAmount() >= amount) {
+        } else if (component.getAmount() < amount) {
             throw new OutOfStockException();
         } else {
             component.setAmount(component.getAmount() - amount);
