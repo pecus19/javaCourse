@@ -36,7 +36,7 @@ public class Store {
 
     public Store(String name, BigDecimal balance, BigDecimal profitMargin) {
         BigDecimal one = new BigDecimal("1");
-        if (profitMargin.compareTo(one) < 1) {
+        if (profitMargin.compareTo(one) < 0) {
             throw new IllegalArgumentException();
         }
         this.name = name;
@@ -57,11 +57,10 @@ public class Store {
         if (price.compareTo(customer.getBalance()) > 0) {
             throw new NotEnoughMoneyException();
         } else {
-            database.decreaseComponentStock(component.getId(), 1);
-//        database.deleteComponent(id);
             balance = balance.add(price);
             customer.setBalance(customer.getBalance().subtract(price));
             customer.addComponents(component);
+            database.decreaseComponentStock(component.getId(), 1);
             return component;
         }
     }
