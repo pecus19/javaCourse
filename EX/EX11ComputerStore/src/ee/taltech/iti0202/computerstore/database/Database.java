@@ -42,45 +42,39 @@ public final class Database {
     }
 
     public void deleteComponent(int id) throws ProductNotFoundException {
-        if (components.containsKey(id)) {
-            components.remove(id);
-        } else {
+        boolean check = components.containsKey(id);
+        if (check) {
             throw new ProductNotFoundException();
         }
-
-
+        components.remove(id);
     }
 
     public void increaseComponentStock(int id, int amount) throws ProductNotFoundException {
-        if (amount > 0) {
-            if (components.containsKey(id)) {
-                components.get(id).setAmount(components.get(id).getAmount() + amount);
-            } else {
-                throw new ProductNotFoundException();
-            }
-        } else {
+        boolean check = components.containsKey(id);
+        if (check) {
+            throw new ProductNotFoundException();
+        }
+        Component component = components.get(id);
+        if (component.getAmount() <= 0) {
             throw new IllegalArgumentException();
         }
+        component.setAmount(component.getAmount() + amount);
     }
 
 
     public void decreaseComponentStock(int id, int amount) throws OutOfStockException, ProductNotFoundException {
-        try {
-            if (amount <= 0) {
-                throw new IllegalArgumentException();
-            } else {
-                if (components.get(id).getAmount() < amount) {
-                    throw new OutOfStockException();
-                }
-                if (components.get(id).getAmount() >= amount) {
-                    components.get(id).setAmount(components.get(id).getAmount() - amount);
-                } else {
-                    throw new ProductNotFoundException();
-                }
-            }
-        } catch (NullPointerException e) {
+        boolean check = components.containsKey(id);
+        if (check) {
             throw new ProductNotFoundException();
         }
+        Component component = components.get(id);
+        if (component.getAmount() <= 0) {
+            throw new IllegalArgumentException();
+        }
+        if (component.getAmount() > amount) {
+            throw new OutOfStockException();
+        }
+        component.setAmount(component.getAmount() + amount);
     }
 
     public Map<Integer, Component> getComponents() {
