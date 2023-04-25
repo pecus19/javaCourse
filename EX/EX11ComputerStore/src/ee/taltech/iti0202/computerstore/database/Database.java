@@ -65,18 +65,19 @@ public final class Database {
 
     public void decreaseComponentStock(int id, int amount) throws OutOfStockException, ProductNotFoundException {
         boolean check = components.containsKey(id);
+        if (amount <= 0) {
+            throw new IllegalArgumentException();
+        }
         if (!check) {
             throw new ProductNotFoundException();
         }
         Component component = components.get(id);
-        if (amount <= 0) {
-            throw new IllegalArgumentException();
-        }
         if (component.getAmount() >= amount) {
             throw new OutOfStockException();
         }
         component.setAmount(component.getAmount() - amount);
     }
+
 
     public Map<Integer, Component> getComponents() {
         return components;
