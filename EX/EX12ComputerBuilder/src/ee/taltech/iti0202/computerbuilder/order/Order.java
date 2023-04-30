@@ -3,21 +3,21 @@ package ee.taltech.iti0202.computerbuilder.order;
 import ee.taltech.iti0202.computerbuilder.computer.Computer;
 
 public class Order {
-    private double budget;
+    private int budget;
     private Computer.UseCase useCase;
     private Computer.ComputerType type;
 
-    public Order(double budget, Computer.UseCase useCase, Computer.ComputerType type) {
+    public Order(int budget, Computer.UseCase useCase, Computer.ComputerType type) {
         this.budget = budget;
         this.useCase = useCase;
         this.type = type;
     }
 
-    public double getBudget() {
+    public Integer getBudget() {
         return budget;
     }
 
-    public void setBudget(double budget) {
+    public void setBudget(int budget) {
         this.budget = budget;
     }
 

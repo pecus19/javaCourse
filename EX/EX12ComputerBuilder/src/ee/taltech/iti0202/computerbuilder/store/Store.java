@@ -1,6 +1,7 @@
 package ee.taltech.iti0202.computerbuilder.store;
 
 import ee.taltech.iti0202.computerbuilder.computer.Computer;
+import ee.taltech.iti0202.computerbuilder.computer.DesktopComputerHDD;
 import ee.taltech.iti0202.computerbuilder.computer.Laptop;
 import ee.taltech.iti0202.computerbuilder.customer.Customer;
 import ee.taltech.iti0202.computerbuilder.components.Component;
@@ -14,6 +15,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class Store {
@@ -125,15 +127,38 @@ public class Store {
         return profitMargin;
     }
 
-    public Laptop assembleComputer(Order order) {
-        Laptop laptop = new Laptop();
+    public Computer assembleComputer(Order order) throws OutOfStockException, ProductNotFoundException {
+        Computer computer = null;
+        Computer ssd;
+        Computer hdd;
+        int budget = order.getBudget() == null ? Integer.MAX_VALUE : order.getBudget();
         if (order.getType().equals(Computer.ComputerType.Desktop)) {
-//            return new DesktopComputer();
-            laptop.assembleLaptop(this, order.getBudget(), order.getUseCase());
-            return laptop.assembleLaptop(this, order.getBudget(), order.getUseCase());
+            ssd = new DesktopComputerHDD().assembleLaptop(this, budget, order.getUseCase());
+            hdd = new DesktopComputerHDD().assembleLaptop(this, budget, order.getUseCase());
+            if (ssd != null && hdd != null) {
+                if (ssd.getTotalPoints() > hdd.getTotalPoints()) {
+                    computer = ssd;
+                } else if (ssd.getTotalPoints() < hdd.getTotalPoints()) {
+                    computer = hdd;
+                } else {
+                    if (ssd.getPrice() > hdd.getPrice()) {
+                        computer = hdd;
+                    } else {
+                        computer = ssd;
+                    }
+                }
+            } else {
+                computer = ssd == null ? hdd : ssd;
+            }
+
         } else if (order.getType().equals(Computer.ComputerType.LAPTOP)) {
-            return laptop.assembleLaptop(this, order.getBudget(), order.getUseCase());
+            computer = new Laptop().assembleLaptop(this, budget, order.getUseCase());
         }
-        return null;
+        return computer;
+
+    }
+
+    public Database getDatabase() {
+        return database;
     }
 }
