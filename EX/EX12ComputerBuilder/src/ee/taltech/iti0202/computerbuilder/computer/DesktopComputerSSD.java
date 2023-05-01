@@ -11,6 +11,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class DesktopComputerSSD extends Computer {
+    private List<Component> processor;
+    private List<Component> graphicsCard;
+    private List<Component> ram;
+    private List<Component> motherboard;
+    private List<Component> ssd;
+    private List<Component> psuList;
+    private List<Component> case1;
+
     public DesktopComputerSSD(Component ssd, Component cpu, Component gpu, Component ram,
                               Component motherboard, Component psu, Component aCase) {
         super.cpu = cpu;
@@ -25,68 +33,80 @@ public class DesktopComputerSSD extends Computer {
     public DesktopComputerSSD() {
     }
 
-    /**
-     * p-graphicsCard
-     * q-ram
-     * r-motherboard
-     * m-hdd
-     * h-psuList
-     * s-case1
-     * c-cpu
-     */
+    @Override
+    public DesktopComputerSSD getComputersWithTheRightPrice(Store store, double budget, Computer.UseCase useCase) {
+        List<DesktopComputerSSD> output;
+        if (isEnoughComponents(store)) {
+            output = findComputersWithRightPrice(budget, useCase);
+            logger.info(String.format("We found %s computer with SSD that are less than your price and " +
+                    "are trying to fount the "
+                    + "best...", output.size()));
+            return output.size() != 0 ? sortAssembleLaptops(output) : null;
+        }
+        return null;
+    }
 
-    public DesktopComputerSSD getComputersWithTheRightPriceSSD(Store store, double budget, Computer.UseCase useCase)
-            throws OutOfStockException, ProductNotFoundException {
-        List<Component> processor = store.filterByType(Component.ComponentType.CPU);
-        List<Component> graphicsCard = store.filterByType(Component.ComponentType.GPU);
-        List<Component> ram = store.filterByType(Component.ComponentType.RAM);
-        List<Component> motherboard = store.filterByType(Component.ComponentType.MOTHERBOARD);
-        List<Component> ssd = store.filterByType(Component.ComponentType.SSD);
-        List<Component> psuList = store.filterByType(Component.ComponentType.PSU);
-        List<Component> case1 = store.filterByType(Component.ComponentType.CASE);
-        List<DesktopComputerSSD> output = processor.stream().flatMap(p -> graphicsCard.stream().flatMap(g -> ram.stream()
-                .flatMap(r -> motherboard.stream().flatMap(m -> ssd.stream().flatMap(h -> psuList.stream()
+    private List<DesktopComputerSSD> findComputersWithRightPrice(double budget, Computer.UseCase useCase) {
+        return ssd.stream().flatMap(p -> processor.stream().flatMap(g -> graphicsCard.stream()
+                .flatMap(r -> ram.stream().flatMap(m -> motherboard.stream().flatMap(h -> psuList.stream()
                         .flatMap(s -> case1.stream().filter(c -> p.getPrice().intValue() + g.getPrice().intValue()
                                         + r.getPrice().intValue() + m.getPrice().intValue() + h.getPrice().intValue()
                                         + s.getPrice().intValue() + c.getPrice().intValue() <= budget)
-                                .filter(c -> p.getPrice().intValue() + g.getPrice().intValue()
-                                        + r.getPrice().intValue() + m.getPrice().intValue() + h.getPrice().intValue()
-                                        + s.getPrice().intValue() + c.getPrice().intValue() <= psu.getPowerConsumption())
-                                .map(c -> {
+                                .filter(c -> p.getPowerConsumption() + g.getPowerConsumption()
+                                        + r.getPowerConsumption() + m.getPowerConsumption() + h.getPowerConsumption()
+                                        + c.getPowerConsumption() <= s.getPowerConsumption()).map(c -> {
                                     DesktopComputerSSD computerSSD = new DesktopComputerSSD(p, g, r, m, h, s, c);
-                                    computerSSD.setPrice(p.getPrice().intValue() + g.getPrice().intValue() + r.getPrice().intValue()
-                                            + m.getPrice().intValue() + h.getPrice().intValue() + s.getPrice().intValue()
-                                            + c.getPrice().intValue());
+                                    computerSSD.setPrice(p.getPrice().intValue() + g.getPrice().intValue()
+                                            + r.getPrice().intValue()
+                                            + m.getPrice().intValue() + h.getPrice().intValue()
+                                            + s.getPrice().intValue() + c.getPrice().intValue());
                                     computerSSD.setTotalPoints(g.getPerformancePoints()
-                                            + r.getPerformancePoints() + m.getPerformancePoints() + h.getPerformancePoints()
-                                            + s.getPerformancePoints());
-                                    findBestLaptopAccordingUseCase(useCase, c.getPerformancePoints(), p.getPerformancePoints());
+                                            + r.getPerformancePoints() + m.getPerformancePoints()
+                                            + h.getPerformancePoints() + s.getPerformancePoints());
+                                    findBestComputerAccordingUseCase(useCase, c.getPerformancePoints(),
+                                            p.getPerformancePoints());
                                     return computerSSD;
                                 }))))))).collect(Collectors.toList());
-
-        logger.info(String.format("We found %s laptops with SSD that are less than your price and are trying to fount the "
-                + "best...", output.size()));
-        return output.size() != 0 ? sortAssembleLaptops(output, useCase, store) : null;
-
-
     }
 
-    public DesktopComputerSSD sortAssembleLaptops(List<DesktopComputerSSD> list, Computer.UseCase useCase, Store store) throws OutOfStockException, ProductNotFoundException {
+    public DesktopComputerSSD sortAssembleLaptops(List<DesktopComputerSSD> list) {
         logger.info("------------------------Sorted assembled laptops with SSD------------------------");
         List<DesktopComputerSSD> output = list.stream().sorted(Comparator.comparing(DesktopComputerSSD::getTotalPoints)
                 .thenComparing(DesktopComputerSSD::getPrice).reversed()).toList();
         for (int i = 0; i < output.size(); i++) {
             logger.info(output.get(i).toString());
         }
-        priceCalculation(list.get(0), store);
         return output.size() != 0 ? output.get(0) : null;
 
     }
 
-    public void priceCalculation(DesktopComputerSSD computer, Store store) throws OutOfStockException, ProductNotFoundException {
+    @Override
+    public Boolean isEnoughComponents(Store store) {
+        if (store.filterByType(Component.ComponentType.CPU).size() != 0
+                & store.filterByType(Component.ComponentType.GPU).size() != 0
+                & store.filterByType(Component.ComponentType.RAM).size() != 0
+                & store.filterByType(Component.ComponentType.MOTHERBOARD).size() != 0
+                & store.filterByType(Component.ComponentType.SSD).size() != 0
+                & store.filterByType(Component.ComponentType.PSU).size() != 0
+                & store.filterByType(Component.ComponentType.CASE).size() != 0) {
+            this.processor = store.filterByType(Component.ComponentType.CPU);
+            this.graphicsCard = store.filterByType(Component.ComponentType.GPU);
+            this.ram = store.filterByType(Component.ComponentType.RAM);
+            this.motherboard = store.filterByType(Component.ComponentType.MOTHERBOARD);
+            this.ssd = store.filterByType(Component.ComponentType.SSD);
+            this.psuList = store.filterByType(Component.ComponentType.PSU);
+            this.case1 = store.filterByType(Component.ComponentType.CASE);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public void priceCalculation(Computer computer, Store store) throws OutOfStockException, ProductNotFoundException {
         int finalPrice = computer.getCpu().getPrice().intValue() + computer.getGpu().getPrice().intValue()
                 + computer.getRam().getPrice().intValue() + computer.getMotherboard().getPrice().intValue()
-                + computer.getHdd().getPrice().intValue() + computer.getPsu().getPrice().intValue()
+                + computer.getSsd().getPrice().intValue() + computer.getPsu().getPrice().intValue()
                 + computer.getaCase().getPrice().intValue()
                 + ASSEMBLY_PRICE;
         setPrice(finalPrice);
@@ -95,24 +115,27 @@ public class DesktopComputerSSD extends Computer {
         store.getDatabase().decreaseComponentStock(computer.getGpu().getId(), 1);
         store.getDatabase().decreaseComponentStock(computer.getRam().getId(), 1);
         store.getDatabase().decreaseComponentStock(computer.getMotherboard().getId(), 1);
-        store.getDatabase().decreaseComponentStock(computer.getHdd().getId(), 1);
+        store.getDatabase().decreaseComponentStock(computer.getSsd().getId(), 1);
         store.getDatabase().decreaseComponentStock(computer.getPsu().getId(), 1);
         store.getDatabase().decreaseComponentStock(computer.getaCase().getId(), 1);
+
     }
 
-    public void findBestLaptopAccordingUseCase(Computer.UseCase useCase, int gpu,
-                                               int processor) {
+    public void findBestComputerAccordingUseCase(Computer.UseCase useCase, int gpu,
+                                                 int processor) {
         if (useCase != null) {
             double sum = useCase.equals(UseCase.GAMING) ? gpu * 1.5 + processor : gpu + processor * 1.5;
             setTotalPoints(getTotalPoints() + sum);
         } else {
             setTotalPoints(gpu + processor);
+
         }
+
     }
 
 
     @Override
-    public DesktopComputerSSD assembleLaptop(Store store, double budget, Computer.UseCase useCase) throws OutOfStockException, ProductNotFoundException {
-        return getComputersWithTheRightPriceSSD(store, budget, useCase);
+    public DesktopComputerSSD assembleLaptop(Store store, double budget, Computer.UseCase useCase) {
+        return getComputersWithTheRightPrice(store, budget, useCase);
     }
 }

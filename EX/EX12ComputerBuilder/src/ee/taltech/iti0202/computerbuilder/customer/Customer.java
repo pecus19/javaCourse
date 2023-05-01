@@ -22,16 +22,6 @@ public class Customer {
         return name;
     }
 
-    public void addComponents(Component component) {
-        if (component != null) {
-            components.add(component);
-        }
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public BigDecimal getBalance() {
         return balance;
     }
@@ -47,6 +37,11 @@ public class Customer {
     public void addComputer(Computer computer) {
         if (!computers.contains(computer)) {
             computers.add(computer);
+        }
+    }
+    public void addComponent(Component component) {
+        if (!components.contains(component)) {
+            components.add(component);
         }
     }
 

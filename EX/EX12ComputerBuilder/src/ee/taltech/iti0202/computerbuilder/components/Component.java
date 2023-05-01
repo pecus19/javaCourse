@@ -13,26 +13,9 @@ public class Component {
     private int powerConsumption;
     private static int counter = -1;
 
-//    @Override
-//    public String toString() {
-//        return "Component{" +
-//                "id=" + id +
-//                ", name='" + name + '\'' +
-//                ", type=" + type +
-//                ", price=" + price +
-//                ", amount=" + amount +
-//                ", manufacturer='" + manufacturer + '\'' +
-//                ", performancePoints=" + performancePoints +
-//                ", powerConsumption=" + powerConsumption +
-//                '}';
-//    }
-
     public enum ComponentType {
         CPU, GPU, RAM, MOTHERBOARD, PSU, KEYBOARD, TOUCHPAD, SCREEN, BATTERY, FAN, CASE, HDD, SSD
     }
-//    public enum StorageType{
-//        HDD, SSD
-//    }
 
     public Component(String name, ComponentType type, BigDecimal price, String manufacturer,
                      int performancePoints, int powerConsumption) {
@@ -63,24 +46,12 @@ public class Component {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public ComponentType getType() {
         return type;
     }
 
-    public void setType(ComponentType type) {
-        this.type = type;
-    }
-
     public BigDecimal getPrice() {
         return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
     }
 
     public int getAmount() {
@@ -91,27 +62,11 @@ public class Component {
         this.amount = amount;
     }
 
-    public String getManufacturer() {
-        return manufacturer;
-    }
-
-    public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
-    }
-
     public int getPerformancePoints() {
         return performancePoints;
     }
 
-    public void setPerformancePoints(int performancePoints) {
-        this.performancePoints = performancePoints;
-    }
-
     public int getPowerConsumption() {
         return powerConsumption;
-    }
-
-    public void setPowerConsumption(int powerConsumption) {
-        this.powerConsumption = powerConsumption;
     }
 }

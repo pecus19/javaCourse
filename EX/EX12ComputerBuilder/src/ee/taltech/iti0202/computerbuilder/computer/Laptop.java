@@ -11,12 +11,28 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Laptop extends Computer {
-//    protected List<Component> keyboard = store.filterByType(Component.ComponentType.KEYBOARD);
-//    protected List<Component> touchpad = store.filterByType(Component.ComponentType.TOUCHPAD);
-//    protected List<Component> screen = store.filterByType(Component.ComponentType.SCREEN);
-//    protected List<Component> battery = store.filterByType(Component.ComponentType.BATTERY);
+    protected List<Component> keyboard;
+    protected List<Component> touchpad;
+    protected List<Component> screen;
+    protected List<Component> battery;
 
     public Laptop() {
+    }
+
+    @Override
+    public Boolean isEnoughComponents(Store store) {
+        if (store.filterByType(Component.ComponentType.KEYBOARD).size() != 0
+                & store.filterByType(Component.ComponentType.TOUCHPAD).size() != 0
+                & store.filterByType(Component.ComponentType.SCREEN).size() != 0
+                & store.filterByType(Component.ComponentType.BATTERY).size() != 0) {
+            this.keyboard = store.filterByType(Component.ComponentType.KEYBOARD);
+            this.touchpad = store.filterByType(Component.ComponentType.TOUCHPAD);
+            this.screen = store.filterByType(Component.ComponentType.SCREEN);
+            this.battery = store.filterByType(Component.ComponentType.BATTERY);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public Laptop(Component keyboard, Component touchpad,
@@ -27,21 +43,20 @@ public class Laptop extends Computer {
         super.battery = battery;
     }
 
-    /**
-     * k-touchpad
-     * t-screen
-     * s-battery
-     * b-keyboard
-     */
+    @Override
+    public Laptop getComputersWithTheRightPrice(Store store, double budget, Computer.UseCase useCase) {
+        List<Laptop> output;
+        if (isEnoughComponents(store)) {
+            output = findComputersWithRightPrice(budget, useCase);
+            logger.info(String.format("We found %s Laptop that are less than your price and are trying to fount the "
+                    + "best...", output.size()));
+            return output.size() != 0 ? sortAssembleLaptops(output, useCase) : null;
+        }
+        return null;
+    }
 
-    public Laptop getComputersWithTheRightPrice(Store store, double budget, Computer.UseCase useCase)
-            throws OutOfStockException, ProductNotFoundException {
-        List<Component> keyboard = store.filterByType(Component.ComponentType.KEYBOARD);
-        List<Component> touchpad = store.filterByType(Component.ComponentType.TOUCHPAD);
-        List<Component> screen = store.filterByType(Component.ComponentType.SCREEN);
-        List<Component> battery = store.filterByType(Component.ComponentType.BATTERY);
-
-        List<Laptop> output = keyboard.stream().flatMap(k -> touchpad.stream().flatMap(t -> screen.stream()
+    public List<Laptop> findComputersWithRightPrice(double budget, Computer.UseCase useCase) {
+        return keyboard.stream().flatMap(k -> touchpad.stream().flatMap(t -> screen.stream()
                 .flatMap(s -> battery.stream().filter(b -> k.getPrice().intValue() + t.getPrice().intValue()
                                 + s.getPrice().intValue() + b.getPrice().intValue() <= budget)
                         .map(b -> {
@@ -49,28 +64,26 @@ public class Laptop extends Computer {
                             laptop.setPrice(k.getPrice().intValue() + t.getPrice().intValue()
                                     + s.getPrice().intValue() + b.getPrice().intValue());
                             laptop.setTotalPoints(k.getPerformancePoints() + b.getPerformancePoints());
-//                            + t.getPerformancePoints() + s.getPerformancePoints()
-                            findBestLaptopAccordingUseCase(useCase, t.getPerformancePoints(), s.getPerformancePoints());
+                            findBestComputerAccordingUseCase(useCase, t.getPerformancePoints(),
+                                    s.getPerformancePoints());
                             return laptop;
                         })))).collect(Collectors.toList());
-        logger.info(String.format("We found %s laptops that are less than your price and are trying to fount the "
-                + "best...", output.size()));
-        return output.size() != 0 ? sortAssembleLaptops(output, useCase, store) : null;
-
     }
 
-    public Laptop sortAssembleLaptops(List<Laptop> list, Computer.UseCase useCase, Store store) throws OutOfStockException, ProductNotFoundException {
+    public Laptop sortAssembleLaptops(List<Laptop> list, Computer.UseCase useCase) {
         logger.info("------------------------Sorted assembled laptops------------------------");
         List<Laptop> output = list.stream().sorted(Comparator.comparing(Laptop::getTotalPoints)
                 .thenComparing(Laptop::getPrice).reversed()).toList();
         for (int i = 0; i < output.size(); i++) {
             logger.info(output.get(i).toString());
         }
-        return output.size() != 0 ? findBestLaptop(output, useCase, store) : null;
+        return output.size() != 0 ? findBestLaptop(output, useCase) : null;
 
     }
 
-    public final void priceCalculation(Laptop laptop, Store store) throws OutOfStockException, ProductNotFoundException {
+    @Override
+    public final void priceCalculation(Computer laptop, Store store) throws OutOfStockException,
+            ProductNotFoundException {
         int finalPrice = laptop.getKeyboard().getPrice().intValue() + laptop.getTouchpad().getPrice().intValue()
                 + laptop.getScreen().getPrice().intValue() + laptop.getBattery().getPrice().intValue()
                 + ASSEMBLY_PRICE;
@@ -80,10 +93,11 @@ public class Laptop extends Computer {
         store.getDatabase().decreaseComponentStock(laptop.getTouchpad().getId(), 1);
         store.getDatabase().decreaseComponentStock(laptop.getScreen().getId(), 1);
         store.getDatabase().decreaseComponentStock(laptop.getBattery().getId(), 1);
+
     }
 
-    public void findBestLaptopAccordingUseCase(Computer.UseCase useCase, int screen,
-                                               int battery) {
+    public void findBestComputerAccordingUseCase(Computer.UseCase useCase, int screen,
+                                                 int battery) {
         if (useCase != null) {
             double sum = useCase.equals(UseCase.GAMING) ? screen * 1.5 + battery : screen + battery * 1.5;
             setTotalPoints(getTotalPoints() + sum);
@@ -92,9 +106,8 @@ public class Laptop extends Computer {
         }
     }
 
-    public Laptop findBestLaptop(List<Laptop> list, Computer.UseCase useCase, Store store) throws OutOfStockException, ProductNotFoundException {
+    public Laptop findBestLaptop(List<Laptop> list, Computer.UseCase useCase) {
         if (useCase == null || (useCase.equals(Computer.UseCase.GAMING) && list.get(0) != null)) {
-            priceCalculation(list.get(0), store);
             return list.get(0);
         }
         if (useCase.equals(Computer.UseCase.WORKSTATION)) {
@@ -104,21 +117,9 @@ public class Laptop extends Computer {
     }
 
     @Override
-    public Laptop assembleLaptop(Store store, double budget, Computer.UseCase useCase) throws OutOfStockException, ProductNotFoundException {
+    public Laptop assembleLaptop(Store store, double budget, Computer.UseCase useCase) {
         return getComputersWithTheRightPrice(store, budget, useCase);
     }
 
-    @Override
-    public String toString() {
-        return "Laptop{" +
-                "store=" + store +
-                ", price=" + getPrice() +
-                ", points=" + getTotalPoints() +
-                ", keyboard=" + keyboard +
-                ", touchpad=" + touchpad +
-                ", screen=" + screen +
-                ", battery=" + battery +
-                '}';
-    }
 
 }
