@@ -131,7 +131,8 @@ class ComputerStoreTest {
                 66, 204);
         Component component6 = new Component("cpu", Component.ComponentType.CPU, new BigDecimal(22), "MSI",
                 66, 205);
-        Component component7 = new Component("motherboard", Component.ComponentType.MOTHERBOARD, new BigDecimal(22), "MSI",
+        Component component7 = new Component("motherboard", Component.ComponentType.MOTHERBOARD,
+                new BigDecimal(22), "MSI",
                 66, 206);
         database.saveComponent(component);
         database.saveComponent(component2);
@@ -171,7 +172,8 @@ class ComputerStoreTest {
                 66, 205);
         Component component8 = new Component("cpu", Component.ComponentType.CPU, new BigDecimal(22), "MSI",
                 67, 205);
-        Component component7 = new Component("motherboard", Component.ComponentType.MOTHERBOARD, new BigDecimal(22), "MSI",
+        Component component7 = new Component("motherboard", Component.ComponentType.MOTHERBOARD,
+                new BigDecimal(22), "MSI",
                 66, 206);
         database.saveComponent(component);
         database.saveComponent(component2);
@@ -210,7 +212,8 @@ class ComputerStoreTest {
                 66, 204);
         Component component6 = new Component("cpu", Component.ComponentType.CPU, new BigDecimal(22), "MSI",
                 66, 205);
-        Component component7 = new Component("motherboard", Component.ComponentType.MOTHERBOARD, new BigDecimal(22), "MSI",
+        Component component7 = new Component("motherboard", Component.ComponentType.MOTHERBOARD,
+                new BigDecimal(22), "MSI",
                 66, 206);
         database.saveComponent(component);
         database.saveComponent(component2);
@@ -250,7 +253,8 @@ class ComputerStoreTest {
                 66, 204);
         Component component6 = new Component("cpu", Component.ComponentType.CPU, new BigDecimal(22), "MSI",
                 66, 205);
-        Component component7 = new Component("motherboard", Component.ComponentType.MOTHERBOARD, new BigDecimal(22), "MSI",
+        Component component7 = new Component("motherboard", Component.ComponentType.MOTHERBOARD,
+                new BigDecimal(22), "MSI",
                 66, 206);
         database.saveComponent(component);
         database.saveComponent(component2);
@@ -286,7 +290,8 @@ class ComputerStoreTest {
                 66, 204);
         Component component6 = new Component("cpu", Component.ComponentType.CPU, new BigDecimal(22), "MSI",
                 66, 205);
-        Component component7 = new Component("motherboard", Component.ComponentType.MOTHERBOARD, new BigDecimal(22), "MSI",
+        Component component7 = new Component("motherboard", Component.ComponentType.MOTHERBOARD,
+                new BigDecimal(22), "MSI",
                 66, 206);
         database.saveComponent(component);
         database.saveComponent(component2);
@@ -323,7 +328,8 @@ class ComputerStoreTest {
                 66, 204);
         Component component6 = new Component("cpu", Component.ComponentType.CPU, new BigDecimal(22), "MSI",
                 66, 205);
-        Component component7 = new Component("motherboard", Component.ComponentType.MOTHERBOARD, new BigDecimal(22), "MSI",
+        Component component7 = new Component("motherboard", Component.ComponentType.MOTHERBOARD,
+                new BigDecimal(22), "MSI",
                 66, 206);
         database.saveComponent(component);
         database.saveComponent(component2);
@@ -364,7 +370,8 @@ class ComputerStoreTest {
                 66, 204);
         Component component6 = new Component("cpu", Component.ComponentType.CPU, new BigDecimal(22), "MSI",
                 66, 205);
-        Component component7 = new Component("motherboard", Component.ComponentType.MOTHERBOARD, new BigDecimal(22), "MSI",
+        Component component7 = new Component("motherboard", Component.ComponentType.MOTHERBOARD,
+                new BigDecimal(22), "MSI",
                 66, 206);
         database.saveComponent(component);
         database.saveComponent(component2);
@@ -405,7 +412,8 @@ class ComputerStoreTest {
                 66, 204);
         Component component6 = new Component("cpu", Component.ComponentType.CPU, new BigDecimal(22), "MSI",
                 66, 205);
-        Component component7 = new Component("motherboard", Component.ComponentType.MOTHERBOARD, new BigDecimal(22), "MSI",
+        Component component7 = new Component("motherboard", Component.ComponentType.MOTHERBOARD,
+                new BigDecimal(22), "MSI",
                 66, 206);
         database.saveComponent(component);
         database.saveComponent(component2);
@@ -442,17 +450,23 @@ class ComputerStoreTest {
                 66, 204);
         Component component6 = new Component("cpu", Component.ComponentType.CPU, new BigDecimal(22), "MSI",
                 66, 205);
-        Component component7 = new Component("motherboard", Component.ComponentType.MOTHERBOARD, new BigDecimal(22), "MSI",
+        Component component7 = new Component("motherboard", Component.ComponentType.MOTHERBOARD,
+                new BigDecimal(22), "MSI",
                 66, 206);
-        Component component13 = new Component("component1", Component.ComponentType.KEYBOARD, new BigDecimal(43), "MSI",
+        Component component13 = new Component("component1", Component.ComponentType.KEYBOARD,
+                new BigDecimal(43), "MSI",
                 1, 200);
-        Component component9 = new Component("component2", Component.ComponentType.TOUCHPAD, new BigDecimal(34), "MSI",
+        Component component9 = new Component("component2", Component.ComponentType.TOUCHPAD,
+                new BigDecimal(34), "MSI",
                 3, 100);
-        Component component10 = new Component("component3", Component.ComponentType.SCREEN, new BigDecimal(12), "MSI",
+        Component component10 = new Component("component3", Component.ComponentType.SCREEN,
+                new BigDecimal(12), "MSI",
                 5, 50);
-        Component component11 = new Component("component4", Component.ComponentType.BATTERY, new BigDecimal(24), "MSI",
+        Component component11 = new Component("component4", Component.ComponentType.BATTERY,
+                new BigDecimal(24), "MSI",
                 8, 70);
-        Component component12 = new Component("component5", Component.ComponentType.KEYBOARD, new BigDecimal(22), "MSI",
+        Component component12 = new Component("component5", Component.ComponentType.KEYBOARD,
+                new BigDecimal(22), "MSI",
                 66, 200);
         database.saveComponent(component);
         database.saveComponent(component2);
@@ -494,7 +508,8 @@ class ComputerStoreTest {
                 66, 204);
         Component component6 = new Component("cpu", Component.ComponentType.CPU, new BigDecimal(22), "MSI",
                 66, 205);
-        Component component7 = new Component("motherboard", Component.ComponentType.MOTHERBOARD, new BigDecimal(22), "MSI",
+        Component component7 = new Component("motherboard", Component.ComponentType.MOTHERBOARD,
+                new BigDecimal(22), "MSI",
                 66, 206);
         Component component9 = new Component("ssd", Component.ComponentType.SSD, new BigDecimal(12), "MSI",
                 6, 202);
@@ -506,7 +521,8 @@ class ComputerStoreTest {
                 66, 204);
         Component component13 = new Component("cpu", Component.ComponentType.CPU, new BigDecimal(22), "MSI",
                 66, 205);
-        Component component14 = new Component("motherboard", Component.ComponentType.MOTHERBOARD, new BigDecimal(22), "MSI",
+        Component component14 = new Component("motherboard", Component.ComponentType.MOTHERBOARD,
+                new BigDecimal(22), "MSI",
                 66, 206);
 
         database.saveComponent(component);
@@ -567,7 +583,8 @@ class ComputerStoreTest {
         Database database = Database.getInstance();
         Store store4 = new Store("Store", new BigDecimal(1), new BigDecimal(1));
         Customer customer = new Customer("Danila", new BigDecimal(100));
-        Component component = new Component("graphicsCard", Component.ComponentType.GPU, new BigDecimal(43), "MSI",
+        Component component = new Component("graphicsCard", Component.ComponentType.GPU,
+                new BigDecimal(43), "MSI",
                 1, 200);
         Component component2 = new Component("ram", Component.ComponentType.RAM, new BigDecimal(34), "MSI",
                 3, 201);
@@ -624,7 +641,8 @@ class ComputerStoreTest {
         Database database = Database.getInstance();
         Store store4 = new Store("Store", new BigDecimal(1), new BigDecimal(1));
         Customer customer = new Customer("Danila", new BigDecimal(1100));
-        Component component = new Component("graphicsCard", Component.ComponentType.GPU, new BigDecimal(43), "MSI",
+        Component component = new Component("graphicsCard", Component.ComponentType.GPU,
+                new BigDecimal(43), "MSI",
                 1, 200);
         Component component2 = new Component("ram", Component.ComponentType.RAM, new BigDecimal(34), "MSI",
                 3, 201);
@@ -650,7 +668,8 @@ class ComputerStoreTest {
         Database database = Database.getInstance();
         Store store4 = new Store("Store", new BigDecimal(1), new BigDecimal(1));
         Customer customer = new Customer("Danila", new BigDecimal(1100));
-        Component component = new Component("graphicsCard", Component.ComponentType.GPU, new BigDecimal(43), "MSI",
+        Component component = new Component("graphicsCard", Component.ComponentType.GPU,
+                new BigDecimal(43), "MSI",
                 1, 200);
         Component component2 = new Component("ram", Component.ComponentType.RAM, new BigDecimal(34), "MSI",
                 3, 201);
