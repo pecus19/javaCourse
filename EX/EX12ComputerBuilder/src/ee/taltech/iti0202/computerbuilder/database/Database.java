@@ -31,7 +31,7 @@ public final class Database {
         List<Component> components = customerComponentMap.get(customer);
         if (components == null) {
             components = new ArrayList<>();
-            customerComponentMap.put(customer,components);
+            customerComponentMap.put(customer, components);
         }
         components.add(component);
     }
