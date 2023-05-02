@@ -10,15 +10,15 @@ import ee.taltech.iti0202.computerbuilder.exceptions.ProductAlreadyExistsExcepti
 import ee.taltech.iti0202.computerbuilder.exceptions.ProductNotFoundException;
 import ee.taltech.iti0202.computerbuilder.order.Order;
 import ee.taltech.iti0202.computerbuilder.store.Store;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class ComputerStoreTest {
     @Test
-    protected void buyBasicLaptopTest() throws ProductAlreadyExistsException, OutOfStockException, ProductNotFoundException {
+    protected void buyBasicLaptopTest() throws ProductAlreadyExistsException, OutOfStockException,
+            ProductNotFoundException {
         Database database = Database.getInstance();
         Store store = new Store("Store", new BigDecimal(100), new BigDecimal(123));
         Customer customer = new Customer("Danila", new BigDecimal(1000));
@@ -39,14 +39,15 @@ class ComputerStoreTest {
         database.saveComponent(component4);
         database.saveComponent(component5);
         Computer laptop1 = store.assembleComputer(order, customer);
-        assertSame(component5, laptop1.getKeyboard());
-        assertSame(component2, laptop1.getTouchpad());
-        assertSame(component3, laptop1.getScreen());
-        assertSame(component5, laptop1.getKeyboard());
+        Assertions.assertSame(component5, laptop1.getKeyboard());
+        Assertions.assertSame(component2, laptop1.getTouchpad());
+        Assertions.assertSame(component3, laptop1.getScreen());
+        Assertions.assertSame(component5, laptop1.getKeyboard());
     }
 
     @Test
-    protected void theDifferenceBetweenLaptopsIsMinimalTest() throws ProductAlreadyExistsException, OutOfStockException, ProductNotFoundException {
+    protected void theDifferenceBetweenLaptopsIsMinimalTest() throws ProductAlreadyExistsException, OutOfStockException,
+            ProductNotFoundException {
         Database database = Database.getInstance();
         Store store = new Store("Store", new BigDecimal(100), new BigDecimal(123));
         Customer customer = new Customer("Danila", new BigDecimal(1000));
@@ -67,14 +68,15 @@ class ComputerStoreTest {
         database.saveComponent(component4);
         database.saveComponent(component5);
         Computer laptop1 = store.assembleComputer(order, customer);
-        assertSame(component5, laptop1.getKeyboard());
-        assertSame(component2, laptop1.getTouchpad());
-        assertSame(component3, laptop1.getScreen());
-        assertSame(component5, laptop1.getKeyboard());
+        Assertions.assertSame(component5, laptop1.getKeyboard());
+        Assertions.assertSame(component2, laptop1.getTouchpad());
+        Assertions.assertSame(component3, laptop1.getScreen());
+        Assertions.assertSame(component5, laptop1.getKeyboard());
     }
 
     @Test
-    protected void checkMoneyAfterBuyingTest() throws ProductAlreadyExistsException, OutOfStockException, ProductNotFoundException {
+    protected void checkMoneyAfterBuyingTest() throws ProductAlreadyExistsException, OutOfStockException,
+            ProductNotFoundException {
         Database database = Database.getInstance();
         Store store = new Store("Store", new BigDecimal(100), new BigDecimal(123));
         Customer customer = new Customer("Danila", new BigDecimal(1000));
@@ -97,7 +99,7 @@ class ComputerStoreTest {
         int priceForAssembleLaptop = 15;
         int moneyBeforeBuying = store.getBalance().intValue();
         Computer laptop = store.assembleComputer(order, customer);
-        assertEquals(laptop.getPrice(), store.getBalance().intValueExact() - moneyBeforeBuying
+        Assertions.assertEquals(laptop.getPrice(), store.getBalance().intValueExact() - moneyBeforeBuying
                 - priceForAssembleLaptop);
 
     }
@@ -111,7 +113,8 @@ class ComputerStoreTest {
 //     * s-case1
 //     * c-cpu
     @Test
-    protected void basicDesktopComputerHDDTest() throws ProductAlreadyExistsException, OutOfStockException, ProductNotFoundException {
+    protected void basicDesktopComputerHDDTest() throws ProductAlreadyExistsException, OutOfStockException,
+            ProductNotFoundException {
         Database database = Database.getInstance();
         Store store = new Store("Store", new BigDecimal(100), new BigDecimal(123));
         Customer customer = new Customer("Danila", new BigDecimal(1000));
@@ -144,11 +147,12 @@ class ComputerStoreTest {
 //        assertSame(component4, computer.getPsu());
 //        assertSame(component5, computer.getaCase());
 //        assertSame(component6, computer.getCpu());
-        assertSame(component7, computer.getMotherboard());
+        Assertions.assertSame(component7, computer.getMotherboard());
     }
 
     @Test
-    protected void choosesAMorePowerfulCpuTest() throws ProductAlreadyExistsException, OutOfStockException, ProductNotFoundException {
+    protected void choosesAMorePowerfulCpuTest() throws ProductAlreadyExistsException, OutOfStockException,
+            ProductNotFoundException {
         Database database = Database.getInstance();
         Store store = new Store("Store", new BigDecimal(100), new BigDecimal(123));
         Customer customer = new Customer("Danila", new BigDecimal(1000));
@@ -184,11 +188,12 @@ class ComputerStoreTest {
 //        assertSame(component4, computer.getPsu());
 //        assertSame(component5, computer.getaCase());
 //        assertSame(component8, computer.getCpu());
-        assertSame(component7, computer.getMotherboard());
+        Assertions.assertSame(component7, computer.getMotherboard());
     }
 
     @Test
-    protected void basicDesktopComputerSSDTest() throws ProductAlreadyExistsException, OutOfStockException, ProductNotFoundException {
+    protected void basicDesktopComputerSSDTest() throws ProductAlreadyExistsException, OutOfStockException,
+            ProductNotFoundException {
         Database database = Database.getInstance();
         Store store = new Store("Store", new BigDecimal(100), new BigDecimal(123));
         Customer customer = new Customer("Danila", new BigDecimal(1000));
@@ -221,11 +226,12 @@ class ComputerStoreTest {
 //        assertSame(component4, computer.getPsu());
 //        assertSame(component5, computer.getaCase());
 //        assertSame(component6, computer.getCpu());
-        assertSame(component7, computer.getMotherboard());
+        Assertions.assertSame(component7, computer.getMotherboard());
     }
 
     @Test
-    protected void basicChooseBetweenSsdAndHddTest() throws ProductAlreadyExistsException, OutOfStockException, ProductNotFoundException {
+    protected void basicChooseBetweenSsdAndHddTest() throws ProductAlreadyExistsException, OutOfStockException,
+            ProductNotFoundException {
         Database database = Database.getInstance();
         Store store = new Store("Store", new BigDecimal(100), new BigDecimal(123));
         Customer customer = new Customer("Danila", new BigDecimal(1000));
@@ -261,11 +267,11 @@ class ComputerStoreTest {
 //        assertSame(component4, computer.getPsu());
 //        assertSame(component5, computer.getaCase());
 //        assertSame(component6, computer.getCpu());
-        assertSame(component7, computer.getMotherboard());
+        Assertions.assertSame(component7, computer.getMotherboard());
     }
 
     @Test
-    protected void missingOneComponentTest() throws ProductAlreadyExistsException, OutOfStockException, ProductNotFoundException {
+    protected void missingOneComponentTest() throws ProductAlreadyExistsException, OutOfStockException {
         Database database = Database.getInstance();
         Store store = new Store("Store", new BigDecimal(100), new BigDecimal(123));
         Customer customer = new Customer("Danila", new BigDecimal(1000));
@@ -291,12 +297,14 @@ class ComputerStoreTest {
         try {
             store.assembleComputer(order, customer);
         } catch (ProductNotFoundException ex) {
-            assertEquals("We don't have all components in the store or this price is too small to create a computer!", ex.getMessage());
+            Assertions.assertEquals("We don't have all components in the store or this price is too "
+                    + "small to create a computer!", ex.getMessage());
         }
     }
 
     @Test
-    protected void noBudgetAmountTest() throws ProductAlreadyExistsException, OutOfStockException, ProductNotFoundException {
+    protected void noBudgetAmountTest() throws ProductAlreadyExistsException, OutOfStockException,
+            ProductNotFoundException {
         Database database = Database.getInstance();
         Store store = new Store("Store", new BigDecimal(100), new BigDecimal(123));
         Customer customer = new Customer("Danila", new BigDecimal(1000));
@@ -326,17 +334,18 @@ class ComputerStoreTest {
         database.saveComponent(component7);
         database.saveComponent(component8);
         Computer computer = store.assembleComputer(order, customer);
-        assertSame(component, computer.getGpu());
-        assertSame(component2, computer.getRam());
-        assertSame(component3, computer.getSsd());
-        assertSame(component4, computer.getPsu());
-        assertSame(component5, computer.getaCase());
-        assertSame(component6, computer.getCpu());
-        assertSame(component7, computer.getMotherboard());
+        Assertions.assertSame(component, computer.getGpu());
+        Assertions.assertSame(component2, computer.getRam());
+        Assertions.assertSame(component3, computer.getSsd());
+        Assertions.assertSame(component4, computer.getPsu());
+        Assertions.assertSame(component5, computer.getaCase());
+        Assertions.assertSame(component6, computer.getCpu());
+        Assertions.assertSame(component7, computer.getMotherboard());
     }
 
     @Test
-    protected void noUseCaseSpecified() throws ProductAlreadyExistsException, OutOfStockException, ProductNotFoundException {
+    protected void noUseCaseSpecified() throws ProductAlreadyExistsException, OutOfStockException,
+            ProductNotFoundException {
         Database database = Database.getInstance();
         Store store = new Store("Store", new BigDecimal(100), new BigDecimal(123));
         Customer customer = new Customer("Danila", new BigDecimal(1000));
@@ -366,17 +375,18 @@ class ComputerStoreTest {
         database.saveComponent(component7);
         database.saveComponent(component8);
         Computer computer = store.assembleComputer(order, customer);
-        assertSame(component, computer.getGpu());
-        assertSame(component2, computer.getRam());
-        assertSame(component3, computer.getSsd());
-        assertSame(component4, computer.getPsu());
-        assertSame(component5, computer.getaCase());
-        assertSame(component6, computer.getCpu());
-        assertSame(component7, computer.getMotherboard());
+        Assertions.assertSame(component, computer.getGpu());
+        Assertions.assertSame(component2, computer.getRam());
+        Assertions.assertSame(component3, computer.getSsd());
+        Assertions.assertSame(component4, computer.getPsu());
+        Assertions.assertSame(component5, computer.getaCase());
+        Assertions.assertSame(component6, computer.getCpu());
+        Assertions.assertSame(component7, computer.getMotherboard());
     }
 
     @Test
-    protected void checkAfterBuyingTest() throws ProductAlreadyExistsException, OutOfStockException, ProductNotFoundException {
+    protected void checkAfterBuyingTest() throws ProductAlreadyExistsException, OutOfStockException,
+            ProductNotFoundException {
         Database database = Database.getInstance();
         Store store = new Store("Store", new BigDecimal(100), new BigDecimal(123));
         Customer customer = new Customer("Danila", new BigDecimal(1000));
@@ -407,11 +417,12 @@ class ComputerStoreTest {
         database.saveComponent(component8);
         int checkValance = store.getBalance().intValue() + 194;
         store.assembleComputer(order, customer);
-        assertEquals(checkValance, store.getBalance().intValue());
+        Assertions.assertEquals(checkValance, store.getBalance().intValue());
     }
 
     @Test
-    protected void customerBoughtTwoComputersTest() throws ProductAlreadyExistsException, OutOfStockException, ProductNotFoundException {
+    protected void customerBoughtTwoComputersTest() throws ProductAlreadyExistsException, OutOfStockException,
+            ProductNotFoundException {
         Database database = Database.getInstance();
         Store store = new Store("Store", new BigDecimal(100), new BigDecimal(123));
         Customer customer = new Customer("Danila", new BigDecimal(1000));
@@ -458,11 +469,12 @@ class ComputerStoreTest {
         database.saveComponent(component13);
         store.assembleComputer(order, customer);
         store.assembleComputer(order2, customer);
-        assertEquals(2, customer.getComputers().size());
+        Assertions.assertEquals(2, customer.getComputers().size());
     }
 
     @Test
-    protected void canNotUseComponentsForSecondOrderTest() throws ProductAlreadyExistsException, OutOfStockException, ProductNotFoundException {
+    protected void canNotUseComponentsForSecondOrderTest() throws ProductAlreadyExistsException, OutOfStockException,
+            ProductNotFoundException {
         Database database = Database.getInstance();
         Store store = new Store("Store", new BigDecimal(100), new BigDecimal(123));
         Customer customer = new Customer("Danila", new BigDecimal(1000));
@@ -515,7 +527,8 @@ class ComputerStoreTest {
         try {
             store.assembleComputer(order2, customer);
         } catch (ProductNotFoundException ex) {
-            assertEquals("We don't have all components in the store or this price is too small to create a computer!", ex.getMessage());
+            Assertions.assertEquals("We don't have all components in the store or this price is too "
+                    + "small to create a computer!", ex.getMessage());
         }
     }
 
@@ -544,11 +557,12 @@ class ComputerStoreTest {
         database.increaseComponentStock(component.getId(), 2);
         int balanceBefore = store4.getBalance().intValue();
         store4.purchaseComponent(component.getId(), customer);
-        assertEquals(store4.getBalance().intValue(), balanceBefore + component.getPrice().intValue());
+        Assertions.assertEquals(store4.getBalance().intValue(), balanceBefore + component.getPrice().intValue());
     }
 
     @Test
-    protected void buyComponentsSeparatelySecondTimeAndProductOutOfStockTest() throws ProductAlreadyExistsException, OutOfStockException,
+    protected void buyComponentsSeparatelySecondTimeAndProductOutOfStockTest() throws ProductAlreadyExistsException,
+            OutOfStockException,
             ProductNotFoundException, NotEnoughMoneyException {
         Database database = Database.getInstance();
         Store store4 = new Store("Store", new BigDecimal(1), new BigDecimal(1));
@@ -573,7 +587,7 @@ class ComputerStoreTest {
         try {
             store4.purchaseComponent(component.getId(), customer);
         } catch (OutOfStockException ex) {
-            assertEquals("The Component is out of stock!", ex.getMessage());
+            Assertions.assertEquals("The Component is out of stock!", ex.getMessage());
         }
     }
 
@@ -602,7 +616,7 @@ class ComputerStoreTest {
         store4.purchaseComponent(component.getId(), customer);
         store4.purchaseComponent(component2.getId(), customer);
         store4.purchaseComponent(component3.getId(), customer);
-        assertEquals(3, customer.getComponents().size());
+        Assertions.assertEquals(3, customer.getComponents().size());
     }
 
     @Test
@@ -627,11 +641,12 @@ class ComputerStoreTest {
         database.saveComponent(component4);
         database.saveComponent(component8);
         database.resetEntireDatabase();
-        assertEquals(0, database.getComponents().size());
+        Assertions.assertEquals(0, database.getComponents().size());
     }
 
     @Test
-    protected void sortByDifferentTypesTest() throws ProductAlreadyExistsException, ProductNotFoundException, OutOfStockException {
+    protected void sortByDifferentTypesTest() throws ProductAlreadyExistsException, ProductNotFoundException,
+            OutOfStockException {
         Database database = Database.getInstance();
         Store store4 = new Store("Store", new BigDecimal(1), new BigDecimal(1));
         Customer customer = new Customer("Danila", new BigDecimal(1100));
@@ -654,47 +669,43 @@ class ComputerStoreTest {
         database.increaseComponentStock(component.getId(), 4);
         database.increaseComponentStock(component2.getId(), 1);
         database.decreaseComponentStock(component.getId(), 1);
-        assertEquals(component, store4.getComponentsSortedByAmount()
+        Assertions.assertEquals(component, store4.getComponentsSortedByAmount()
                 .get(store4.getComponentsSortedByAmount().size() - 1));
-        assertEquals("Assd", store4.getComponentsSortedByName()
+        Assertions.assertEquals("Assd", store4.getComponentsSortedByName()
                 .get(0).getName());
-        assertSame(11, store4.getComponentsSortedByPrice()
+        Assertions.assertSame(11, store4.getComponentsSortedByPrice()
                 .get(0).getPrice().intValue());
         try {
             store4.setProfitMargin(BigDecimal.valueOf(0));
         } catch (IllegalArgumentException ex) {
-            assertEquals("assertThrowsException", ex.getMessage());
+            Assertions.assertEquals("assertThrowsException", ex.getMessage());
         }
         store4.setProfitMargin(BigDecimal.valueOf(1));
-        assertEquals(1, store4.getProfitMargin().intValue());
+        Assertions.assertEquals(1, store4.getProfitMargin().intValue());
         try {
             database.saveComponent(component);
         } catch (ProductAlreadyExistsException ex) {
-            assertEquals("Product already exists exception!", ex.getMessage());
+            Assertions.assertEquals("Product already exists exception!", ex.getMessage());
         }
         try {
             store4.purchaseComponent(322, customer);
         } catch (ProductNotFoundException | NotEnoughMoneyException ex) {
-            assertEquals("We don't have all components in the store or this price is too small to "
+            Assertions.assertEquals("We don't have all components in the store or this price is too small to "
                     + "create a computer!", ex.getMessage());
         }
-        assertEquals(287, store4.getInventoryValue().intValue());
+        Assertions.assertEquals(287, store4.getInventoryValue().intValue());
         database.deleteComponent(0);
         try {
             database.deleteComponent(0);
         } catch (ProductNotFoundException ex) {
-            assertEquals("We don't have all components in the store or this price is too small to "
+            Assertions.assertEquals("We don't have all components in the store or this price is too small to "
                     + "create a computer!", ex.getMessage());
         }
         try {
             database.decreaseComponentStock(0, 1);
         } catch (ProductNotFoundException ex) {
-            assertEquals("We don't have all components in the store or this price is too small to "
+            Assertions.assertEquals("We don't have all components in the store or this price is too small to "
                     + "create a computer!", ex.getMessage());
         }
-
-
     }
-
-
 }
