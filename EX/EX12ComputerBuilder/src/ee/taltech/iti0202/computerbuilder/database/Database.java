@@ -1,15 +1,19 @@
 package ee.taltech.iti0202.computerbuilder.database;
 
 import ee.taltech.iti0202.computerbuilder.components.Component;
+import ee.taltech.iti0202.computerbuilder.customer.Customer;
 import ee.taltech.iti0202.computerbuilder.exceptions.OutOfStockException;
 import ee.taltech.iti0202.computerbuilder.exceptions.ProductAlreadyExistsException;
 import ee.taltech.iti0202.computerbuilder.exceptions.ProductNotFoundException;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public final class Database {
-    private final Map<Integer, Component> components = new HashMap<>();
+    private Map<Integer, Component> components = new HashMap<>();
+    private Map<Customer, List<Component>> customerComponentMap = new HashMap<>();
     private static Database instance = null;
 
     private Database() {
@@ -21,6 +25,15 @@ public final class Database {
         }
         return instance;
 
+    }
+
+    public void addComponentToTheCustomer(Customer customer, Component component) {
+        List<Component> components = customerComponentMap.get(customer);
+        if (components == null) {
+            components = new ArrayList<>();
+            customerComponentMap.put(customer,components);
+        }
+        components.add(component);
     }
 
     public void saveComponent(Component component) throws ProductAlreadyExistsException {
@@ -80,4 +93,7 @@ public final class Database {
         components.clear();
     }
 
+    public Map<Customer, List<Component>> getCustomerComponentMap() {
+        return customerComponentMap;
+    }
 }

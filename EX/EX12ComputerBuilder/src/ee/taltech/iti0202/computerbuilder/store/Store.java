@@ -65,7 +65,8 @@ public class Store {
         } else {
             balance = balance.add(price);
             customer.setBalance(customer.getBalance().subtract(price));
-            customer.addComponent(component);
+            database.addComponentToTheCustomer(customer, database.getComponents().get(id));
+            customer.addComponent(component, database);
             database.decreaseComponentStock(component.getId(), 1);
             return component;
         }

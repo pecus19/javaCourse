@@ -2,6 +2,7 @@ package ee.taltech.iti0202.computerbuilder.customer;
 
 import ee.taltech.iti0202.computerbuilder.components.Component;
 import ee.taltech.iti0202.computerbuilder.computer.Computer;
+import ee.taltech.iti0202.computerbuilder.database.Database;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -39,9 +40,14 @@ public class Customer {
             computers.add(computer);
         }
     }
-    public void addComponent(Component component) {
-        if (!components.contains(component)) {
-            components.add(component);
+
+    public void addComponent(Component component, Database database) {
+        if (database.getCustomerComponentMap().containsKey(this)) {
+            if (database.getCustomerComponentMap().get(this).contains(component)) {
+                if (!components.contains(component)) {
+                    components.add(component);
+                }
+            }
         }
     }
 
