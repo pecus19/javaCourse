@@ -1,4 +1,4 @@
-package ee.taltech.iti0202.computerbuilder;
+package ee.taltech.iti0202.computerbuilderdatabase;
 
 import ee.taltech.iti0202.computerbuilder.components.Component;
 import ee.taltech.iti0202.computerbuilder.computer.Computer;
