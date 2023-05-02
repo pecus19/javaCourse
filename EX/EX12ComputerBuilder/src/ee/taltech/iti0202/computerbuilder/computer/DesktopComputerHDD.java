@@ -121,18 +121,6 @@ public class DesktopComputerHDD extends Computer {
     }
 
     @Override
-    public void findBestComputerAccordingUseCase(Computer.UseCase useCase, int gpu,
-                                                 int processor) {
-        if (useCase != null) {
-            double sum = useCase.equals(UseCase.GAMING) ? gpu * 1.5 + processor : gpu + processor * 1.5;
-            setTotalPoints(getTotalPoints() + sum);
-        } else {
-            setTotalPoints(gpu + processor);
-        }
-    }
-
-
-    @Override
     public DesktopComputerHDD assembleLaptop(Store store, double budget, Computer.UseCase useCase) {
         return getComputersWithTheRightPrice(store, budget, useCase);
     }

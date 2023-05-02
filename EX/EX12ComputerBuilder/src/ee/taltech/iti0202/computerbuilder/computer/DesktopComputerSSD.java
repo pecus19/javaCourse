@@ -19,6 +19,7 @@ public class DesktopComputerSSD extends Computer {
     private List<Component> psuList;
     private List<Component> case1;
 
+
     public DesktopComputerSSD(Component ssd, Component cpu, Component gpu, Component ram,
                               Component motherboard, Component psu, Component aCase) {
         super.cpu = cpu;
@@ -120,19 +121,6 @@ public class DesktopComputerSSD extends Computer {
         store.getDatabase().decreaseComponentStock(computer.getaCase().getId(), 1);
 
     }
-
-    public void findBestComputerAccordingUseCase(Computer.UseCase useCase, int gpu,
-                                                 int processor) {
-        if (useCase != null) {
-            double sum = useCase.equals(UseCase.GAMING) ? gpu * 1.5 + processor : gpu + processor * 1.5;
-            setTotalPoints(getTotalPoints() + sum);
-        } else {
-            setTotalPoints(gpu + processor);
-
-        }
-
-    }
-
 
     @Override
     public DesktopComputerSSD assembleLaptop(Store store, double budget, Computer.UseCase useCase) {

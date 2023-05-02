@@ -14,8 +14,11 @@ import ee.taltech.iti0202.computerbuilder.order.Order;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class Store {
@@ -119,51 +122,32 @@ public class Store {
         return balance;
     }
 
-    public Computer assembleComputer(Order order,Customer customer) throws OutOfStockException, ProductNotFoundException {
+    public Computer assembleComputer(Order order, Customer customer) throws OutOfStockException,
+            ProductNotFoundException {
         Computer computer = null;
         int budget = order.getBudget() == null ? Integer.MAX_VALUE : order.getBudget();
-        if (order.getType().equals(Computer.ComputerType.Desktop)) {
-            Computer ssdComputer = new DesktopComputerSSD().assembleLaptop(this, budget, order.getUseCase());
-            Computer hddComputer = new DesktopComputerHDD().assembleLaptop(this, budget, order.getUseCase());
-            if (ssdComputer == null && hddComputer == null) {
-                throw new ProductNotFoundException();
-            }
-            if (ssdComputer != null && hddComputer != null) {
-                if (ssdComputer.getTotalPoints() > hddComputer.getTotalPoints()) {
-                    computer = ssdComputer;
-                    new DesktopComputerSSD().priceCalculation(computer, this);
-
-                } else if (ssdComputer.getTotalPoints() < hddComputer.getTotalPoints()) {
-                    computer = hddComputer;
-                    new DesktopComputerHDD().priceCalculation(computer, this);
-
-                } else {
-                    if (ssdComputer.getPrice() > hddComputer.getPrice()) {
-                        computer = hddComputer;
-                        new DesktopComputerHDD().priceCalculation(computer, this);
-                    } else {
-                        computer = ssdComputer;
-                        new DesktopComputerSSD().priceCalculation(computer, this);
-                    }
-                }
-            } else {
-                if (ssdComputer == null) {
-                    computer = hddComputer;
-                    new DesktopComputerHDD().priceCalculation(computer, this);
-
-                } else {
-                    computer = ssdComputer;
-                    new DesktopComputerSSD().priceCalculation(computer, this);
-                }
-            }
-
-        } else if (order.getType().equals(Computer.ComputerType.LAPTOP)) {
+        if (order.getType().equals(Computer.ComputerType.LAPTOP)) {
             computer = new Laptop().assembleLaptop(this, budget, order.getUseCase());
             new Laptop().priceCalculation(computer, this);
+        } else if (order.getType().equals(Computer.ComputerType.Desktop)) {
+            List<Computer> desktops = Arrays.asList(
+                    new DesktopComputerSSD().assembleLaptop(this, budget, order.getUseCase()),
+                    new DesktopComputerHDD().assembleLaptop(this, budget, order.getUseCase())
+            );
+            Optional<Computer> selected = desktops.stream().filter(Objects::nonNull).max(Comparator.
+                    comparing(Computer::getTotalPoints).thenComparing(Computer::getPrice));
+            if (selected.isEmpty()) {
+                throw new ProductNotFoundException();
+            }
+            computer = selected.get();
+            if (computer instanceof DesktopComputerSSD) {
+                new DesktopComputerSSD().priceCalculation(computer, this);
+            } else {
+                new DesktopComputerHDD().priceCalculation(computer, this);
+            }
         }
         customer.addComputer(computer);
         return computer;
-
     }
 
     public Database getDatabase() {

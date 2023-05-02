@@ -11,10 +11,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Laptop extends Computer {
-    protected List<Component> keyboard;
-    protected List<Component> touchpad;
-    protected List<Component> screen;
-    protected List<Component> battery;
+    private List<Component> keyboard;
+    private List<Component> touchpad;
+    private List<Component> screen;
+    private List<Component> battery;
 
     public Laptop() {
     }
@@ -96,10 +96,11 @@ public class Laptop extends Computer {
 
     }
 
+    @Override
     public void findBestComputerAccordingUseCase(Computer.UseCase useCase, int screen,
                                                  int battery) {
         if (useCase != null) {
-            double sum = useCase.equals(UseCase.GAMING) ? screen * 1.5 + battery : screen + battery * 1.5;
+            double sum = useCase.equals(UseCase.GAMING) ? screen * MULTIPLIER + battery : screen + battery * MULTIPLIER;
             setTotalPoints(getTotalPoints() + sum);
         } else {
             setTotalPoints(screen + battery);
@@ -120,6 +121,4 @@ public class Laptop extends Computer {
     public Laptop assembleLaptop(Store store, double budget, Computer.UseCase useCase) {
         return getComputersWithTheRightPrice(store, budget, useCase);
     }
-
-
 }

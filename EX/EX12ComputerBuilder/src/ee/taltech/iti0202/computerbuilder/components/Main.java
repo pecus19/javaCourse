@@ -13,15 +13,20 @@
 ////        this.screen = screen;
 ////        this.battery = battery;
 //        Database database = Database.getInstance();
-//        Component component = new Component("component1", Component.ComponentType.KEYBOARD, new BigDecimal(43), "MSI",
+//        Component component = new Component("component1", Component.ComponentType.KEYBOARD, new BigDecimal(43),
+//        "MSI",
 //                8, 200);
-//        Component component2 = new Component("component2", Component.ComponentType.TOUCHPAD, new BigDecimal(34), "MSI",
+//        Component component2 = new Component("component2", Component.ComponentType.TOUCHPAD, new BigDecimal(34),
+//        "MSI",
 //                2, 100);
-//        Component component3 = new Component("component3", Component.ComponentType.SCREEN, new BigDecimal(12), "MSI",
+//        Component component3 = new Component("component3", Component.ComponentType.SCREEN, new BigDecimal(12),
+//        "MSI",
 //                4, 50);
-//        Component component4 = new Component("component4", Component.ComponentType.BATTERY, new BigDecimal(234), "MSI",
+//        Component component4 = new Component("component4", Component.ComponentType.BATTERY, new BigDecimal(234),
+//        "MSI",
 //                8, 70);
-//        Component component5 = new Component("component5", Component.ComponentType.KEYBOARD, new BigDecimal(22), "MSI",
+//        Component component5 = new Component("component5", Component.ComponentType.KEYBOARD, new BigDecimal(22),
+//        "MSI",
 //                8, 200);
 //        Component component6 = new Component("component6", Component.ComponentType.TOUCHPAD, new BigDecimal(2), "MSI",
 //                2, 100);
@@ -49,8 +54,10 @@
 ////                .flatMap(k -> touchpad.stream()
 ////                        .flatMap(t -> screen.stream()
 ////                                .flatMap(s -> battery.stream()
-////                                        .filter(b -> k.getPrice().intValue() + t.getPrice().intValue() + s.getPrice().intValue() + b.getPrice().intValue() < 100)
-////                                        .map(b -> List.of(k.getName(), t.getName(), s.getName(), b.getName(), k.getPrice().intValue() + t.getPrice().intValue() + s.getPrice().intValue() + b.getPrice().intValue()))
+////                                        .filter(b -> k.getPrice().intValue() + t.getPrice().intValue() +
+// s.getPrice().intValue() + b.getPrice().intValue() < 100)
+////                                        .map(b -> List.of(k.getName(), t.getName(), s.getName(), b.getName(),
+// k.getPrice().intValue() + t.getPrice().intValue() + s.getPrice().intValue() + b.getPrice().intValue()))
 ////                                )
 ////                        )
 ////                )
@@ -60,7 +67,8 @@
 ////        }
 ////        System.out.println(computers.size());
 //        Laptop laptop = new Laptop();
-////        System.out.println(laptop.assembleLaptop(new Store("Store", new BigDecimal(100), new BigDecimal(123)), 100));
+////        System.out.println(laptop.assembleLaptop(new Store("Store", new BigDecimal(100), new BigDecimal(123)),
+// 100));
 ////        slaptop.assembleLaptop(new Store("Store", new BigDecimal(100), new BigDecimal(123)));
 //    }
 //

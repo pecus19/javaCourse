@@ -25,6 +25,18 @@ public abstract class Computer {
     protected Logger logger = Logger.getLogger(Laptop.class.getName());
     protected Store store;
     protected final static int ASSEMBLY_PRICE = 15;
+    protected final static double MULTIPLIER = 1.5;
+
+    public void findBestComputerAccordingUseCase(Computer.UseCase useCase, int gpu,
+                                                 int processor) {
+        if (useCase != null) {
+            double sum = useCase.equals(UseCase.GAMING) ? gpu * MULTIPLIER + processor : gpu + processor * MULTIPLIER;
+            setTotalPoints(getTotalPoints() + sum);
+        } else {
+            setTotalPoints(gpu + processor);
+
+        }
+    }
 
     public abstract Computer getComputersWithTheRightPrice(Store store, double budget, Computer.UseCase useCase)
             throws OutOfStockException, ProductNotFoundException;
@@ -32,7 +44,7 @@ public abstract class Computer {
     public abstract Computer assembleLaptop(Store store, double budget, Computer.UseCase useCase)
             throws OutOfStockException, ProductNotFoundException;
 
-    public abstract void findBestComputerAccordingUseCase(Computer.UseCase useCase, int gpu, int processor);
+//    public abstract void findBestComputerAccordingUseCase(Computer.UseCase useCase, int gpu, int processor);
 
     public abstract void priceCalculation(Computer computer, Store store)
             throws OutOfStockException, ProductNotFoundException;
