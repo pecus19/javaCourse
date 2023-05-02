@@ -39,8 +39,8 @@ public class DesktopComputerSSD extends Computer {
         List<DesktopComputerSSD> output;
         if (isEnoughComponents(store)) {
             output = findComputersWithRightPrice(budget, useCase);
-            logger.info(String.format("We found %s computer with SSD that are less than your price and " +
-                    "are trying to fount the "
+            logger.info(String.format("We found %s computer with SSD that are less than your price and "
+                    + "are trying to fount the "
                     + "best...", output.size()));
             return output.size() != 0 ? sortAssembleLaptops(output) : null;
         }

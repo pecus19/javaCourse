@@ -24,8 +24,8 @@ public abstract class Computer {
     protected double points = 0;
     protected Logger logger = Logger.getLogger(Laptop.class.getName());
     protected Store store;
-    protected final static int ASSEMBLY_PRICE = 15;
-    protected final static double MULTIPLIER = 1.5;
+    protected static final int ASSEMBLY_PRICE = 15;
+    protected static final double MULTIPLIER = 1.5;
 
     public void findBestComputerAccordingUseCase(Computer.UseCase useCase, int gpu,
                                                  int processor) {
