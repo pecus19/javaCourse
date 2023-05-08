@@ -21,7 +21,7 @@ public class Exam {
         List<Integer> output = new ArrayList<>();
         Integer value = null;
         for (int i = 0; i < nums.size(); i++) {
-            if (nums.get(i) % 10 == 0 && nums.get(i) != 0) {
+            if (nums.get(i) % 10 == 0) {
                 value = nums.get(i);
                 output.add(value);
             } else {
@@ -59,6 +59,7 @@ public class Exam {
         System.out.println(tenRun(List.of(2, 10, 3, 4, 20, 5)));// => [2, 10, 10, 10, 20, 20]
         System.out.println(tenRun(List.of(10, 1, 20, 2)));// => [10, 10, 20, 20]
         System.out.println(tenRun(List.of(10, 1, 9, 20)));// => [10, 10, 10, 20]
+        System.out.println(tenRun(List.of(10, 0, 30, 40)));// => [10, 20, 30, 40]
     }
 
 }
