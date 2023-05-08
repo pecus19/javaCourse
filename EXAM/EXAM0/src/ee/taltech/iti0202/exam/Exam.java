@@ -1,7 +1,6 @@
 package ee.taltech.iti0202.exam;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Exam {
 
@@ -51,15 +50,34 @@ public class Exam {
      * @return
      */
     public static String mixedPairs(String input) {
-        return "wrong";
+        TreeMap<String, String> map = new TreeMap<>();
+        StringBuilder output = new StringBuilder();
+        for (int i = 0; i < input.length(); i++) {
+            if (input.contains(input.substring(i, i + 1).toLowerCase(Locale.ROOT))
+                    && input.contains(input.substring(i, i + 1).toUpperCase(Locale.ROOT))) {
+                if (!map.containsKey(input.substring(i, i + 1).toLowerCase(Locale.ROOT))) {
+                    map.put(input.substring(i, i + 1).toLowerCase(Locale.ROOT), (input.substring(i, i + 1).toUpperCase(Locale.ROOT))
+                            + input.substring(i, i + 1).toLowerCase(Locale.ROOT));
+                }
+            }
+        }
+        for (Map.Entry<String, String> entry : map.entrySet()) {
+            output.append(entry.getValue());
+        }
+        return output.toString();
     }
 
     public static void main(String[] args) {
         //1
-        System.out.println(tenRun(List.of(2, 10, 3, 4, 20, 5)));// => [2, 10, 10, 10, 20, 20]
-        System.out.println(tenRun(List.of(10, 1, 20, 2)));// => [10, 10, 20, 20]
-        System.out.println(tenRun(List.of(10, 1, 9, 20)));// => [10, 10, 10, 20]
-        System.out.println(tenRun(List.of(10, 0, 30, 40)));// => [10, 20, 30, 40]
+//        System.out.println(tenRun(List.of(2, 10, 3, 4, 20, 5)));// => [2, 10, 10, 10, 20, 20]
+//        System.out.println(tenRun(List.of(10, 1, 20, 2)));// => [10, 10, 20, 20]
+//        System.out.println(tenRun(List.of(10, 1, 9, 20)));// => [10, 10, 10, 20]
+//        System.out.println(tenRun(List.of(10, 0, 30, 40)));// => [10, 20, 30, 40]
+        //2
+        System.out.println(mixedPairs("abcABD"));// => "AaBb" (a and b are represented by both lowe and upper cased letter)
+        System.out.println(mixedPairs("aaaAAAaaaa"));// => "Aa"
+        System.out.println(mixedPairs("tere"));// => ""
+        System.out.println(mixedPairs("bBaacA"));// => "AaBb" (result is in alphabetic order, although in input String, b is earlier than a).
     }
 
 }
