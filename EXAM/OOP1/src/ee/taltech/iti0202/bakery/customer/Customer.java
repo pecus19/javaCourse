@@ -1,0 +1,67 @@
+package ee.taltech.iti0202.bakery.customer;
+
+import ee.taltech.iti0202.bakery.bank.BankAccount;
+import ee.taltech.iti0202.bakery.product.Product;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Customer {
+    private String name;
+    private int age;
+    private Double bankAccount;
+    List<Product> products = new ArrayList<>();
+
+    public Customer(String name, int age, Double bankAccount) {
+        if (name == null) {
+            throw new IllegalArgumentException("Name cannot be empty");
+        }
+
+        if (age < 0) {
+            throw new IllegalArgumentException("Age must be a positive number.");
+        }
+
+        if (bankAccount < 0) {
+            throw new IllegalArgumentException("Bank account must be a positive number.");
+        }
+        this.name = name;
+        this.age = age;
+        this.bankAccount = bankAccount;
+    }
+
+    public void addBoughtProduct(Product product) {
+        products.add(product);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public boolean isAnotherMoney(int price) {
+        return getBankAccount() >= price;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public Double getBankAccount() {
+        return bankAccount;
+    }
+
+    public void setBankAccount(Double bankAccount) {
+        this.bankAccount = bankAccount;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+}
