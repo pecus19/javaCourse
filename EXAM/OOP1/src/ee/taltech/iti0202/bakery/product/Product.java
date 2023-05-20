@@ -5,13 +5,13 @@ import java.lang.reflect.Type;
 public class Product {
     private String name;
     private int id;
-    private int price;
+    private double price;
     private Double kilocalories;
     private static int idCounter = -1;
     private boolean inTheBakery;
     private Product.bakeryTypes bakeryTypes;
 
-    public Product(String name, int price, Double kilocalories, Product.bakeryTypes bakeryTypes) {
+    public Product(String name, double price, Double kilocalories, Product.bakeryTypes bakeryTypes) {
         this.name = name;
         this.price = price;
         this.kilocalories = kilocalories;
@@ -23,6 +23,10 @@ public class Product {
 
     public void setBakeryTypes(Product.bakeryTypes bakeryTypes) {
         this.bakeryTypes = bakeryTypes;
+    }
+
+    public Product.bakeryTypes getBakeryTypes() {
+        return bakeryTypes;
     }
 
     public enum bakeryTypes {
@@ -46,11 +50,11 @@ public class Product {
         this.id = id;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

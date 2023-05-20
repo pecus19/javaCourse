@@ -1,12 +1,12 @@
 package ee.taltech.iti0202.bakery.exceptions;
 
-public class ProductAlreadyContainsInBakeryException extends Exception {
+public class ProductAlreadyContainsInTheBakeryException extends Exception {
     public static final String MESSAGE = "Product already contains in the bakery!";
 
     /**
      * constructor
      */
-    public ProductAlreadyContainsInBakeryException() {
+    public ProductAlreadyContainsInTheBakeryException() {
         super(MESSAGE);
     }
 }

@@ -1,6 +1,5 @@
 package ee.taltech.iti0202.bakery.customer;
 
-import ee.taltech.iti0202.bakery.bank.BankAccount;
 import ee.taltech.iti0202.bakery.product.Product;
 
 import java.util.ArrayList;
@@ -11,6 +10,7 @@ public class Customer {
     private int age;
     private Double bankAccount;
     List<Product> products = new ArrayList<>();
+    private boolean confirmedOrders = false;
 
     public Customer(String name, int age, Double bankAccount) {
         if (name == null) {
@@ -37,7 +37,7 @@ public class Customer {
         return name;
     }
 
-    public boolean isAnotherMoney(int price) {
+    public boolean isAnotherMoney(double price) {
         return getBankAccount() >= price;
     }
 
@@ -63,5 +63,17 @@ public class Customer {
 
     public List<Product> getProducts() {
         return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+
+    public boolean isConfirmedOrders() {
+        return confirmedOrders;
+    }
+
+    public void setConfirmedOrders(boolean confirmedOrders) {
+        this.confirmedOrders = confirmedOrders;
     }
 }
