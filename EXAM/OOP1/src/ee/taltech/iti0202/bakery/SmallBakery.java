@@ -15,6 +15,7 @@ public class SmallBakery {
     protected String name;
     protected Double bankAccount;
     protected List<Product> products = new ArrayList<>();
+    protected List<Order> orders = new ArrayList<>();
     protected int productLimit = 0;
     protected Logger logger = Logger.getLogger(SmallBakery.class.getName());
 
@@ -65,6 +66,7 @@ public class SmallBakery {
             } else {
                 transaction(customer, productsByType.get(0));
                 removeProduct(productsByType.get(0));
+                customer.addBoughtProduct(productsByType.get(0));
                 return productsByType.get(0);
             }
         }
@@ -85,14 +87,14 @@ public class SmallBakery {
         throw new ProductDoesNotContainsInBakeryException();
     }
 
-    public void takeOrder(Order order) throws SearchProductsNotFoundException {
+    public void takeOrder(Order order) throws ProductDoesNotContainsInBakeryException {
         List<Optional<Product>> orderList = new ArrayList<>();
         for (int i = 0; i < order.getProducts().size(); i++) {
-            findProductById(order.getProducts().get(i).getId());
+//            findProductById(order.getProducts().get(i).getId());
             try {
                 // Код, который может вызвать исключение
                 orderList.add(findProductById(order.getProducts().get(i).getId()));
-            } catch (ArithmeticException ex) {
+            } catch (ProductDoesNotContainsInBakeryException ex) {
                 logger.info(order.getProducts().get(i).getName() + " did not find in  the bakery with name: "
                         + getName());
             }
@@ -102,21 +104,22 @@ public class SmallBakery {
         }
     }
 
-    public Optional<Product> findProductById(int id) throws SearchProductsNotFoundException {
+    public Optional<Product> findProductById(int id) throws ProductDoesNotContainsInBakeryException {
         Optional<Product> output = null;
         for (int i = 0; i < products.size(); i++) {
             if (products.get(i).getId() == id) {
                 output = Optional.of(products.get(i));
             }
         }
-        if (output.isPresent()) {
-            throw new SearchProductsNotFoundException();
+
+        if (Optional.ofNullable(output).isEmpty()) {
+            throw new ProductDoesNotContainsInBakeryException();
         }
 
         return output;
     }
 
-    public List<Product> findProduct(int price) throws SearchProductsNotFoundException {
+    public List<Product> findProduct(double price) throws SearchProductsNotFoundException {
         List<Product> output = new ArrayList<>();
         for (int i = 0; i < products.size(); i++) {
             if (products.get(i).getPrice() == price) {
@@ -158,7 +161,8 @@ public class SmallBakery {
     }
 
     public void addProduct(Product product) throws ProductDoesNotContainsInBakeryException,
-            ProductAlreadyContainsInAnotherBakeryException, ProductLimitExceededException, ProductAlreadyContainsInTheBakeryException {
+            ProductAlreadyContainsInAnotherBakeryException, ProductLimitExceededException,
+            ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException {
         if (products.contains(product)) {
             throw new ProductAlreadyContainsInTheBakeryException();
         }
@@ -167,6 +171,17 @@ public class SmallBakery {
         }
         if (!productsLimit()) {
             throw new ProductLimitExceededException();
+        }
+        if (products.size() == 0) {
+            products.add(product);
+            product.setInTheBakery(true);
+            productLimit++;
+            logger.info(product.getName() + " has been added to the bakery with name: " + getName());
+        }
+        if (products.size() > 0) {
+            if (!product.getBakeryTypes().equals(products.get(0).getBakeryTypes())) {
+                throw new SmallBakeryCanSellOnlyProductsWithOneTypeException();
+            }
         }
 
         products.add(product);
@@ -178,5 +193,15 @@ public class SmallBakery {
 
     public List<Product> getProducts() {
         return products;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void addOrder(Order order) {
+        if (!orders.contains(order)) {
+            orders.add(order);
+        }
     }
 }

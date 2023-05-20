@@ -6,7 +6,9 @@ import ee.taltech.iti0202.bakery.exceptions.ProductLimitExceededException;
 import ee.taltech.iti0202.bakery.exceptions.SearchProductsNotFoundException;
 import ee.taltech.iti0202.bakery.product.Product;
 
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 public class BigBakery extends SmallBakery {
     public BigBakery(String name, Double bankAccount) {
@@ -39,17 +41,16 @@ public class BigBakery extends SmallBakery {
         }
     }
 
-    public Optional<Product> findProductByType(Product.bakeryTypes bakeryTypes) throws SearchProductsNotFoundException {
-        Optional<Product> output = null;
+    public List<Product> findProductByType(Product.bakeryTypes bakeryTypes) throws SearchProductsNotFoundException {
+        List<Product> output = new ArrayList<>();
         for (int i = 0; i < products.size(); i++) {
-            if (products.get(i).getBakeryTypes() == bakeryTypes) {
-                output = Optional.of(products.get(i));
+            if (Objects.equals(products.get(i).getBakeryTypes(), bakeryTypes)) {
+                output.add(products.get(i));
             }
         }
-        if (output.isPresent()) {
+        if (output.size() == 0) {
             throw new SearchProductsNotFoundException();
         }
-
         return output;
     }
 

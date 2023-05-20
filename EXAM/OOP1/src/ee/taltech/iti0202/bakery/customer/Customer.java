@@ -1,5 +1,6 @@
 package ee.taltech.iti0202.bakery.customer;
 
+import ee.taltech.iti0202.bakery.order.Order;
 import ee.taltech.iti0202.bakery.product.Product;
 
 import java.util.ArrayList;
@@ -9,7 +10,8 @@ public class Customer {
     private String name;
     private int age;
     private Double bankAccount;
-    List<Product> products = new ArrayList<>();
+    private List<Product> products = new ArrayList<>();
+    private List<Order> orders = new ArrayList<>();
     private boolean confirmedOrders = false;
 
     public Customer(String name, int age, Double bankAccount) {
@@ -75,5 +77,15 @@ public class Customer {
 
     public void setConfirmedOrders(boolean confirmedOrders) {
         this.confirmedOrders = confirmedOrders;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void addOrder(Order order) {
+        if (!orders.contains(order)) {
+            orders.add(order);
+        }
     }
 }
