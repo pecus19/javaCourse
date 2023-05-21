@@ -67,27 +67,25 @@ public class SmallBakery {
     }
 
     public List<Product> getProductRating() {
-        List<String> output = new ArrayList<>();
         for (Map.Entry<Product, Integer> entry : productRating.entrySet()) {
             double price = entry.getKey().getPrice();
             for (Map.Entry<Product, Integer> entry1 : productRating.entrySet()) {
-                if (entry.getKey().getName().equals(entry1.getKey().getName())) {
+                if (entry.getKey().getName().equals(entry1.getKey().getName())
+                        && entry.getKey().getId() != entry1.getKey().getId()) {
                     price += entry1.getKey().getPrice();
                 }
             }
-            price = price / entry.getKey().getKilocalories();
-            price = Math.floor(price * 10) / 10;
-            entry.getKey().setRatingMultiplier(price);
+            price /= entry.getKey().getKilocalories();
+            entry.getKey().setRatingMultiplier(Math.floor(price * 10) / 10);
         }
         List<Map.Entry<Product, Integer>> entries = new ArrayList<>(productRating.entrySet());
         entries.sort(Map.Entry.<Product, Integer>comparingByValue(Collections.reverseOrder())
-                .thenComparing(Comparator.comparing((Map.Entry<Product, Integer> entry) -> entry.getKey().getPrice())
-                        .thenComparing(entry -> entry.getKey().getKilocalories())
+                .thenComparing(Comparator.comparing((Map.Entry<Product, Integer> entry)
+                                -> entry.getKey().getPrice() + entry.getKey().getKilocalories()).reversed()
                         .thenComparing(entry -> entry.getKey().getRatingMultiplier()).reversed()));
-        List<Product> keys = entries.stream()
+        return entries.stream()
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
-        return keys;
     }
 
     public Product buyProductsByType(Customer customer, Product.bakeryTypes product) throws DoNotHaveEnoughMoneyToBuyException,
@@ -217,17 +215,16 @@ public class SmallBakery {
             product.setInTheBakery(true);
             productLimit++;
             logger.info(product.getName() + " has been added to the bakery with name: " + getName());
-        }
-        if (products.size() > 0) {
+        } else if (products.size() > 0) {
             if (!product.getBakeryTypes().equals(products.get(0).getBakeryTypes())) {
                 throw new SmallBakeryCanSellOnlyProductsWithOneTypeException();
+            } else {
+                products.add(product);
+                product.setInTheBakery(true);
+                productLimit++;
+                logger.info(product.getName() + " has been added to the bakery with name: " + getName());
             }
         }
-        products.add(product);
-        product.setInTheBakery(true);
-        productLimit++;
-        logger.info(product.getName() + " has been added to the bakery with name: " + getName());
-
     }
 
     public List<Product> getProducts() {
