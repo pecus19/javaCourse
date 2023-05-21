@@ -57,7 +57,7 @@ public class LessKilocaloriesStrategy extends Strategy {
     public void removeProductWithSomeNameAndType(Product product) {
         for (int i = 0; i < getListToFilter().size(); i++) {
             if (getListToFilter().get(i).getName().equals(product.getName())
-                    && getListToFilter().get(i).getBakerytypes().equals(product.getBakerytypes())) {
+                    && getListToFilter().get(i).getBakeryTypes().equals(product.getBakeryTypes())) {
                 listToFilter.remove(getListToFilter().get(i));
                 i = -1;
             }

@@ -43,10 +43,6 @@ public class Customer {
         return getBankAccount() >= price;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Double getBankAccount() {
         return bankAccount;
     }

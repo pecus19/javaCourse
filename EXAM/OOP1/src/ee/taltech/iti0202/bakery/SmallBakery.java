@@ -108,7 +108,7 @@ public class SmallBakery {
             ProductDoesNotContainsInBakeryException {
         List<Product> productsByType = new ArrayList<>();
         for (int i = 0; i < products.size(); i++) {
-            if (products.get(i).getBakerytypes().equals(product)) {
+            if (products.get(i).getBakeryTypes().equals(product)) {
                 productsByType.add((products.get(i)));
             }
         }
@@ -230,7 +230,7 @@ public class SmallBakery {
             productLimit++;
             logger.info(product.getName() + " has been added to the bakery with name: " + getName());
         } else if (products.size() > 0) {
-            if (!product.getBakerytypes().equals(products.get(0).getBakerytypes())) {
+            if (!product.getBakeryTypes().equals(products.get(0).getBakeryTypes())) {
                 throw new SmallBakeryCanSellOnlyProductsWithOneTypeException();
             } else {
                 products.add(product);

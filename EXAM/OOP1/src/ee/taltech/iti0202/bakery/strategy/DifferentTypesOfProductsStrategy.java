@@ -56,7 +56,7 @@ public class DifferentTypesOfProductsStrategy extends Strategy {
 
     public void removeProductWithSomeNameAndType(Product product) {
         for (int i = 0; i < getListToFilter().size(); i++) {
-            if (getListToFilter().get(i).getBakerytypes().equals(product.getBakerytypes())) {
+            if (getListToFilter().get(i).getBakeryTypes().equals(product.getBakeryTypes())) {
                 listToFilter.remove(getListToFilter().get(i));
                 i = -1;
             }
