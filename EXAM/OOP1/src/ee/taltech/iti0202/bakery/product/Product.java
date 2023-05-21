@@ -7,7 +7,7 @@ public class Product {
     private Double kilocalories;
     private static int idCounter = -1;
     private boolean inTheBakery;
-    private Product.bakeryTypes BakeryTypes;
+    private Types types;
     private double ratingMultiplier = 0;
     private static final double MULTIPLIER = 1.5;
 
@@ -16,7 +16,7 @@ public class Product {
         return getPrice() * MULTIPLIER;
     }
 
-    public Product(String name, double price, Double kilocalories, Product.bakeryTypes bakeryTypes) {
+    public Product(String name, double price, Double kilocalories, Types bakeryTypes) {
         if (name == null) {
             throw new IllegalArgumentException("Name cannot be empty");
         }
@@ -34,15 +34,15 @@ public class Product {
         this.name = name;
         this.price = price;
         this.kilocalories = kilocalories;
-        this.BakeryTypes = bakeryTypes;
+        this.types = bakeryTypes;
         idCounter++;
         setId(idCounter);
         inTheBakery = false;
     }
 
 
-    public Product.bakeryTypes getBakeryTypes() {
-        return BakeryTypes;
+    public Types getTypes() {
+        return types;
     }
 
     public double getRatingMultiplier() {
@@ -53,7 +53,7 @@ public class Product {
         this.ratingMultiplier = ratingMultiplier;
     }
 
-    public enum bakeryTypes {
+    public enum Types {
         CAKE, BREAD, COOKIE, BUN, PIE
     }
 

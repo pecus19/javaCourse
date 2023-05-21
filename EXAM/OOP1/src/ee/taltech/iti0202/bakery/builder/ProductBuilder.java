@@ -6,7 +6,7 @@ public class ProductBuilder {
     private String name;
     private double price;
     private Double kilocalories;
-    private Product.bakeryTypes bakeryTypes;
+    private Product.Types bakeryTypes;
 
     public ProductBuilder setName(String name) {
         this.name = name;
@@ -23,7 +23,7 @@ public class ProductBuilder {
         return this;
     }
 
-    public ProductBuilder setBakeryTypes(Product.bakeryTypes bakeryTypes) {
+    public ProductBuilder setBakeryTypes(Product.Types bakeryTypes) {
         this.bakeryTypes = bakeryTypes;
         return this;
     }
