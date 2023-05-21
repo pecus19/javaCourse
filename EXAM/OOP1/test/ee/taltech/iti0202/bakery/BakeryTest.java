@@ -6,14 +6,12 @@ import ee.taltech.iti0202.bakery.builder.ProductBuilder;
 import ee.taltech.iti0202.bakery.builder.SmallBakeryBuilder;
 import ee.taltech.iti0202.bakery.customer.Customer;
 import ee.taltech.iti0202.bakery.exceptions.DoNotHaveEnoughMoneyToBuyException;
-import ee.taltech.iti0202.bakery.exceptions.OrderCanNotBeDoneException;
-import ee.taltech.iti0202.bakery.exceptions.ProductAlreadyContainsInAnotherBakeryException;
+import ee.taltech.iti0202.bakery.exceptions.CanNotAddProductToTheBakeryException;
 import ee.taltech.iti0202.bakery.exceptions.ProductAlreadyContainsInTheBakeryException;
 import ee.taltech.iti0202.bakery.exceptions.ProductDoesNotContainsInBakeryException;
 import ee.taltech.iti0202.bakery.exceptions.ProductLimitExceededException;
 import ee.taltech.iti0202.bakery.exceptions.SearchProductsNotFoundException;
 import ee.taltech.iti0202.bakery.exceptions.SmallBakeryCanSellOnlyProductsWithOneTypeException;
-import ee.taltech.iti0202.bakery.exceptions.UnconfirmedOrdersException;
 import ee.taltech.iti0202.bakery.product.Product;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -27,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class BakeryTest {
     @Test
-    protected void addProductToBakeryBasicTest() throws ProductAlreadyContainsInAnotherBakeryException,
+    protected void addProductToBakeryBasicTest() throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.PIE)
@@ -62,7 +60,7 @@ public class BakeryTest {
     }
 
     @Test
-    protected void basicRemoveFromBakeryTest() throws ProductAlreadyContainsInAnotherBakeryException,
+    protected void basicRemoveFromBakeryTest() throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.COOKIE)
@@ -99,7 +97,7 @@ public class BakeryTest {
 
     @Test
     protected void basicRemoveFromBakeryNotContainsInTheBakeryTest()
-            throws ProductAlreadyContainsInAnotherBakeryException,
+            throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.COOKIE)
@@ -137,7 +135,7 @@ public class BakeryTest {
     }
 
     @Test
-    protected void addProductToBakerySecondTimeTest() throws ProductAlreadyContainsInAnotherBakeryException,
+    protected void addProductToBakerySecondTimeTest() throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException,
             ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException {
         Product product1 = new ProductBuilder()
@@ -178,7 +176,7 @@ public class BakeryTest {
 
     @Test
     protected void addProductToBakeryWhenHeAlreadyInAnotherBakeryTest()
-            throws ProductAlreadyContainsInAnotherBakeryException,
+            throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException,
             ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException {
         Product product1 = new ProductBuilder()
@@ -212,13 +210,35 @@ public class BakeryTest {
         bakery2.addProduct(product3);
         try {
             bakery1.addProduct(product2);
-        } catch (ProductAlreadyContainsInAnotherBakeryException ex) {
-            Assertions.assertEquals("Product already contains in another bakery!", ex.getMessage());
+        } catch (CanNotAddProductToTheBakeryException ex) {
+            Assertions.assertEquals("Product cannot add to the bakery!", ex.getMessage());
+        }
+    }
+    @Test
+    protected void testAddProductToBakerySecondTime()
+            throws CanNotAddProductToTheBakeryException,
+            ProductLimitExceededException, ProductDoesNotContainsInBakeryException,
+            ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException {
+        Product product1 = new ProductBuilder()
+                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setName("Pie")
+                .setKilocalories(400.0)
+                .setPrice(1.2)
+                .createProduct();
+        SmallBakery bakery1 = new SmallBakeryBuilder()
+                .setName("Small Bakery")
+                .setBankAccount(1000.34)
+                .createSmallBakery();
+        bakery1.addProduct(product1);
+        try {
+            bakery1.addProduct(product1);
+        } catch (ProductAlreadyContainsInTheBakeryException ex) {
+            Assertions.assertEquals("Product already contains in the bakery!", ex.getMessage());
         }
     }
 
     @Test
-    protected void removeProductFromBakeryBasicTest() throws ProductAlreadyContainsInAnotherBakeryException,
+    protected void removeProductFromBakeryBasicTest() throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException,
             ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException {
         Product product1 = new ProductBuilder()
@@ -302,7 +322,7 @@ public class BakeryTest {
     }
 
     @Test
-    protected void checkMoneyAfterBuyingByTypeBakeryTest() throws ProductAlreadyContainsInAnotherBakeryException,
+    protected void checkMoneyAfterBuyingByTypeBakeryTest() throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException
             , DoNotHaveEnoughMoneyToBuyException {
         Product product1 = new ProductBuilder()
@@ -341,7 +361,7 @@ public class BakeryTest {
 
     @Test
     protected void checkMoneyAfterBuyingALotOfProductsByTypeBakeryTest()
-            throws ProductAlreadyContainsInAnotherBakeryException,
+            throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException,
             DoNotHaveEnoughMoneyToBuyException {
         Product product1 = new ProductBuilder()
@@ -382,7 +402,7 @@ public class BakeryTest {
     }
 
     @Test
-    protected void checkMoneyAfterBuyingByTypeCustomerTest() throws ProductAlreadyContainsInAnotherBakeryException,
+    protected void checkMoneyAfterBuyingByTypeCustomerTest() throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.PIE)
@@ -420,7 +440,7 @@ public class BakeryTest {
 
     @Test
     protected void checkMoneyAfterBuyingALotOfProductsByTypeCustomerTest()
-            throws ProductAlreadyContainsInAnotherBakeryException,
+            throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException,
             DoNotHaveEnoughMoneyToBuyException {
         Product product1 = new ProductBuilder()
@@ -461,7 +481,7 @@ public class BakeryTest {
     }
 
     @Test
-    protected void canNotBuyProductsDueToMoneyTest() throws ProductAlreadyContainsInAnotherBakeryException,
+    protected void canNotBuyProductsDueToMoneyTest() throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.PIE)
@@ -501,7 +521,7 @@ public class BakeryTest {
 
     @Test
     protected void canNotBuyProductsDueToMoneyAfterBuyingSomeProductsTest()
-            throws ProductAlreadyContainsInAnotherBakeryException,
+            throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException,
             DoNotHaveEnoughMoneyToBuyException {
         Product product1 = new ProductBuilder()
@@ -543,7 +563,7 @@ public class BakeryTest {
     }
 
     @Test
-    protected void checkProductsThatCustomerBoughtTest() throws ProductAlreadyContainsInAnotherBakeryException,
+    protected void checkProductsThatCustomerBoughtTest() throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.PIE)
@@ -581,7 +601,7 @@ public class BakeryTest {
     }
 
     @Test
-    protected void checkProductsInTheBakeryAfterBuyingTest() throws ProductAlreadyContainsInAnotherBakeryException,
+    protected void checkProductsInTheBakeryAfterBuyingTest() throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.PIE)
@@ -619,7 +639,7 @@ public class BakeryTest {
     }
 
     @Test
-    protected void onlyOneCustomerCanBuyOneProductTest() throws ProductAlreadyContainsInAnotherBakeryException,
+    protected void onlyOneCustomerCanBuyOneProductTest() throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.PIE)
@@ -663,7 +683,7 @@ public class BakeryTest {
     }
 
     @Test
-    protected void findProductByIdTest() throws ProductAlreadyContainsInAnotherBakeryException,
+    protected void findProductByIdTest() throws CanNotAddProductToTheBakeryException,
             ProductDoesNotContainsInBakeryException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.PIE)
@@ -695,7 +715,7 @@ public class BakeryTest {
     }
 
     @Test
-    protected void findProductByNameTest() throws ProductAlreadyContainsInAnotherBakeryException,
+    protected void findProductByNameTest() throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException, SearchProductsNotFoundException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.PIE)
@@ -726,7 +746,7 @@ public class BakeryTest {
     }
 
     @Test
-    protected void findProductByPriceTest() throws ProductAlreadyContainsInAnotherBakeryException,
+    protected void findProductByPriceTest() throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException, SearchProductsNotFoundException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.PIE)
@@ -757,7 +777,7 @@ public class BakeryTest {
     }
 
     @Test
-    protected void findProductByPriceWithWrongPriceTest() throws ProductAlreadyContainsInAnotherBakeryException,
+    protected void findProductByPriceWithWrongPriceTest() throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.PIE)
@@ -792,7 +812,7 @@ public class BakeryTest {
     }
 
     @Test
-    protected void findProductByPriceWithWrongNameTest() throws ProductAlreadyContainsInAnotherBakeryException,
+    protected void findProductByPriceWithWrongNameTest() throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.PIE)
@@ -827,7 +847,70 @@ public class BakeryTest {
     }
 
     @Test
-    protected void findProductByPriceWithWrongIdTest() throws ProductAlreadyContainsInAnotherBakeryException,
+    protected void smallBakeryCanSellOnlyOneProductTest() throws CanNotAddProductToTheBakeryException,
+            ProductLimitExceededException, ProductDoesNotContainsInBakeryException,
+            ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException {
+        Product product1 = new ProductBuilder()
+                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setName("Pie")
+                .setKilocalories(400.0)
+                .setPrice(1.2)
+                .createProduct();
+        Product product2 = new ProductBuilder()
+                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setName("Pie")
+                .setKilocalories(233.32)
+                .setPrice(3.12)
+                .createProduct();
+        Product product3 = new ProductBuilder()
+                .setBakeryTypes(Product.bakeryTypes.CAKE)
+                .setName("Cake")
+                .setKilocalories(643.01)
+                .setPrice(10.3)
+                .createProduct();
+        SmallBakery bakery1 = new SmallBakeryBuilder()
+                .setName("Small Bakery")
+                .setBankAccount(1000.34)
+                .createSmallBakery();
+        bakery1.addProduct(product1);
+        bakery1.addProduct(product2);
+        try {
+            bakery1.addProduct(product3);
+        } catch (SmallBakeryCanSellOnlyProductsWithOneTypeException ex) {
+            Assertions.assertEquals("Small bakery can sell only products with one type!", ex.getMessage());
+        }
+    }
+
+    @Test
+    protected void smallBakeryProductLimitExceededTest() throws CanNotAddProductToTheBakeryException,
+            ProductLimitExceededException, ProductDoesNotContainsInBakeryException,
+            ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException {
+        SmallBakery bakery1 = new SmallBakeryBuilder()
+                .setName("Small Bakery")
+                .setBankAccount(1000.34)
+                .createSmallBakery();
+        for (int i = 0; i < 4; i++) {
+            bakery1.addProduct(new ProductBuilder()
+                    .setBakeryTypes(Product.bakeryTypes.CAKE)
+                    .setName("Cake")
+                    .setKilocalories(643.01)
+                    .setPrice(10.3)
+                    .createProduct());
+        }
+        try {
+            bakery1.addProduct(new ProductBuilder()
+                    .setBakeryTypes(Product.bakeryTypes.CAKE)
+                    .setName("Cake5")
+                    .setKilocalories(643.01)
+                    .setPrice(10.3)
+                    .createProduct());
+        } catch (ProductLimitExceededException ex) {
+            Assertions.assertEquals("Product limit exceeded!", ex.getMessage());
+        }
+    }
+
+    @Test
+    protected void findProductByPriceWithWrongIdTest() throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.PIE)
@@ -862,7 +945,7 @@ public class BakeryTest {
     }
 
     @Test
-    protected void smallBakeryCanSellOnlyOneTypeOfProductsTest() throws ProductAlreadyContainsInAnotherBakeryException,
+    protected void smallBakeryCanSellOnlyOneTypeOfProductsTest() throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException,
             ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException {
         Product product1 = new ProductBuilder()
@@ -890,7 +973,7 @@ public class BakeryTest {
     }
 
     @Test
-    protected void smallBakeryAddMoreThanTenProductsTest() throws ProductAlreadyContainsInAnotherBakeryException,
+    protected void smallBakeryAddMoreThanTenProductsTest() throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException,
             ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException {
         Product product1 = new ProductBuilder()
@@ -919,7 +1002,7 @@ public class BakeryTest {
     }
 
     @Test
-    protected void bigBakeryFindProductsByTypeTest() throws ProductAlreadyContainsInAnotherBakeryException,
+    protected void bigBakeryFindProductsByTypeTest() throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException,
             SearchProductsNotFoundException {
         BigBakery bakery1 = new BigBakeryBuilder()
@@ -962,7 +1045,7 @@ public class BakeryTest {
 
     @Test
     protected void bigBakeryFindProductsByTypeMoreThanOneFoundTest()
-            throws ProductAlreadyContainsInAnotherBakeryException,
+            throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException, SearchProductsNotFoundException {
         BigBakery bakery1 = new BigBakeryBuilder()
                 .setName("Big Bakery")
@@ -1000,7 +1083,7 @@ public class BakeryTest {
     }
 
     @Test
-    protected void bigBakeryAddALotOfProductsTest() throws ProductAlreadyContainsInAnotherBakeryException,
+    protected void bigBakeryAddALotOfProductsTest() throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException {
         BigBakery bakery1 = new BigBakeryBuilder()
                 .setName("Big Bakery")
@@ -1019,7 +1102,7 @@ public class BakeryTest {
 
     // Pagaritoodete pingerida(4 part)
     @Test
-    protected void getRatingSimpleTest() throws ProductAlreadyContainsInAnotherBakeryException,
+    protected void getRatingSimpleTest() throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException,
             DoNotHaveEnoughMoneyToBuyException {
         BigBakery bakery1 = new BigBakeryBuilder()
@@ -1061,8 +1144,7 @@ public class BakeryTest {
 
     @Test
     protected void getRatingProductsAreEqualsSortByPriceAndCalories()
-            throws ProductAlreadyContainsInAnotherBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException,
+            throws CanNotAddProductToTheBakeryException, ProductDoesNotContainsInBakeryException,
             DoNotHaveEnoughMoneyToBuyException {
         BigBakery bakery1 = new BigBakeryBuilder()
                 .setName("Big Bakery")
@@ -1108,7 +1190,7 @@ public class BakeryTest {
     }
 
     @Test
-    protected void getRatingProductsSortByPriceAndCalories() throws ProductAlreadyContainsInAnotherBakeryException,
+    protected void getRatingProductsSortByPriceAndCalories() throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException,
             ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException {
         SmallBakery bakery1 = new SmallBakeryBuilder()
@@ -1141,7 +1223,7 @@ public class BakeryTest {
     }
 
     @Test
-    protected void getRatingProductsThirdSortingLevelTest() throws ProductAlreadyContainsInAnotherBakeryException,
+    protected void getRatingProductsThirdSortingLevelTest() throws CanNotAddProductToTheBakeryException,
             ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException {
         BigBakery bakery1 = new BigBakeryBuilder()
                 .setName("Big Bakery")
@@ -1197,7 +1279,7 @@ public class BakeryTest {
 
     @Test
     protected void getRatingProductsThirdSortingLevelThreeProductsTest()
-            throws ProductAlreadyContainsInAnotherBakeryException,
+            throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException,
             ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException {
         SmallBakery bakery1 = new SmallBakeryBuilder()
@@ -1238,7 +1320,7 @@ public class BakeryTest {
     }
 
     @Test
-    protected void getRatingProductsSortByAlphabetTest() throws ProductAlreadyContainsInAnotherBakeryException,
+    protected void getRatingProductsSortByAlphabetTest() throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException,
             ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException {
         SmallBakery bakery1 = new SmallBakeryBuilder()
@@ -1288,7 +1370,7 @@ public class BakeryTest {
 
     @Test
     protected void priceIncreasingBestThreeProductsChangePriceTest()
-            throws ProductAlreadyContainsInAnotherBakeryException,
+            throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException,
             SearchProductsNotFoundException {
         BigBakery bakery1 = new BigBakeryBuilder()
@@ -1356,7 +1438,7 @@ public class BakeryTest {
 
     @Test
     protected void priceIncreasingPriceCanNotBeMoreThanMaxPriceTest()
-            throws ProductAlreadyContainsInAnotherBakeryException,
+            throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException,
             SearchProductsNotFoundException {
         BigBakery bakery1 = new BigBakeryBuilder()
@@ -1391,7 +1473,7 @@ public class BakeryTest {
     }
 
     @Test
-    protected void onlyTwoProductsShouldIncreaseThePrice() throws ProductAlreadyContainsInAnotherBakeryException,
+    protected void onlyTwoProductsShouldIncreaseThePrice() throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException,
             SearchProductsNotFoundException {
         BigBakery bakery1 = new BigBakeryBuilder()

@@ -8,7 +8,7 @@ import ee.taltech.iti0202.bakery.builder.ProductBuilder;
 import ee.taltech.iti0202.bakery.builder.SmallBakeryBuilder;
 import ee.taltech.iti0202.bakery.customer.Customer;
 import ee.taltech.iti0202.bakery.exceptions.DoNotHaveEnoughMoneyToBuyException;
-import ee.taltech.iti0202.bakery.exceptions.ProductAlreadyContainsInAnotherBakeryException;
+import ee.taltech.iti0202.bakery.exceptions.CanNotAddProductToTheBakeryException;
 import ee.taltech.iti0202.bakery.exceptions.ProductAlreadyContainsInTheBakeryException;
 import ee.taltech.iti0202.bakery.exceptions.ProductDoesNotContainsInBakeryException;
 import ee.taltech.iti0202.bakery.exceptions.ProductLimitExceededException;
@@ -27,7 +27,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class LessKilocaloriesStrategyTest {
 
     @Test
-    protected void lessKilocaloriesStrategyTest() throws ProductAlreadyContainsInAnotherBakeryException,
+    protected void lessKilocaloriesStrategyTest() throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException,
             SearchProductsNotFoundException {
         BigBakery bakery1 = new BigBakeryBuilder()
@@ -75,7 +75,7 @@ class LessKilocaloriesStrategyTest {
     }
 
     @Test
-    protected void choseOneProductWithTheLeastCaloriesTest() throws ProductAlreadyContainsInAnotherBakeryException,
+    protected void choseOneProductWithTheLeastCaloriesTest() throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException,
             SearchProductsNotFoundException {
         BigBakery bakery1 = new BigBakeryBuilder()
@@ -106,7 +106,7 @@ class LessKilocaloriesStrategyTest {
 
     @Test
     protected void lessKilocaloriesStrategyBakeryDoesNotHaveProductsWithThisPriceOrCaloriesTest()
-            throws ProductAlreadyContainsInAnotherBakeryException,
+            throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException {
         BigBakery bakery1 = new BigBakeryBuilder()
                 .setName("Big Bakery")
@@ -137,7 +137,7 @@ class LessKilocaloriesStrategyTest {
     }
 
     @Test
-    protected void lessKilocaloriesStrategyNotCorrectPriceTest() throws ProductAlreadyContainsInAnotherBakeryException,
+    protected void lessKilocaloriesStrategyNotCorrectPriceTest() throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException {
         BigBakery bakery1 = new BigBakeryBuilder()
                 .setName("Big Bakery")
@@ -169,7 +169,7 @@ class LessKilocaloriesStrategyTest {
 
     @Test
     protected void lessKilocaloriesStrategyCaloriesAreEqualsChooseWithBestPriceTest()
-            throws ProductAlreadyContainsInAnotherBakeryException,
+            throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException,
             SearchProductsNotFoundException {
         BigBakery bakery1 = new BigBakeryBuilder()
@@ -200,7 +200,7 @@ class LessKilocaloriesStrategyTest {
 
     @Test
     protected void lessKilocaloriesStrategyCaloriesAreEqualsChooseWithBestPriceSmallBakeryTest()
-            throws ProductAlreadyContainsInAnotherBakeryException,
+            throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException,
             ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException,
             SearchProductsNotFoundException {
@@ -232,7 +232,7 @@ class LessKilocaloriesStrategyTest {
 
     @Test
     protected void lessKilocaloriesStrategyDontHaveEnoughMoneyToBuyTest()
-            throws ProductAlreadyContainsInAnotherBakeryException,
+            throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException,
             SearchProductsNotFoundException {
         BigBakery bakery1 = new BigBakeryBuilder()

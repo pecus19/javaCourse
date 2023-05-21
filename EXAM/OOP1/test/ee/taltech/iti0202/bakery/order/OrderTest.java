@@ -17,7 +17,7 @@ import java.util.List;
 
 public class OrderTest {
     @Test
-    protected void makeBasicOrderTest() throws ProductAlreadyContainsInAnotherBakeryException,
+    protected void makeBasicOrderTest() throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException, UnconfirmedOrdersException,
             DoNotHaveEnoughMoneyToBuyException, OrderCanNotBeDoneException {
         Product product1 = new ProductBuilder()
@@ -55,7 +55,7 @@ public class OrderTest {
     }
 
     @Test
-    protected void checkCustomerBoughtProductsTest() throws ProductAlreadyContainsInAnotherBakeryException,
+    protected void checkCustomerBoughtProductsTest() throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException, UnconfirmedOrdersException,
             DoNotHaveEnoughMoneyToBuyException, OrderCanNotBeDoneException {
         Product product1 = new ProductBuilder()
@@ -94,7 +94,7 @@ public class OrderTest {
     }
 
     @Test
-    protected void checkBakeryMoneyAfterReceivingTheOrderTest() throws ProductAlreadyContainsInAnotherBakeryException,
+    protected void checkBakeryMoneyAfterReceivingTheOrderTest() throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException, UnconfirmedOrdersException,
             DoNotHaveEnoughMoneyToBuyException, OrderCanNotBeDoneException {
         Product product1 = new ProductBuilder()
@@ -135,7 +135,7 @@ public class OrderTest {
     }
 
     @Test
-    protected void checkCustomerMoneyAfterReceivingTheOrderTest() throws ProductAlreadyContainsInAnotherBakeryException,
+    protected void checkCustomerMoneyAfterReceivingTheOrderTest() throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException, UnconfirmedOrdersException,
             DoNotHaveEnoughMoneyToBuyException, OrderCanNotBeDoneException {
         Product product1 = new ProductBuilder()
@@ -176,7 +176,7 @@ public class OrderTest {
     }
 
     @Test
-    protected void canNotMakeAnOrderTest() throws ProductAlreadyContainsInAnotherBakeryException,
+    protected void canNotMakeAnOrderTest() throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException,
             ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException,
             UnconfirmedOrdersException, DoNotHaveEnoughMoneyToBuyException {
@@ -223,7 +223,7 @@ public class OrderTest {
     }
 
     @Test
-    protected void canNotMakeAnOrderCheckMoneyTest() throws ProductAlreadyContainsInAnotherBakeryException,
+    protected void canNotMakeAnOrderCheckMoneyTest() throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException,
             ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException,
             UnconfirmedOrdersException, DoNotHaveEnoughMoneyToBuyException {
@@ -272,7 +272,7 @@ public class OrderTest {
     }
 
     @Test
-    protected void mustCancelTheOldOrderToOrderANewOneTest() throws ProductAlreadyContainsInAnotherBakeryException,
+    protected void mustCancelTheOldOrderToOrderANewOneTest() throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException,
             ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException,
             UnconfirmedOrdersException {
@@ -309,7 +309,7 @@ public class OrderTest {
         bakery1.addProduct(product2);
         bakery1.addProduct(product1);
         bakery2.addProduct(product3);
-        Order order = new Order(null, bakery2, List.of(product1, product2, product3));
+        Order order = new Order(customer1, bakery2, List.of(product1, product2, product3));
         order.setBakery(bakery1);
         order.setCustomer(customer1);
         order.makeOrder();
@@ -322,7 +322,7 @@ public class OrderTest {
     }
 
     @Test
-    protected void сanceledTheOldOrderAndOrderedANewOneTest() throws ProductAlreadyContainsInAnotherBakeryException,
+    protected void сanceledTheOldOrderAndOrderedANewOneTest() throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException,
             ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException,
             UnconfirmedOrdersException, DoNotHaveEnoughMoneyToBuyException, OrderCanNotBeDoneException {
@@ -373,6 +373,66 @@ public class OrderTest {
 
         } finally {
             Assertions.assertEquals(order2.confirmOrder().size(), 2);
+        }
+    }
+
+    @Test
+    protected void orderCustomerIsNullTest() {
+        Product product1 = new ProductBuilder()
+                .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                .setName("Cookie")
+                .setKilocalories(400.0)
+                .setPrice(1.2)
+                .createProduct();
+        Customer customer1 = new CustomerBuilder().setName("Danila")
+                .setAge(21)
+                .setBankAccount(23112.23)
+                .createCustomer();
+        BigBakery bakery1 = new BigBakeryBuilder()
+                .setName("Big Bakery")
+                .setBankAccount(1000.34)
+                .createBigBakery();
+
+        try {
+            new Order(null, bakery1, List.of(product1));
+        } catch (IllegalArgumentException ex) {
+            Assertions.assertEquals("Customer cannot be empty", ex.getMessage());
+        }
+    }
+
+    @Test
+    protected void orderBakeryIsNullTest() {
+        Product product1 = new ProductBuilder()
+                .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                .setName("Cookie")
+                .setKilocalories(400.0)
+                .setPrice(1.2)
+                .createProduct();
+        Customer customer1 = new CustomerBuilder().setName("Danila")
+                .setAge(21)
+                .setBankAccount(23112.23)
+                .createCustomer();
+        try {
+            new Order(customer1, null, List.of(product1));
+        } catch (IllegalArgumentException ex) {
+            Assertions.assertEquals("Bakery cannot be empty", ex.getMessage());
+        }
+    }
+
+    @Test
+    protected void orderProductIsNullTest() {
+        Customer customer1 = new CustomerBuilder().setName("Danila")
+                .setAge(21)
+                .setBankAccount(23112.23)
+                .createCustomer();
+        BigBakery bakery1 = new BigBakeryBuilder()
+                .setName("Big Bakery")
+                .setBankAccount(1000.34)
+                .createBigBakery();
+        try {
+            new Order(customer1, bakery1, List.of());
+        } catch (IllegalArgumentException ex) {
+            Assertions.assertEquals("You need to add some products to the order", ex.getMessage());
         }
     }
 
