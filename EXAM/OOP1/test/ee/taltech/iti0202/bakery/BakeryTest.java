@@ -211,9 +211,10 @@ public class BakeryTest {
         try {
             bakery1.addProduct(product2);
         } catch (CanNotAddProductToTheBakeryException ex) {
-            Assertions.assertEquals("Product cannot add to the bakery!", ex.getMessage());
+            Assertions.assertEquals("Cannot add product to the bakery!", ex.getMessage());
         }
     }
+
     @Test
     protected void testAddProductToBakerySecondTime()
             throws CanNotAddProductToTheBakeryException,
@@ -683,6 +684,26 @@ public class BakeryTest {
     }
 
     @Test
+    protected void findProductByTypeNotFoundTest() throws CanNotAddProductToTheBakeryException {
+        Product product1 = new ProductBuilder()
+                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setName("Pie")
+                .setKilocalories(400.0)
+                .setPrice(1.2)
+                .createProduct();
+        BigBakery bakery1 = new BigBakeryBuilder()
+                .setName("Big Bakery")
+                .setBankAccount(1000.34)
+                .createBigBakery();
+        bakery1.addProduct(product1);
+        try {
+            bakery1.findProductByType(Product.bakeryTypes.COOKIE);
+        } catch (SearchProductsNotFoundException ex) {
+            Assertions.assertEquals("Search products not found!", ex.getMessage());
+        }
+    }
+
+    @Test
     protected void findProductByIdTest() throws CanNotAddProductToTheBakeryException,
             ProductDoesNotContainsInBakeryException {
         Product product1 = new ProductBuilder()
@@ -973,6 +994,26 @@ public class BakeryTest {
     }
 
     @Test
+    protected void bigBakeryAddProductSecondTime() throws CanNotAddProductToTheBakeryException {
+        Product product1 = new ProductBuilder()
+                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setName("Pie")
+                .setKilocalories(400.0)
+                .setPrice(1.2)
+                .createProduct();
+        BigBakery bakery1 = new BigBakeryBuilder()
+                .setName("Big Bakery")
+                .setBankAccount(1000.34)
+                .createBigBakery();
+        bakery1.addProduct(product1);
+        try {
+            bakery1.addProduct(product1);
+        } catch (CanNotAddProductToTheBakeryException ex) {
+            Assertions.assertEquals("Cannot add product to the bakery!", ex.getMessage());
+        }
+    }
+
+    @Test
     protected void smallBakeryAddMoreThanTenProductsTest() throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException,
             ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException {
@@ -1003,7 +1044,6 @@ public class BakeryTest {
 
     @Test
     protected void bigBakeryFindProductsByTypeTest() throws CanNotAddProductToTheBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException,
             SearchProductsNotFoundException {
         BigBakery bakery1 = new BigBakeryBuilder()
                 .setName("Big Bakery")
@@ -1045,8 +1085,7 @@ public class BakeryTest {
 
     @Test
     protected void bigBakeryFindProductsByTypeMoreThanOneFoundTest()
-            throws CanNotAddProductToTheBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, SearchProductsNotFoundException {
+            throws CanNotAddProductToTheBakeryException, SearchProductsNotFoundException {
         BigBakery bakery1 = new BigBakeryBuilder()
                 .setName("Big Bakery")
                 .setBankAccount(1000.34)
