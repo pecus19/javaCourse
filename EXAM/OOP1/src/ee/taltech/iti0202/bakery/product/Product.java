@@ -1,7 +1,5 @@
 package ee.taltech.iti0202.bakery.product;
 
-import java.lang.reflect.Type;
-
 public class Product {
     private String name;
     private int id;
@@ -10,6 +8,7 @@ public class Product {
     private static int idCounter = -1;
     private boolean inTheBakery;
     private Product.bakeryTypes bakeryTypes;
+    private double ratingMultiplier = 0;
 
     public Product(String name, double price, Double kilocalories, Product.bakeryTypes bakeryTypes) {
         this.name = name;
@@ -27,6 +26,26 @@ public class Product {
 
     public Product.bakeryTypes getBakeryTypes() {
         return bakeryTypes;
+    }
+
+    public double getRatingMultiplier() {
+        return ratingMultiplier;
+    }
+
+    public void setRatingMultiplier(double ratingMultiplier) {
+        this.ratingMultiplier = ratingMultiplier;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "name='" + name + '\'' +
+                ", id=" + id +
+                ", price=" + price +
+                ", kilocalories=" + kilocalories +
+                ", bakeryTypes=" + bakeryTypes +
+                ", ratingMultiplier=" + ratingMultiplier +
+                '}';
     }
 
     public enum bakeryTypes {

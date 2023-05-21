@@ -5,11 +5,9 @@ import ee.taltech.iti0202.bakery.exceptions.*;
 import ee.taltech.iti0202.bakery.order.Order;
 import ee.taltech.iti0202.bakery.product.Product;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 public class SmallBakery {
     protected String name;
@@ -18,6 +16,7 @@ public class SmallBakery {
     protected List<Order> orders = new ArrayList<>();
     protected int productLimit = 0;
     protected Logger logger = Logger.getLogger(SmallBakery.class.getName());
+    protected Map<Product, Integer> productRating = new HashMap<>();
 
     public SmallBakery(String name, Double bankAccount) {
         if (name == null) {
@@ -52,6 +51,45 @@ public class SmallBakery {
         customer.setBankAccount(customer.getBankAccount() - product.getPrice());
     }
 
+    public void ratingCalculation(Product product) {
+        boolean check = true;
+        for (Map.Entry<Product, Integer> entry : productRating.entrySet()) {
+            if (entry.getKey().getName().equals(product.getName())
+                    && entry.getKey().getKilocalories().equals(product.getKilocalories())
+                    && entry.getKey().getPrice() == product.getPrice()) {
+                productRating.put(entry.getKey(), productRating.get(entry.getKey()) + 1);
+                check = false;
+            }
+        }
+        if (check) {
+            productRating.put(product, 1);
+        }
+    }
+
+    public List<Product> getProductRating() {
+        List<String> output = new ArrayList<>();
+        for (Map.Entry<Product, Integer> entry : productRating.entrySet()) {
+            double price = entry.getKey().getPrice();
+            for (Map.Entry<Product, Integer> entry1 : productRating.entrySet()) {
+                if (entry.getKey().getName().equals(entry1.getKey().getName())) {
+                    price += entry1.getKey().getPrice();
+                }
+            }
+            price = price / entry.getKey().getKilocalories();
+            price = Math.floor(price * 10) / 10;
+            entry.getKey().setRatingMultiplier(price);
+        }
+        List<Map.Entry<Product, Integer>> entries = new ArrayList<>(productRating.entrySet());
+        entries.sort(Map.Entry.<Product, Integer>comparingByValue(Collections.reverseOrder())
+                .thenComparing(Comparator.comparing((Map.Entry<Product, Integer> entry) -> entry.getKey().getPrice())
+                        .thenComparing(entry -> entry.getKey().getKilocalories())
+                        .thenComparing(entry -> entry.getKey().getRatingMultiplier()).reversed()));
+        List<Product> keys = entries.stream()
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
+        return keys;
+    }
+
     public Product buyProductsByType(Customer customer, Product.bakeryTypes product) throws DoNotHaveEnoughMoneyToBuyException,
             ProductDoesNotContainsInBakeryException {
         List<Product> productsByType = new ArrayList<>();
@@ -67,6 +105,7 @@ public class SmallBakery {
                 transaction(customer, productsByType.get(0));
                 removeProduct(productsByType.get(0));
                 customer.addBoughtProduct(productsByType.get(0));
+                ratingCalculation(productsByType.get(0));
                 return productsByType.get(0);
             }
         }
@@ -81,6 +120,7 @@ public class SmallBakery {
             } else {
                 transaction(customer, product);
                 removeProduct(product);
+                ratingCalculation(product);
                 return product;
             }
         }
@@ -183,7 +223,6 @@ public class SmallBakery {
                 throw new SmallBakeryCanSellOnlyProductsWithOneTypeException();
             }
         }
-
         products.add(product);
         product.setInTheBakery(true);
         productLimit++;
