@@ -7,8 +7,6 @@ import ee.taltech.iti0202.bakery.builder.ProductBuilder;
 import ee.taltech.iti0202.bakery.customer.Customer;
 import ee.taltech.iti0202.bakery.exceptions.DoNotHaveEnoughMoneyToBuyException;
 import ee.taltech.iti0202.bakery.exceptions.CanNotAddProductToTheBakeryException;
-import ee.taltech.iti0202.bakery.exceptions.ProductDoesNotContainsInBakeryException;
-import ee.taltech.iti0202.bakery.exceptions.ProductLimitExceededException;
 import ee.taltech.iti0202.bakery.exceptions.SearchProductsNotFoundException;
 import ee.taltech.iti0202.bakery.product.Product;
 import org.junit.jupiter.api.Test;
@@ -21,7 +19,7 @@ class DifferentTypesOfProductsStrategyTest {
 
     @Test
     protected void chooseTwoProductsOfThreeTest() throws CanNotAddProductToTheBakeryException,
-            SearchProductsNotFoundException, ProductLimitExceededException, ProductDoesNotContainsInBakeryException,
+            SearchProductsNotFoundException,
             DoNotHaveEnoughMoneyToBuyException {
         BigBakery bakery1 = new BigBakeryBuilder()
                 .setName("Big Bakery")
@@ -59,7 +57,7 @@ class DifferentTypesOfProductsStrategyTest {
 
     @Test
     protected void chooseOneTypeFromAllProductsTest() throws CanNotAddProductToTheBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException,
+            DoNotHaveEnoughMoneyToBuyException,
             SearchProductsNotFoundException {
         BigBakery bakery1 = new BigBakeryBuilder()
                 .setName("Big Bakery")
@@ -122,7 +120,7 @@ class DifferentTypesOfProductsStrategyTest {
 
     @Test
     protected void chooseProductWithLessPressTest() throws CanNotAddProductToTheBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException,
+            DoNotHaveEnoughMoneyToBuyException,
             SearchProductsNotFoundException {
         BigBakery bakery1 = new BigBakeryBuilder()
                 .setName("Big Bakery")
@@ -167,7 +165,6 @@ class DifferentTypesOfProductsStrategyTest {
     @Test
     protected void lessKilocaloriesStrategyDontHaveEnoughMoneyToBuyTest()
             throws CanNotAddProductToTheBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException,
             SearchProductsNotFoundException {
         BigBakery bakery1 = new BigBakeryBuilder()
                 .setName("Big Bakery")
