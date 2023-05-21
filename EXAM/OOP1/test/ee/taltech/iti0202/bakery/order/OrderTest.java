@@ -7,7 +7,14 @@ import ee.taltech.iti0202.bakery.builder.CustomerBuilder;
 import ee.taltech.iti0202.bakery.builder.ProductBuilder;
 import ee.taltech.iti0202.bakery.builder.SmallBakeryBuilder;
 import ee.taltech.iti0202.bakery.customer.Customer;
-import ee.taltech.iti0202.bakery.exceptions.*;
+import ee.taltech.iti0202.bakery.exceptions.CanNotAddProductToTheBakeryException;
+import ee.taltech.iti0202.bakery.exceptions.DoNotHaveEnoughMoneyToBuyException;
+import ee.taltech.iti0202.bakery.exceptions.OrderCanNotBeDoneException;
+import ee.taltech.iti0202.bakery.exceptions.ProductAlreadyContainsInTheBakeryException;
+import ee.taltech.iti0202.bakery.exceptions.ProductDoesNotContainsInBakeryException;
+import ee.taltech.iti0202.bakery.exceptions.ProductLimitExceededException;
+import ee.taltech.iti0202.bakery.exceptions.SmallBakeryCanSellOnlyProductsWithOneTypeException;
+import ee.taltech.iti0202.bakery.exceptions.UnconfirmedOrdersException;
 import ee.taltech.iti0202.bakery.product.Product;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -55,8 +62,8 @@ public class OrderTest {
     }
 
     @Test
-    protected void checkCustomerBoughtProductsTest() throws CanNotAddProductToTheBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, UnconfirmedOrdersException,
+    protected void checkCustomerBoughtProductsTest() throws CanNotAddProductToTheBakeryException
+            , ProductDoesNotContainsInBakeryException, UnconfirmedOrdersException,
             DoNotHaveEnoughMoneyToBuyException, OrderCanNotBeDoneException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.COOKIE)
@@ -94,8 +101,8 @@ public class OrderTest {
     }
 
     @Test
-    protected void checkBakeryMoneyAfterReceivingTheOrderTest() throws CanNotAddProductToTheBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, UnconfirmedOrdersException,
+    protected void checkBakeryMoneyAfterReceivingTheOrderTest() throws CanNotAddProductToTheBakeryException
+            , ProductDoesNotContainsInBakeryException, UnconfirmedOrdersException,
             DoNotHaveEnoughMoneyToBuyException, OrderCanNotBeDoneException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.COOKIE)
@@ -135,8 +142,8 @@ public class OrderTest {
     }
 
     @Test
-    protected void checkCustomerMoneyAfterReceivingTheOrderTest() throws CanNotAddProductToTheBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, UnconfirmedOrdersException,
+    protected void checkCustomerMoneyAfterReceivingTheOrderTest() throws CanNotAddProductToTheBakeryException
+            , ProductDoesNotContainsInBakeryException, UnconfirmedOrdersException,
             DoNotHaveEnoughMoneyToBuyException, OrderCanNotBeDoneException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.COOKIE)
@@ -322,7 +329,7 @@ public class OrderTest {
     }
 
     @Test
-    protected void сanceledTheOldOrderAndOrderedANewOneTest() throws CanNotAddProductToTheBakeryException,
+    protected void theOldOrderIsCanceledAndOrderedANewOneTest() throws CanNotAddProductToTheBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException,
             ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException,
             UnconfirmedOrdersException, DoNotHaveEnoughMoneyToBuyException, OrderCanNotBeDoneException {
@@ -384,10 +391,6 @@ public class OrderTest {
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
-        Customer customer1 = new CustomerBuilder().setName("Danila")
-                .setAge(21)
-                .setBankAccount(23112.23)
-                .createCustomer();
         BigBakery bakery1 = new BigBakeryBuilder()
                 .setName("Big Bakery")
                 .setBankAccount(1000.34)
@@ -435,6 +438,4 @@ public class OrderTest {
             Assertions.assertEquals("You need to add some products to the order", ex.getMessage());
         }
     }
-
-
 }
