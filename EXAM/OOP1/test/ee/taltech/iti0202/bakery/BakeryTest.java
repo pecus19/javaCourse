@@ -25,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class BakeryTest {
     @Test
-    protected void addProductToBakeryBasicTest() throws CanNotAddProductToTheBakeryException{
+    protected void addProductToBakeryBasicTest() throws CanNotAddProductToTheBakeryException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
