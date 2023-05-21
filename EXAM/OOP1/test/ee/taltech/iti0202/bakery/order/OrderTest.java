@@ -62,8 +62,8 @@ public class OrderTest {
     }
 
     @Test
-    protected void checkCustomerBoughtProductsTest() throws CanNotAddProductToTheBakeryException
-            , ProductDoesNotContainsInBakeryException, UnconfirmedOrdersException,
+    protected void checkCustomerBoughtProductsTest() throws CanNotAddProductToTheBakeryException,
+            ProductDoesNotContainsInBakeryException, UnconfirmedOrdersException,
             DoNotHaveEnoughMoneyToBuyException, OrderCanNotBeDoneException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.Types.COOKIE)
@@ -101,8 +101,8 @@ public class OrderTest {
     }
 
     @Test
-    protected void checkBakeryMoneyAfterReceivingTheOrderTest() throws CanNotAddProductToTheBakeryException
-            , ProductDoesNotContainsInBakeryException, UnconfirmedOrdersException,
+    protected void checkBakeryMoneyAfterReceivingTheOrderTest() throws CanNotAddProductToTheBakeryException,
+            ProductDoesNotContainsInBakeryException, UnconfirmedOrdersException,
             DoNotHaveEnoughMoneyToBuyException, OrderCanNotBeDoneException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.Types.COOKIE)
@@ -142,8 +142,8 @@ public class OrderTest {
     }
 
     @Test
-    protected void checkCustomerMoneyAfterReceivingTheOrderTest() throws CanNotAddProductToTheBakeryException
-            , ProductDoesNotContainsInBakeryException, UnconfirmedOrdersException,
+    protected void checkCustomerMoneyAfterReceivingTheOrderTest() throws CanNotAddProductToTheBakeryException,
+            ProductDoesNotContainsInBakeryException, UnconfirmedOrdersException,
             DoNotHaveEnoughMoneyToBuyException, OrderCanNotBeDoneException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.Types.COOKIE)
