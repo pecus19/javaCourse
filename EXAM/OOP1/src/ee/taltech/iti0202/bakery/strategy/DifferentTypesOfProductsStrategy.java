@@ -10,10 +10,10 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class LessKilocaloriesStrategy extends Strategy {
+public class DifferentTypesOfProductsStrategy extends Strategy {
     private List<Product> listToFilter;
 
-    public LessKilocaloriesStrategy(Double price, Double kilocalories, Customer customer) {
+    public DifferentTypesOfProductsStrategy(Double price, Double kilocalories, Customer customer) {
         super(price, kilocalories, customer);
     }
 
@@ -23,17 +23,17 @@ public class LessKilocaloriesStrategy extends Strategy {
         List<Product> output = new ArrayList<>();
         listToFilter = bakery.getProducts();
         double priceToCheck = getPrice();
-        double kilocaloriesToCheck = getKilocalories();
-        (listToFilter).sort(Comparator.comparing(Product::getKilocalories).thenComparing(Product::getPrice));
+        (listToFilter).sort(Comparator.comparing(Product::getPrice));
 
         while (loopCheck) {
+            if (listToFilter.size() == 0) {
+                loopCheck = false;
+            }
             for (int i = 0; i < listToFilter.size(); i++) {
                 double checkerPrice = priceToCheck - listToFilter.get(i).getPrice();
-                double checkerCalories = kilocaloriesToCheck - listToFilter.get(i).getKilocalories();
-                if (checkerPrice > -1 && checkerCalories > -1) {
+                if (checkerPrice > -1) {
                     output.add(listToFilter.get(i));
                     priceToCheck = priceToCheck - listToFilter.get(i).getPrice();
-                    kilocaloriesToCheck = kilocaloriesToCheck - listToFilter.get(i).getKilocalories();
                     removeProductWithSomeNameAndType(listToFilter.get(i));
                     break;
                 }
@@ -55,8 +55,7 @@ public class LessKilocaloriesStrategy extends Strategy {
 
     public void removeProductWithSomeNameAndType(Product product) {
         for (int i = 0; i < getListToFilter().size(); i++) {
-            if (getListToFilter().get(i).getName().equals(product.getName())
-                    && getListToFilter().get(i).getBakerytypes().equals(product.getBakerytypes())) {
+            if (getListToFilter().get(i).getBakerytypes().equals(product.getBakerytypes())) {
                 listToFilter.remove(getListToFilter().get(i));
                 i = -1;
             }

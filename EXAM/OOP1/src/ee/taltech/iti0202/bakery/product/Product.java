@@ -7,7 +7,7 @@ public class Product {
     private Double kilocalories;
     private static int idCounter = -1;
     private boolean inTheBakery;
-    private Product.bakeryTypes bakeryTypes;
+    private Product.bakeryTypes bakerytypes;
     private double ratingMultiplier = 0;
 
 
@@ -19,18 +19,18 @@ public class Product {
         this.name = name;
         this.price = price;
         this.kilocalories = kilocalories;
-        this.bakeryTypes = bakeryTypes;
+        this.bakerytypes = bakeryTypes;
         idCounter++;
         setId(idCounter);
         inTheBakery = false;
     }
 
-    public void setBakeryTypes(Product.bakeryTypes bakeryTypes) {
-        this.bakeryTypes = bakeryTypes;
+    public void setBakerytypes(Product.bakeryTypes bakerytypes) {
+        this.bakerytypes = bakerytypes;
     }
 
-    public Product.bakeryTypes getBakeryTypes() {
-        return bakeryTypes;
+    public Product.bakeryTypes getBakerytypes() {
+        return bakerytypes;
     }
 
     public double getRatingMultiplier() {
@@ -48,7 +48,7 @@ public class Product {
                 ", id=" + id +
                 ", price=" + price +
                 ", kilocalories=" + kilocalories +
-                ", bakeryTypes=" + bakeryTypes +
+                ", bakerytypes=" + bakerytypes +
                 ", ratingMultiplier=" + ratingMultiplier +
                 '}';
     }

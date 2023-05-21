@@ -5,7 +5,14 @@ import ee.taltech.iti0202.bakery.exceptions.*;
 import ee.taltech.iti0202.bakery.order.Order;
 import ee.taltech.iti0202.bakery.product.Product;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -88,11 +95,12 @@ public class SmallBakery {
                 .collect(Collectors.toList());
     }
 
-    public Product buyProductsByType(Customer customer, Product.bakeryTypes product) throws DoNotHaveEnoughMoneyToBuyException,
+    public Product buyProductsByType(Customer customer, Product.bakeryTypes product)
+            throws DoNotHaveEnoughMoneyToBuyException,
             ProductDoesNotContainsInBakeryException {
         List<Product> productsByType = new ArrayList<>();
         for (int i = 0; i < products.size(); i++) {
-            if (products.get(i).getBakeryTypes().equals(product)) {
+            if (products.get(i).getBakerytypes().equals(product)) {
                 productsByType.add((products.get(i)));
             }
         }
@@ -125,12 +133,11 @@ public class SmallBakery {
         throw new ProductDoesNotContainsInBakeryException();
     }
 
-    public void takeOrder(Order order) throws ProductDoesNotContainsInBakeryException {
+    public void takeOrder(Order order) {
         List<Optional<Product>> orderList = new ArrayList<>();
         for (int i = 0; i < order.getProducts().size(); i++) {
 //            findProductById(order.getProducts().get(i).getId());
             try {
-                // Код, который может вызвать исключение
                 orderList.add(findProductById(order.getProducts().get(i).getId()));
             } catch (ProductDoesNotContainsInBakeryException ex) {
                 logger.info(order.getProducts().get(i).getName() + " did not find in  the bakery with name: "
@@ -216,7 +223,7 @@ public class SmallBakery {
             productLimit++;
             logger.info(product.getName() + " has been added to the bakery with name: " + getName());
         } else if (products.size() > 0) {
-            if (!product.getBakeryTypes().equals(products.get(0).getBakeryTypes())) {
+            if (!product.getBakerytypes().equals(products.get(0).getBakerytypes())) {
                 throw new SmallBakeryCanSellOnlyProductsWithOneTypeException();
             } else {
                 products.add(product);

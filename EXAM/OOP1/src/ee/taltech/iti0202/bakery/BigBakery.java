@@ -44,7 +44,7 @@ public class BigBakery extends SmallBakery {
     public List<Product> findProductByType(Product.bakeryTypes bakeryTypes) throws SearchProductsNotFoundException {
         List<Product> output = new ArrayList<>();
         for (int i = 0; i < products.size(); i++) {
-            if (Objects.equals(products.get(i).getBakeryTypes(), bakeryTypes)) {
+            if (Objects.equals(products.get(i).getBakerytypes(), bakeryTypes)) {
                 output.add(products.get(i));
             }
         }

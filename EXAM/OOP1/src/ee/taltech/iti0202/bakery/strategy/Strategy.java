@@ -1,6 +1,12 @@
 package ee.taltech.iti0202.bakery.strategy;
 
+import ee.taltech.iti0202.bakery.SmallBakery;
 import ee.taltech.iti0202.bakery.customer.Customer;
+import ee.taltech.iti0202.bakery.exceptions.DoNotHaveEnoughMoneyToBuyException;
+import ee.taltech.iti0202.bakery.exceptions.SearchProductsNotFoundException;
+import ee.taltech.iti0202.bakery.product.Product;
+
+import java.util.List;
 
 public abstract class Strategy {
     private Double price;
@@ -37,4 +43,7 @@ public abstract class Strategy {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
+
+    public abstract List<Product> useStrategy(SmallBakery bakery)
+            throws SearchProductsNotFoundException, DoNotHaveEnoughMoneyToBuyException;
 }
