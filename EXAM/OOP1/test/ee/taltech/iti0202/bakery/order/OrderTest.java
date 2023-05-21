@@ -309,7 +309,9 @@ public class OrderTest {
         bakery1.addProduct(product2);
         bakery1.addProduct(product1);
         bakery2.addProduct(product3);
-        Order order = new Order(customer1, bakery1, List.of(product1, product2, product3));
+        Order order = new Order(null, bakery2, List.of(product1, product2, product3));
+        order.setBakery(bakery1);
+        order.setCustomer(customer1);
         order.makeOrder();
         Order order2 = new Order(customer1, bakery1, List.of(product1, product2));
         try {

@@ -664,7 +664,7 @@ public class BakeryTest {
 
     @Test
     protected void findProductByIdTest() throws ProductAlreadyContainsInAnotherBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException {
+            ProductDoesNotContainsInBakeryException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.PIE)
                 .setName("Pie")
@@ -1142,7 +1142,7 @@ public class BakeryTest {
 
     @Test
     protected void getRatingProductsThirdSortingLevelTest() throws ProductAlreadyContainsInAnotherBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException {
+            ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException {
         BigBakery bakery1 = new BigBakeryBuilder()
                 .setName("Big Bakery")
                 .setBankAccount(1000.34)
