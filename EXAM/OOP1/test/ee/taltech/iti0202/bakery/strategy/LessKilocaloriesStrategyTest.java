@@ -136,8 +136,8 @@ class LessKilocaloriesStrategyTest {
     }
 
     @Test
-    protected void lessKilocaloriesStrategyNotCorrectPriceTest() throws CanNotAddProductToTheBakeryException
-            , DoNotHaveEnoughMoneyToBuyException {
+    protected void lessKilocaloriesStrategyNotCorrectPriceTest() throws CanNotAddProductToTheBakeryException,
+            DoNotHaveEnoughMoneyToBuyException {
         BigBakery bakery1 = new BigBakeryBuilder()
                 .setName("Big Bakery")
                 .setBankAccount(1000.34)
