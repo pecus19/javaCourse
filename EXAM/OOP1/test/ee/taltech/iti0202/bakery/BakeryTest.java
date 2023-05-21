@@ -15,8 +15,7 @@ import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class BakeryTest {
@@ -671,8 +670,8 @@ public class BakeryTest {
         bakery1.addProduct(product2);
         bakery1.addProduct(product3);
         bakery1.addProduct(product1);
-        Optional<Product> optional = Optional.ofNullable(product2);
-        assertSame(bakery1.findProductById(1), optional);
+        Optional<Product> optional = Optional.of(product2);
+        assertEquals(bakery1.findProductById(1), optional);
     }
 
     @Test
@@ -1209,6 +1208,7 @@ public class BakeryTest {
         assertEquals(bakery1.getProductRating().get(0).getName(), "Tartu peenleib");
         assertEquals(bakery1.getProductRating().get(1).getName(), "Meremehe sai");
     }
+
     @Test
     protected void getRatingProductsSortByAlphabetTest() throws ProductAlreadyContainsInAnotherBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException,
@@ -1256,6 +1256,152 @@ public class BakeryTest {
         System.out.println(bakery1.getProductRating());
         assertEquals(bakery1.getProductRating().get(0).getName(), "A");
         assertEquals(bakery1.getProductRating().get(1).getName(), "B");
+    }
+
+    @Test
+    protected void priceIncreasingBestThreeProductsChangePriceTest() throws ProductAlreadyContainsInAnotherBakeryException,
+            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException,
+            ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException, SearchProductsNotFoundException {
+        BigBakery bakery1 = new BigBakeryBuilder()
+                .setName("Big Bakery")
+                .setBankAccount(1000.34)
+                .createBigBakery();
+        Customer customer1 = new CustomerBuilder().setName("Danila")
+                .setAge(21)
+                .setBankAccount(999999.2)
+                .createCustomer();
+        for (int i = 0; i < 101; i++) {
+            bakery1.addProduct(new ProductBuilder()
+                    .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                    .setName("First")
+                    .setKilocalories(100.0)
+                    .setPrice(1.0)
+                    .createProduct());
+        }
+        for (int i = 0; i < 151; i++) {
+            bakery1.addProduct(new ProductBuilder()
+                    .setBakeryTypes(Product.bakeryTypes.PIE)
+                    .setName("Second")
+                    .setKilocalories(100.0)
+                    .setPrice(1.0)
+                    .createProduct());
+        }
+        for (int i = 0; i < 201; i++) {
+            bakery1.addProduct(new ProductBuilder()
+                    .setBakeryTypes(Product.bakeryTypes.CAKE)
+                    .setName("Third")
+                    .setKilocalories(100.0)
+                    .setPrice(1.0)
+                    .createProduct());
+        }
+        for (int i = 0; i < 251; i++) {
+            bakery1.addProduct(new ProductBuilder()
+                    .setBakeryTypes(Product.bakeryTypes.BREAD)
+                    .setName("Fourth")
+                    .setKilocalories(100.0)
+                    .setPrice(1.0)
+                    .createProduct());
+        }
+        for (int i = 0; i < 90; i++) {
+            bakery1.buyProductsByType(customer1, Product.bakeryTypes.COOKIE);
+        }
+        for (int i = 0; i < 120; i++) {
+            bakery1.buyProductsByType(customer1, Product.bakeryTypes.PIE);
+        }
+        for (int i = 0; i < 190; i++) {
+            bakery1.buyProductsByType(customer1, Product.bakeryTypes.CAKE);
+        }
+        for (int i = 0; i < 230; i++) {
+            bakery1.buyProductsByType(customer1, Product.bakeryTypes.BREAD);
+        }
+        double firstPriceBefore = bakery1.findProductByType(Product.bakeryTypes.COOKIE).get(0).getPrice();
+        double secondPriceBefore = bakery1.findProductByType(Product.bakeryTypes.PIE).get(0).getPrice();
+        double thirdPriceBefore = bakery1.findProductByType(Product.bakeryTypes.CAKE).get(0).getPrice();
+        double fourthPriceBefore = bakery1.findProductByType(Product.bakeryTypes.BREAD).get(0).getPrice();
+        bakery1.increasingPrices();
+        assertEquals(bakery1.findProductByType(Product.bakeryTypes.COOKIE).get(3).getPrice(), firstPriceBefore);
+        assertNotEquals(bakery1.findProductByType(Product.bakeryTypes.PIE).get(5).getPrice(), secondPriceBefore);
+        assertNotEquals(bakery1.findProductByType(Product.bakeryTypes.CAKE).get(10).getPrice(), thirdPriceBefore);
+        assertNotEquals(bakery1.findProductByType(Product.bakeryTypes.BREAD).get(15).getPrice(), fourthPriceBefore);
+    }
+
+    @Test
+    protected void priceIncreasingPriceCanNotBeMoreThanMaxPriceTest() throws ProductAlreadyContainsInAnotherBakeryException,
+            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException,
+            ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException, SearchProductsNotFoundException {
+        BigBakery bakery1 = new BigBakeryBuilder()
+                .setName("Big Bakery")
+                .setBankAccount(1000.34)
+                .createBigBakery();
+        Customer customer1 = new CustomerBuilder().setName("Danila")
+                .setAge(21)
+                .setBankAccount(999999.2)
+                .createCustomer();
+        for (int i = 0; i < 601; i++) {
+            bakery1.addProduct(new ProductBuilder()
+                    .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                    .setName("First")
+                    .setKilocalories(100.0)
+                    .setPrice(1.0)
+                    .createProduct());
+        }
+
+        for (int i = 0; i < 550; i++) {
+            bakery1.buyProductsByType(customer1, Product.bakeryTypes.COOKIE);
+        }
+
+        double firstPriceBefore = bakery1.findProductByType(Product.bakeryTypes.COOKIE).get(0).getPrice();
+        bakery1.increasingPrices();
+        assertEquals(bakery1.findProductByType(Product.bakeryTypes.COOKIE).get(3).getPrice(),
+                firstPriceBefore * 1.5);
+        assertEquals(bakery1.findProductByType(Product.bakeryTypes.COOKIE).get(43).getPrice(),
+                firstPriceBefore * 1.5);
+        assertEquals(bakery1.findProductByType(Product.bakeryTypes.COOKIE).get(13).getPrice(),
+                firstPriceBefore * 1.5);
+    }
+
+    @Test
+    protected void onlyTwoProductsShouldIncreaseThePrice() throws ProductAlreadyContainsInAnotherBakeryException,
+            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException,
+            ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException, SearchProductsNotFoundException {
+        BigBakery bakery1 = new BigBakeryBuilder()
+                .setName("Big Bakery")
+                .setBankAccount(1000.34)
+                .createBigBakery();
+        Customer customer1 = new CustomerBuilder().setName("Danila")
+                .setAge(21)
+                .setBankAccount(999999.2)
+                .createCustomer();
+        for (int i = 0; i < 201; i++) {
+            bakery1.addProduct(new ProductBuilder()
+                    .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                    .setName("First")
+                    .setKilocalories(100.0)
+                    .setPrice(1.0)
+                    .createProduct());
+        }
+        for (int i = 0; i < 301; i++) {
+            bakery1.addProduct(new ProductBuilder()
+                    .setBakeryTypes(Product.bakeryTypes.BREAD)
+                    .setName("Second")
+                    .setKilocalories(100.0)
+                    .setPrice(1.0)
+                    .createProduct());
+        }
+
+        for (int i = 0; i < 150; i++) {
+            bakery1.buyProductsByType(customer1, Product.bakeryTypes.COOKIE);
+        }
+        for (int i = 0; i < 250; i++) {
+            bakery1.buyProductsByType(customer1, Product.bakeryTypes.BREAD);
+        }
+
+        double firstPriceBefore = bakery1.findProductByType(Product.bakeryTypes.COOKIE).get(0).getPrice();
+        double secondPriceBefore = bakery1.findProductByType(Product.bakeryTypes.BREAD).get(0).getPrice();
+        bakery1.increasingPrices();
+        assertNotEquals(bakery1.findProductByType(Product.bakeryTypes.COOKIE).get(0).getPrice(), firstPriceBefore);
+        assertNotEquals(bakery1.findProductByType(Product.bakeryTypes.BREAD).get(0).getPrice(), secondPriceBefore);
+
     }
 
 
