@@ -228,30 +228,18 @@ public class SmallBakery {
     }
 
     public void increasingPrices() {
-        if (getProductRating().size() > 2) {
-            for (int i = 0; i < 3; i++) {
-                double newPriceCalculation = getProductRating().get(i).getPrice()
-                        + (productRating.get(getProductRating().get(i)) * 0.1 / 100);
-                for (int j = 0; j < getProducts().size(); j++) {
-                    if (getProducts().get(j).getName().equals(getProductRating().get(i).getName())
-                            && getProducts().get(j).getPrice() == getProductRating().get(i).getPrice()
-                            && Objects.equals(getProducts().get(j).getKilocalories(), getProductRating()
-                            .get(i).getKilocalories())) {
-                        getProducts().get(j).setPrice(newPriceCalculation);
-                    }
-                }
-            }
-        } else {
-            for (int i = 0; i < getProductRating().size(); i++) {
-                double newPriceCalculation = getProductRating().get(i).getPrice()
-                        + (productRating.get(getProductRating().get(i)) * 0.1 / 100);
-                for (int j = 0; j < getProducts().size(); j++) {
-                    if (getProducts().get(j).getName().equals(getProductRating().get(i).getName())
-                            && getProducts().get(j).getPrice() == getProductRating().get(i).getPrice()
-                            && Objects.equals(getProducts().get(j).getKilocalories(), getProductRating()
-                            .get(i).getKilocalories())) {
-                        getProducts().get(j).setPrice(newPriceCalculation);
-                    }
+        int loopSize = Math.min(3, getProductRating().size());
+
+        for (int i = 0; i < loopSize; i++) {
+            double newPriceCalculation = getProductRating().get(i).getPrice()
+                    + (productRating.get(getProductRating().get(i)) * 0.1 / 100);
+            for (int j = 0; j < getProducts().size(); j++) {
+                Product currentProduct = getProducts().get(j);
+                Product ratingProduct = getProductRating().get(i);
+                if (currentProduct.getName().equals(ratingProduct.getName())
+                        && currentProduct.getPrice() == ratingProduct.getPrice()
+                        && Objects.equals(currentProduct.getKilocalories(), ratingProduct.getKilocalories())) {
+                    currentProduct.setPrice(newPriceCalculation);
                 }
             }
         }
