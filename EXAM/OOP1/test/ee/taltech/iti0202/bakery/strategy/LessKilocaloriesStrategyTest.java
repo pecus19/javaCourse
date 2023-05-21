@@ -22,13 +22,13 @@ import org.junit.jupiter.api.Assertions;
 import java.util.List;
 
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class LessKilocaloriesStrategyTest {
 
     @Test
     protected void lessKilocaloriesStrategyTest() throws CanNotAddProductToTheBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException,
+            DoNotHaveEnoughMoneyToBuyException,
             SearchProductsNotFoundException {
         BigBakery bakery1 = new BigBakeryBuilder()
                 .setName("Big Bakery")
@@ -76,7 +76,7 @@ class LessKilocaloriesStrategyTest {
 
     @Test
     protected void choseOneProductWithTheLeastCaloriesTest() throws CanNotAddProductToTheBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException,
+            DoNotHaveEnoughMoneyToBuyException,
             SearchProductsNotFoundException {
         BigBakery bakery1 = new BigBakeryBuilder()
                 .setName("Big Bakery")
@@ -106,8 +106,7 @@ class LessKilocaloriesStrategyTest {
 
     @Test
     protected void lessKilocaloriesStrategyBakeryDoesNotHaveProductsWithThisPriceOrCaloriesTest()
-            throws CanNotAddProductToTheBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException {
+            throws CanNotAddProductToTheBakeryException, DoNotHaveEnoughMoneyToBuyException {
         BigBakery bakery1 = new BigBakeryBuilder()
                 .setName("Big Bakery")
                 .setBankAccount(1000.34)
@@ -137,8 +136,8 @@ class LessKilocaloriesStrategyTest {
     }
 
     @Test
-    protected void lessKilocaloriesStrategyNotCorrectPriceTest() throws CanNotAddProductToTheBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException {
+    protected void lessKilocaloriesStrategyNotCorrectPriceTest() throws CanNotAddProductToTheBakeryException
+            , DoNotHaveEnoughMoneyToBuyException {
         BigBakery bakery1 = new BigBakeryBuilder()
                 .setName("Big Bakery")
                 .setBankAccount(1000.34)
@@ -169,8 +168,7 @@ class LessKilocaloriesStrategyTest {
 
     @Test
     protected void lessKilocaloriesStrategyCaloriesAreEqualsChooseWithBestPriceTest()
-            throws CanNotAddProductToTheBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException,
+            throws CanNotAddProductToTheBakeryException, DoNotHaveEnoughMoneyToBuyException,
             SearchProductsNotFoundException {
         BigBakery bakery1 = new BigBakeryBuilder()
                 .setName("Big Bakery")
@@ -233,7 +231,6 @@ class LessKilocaloriesStrategyTest {
     @Test
     protected void lessKilocaloriesStrategyDontHaveEnoughMoneyToBuyTest()
             throws CanNotAddProductToTheBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException,
             SearchProductsNotFoundException {
         BigBakery bakery1 = new BigBakeryBuilder()
                 .setName("Big Bakery")
