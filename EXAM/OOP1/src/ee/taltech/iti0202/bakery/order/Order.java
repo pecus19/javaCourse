@@ -21,6 +21,17 @@ public class Order {
 
 
     public Order(Customer customer, SmallBakery bakery, List<Product> products) {
+        if (customer == null) {
+            throw new IllegalArgumentException("Customer cannot be empty");
+        }
+
+        if (bakery == null) {
+            throw new IllegalArgumentException("Bakery cannot be empty");
+        }
+
+        if (products.size() == 0) {
+            throw new IllegalArgumentException("You need to add some products to the order");
+        }
         this.customer = customer;
         this.products = products;
         this.bakery = bakery;

@@ -16,6 +16,20 @@ public class Product {
     }
 
     public Product(String name, double price, Double kilocalories, Product.bakeryTypes bakeryTypes) {
+        if (name == null) {
+            throw new IllegalArgumentException("Name cannot be empty");
+        }
+
+        if (price < 0) {
+            throw new IllegalArgumentException("Price cannot be negative");
+        }
+
+        if (kilocalories < 0) {
+            throw new IllegalArgumentException("Calories cannot be negative");
+        }
+        if (bakeryTypes == null) {
+            throw new IllegalArgumentException("You need to write a type of a product");
+        }
         this.name = name;
         this.price = price;
         this.kilocalories = kilocalories;

@@ -2,7 +2,7 @@ package ee.taltech.iti0202.bakery;
 
 import ee.taltech.iti0202.bakery.customer.Customer;
 import ee.taltech.iti0202.bakery.exceptions.DoNotHaveEnoughMoneyToBuyException;
-import ee.taltech.iti0202.bakery.exceptions.ProductAlreadyContainsInAnotherBakeryException;
+import ee.taltech.iti0202.bakery.exceptions.CanNotAddProductToTheBakeryException;
 import ee.taltech.iti0202.bakery.exceptions.ProductAlreadyContainsInTheBakeryException;
 import ee.taltech.iti0202.bakery.exceptions.ProductDoesNotContainsInBakeryException;
 import ee.taltech.iti0202.bakery.exceptions.ProductLimitExceededException;
@@ -49,9 +49,9 @@ public class SmallBakery {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+//    public void setName(String name) {
+//        this.name = name;
+//    }
 
     public Double getBankAccount() {
         return bankAccount;
@@ -144,7 +144,6 @@ public class SmallBakery {
     public void takeOrder(Order order) {
         List<Optional<Product>> orderList = new ArrayList<>();
         for (int i = 0; i < order.getProducts().size(); i++) {
-//            findProductById(order.getProducts().get(i).getId());
             try {
                 orderList.add(findProductById(order.getProducts().get(i).getId()));
             } catch (ProductDoesNotContainsInBakeryException ex) {
@@ -214,13 +213,13 @@ public class SmallBakery {
     }
 
     public void addProduct(Product product) throws ProductDoesNotContainsInBakeryException,
-            ProductAlreadyContainsInAnotherBakeryException, ProductLimitExceededException,
+            CanNotAddProductToTheBakeryException, ProductLimitExceededException,
             ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException {
         if (products.contains(product)) {
             throw new ProductAlreadyContainsInTheBakeryException();
         }
         if (product.isInTheBakery()) {
-            throw new ProductAlreadyContainsInAnotherBakeryException();
+            throw new CanNotAddProductToTheBakeryException();
         }
         if (!productsLimit()) {
             throw new ProductLimitExceededException();
