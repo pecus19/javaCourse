@@ -7,16 +7,20 @@ import ee.taltech.iti0202.bakery.builder.CustomerBuilder;
 import ee.taltech.iti0202.bakery.builder.ProductBuilder;
 import ee.taltech.iti0202.bakery.builder.SmallBakeryBuilder;
 import ee.taltech.iti0202.bakery.customer.Customer;
-import ee.taltech.iti0202.bakery.exceptions.*;
+import ee.taltech.iti0202.bakery.exceptions.DoNotHaveEnoughMoneyToBuyException;
+import ee.taltech.iti0202.bakery.exceptions.ProductAlreadyContainsInAnotherBakeryException;
+import ee.taltech.iti0202.bakery.exceptions.ProductAlreadyContainsInTheBakeryException;
+import ee.taltech.iti0202.bakery.exceptions.ProductDoesNotContainsInBakeryException;
+import ee.taltech.iti0202.bakery.exceptions.ProductLimitExceededException;
+import ee.taltech.iti0202.bakery.exceptions.SearchProductsNotFoundException;
+import ee.taltech.iti0202.bakery.exceptions.SmallBakeryCanSellOnlyProductsWithOneTypeException;
 import ee.taltech.iti0202.bakery.product.Product;
 import org.junit.jupiter.api.Test;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.Type;
 import java.util.List;
-import java.util.Optional;
+
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -25,7 +29,7 @@ class LessKilocaloriesStrategyTest {
     @Test
     protected void lessKilocaloriesStrategyTest() throws ProductAlreadyContainsInAnotherBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException,
-            ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException, SearchProductsNotFoundException {
+            SearchProductsNotFoundException {
         BigBakery bakery1 = new BigBakeryBuilder()
                 .setName("Big Bakery")
                 .setBankAccount(1000.34)
@@ -73,7 +77,7 @@ class LessKilocaloriesStrategyTest {
     @Test
     protected void choseOneProductWithTheLeastCaloriesTest() throws ProductAlreadyContainsInAnotherBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException,
-            ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException, SearchProductsNotFoundException {
+            SearchProductsNotFoundException {
         BigBakery bakery1 = new BigBakeryBuilder()
                 .setName("Big Bakery")
                 .setBankAccount(1000.34)
@@ -101,9 +105,9 @@ class LessKilocaloriesStrategyTest {
     }
 
     @Test
-    protected void lessKilocaloriesStrategybakeryDoesNotHaveProductsWithThisPriceOrCaloriesTest() throws ProductAlreadyContainsInAnotherBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException,
-            ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException, SearchProductsNotFoundException {
+    protected void lessKilocaloriesStrategyBakeryDoesNotHaveProductsWithThisPriceOrCaloriesTest()
+            throws ProductAlreadyContainsInAnotherBakeryException,
+            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException {
         BigBakery bakery1 = new BigBakeryBuilder()
                 .setName("Big Bakery")
                 .setBankAccount(1000.34)
@@ -134,8 +138,7 @@ class LessKilocaloriesStrategyTest {
 
     @Test
     protected void lessKilocaloriesStrategyNotCorrectPriceTest() throws ProductAlreadyContainsInAnotherBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException,
-            ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException, SearchProductsNotFoundException {
+            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException {
         BigBakery bakery1 = new BigBakeryBuilder()
                 .setName("Big Bakery")
                 .setBankAccount(1000.34)
@@ -165,9 +168,10 @@ class LessKilocaloriesStrategyTest {
     }
 
     @Test
-    protected void lessKilocaloriesStrategyCaloriesAreEqualsChooseWithBestPriceTest() throws ProductAlreadyContainsInAnotherBakeryException,
+    protected void lessKilocaloriesStrategyCaloriesAreEqualsChooseWithBestPriceTest()
+            throws ProductAlreadyContainsInAnotherBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException,
-            ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException, SearchProductsNotFoundException {
+            SearchProductsNotFoundException {
         BigBakery bakery1 = new BigBakeryBuilder()
                 .setName("Big Bakery")
                 .setBankAccount(1000.34)
@@ -195,9 +199,11 @@ class LessKilocaloriesStrategyTest {
     }
 
     @Test
-    protected void lessKilocaloriesStrategyCaloriesAreEqualsChooseWithBestPriceSmallBakeryTest() throws ProductAlreadyContainsInAnotherBakeryException,
+    protected void lessKilocaloriesStrategyCaloriesAreEqualsChooseWithBestPriceSmallBakeryTest()
+            throws ProductAlreadyContainsInAnotherBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException,
-            ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException, SearchProductsNotFoundException {
+            ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException,
+            SearchProductsNotFoundException {
         SmallBakery bakery1 = new SmallBakeryBuilder()
                 .setName("Small Bakery")
                 .setBankAccount(1000.34)
@@ -225,9 +231,10 @@ class LessKilocaloriesStrategyTest {
     }
 
     @Test
-    protected void lessKilocaloriesStrategyDontHaveEnoughMoneyToBuyTest() throws ProductAlreadyContainsInAnotherBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException,
-            ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException, SearchProductsNotFoundException {
+    protected void lessKilocaloriesStrategyDontHaveEnoughMoneyToBuyTest()
+            throws ProductAlreadyContainsInAnotherBakeryException,
+            ProductLimitExceededException, ProductDoesNotContainsInBakeryException,
+            SearchProductsNotFoundException {
         BigBakery bakery1 = new BigBakeryBuilder()
                 .setName("Big Bakery")
                 .setBankAccount(1000.34)

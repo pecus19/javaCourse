@@ -1,10 +1,7 @@
 package ee.taltech.iti0202.bakery.product;
 
 import ee.taltech.iti0202.bakery.builder.ProductBuilder;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertSame;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 

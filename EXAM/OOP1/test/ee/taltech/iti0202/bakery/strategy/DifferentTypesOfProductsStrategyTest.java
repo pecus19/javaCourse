@@ -5,28 +5,26 @@ import ee.taltech.iti0202.bakery.builder.BigBakeryBuilder;
 import ee.taltech.iti0202.bakery.builder.CustomerBuilder;
 import ee.taltech.iti0202.bakery.builder.ProductBuilder;
 import ee.taltech.iti0202.bakery.customer.Customer;
-import ee.taltech.iti0202.bakery.exceptions.*;
+import ee.taltech.iti0202.bakery.exceptions.DoNotHaveEnoughMoneyToBuyException;
+import ee.taltech.iti0202.bakery.exceptions.ProductAlreadyContainsInAnotherBakeryException;
+import ee.taltech.iti0202.bakery.exceptions.ProductAlreadyContainsInTheBakeryException;
+import ee.taltech.iti0202.bakery.exceptions.ProductDoesNotContainsInBakeryException;
+import ee.taltech.iti0202.bakery.exceptions.ProductLimitExceededException;
+import ee.taltech.iti0202.bakery.exceptions.SearchProductsNotFoundException;
+import ee.taltech.iti0202.bakery.exceptions.SmallBakeryCanSellOnlyProductsWithOneTypeException;
 import ee.taltech.iti0202.bakery.product.Product;
 import org.junit.jupiter.api.Test;
 
-import org.junit.jupiter.api.Test;
-
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.Type;
 import java.util.List;
-import java.util.Optional;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class DifferentTypesOfProductsStrategyTest {
 
     @Test
     protected void chooseTwoProductsOfThreeTest() throws ProductAlreadyContainsInAnotherBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException,
-            ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException,
-            SearchProductsNotFoundException {
+            SearchProductsNotFoundException, ProductLimitExceededException, ProductDoesNotContainsInBakeryException,
+            DoNotHaveEnoughMoneyToBuyException {
         BigBakery bakery1 = new BigBakeryBuilder()
                 .setName("Big Bakery")
                 .setBankAccount(1000.34)
@@ -56,15 +54,14 @@ class DifferentTypesOfProductsStrategyTest {
         DifferentTypesOfProductsStrategy strategy = new
                 DifferentTypesOfProductsStrategy(5.0, 125.0, customer1);
         List<Product> products = strategy.useStrategy(bakery1);
-        assertEquals(products.size(), 2);
-        assertEquals(products.get(0).getName(), "Bun1");
-        assertEquals(products.get(1).getName(), "Cake");
+        Assertions.assertEquals(products.size(), 2);
+        Assertions.assertEquals(products.get(0).getName(), "Bun1");
+        Assertions.assertEquals(products.get(1).getName(), "Cake");
     }
 
     @Test
     protected void chooseOneTypeFromAllProductsTest() throws ProductAlreadyContainsInAnotherBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException,
-            ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException,
             SearchProductsNotFoundException {
         BigBakery bakery1 = new BigBakeryBuilder()
                 .setName("Big Bakery")
@@ -117,18 +114,17 @@ class DifferentTypesOfProductsStrategyTest {
         DifferentTypesOfProductsStrategy strategy = new
                 DifferentTypesOfProductsStrategy(75.0, 535.0, customer1);
         List<Product> products = strategy.useStrategy(bakery1);
-        assertEquals(products.size(), 5);
-        assertEquals(products.get(0).getName(), "Cookie");
-        assertEquals(products.get(1).getName(), "Bun");
-        assertEquals(products.get(2).getName(), "Cake");
-        assertEquals(products.get(3).getName(), "Bread");
-        assertEquals(products.get(4).getName(), "Pie");
+        Assertions.assertEquals(products.size(), 5);
+        Assertions.assertEquals(products.get(0).getName(), "Cookie");
+        Assertions.assertEquals(products.get(1).getName(), "Bun");
+        Assertions.assertEquals(products.get(2).getName(), "Cake");
+        Assertions.assertEquals(products.get(3).getName(), "Bread");
+        Assertions.assertEquals(products.get(4).getName(), "Pie");
     }
 
     @Test
     protected void chooseProductWithLessPressTest() throws ProductAlreadyContainsInAnotherBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException,
-            ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException,
             SearchProductsNotFoundException {
         BigBakery bakery1 = new BigBakeryBuilder()
                 .setName("Big Bakery")
@@ -165,15 +161,16 @@ class DifferentTypesOfProductsStrategyTest {
         DifferentTypesOfProductsStrategy strategy = new
                 DifferentTypesOfProductsStrategy(5.0, 125.0, customer1);
         List<Product> products = strategy.useStrategy(bakery1);
-        assertEquals(products.size(), 2);
-        assertEquals(products.get(0).getName(), "Bun1");
-        assertEquals(products.get(1).getName(), "Cake2");
+        Assertions.assertEquals(products.size(), 2);
+        Assertions.assertEquals(products.get(0).getName(), "Bun1");
+        Assertions.assertEquals(products.get(1).getName(), "Cake2");
     }
 
     @Test
-    protected void lessKilocaloriesStrategyDontHaveEnoughMoneyToBuyTest() throws ProductAlreadyContainsInAnotherBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException,
-            ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException, SearchProductsNotFoundException {
+    protected void lessKilocaloriesStrategyDontHaveEnoughMoneyToBuyTest()
+            throws ProductAlreadyContainsInAnotherBakeryException,
+            ProductLimitExceededException, ProductDoesNotContainsInBakeryException,
+            SearchProductsNotFoundException {
         BigBakery bakery1 = new BigBakeryBuilder()
                 .setName("Big Bakery")
                 .setBankAccount(1000.34)

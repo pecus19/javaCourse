@@ -14,13 +14,12 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 
 public class OrderTest {
     @Test
     protected void makeBasicOrderTest() throws ProductAlreadyContainsInAnotherBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException, UnconfirmedOrdersException, SearchProductsNotFoundException, DoNotHaveEnoughMoneyToBuyException, OrderCanNotBeDoneException {
+            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, UnconfirmedOrdersException,
+            DoNotHaveEnoughMoneyToBuyException, OrderCanNotBeDoneException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.COOKIE)
                 .setName("Cookie")
@@ -52,12 +51,13 @@ public class OrderTest {
         bakery1.addProduct(product3);
         Order order = new Order(customer1, bakery1, List.of(product1, product2, product3));
         order.makeOrder();
-        assertEquals(order.confirmOrder(), List.of(product1, product2, product3));
+        Assertions.assertEquals(order.confirmOrder(), List.of(product1, product2, product3));
     }
 
     @Test
     protected void checkCustomerBoughtProductsTest() throws ProductAlreadyContainsInAnotherBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException, UnconfirmedOrdersException, SearchProductsNotFoundException, DoNotHaveEnoughMoneyToBuyException, OrderCanNotBeDoneException {
+            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, UnconfirmedOrdersException,
+            DoNotHaveEnoughMoneyToBuyException, OrderCanNotBeDoneException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.COOKIE)
                 .setName("Cookie")
@@ -90,12 +90,13 @@ public class OrderTest {
         Order order = new Order(customer1, bakery1, List.of(product1, product2, product3));
         order.makeOrder();
         order.confirmOrder();
-        assertEquals(customer1.getOrders(), List.of(order));
+        Assertions.assertEquals(customer1.getOrders(), List.of(order));
     }
 
     @Test
     protected void checkBakeryMoneyAfterReceivingTheOrderTest() throws ProductAlreadyContainsInAnotherBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException, UnconfirmedOrdersException, SearchProductsNotFoundException, DoNotHaveEnoughMoneyToBuyException, OrderCanNotBeDoneException {
+            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, UnconfirmedOrdersException,
+            DoNotHaveEnoughMoneyToBuyException, OrderCanNotBeDoneException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.COOKIE)
                 .setName("Cookie")
@@ -130,12 +131,13 @@ public class OrderTest {
         Order order = new Order(customer1, bakery1, List.of(product1, product2, product3));
         order.makeOrder();
         order.confirmOrder();
-        assertEquals(bakery1.getBankAccount(), bankAccountBefore + productPrice);
+        Assertions.assertEquals(bakery1.getBankAccount(), bankAccountBefore + productPrice);
     }
 
     @Test
     protected void checkCustomerMoneyAfterReceivingTheOrderTest() throws ProductAlreadyContainsInAnotherBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException, UnconfirmedOrdersException, SearchProductsNotFoundException, DoNotHaveEnoughMoneyToBuyException, OrderCanNotBeDoneException {
+            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, UnconfirmedOrdersException,
+            DoNotHaveEnoughMoneyToBuyException, OrderCanNotBeDoneException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.COOKIE)
                 .setName("Cookie")
@@ -170,12 +172,14 @@ public class OrderTest {
         Order order = new Order(customer1, bakery1, List.of(product1, product2, product3));
         order.makeOrder();
         order.confirmOrder();
-        assertEquals(customer1.getBankAccount(), customer1BankAccount - productPrice);
+        Assertions.assertEquals(customer1.getBankAccount(), customer1BankAccount - productPrice);
     }
 
     @Test
     protected void canNotMakeAnOrderTest() throws ProductAlreadyContainsInAnotherBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException, UnconfirmedOrdersException, SearchProductsNotFoundException, DoNotHaveEnoughMoneyToBuyException, OrderCanNotBeDoneException {
+            ProductLimitExceededException, ProductDoesNotContainsInBakeryException,
+            ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException,
+            UnconfirmedOrdersException, DoNotHaveEnoughMoneyToBuyException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.COOKIE)
                 .setName("Cookie")
@@ -263,7 +267,7 @@ public class OrderTest {
             order.confirmOrder();
         } catch (OrderCanNotBeDoneException ignored) {
         } finally {
-            assertEquals(customer1.getBankAccount(), customerBankAccountBefore);
+            Assertions.assertEquals(customer1.getBankAccount(), customerBankAccountBefore);
         }
     }
 
@@ -271,7 +275,7 @@ public class OrderTest {
     protected void mustCancelTheOldOrderToOrderANewOneTest() throws ProductAlreadyContainsInAnotherBakeryException,
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException,
             ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException,
-            UnconfirmedOrdersException, DoNotHaveEnoughMoneyToBuyException {
+            UnconfirmedOrdersException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.COOKIE)
                 .setName("Cookie")
@@ -366,7 +370,7 @@ public class OrderTest {
         } catch (ProductDoesNotContainsInBakeryException ex) {
 
         } finally {
-            assertEquals(order2.confirmOrder().size(), 2);
+            Assertions.assertEquals(order2.confirmOrder().size(), 2);
         }
     }
 
