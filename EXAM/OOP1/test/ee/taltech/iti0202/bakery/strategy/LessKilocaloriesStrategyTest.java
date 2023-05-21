@@ -40,7 +40,7 @@ class LessKilocaloriesStrategyTest {
                 .createCustomer();
         for (int i = 0; i < 2; i++) {
             bakery1.addProduct(new ProductBuilder()
-                    .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                    .setBakeryTypes(Product.Types.COOKIE)
                     .setName("First")
                     .setKilocalories(100.0)
                     .setPrice(1.0)
@@ -48,20 +48,20 @@ class LessKilocaloriesStrategyTest {
         }
         for (int i = 0; i < 2; i++) {
             bakery1.addProduct(new ProductBuilder()
-                    .setBakeryTypes(Product.bakeryTypes.BREAD)
+                    .setBakeryTypes(Product.Types.BREAD)
                     .setName("Second")
                     .setKilocalories(50.0)
                     .setPrice(1.0)
                     .createProduct());
         }
         bakery1.addProduct(new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.BUN)
+                .setBakeryTypes(Product.Types.BUN)
                 .setName("Bun")
                 .setKilocalories(50.0)
                 .setPrice(1.0)
                 .createProduct());
         bakery1.addProduct(new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.CAKE)
+                .setBakeryTypes(Product.Types.CAKE)
                 .setName("Cake")
                 .setKilocalories(25.0)
                 .setPrice(1.0)
@@ -87,13 +87,13 @@ class LessKilocaloriesStrategyTest {
                 .setBankAccount(999999.2)
                 .createCustomer();
         bakery1.addProduct(new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.BUN)
+                .setBakeryTypes(Product.Types.BUN)
                 .setName("Bun")
                 .setKilocalories(50.0)
                 .setPrice(1.0)
                 .createProduct());
         bakery1.addProduct(new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.CAKE)
+                .setBakeryTypes(Product.Types.CAKE)
                 .setName("Cake")
                 .setKilocalories(25.0)
                 .setPrice(1.0)
@@ -116,13 +116,13 @@ class LessKilocaloriesStrategyTest {
                 .setBankAccount(999999.2)
                 .createCustomer();
         bakery1.addProduct(new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.BUN)
+                .setBakeryTypes(Product.Types.BUN)
                 .setName("Bun")
                 .setKilocalories(50.0)
                 .setPrice(1.0)
                 .createProduct());
         bakery1.addProduct(new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.CAKE)
+                .setBakeryTypes(Product.Types.CAKE)
                 .setName("Cake")
                 .setKilocalories(25.0)
                 .setPrice(1.0)
@@ -147,13 +147,13 @@ class LessKilocaloriesStrategyTest {
                 .setBankAccount(999999.2)
                 .createCustomer();
         bakery1.addProduct(new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.BUN)
+                .setBakeryTypes(Product.Types.BUN)
                 .setName("Bun")
                 .setKilocalories(50.0)
                 .setPrice(1.0)
                 .createProduct());
         bakery1.addProduct(new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.CAKE)
+                .setBakeryTypes(Product.Types.CAKE)
                 .setName("Cake")
                 .setKilocalories(25.0)
                 .setPrice(1.0)
@@ -179,13 +179,13 @@ class LessKilocaloriesStrategyTest {
                 .setBankAccount(999999.2)
                 .createCustomer();
         bakery1.addProduct(new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.BUN)
+                .setBakeryTypes(Product.Types.BUN)
                 .setName("Bun")
                 .setKilocalories(50.0)
                 .setPrice(1.0)
                 .createProduct());
         bakery1.addProduct(new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.CAKE)
+                .setBakeryTypes(Product.Types.CAKE)
                 .setName("Cake")
                 .setKilocalories(50.0)
                 .setPrice(1.01)
@@ -211,13 +211,13 @@ class LessKilocaloriesStrategyTest {
                 .setBankAccount(999999.2)
                 .createCustomer();
         bakery1.addProduct(new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.CAKE)
+                .setBakeryTypes(Product.Types.CAKE)
                 .setName("Cake1")
                 .setKilocalories(50.0)
                 .setPrice(1.0)
                 .createProduct());
         bakery1.addProduct(new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.CAKE)
+                .setBakeryTypes(Product.Types.CAKE)
                 .setName("Cake2")
                 .setKilocalories(50.0)
                 .setPrice(1.01)
@@ -241,13 +241,13 @@ class LessKilocaloriesStrategyTest {
                 .setBankAccount(1.2)
                 .createCustomer();
         bakery1.addProduct(new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.BUN)
+                .setBakeryTypes(Product.Types.BUN)
                 .setName("Bun")
                 .setKilocalories(50.0)
                 .setPrice(1.0)
                 .createProduct());
         bakery1.addProduct(new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.CAKE)
+                .setBakeryTypes(Product.Types.CAKE)
                 .setName("Cake")
                 .setKilocalories(50.0)
                 .setPrice(1.01)

@@ -27,19 +27,19 @@ public class BakeryTest {
     @Test
     protected void addProductToBakeryBasicTest() throws CanNotAddProductToTheBakeryException{
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product2 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.BREAD)
+                .setBakeryTypes(Product.Types.BREAD)
                 .setName("Bread")
                 .setKilocalories(233.32)
                 .setPrice(3.12)
                 .createProduct();
         Product product3 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.CAKE)
+                .setBakeryTypes(Product.Types.CAKE)
                 .setName("Cake")
                 .setKilocalories(643.01)
                 .setPrice(10.0)
@@ -58,19 +58,19 @@ public class BakeryTest {
     protected void basicRemoveFromBakeryTest() throws CanNotAddProductToTheBakeryException
             , ProductDoesNotContainsInBakeryException {
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                .setBakeryTypes(Product.Types.COOKIE)
                 .setName("Cookie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product2 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(233.32)
                 .setPrice(3.17)
                 .createProduct();
         Product product3 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.CAKE)
+                .setBakeryTypes(Product.Types.CAKE)
                 .setName("Cake")
                 .setKilocalories(23.2)
                 .setPrice(6.65)
@@ -90,19 +90,19 @@ public class BakeryTest {
     protected void basicRemoveFromBakeryNotContainsInTheBakeryTest()
             throws CanNotAddProductToTheBakeryException {
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                .setBakeryTypes(Product.Types.COOKIE)
                 .setName("Cookie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product2 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(233.32)
                 .setPrice(3.17)
                 .createProduct();
         Product product3 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.CAKE)
+                .setBakeryTypes(Product.Types.CAKE)
                 .setName("Cake")
                 .setKilocalories(23.2)
                 .setPrice(6.65)
@@ -125,19 +125,19 @@ public class BakeryTest {
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException,
             ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException {
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product2 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.BREAD)
+                .setBakeryTypes(Product.Types.BREAD)
                 .setName("Bread")
                 .setKilocalories(233.32)
                 .setPrice(3.12)
                 .createProduct();
         Product product3 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.CAKE)
+                .setBakeryTypes(Product.Types.CAKE)
                 .setName("Cake")
                 .setKilocalories(643.01)
                 .setPrice(10.0)
@@ -166,19 +166,19 @@ public class BakeryTest {
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException,
             ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException {
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product2 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.BREAD)
+                .setBakeryTypes(Product.Types.BREAD)
                 .setName("Bread")
                 .setKilocalories(233.32)
                 .setPrice(3.12)
                 .createProduct();
         Product product3 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.CAKE)
+                .setBakeryTypes(Product.Types.CAKE)
                 .setName("Cake")
                 .setKilocalories(643.01)
                 .setPrice(10.0)
@@ -207,7 +207,7 @@ public class BakeryTest {
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException,
             ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException {
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
@@ -229,13 +229,13 @@ public class BakeryTest {
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException,
             ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException {
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product2 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.BREAD)
+                .setBakeryTypes(Product.Types.BREAD)
                 .setName("Bread")
                 .setKilocalories(233.32)
                 .setPrice(3.12)
@@ -306,19 +306,19 @@ public class BakeryTest {
     protected void checkMoneyAfterBuyingByTypeBakeryTest() throws CanNotAddProductToTheBakeryException
             , ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException {
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product2 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.BREAD)
+                .setBakeryTypes(Product.Types.BREAD)
                 .setName("Bread")
                 .setKilocalories(233.32)
                 .setPrice(3.12)
                 .createProduct();
         Product product3 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.CAKE)
+                .setBakeryTypes(Product.Types.CAKE)
                 .setName("Cake")
                 .setKilocalories(643.01)
                 .setPrice(10.0)
@@ -335,7 +335,7 @@ public class BakeryTest {
         bakery1.addProduct(product3);
         bakery1.addProduct(product1);
         double moneyBefore = bakery1.getBankAccount();
-        bakery1.buyProductsByType(customer1, Product.bakeryTypes.PIE);
+        bakery1.buyProductsByType(customer1, Product.Types.PIE);
         assertEquals(bakery1.getBankAccount(), moneyBefore + product1.getPrice());
     }
 
@@ -345,19 +345,19 @@ public class BakeryTest {
             , ProductDoesNotContainsInBakeryException,
             DoNotHaveEnoughMoneyToBuyException {
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product2 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.BREAD)
+                .setBakeryTypes(Product.Types.BREAD)
                 .setName("Bread")
                 .setKilocalories(233.32)
                 .setPrice(3.12)
                 .createProduct();
         Product product3 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.CAKE)
+                .setBakeryTypes(Product.Types.CAKE)
                 .setName("Cake")
                 .setKilocalories(643.01)
                 .setPrice(10.0)
@@ -375,9 +375,9 @@ public class BakeryTest {
         bakery1.addProduct(product1);
         double moneyBefore1 = bakery1.getBankAccount();
         double moneyForAllProducts = product1.getPrice() + product2.getPrice() + product3.getPrice();
-        bakery1.buyProductsByType(customer1, Product.bakeryTypes.PIE);
-        bakery1.buyProductsByType(customer1, Product.bakeryTypes.BREAD);
-        bakery1.buyProductsByType(customer1, Product.bakeryTypes.CAKE);
+        bakery1.buyProductsByType(customer1, Product.Types.PIE);
+        bakery1.buyProductsByType(customer1, Product.Types.BREAD);
+        bakery1.buyProductsByType(customer1, Product.Types.CAKE);
         assertEquals(bakery1.getBankAccount(), moneyBefore1 + moneyForAllProducts);
     }
 
@@ -385,19 +385,19 @@ public class BakeryTest {
     protected void checkMoneyAfterBuyingByTypeCustomerTest() throws CanNotAddProductToTheBakeryException
             , ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException {
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product2 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.BREAD)
+                .setBakeryTypes(Product.Types.BREAD)
                 .setName("Bread")
                 .setKilocalories(233.32)
                 .setPrice(3.12)
                 .createProduct();
         Product product3 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.CAKE)
+                .setBakeryTypes(Product.Types.CAKE)
                 .setName("Cake")
                 .setKilocalories(643.01)
                 .setPrice(10.0)
@@ -414,7 +414,7 @@ public class BakeryTest {
         bakery1.addProduct(product3);
         bakery1.addProduct(product1);
         double moneyBefore1 = customer1.getBankAccount();
-        bakery1.buyProductsByType(customer1, Product.bakeryTypes.PIE);
+        bakery1.buyProductsByType(customer1, Product.Types.PIE);
         assertEquals(customer1.getBankAccount(), moneyBefore1 - product1.getPrice());
     }
 
@@ -424,19 +424,19 @@ public class BakeryTest {
             , ProductDoesNotContainsInBakeryException,
             DoNotHaveEnoughMoneyToBuyException {
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product2 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.BREAD)
+                .setBakeryTypes(Product.Types.BREAD)
                 .setName("Bread")
                 .setKilocalories(233.32)
                 .setPrice(3.12)
                 .createProduct();
         Product product3 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.CAKE)
+                .setBakeryTypes(Product.Types.CAKE)
                 .setName("Cake")
                 .setKilocalories(643.01)
                 .setPrice(10.3)
@@ -454,9 +454,9 @@ public class BakeryTest {
         bakery1.addProduct(product1);
         double moneyBefore1 = customer1.getBankAccount();
         double moneyForAllProducts = product1.getPrice() + product2.getPrice() + product3.getPrice();
-        bakery1.buyProductsByType(customer1, Product.bakeryTypes.PIE);
-        bakery1.buyProductsByType(customer1, Product.bakeryTypes.BREAD);
-        bakery1.buyProductsByType(customer1, Product.bakeryTypes.CAKE);
+        bakery1.buyProductsByType(customer1, Product.Types.PIE);
+        bakery1.buyProductsByType(customer1, Product.Types.BREAD);
+        bakery1.buyProductsByType(customer1, Product.Types.CAKE);
         assertEquals(customer1.getBankAccount(), moneyBefore1 - moneyForAllProducts);
     }
 
@@ -464,19 +464,19 @@ public class BakeryTest {
     protected void canNotBuyProductsDueToMoneyTest() throws CanNotAddProductToTheBakeryException
             , ProductDoesNotContainsInBakeryException {
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product2 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.BREAD)
+                .setBakeryTypes(Product.Types.BREAD)
                 .setName("Bread")
                 .setKilocalories(233.32)
                 .setPrice(3.12)
                 .createProduct();
         Product product3 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.CAKE)
+                .setBakeryTypes(Product.Types.CAKE)
                 .setName("Cake")
                 .setKilocalories(643.01)
                 .setPrice(10.3)
@@ -493,7 +493,7 @@ public class BakeryTest {
         bakery1.addProduct(product3);
         bakery1.addProduct(product1);
         try {
-            bakery1.buyProductsByType(customer1, Product.bakeryTypes.PIE);
+            bakery1.buyProductsByType(customer1, Product.Types.PIE);
         } catch (DoNotHaveEnoughMoneyToBuyException ex) {
             Assertions.assertEquals("Don't have enough money to buy this product!", ex.getMessage());
         }
@@ -504,19 +504,19 @@ public class BakeryTest {
             throws CanNotAddProductToTheBakeryException, ProductDoesNotContainsInBakeryException,
             DoNotHaveEnoughMoneyToBuyException {
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product2 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.BREAD)
+                .setBakeryTypes(Product.Types.BREAD)
                 .setName("Bread")
                 .setKilocalories(233.32)
                 .setPrice(3.12)
                 .createProduct();
         Product product3 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.CAKE)
+                .setBakeryTypes(Product.Types.CAKE)
                 .setName("Cake")
                 .setKilocalories(643.01)
                 .setPrice(10.3)
@@ -532,10 +532,10 @@ public class BakeryTest {
         bakery1.addProduct(product2);
         bakery1.addProduct(product3);
         bakery1.addProduct(product1);
-        bakery1.buyProductsByType(customer1, Product.bakeryTypes.BREAD);
-        bakery1.buyProductsByType(customer1, Product.bakeryTypes.CAKE);
+        bakery1.buyProductsByType(customer1, Product.Types.BREAD);
+        bakery1.buyProductsByType(customer1, Product.Types.CAKE);
         try {
-            bakery1.buyProductsByType(customer1, Product.bakeryTypes.PIE);
+            bakery1.buyProductsByType(customer1, Product.Types.PIE);
         } catch (DoNotHaveEnoughMoneyToBuyException ex) {
             Assertions.assertEquals("Don't have enough money to buy this product!", ex.getMessage());
         }
@@ -545,19 +545,19 @@ public class BakeryTest {
     protected void checkProductsThatCustomerBoughtTest() throws CanNotAddProductToTheBakeryException
             , ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException {
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product2 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.BREAD)
+                .setBakeryTypes(Product.Types.BREAD)
                 .setName("Bread")
                 .setKilocalories(233.32)
                 .setPrice(3.12)
                 .createProduct();
         Product product3 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.CAKE)
+                .setBakeryTypes(Product.Types.CAKE)
                 .setName("Cake")
                 .setKilocalories(643.01)
                 .setPrice(10.3)
@@ -573,9 +573,9 @@ public class BakeryTest {
         bakery1.addProduct(product2);
         bakery1.addProduct(product3);
         bakery1.addProduct(product1);
-        bakery1.buyProductsByType(customer1, Product.bakeryTypes.BREAD);
-        bakery1.buyProductsByType(customer1, Product.bakeryTypes.CAKE);
-        bakery1.buyProductsByType(customer1, Product.bakeryTypes.PIE);
+        bakery1.buyProductsByType(customer1, Product.Types.BREAD);
+        bakery1.buyProductsByType(customer1, Product.Types.CAKE);
+        bakery1.buyProductsByType(customer1, Product.Types.PIE);
         assertEquals(customer1.getProducts().size(), 3);
     }
 
@@ -583,19 +583,19 @@ public class BakeryTest {
     protected void checkProductsInTheBakeryAfterBuyingTest() throws CanNotAddProductToTheBakeryException
             , ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException {
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product2 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.BREAD)
+                .setBakeryTypes(Product.Types.BREAD)
                 .setName("Bread")
                 .setKilocalories(233.32)
                 .setPrice(3.12)
                 .createProduct();
         Product product3 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.CAKE)
+                .setBakeryTypes(Product.Types.CAKE)
                 .setName("Cake")
                 .setKilocalories(643.01)
                 .setPrice(10.3)
@@ -611,9 +611,9 @@ public class BakeryTest {
         bakery1.addProduct(product2);
         bakery1.addProduct(product3);
         bakery1.addProduct(product1);
-        bakery1.buyProductsByType(customer1, Product.bakeryTypes.BREAD);
-        bakery1.buyProductsByType(customer1, Product.bakeryTypes.CAKE);
-        bakery1.buyProductsByType(customer1, Product.bakeryTypes.PIE);
+        bakery1.buyProductsByType(customer1, Product.Types.BREAD);
+        bakery1.buyProductsByType(customer1, Product.Types.CAKE);
+        bakery1.buyProductsByType(customer1, Product.Types.PIE);
         assertEquals(bakery1.getProducts().size(), 0);
     }
 
@@ -621,19 +621,19 @@ public class BakeryTest {
     protected void onlyOneCustomerCanBuyOneProductTest() throws CanNotAddProductToTheBakeryException
             , ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException {
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product2 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.BREAD)
+                .setBakeryTypes(Product.Types.BREAD)
                 .setName("Bread")
                 .setKilocalories(233.32)
                 .setPrice(3.12)
                 .createProduct();
         Product product3 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.CAKE)
+                .setBakeryTypes(Product.Types.CAKE)
                 .setName("Cake")
                 .setKilocalories(643.01)
                 .setPrice(10.3)
@@ -653,9 +653,9 @@ public class BakeryTest {
         bakery1.addProduct(product2);
         bakery1.addProduct(product3);
         bakery1.addProduct(product1);
-        bakery1.buyProductsByType(customer1, Product.bakeryTypes.BREAD);
+        bakery1.buyProductsByType(customer1, Product.Types.BREAD);
         try {
-            bakery1.buyProductsByType(customer2, Product.bakeryTypes.BREAD);
+            bakery1.buyProductsByType(customer2, Product.Types.BREAD);
         } catch (ProductDoesNotContainsInBakeryException ex) {
             Assertions.assertEquals("Product does not contains in the bakery!", ex.getMessage());
         }
@@ -664,7 +664,7 @@ public class BakeryTest {
     @Test
     protected void findProductByTypeNotFoundTest() throws CanNotAddProductToTheBakeryException {
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
@@ -675,7 +675,7 @@ public class BakeryTest {
                 .createBigBakery();
         bakery1.addProduct(product1);
         try {
-            bakery1.findProductByType(Product.bakeryTypes.COOKIE);
+            bakery1.findProductByType(Product.Types.COOKIE);
         } catch (SearchProductsNotFoundException ex) {
             Assertions.assertEquals("Search products not found!", ex.getMessage());
         }
@@ -685,19 +685,19 @@ public class BakeryTest {
     protected void findProductByIdTest() throws CanNotAddProductToTheBakeryException,
             ProductDoesNotContainsInBakeryException {
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product2 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.BREAD)
+                .setBakeryTypes(Product.Types.BREAD)
                 .setName("Bread")
                 .setKilocalories(233.32)
                 .setPrice(3.12)
                 .createProduct();
         Product product3 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.CAKE)
+                .setBakeryTypes(Product.Types.CAKE)
                 .setName("Cake")
                 .setKilocalories(643.01)
                 .setPrice(10.3)
@@ -717,19 +717,19 @@ public class BakeryTest {
     protected void findProductByNameTest() throws CanNotAddProductToTheBakeryException
             , SearchProductsNotFoundException {
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product2 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(233.32)
                 .setPrice(3.12)
                 .createProduct();
         Product product3 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.CAKE)
+                .setBakeryTypes(Product.Types.CAKE)
                 .setName("Cake")
                 .setKilocalories(643.01)
                 .setPrice(10.3)
@@ -748,19 +748,19 @@ public class BakeryTest {
     protected void findProductByPriceTest() throws CanNotAddProductToTheBakeryException,
             SearchProductsNotFoundException {
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product2 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(233.32)
                 .setPrice(3.12)
                 .createProduct();
         Product product3 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.CAKE)
+                .setBakeryTypes(Product.Types.CAKE)
                 .setName("Cake")
                 .setKilocalories(643.01)
                 .setPrice(10.3)
@@ -778,19 +778,19 @@ public class BakeryTest {
     @Test
     protected void findProductByPriceWithWrongPriceTest() throws CanNotAddProductToTheBakeryException {
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product2 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(233.32)
                 .setPrice(3.12)
                 .createProduct();
         Product product3 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.CAKE)
+                .setBakeryTypes(Product.Types.CAKE)
                 .setName("Cake")
                 .setKilocalories(643.01)
                 .setPrice(10.3)
@@ -812,19 +812,19 @@ public class BakeryTest {
     @Test
     protected void findProductByPriceWithWrongNameTest() throws CanNotAddProductToTheBakeryException {
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product2 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(233.32)
                 .setPrice(3.12)
                 .createProduct();
         Product product3 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.CAKE)
+                .setBakeryTypes(Product.Types.CAKE)
                 .setName("Cake")
                 .setKilocalories(643.01)
                 .setPrice(10.3)
@@ -848,19 +848,19 @@ public class BakeryTest {
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException,
             ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException {
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product2 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(233.32)
                 .setPrice(3.12)
                 .createProduct();
         Product product3 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.CAKE)
+                .setBakeryTypes(Product.Types.CAKE)
                 .setName("Cake")
                 .setKilocalories(643.01)
                 .setPrice(10.3)
@@ -888,7 +888,7 @@ public class BakeryTest {
                 .createSmallBakery();
         for (int i = 0; i < 4; i++) {
             bakery1.addProduct(new ProductBuilder()
-                    .setBakeryTypes(Product.bakeryTypes.CAKE)
+                    .setBakeryTypes(Product.Types.CAKE)
                     .setName("Cake")
                     .setKilocalories(643.01)
                     .setPrice(10.3)
@@ -896,7 +896,7 @@ public class BakeryTest {
         }
         try {
             bakery1.addProduct(new ProductBuilder()
-                    .setBakeryTypes(Product.bakeryTypes.CAKE)
+                    .setBakeryTypes(Product.Types.CAKE)
                     .setName("Cake5")
                     .setKilocalories(643.01)
                     .setPrice(10.3)
@@ -909,19 +909,19 @@ public class BakeryTest {
     @Test
     protected void findProductByPriceWithWrongIdTest() throws CanNotAddProductToTheBakeryException {
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product2 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(233.32)
                 .setPrice(3.12)
                 .createProduct();
         Product product3 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.CAKE)
+                .setBakeryTypes(Product.Types.CAKE)
                 .setName("Cake")
                 .setKilocalories(643.01)
                 .setPrice(10.3)
@@ -945,13 +945,13 @@ public class BakeryTest {
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException,
             ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException {
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product2 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(233.32)
                 .setPrice(3.12)
@@ -971,7 +971,7 @@ public class BakeryTest {
     @Test
     protected void bigBakeryAddProductSecondTime() throws CanNotAddProductToTheBakeryException {
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
@@ -993,7 +993,7 @@ public class BakeryTest {
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException,
             ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException {
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
@@ -1004,7 +1004,7 @@ public class BakeryTest {
                 .createSmallBakery();
         for (int i = 0; i < 9; i++) {
             bakery1.addProduct(new ProductBuilder()
-                    .setBakeryTypes(Product.bakeryTypes.PIE)
+                    .setBakeryTypes(Product.Types.PIE)
                     .setName("Pie")
                     .setKilocalories(233.32)
                     .setPrice(3.12)
@@ -1025,25 +1025,25 @@ public class BakeryTest {
                 .setBankAccount(1000.34)
                 .createBigBakery();
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.CAKE)
+                .setBakeryTypes(Product.Types.CAKE)
                 .setName("Cake")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product2 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product3 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.BUN)
+                .setBakeryTypes(Product.Types.BUN)
                 .setName("Bun")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product4 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                .setBakeryTypes(Product.Types.COOKIE)
                 .setName("Cookie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
@@ -1052,10 +1052,10 @@ public class BakeryTest {
         bakery1.addProduct(product2);
         bakery1.addProduct(product3);
         bakery1.addProduct(product4);
-        assertEquals(bakery1.findProductByType(Product.bakeryTypes.PIE), List.of(product2));
-        assertEquals(bakery1.findProductByType(Product.bakeryTypes.COOKIE), List.of(product4));
-        assertEquals(bakery1.findProductByType(Product.bakeryTypes.BUN), List.of(product3));
-        assertEquals(bakery1.findProductByType(Product.bakeryTypes.CAKE), List.of(product1));
+        assertEquals(bakery1.findProductByType(Product.Types.PIE), List.of(product2));
+        assertEquals(bakery1.findProductByType(Product.Types.COOKIE), List.of(product4));
+        assertEquals(bakery1.findProductByType(Product.Types.BUN), List.of(product3));
+        assertEquals(bakery1.findProductByType(Product.Types.CAKE), List.of(product1));
     }
 
     @Test
@@ -1066,25 +1066,25 @@ public class BakeryTest {
                 .setBankAccount(1000.34)
                 .createBigBakery();
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                .setBakeryTypes(Product.Types.COOKIE)
                 .setName("Cake")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product2 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product3 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                .setBakeryTypes(Product.Types.COOKIE)
                 .setName("Bun")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product4 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                .setBakeryTypes(Product.Types.COOKIE)
                 .setName("Cookie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
@@ -1093,7 +1093,7 @@ public class BakeryTest {
         bakery1.addProduct(product2);
         bakery1.addProduct(product3);
         bakery1.addProduct(product4);
-        assertEquals(bakery1.findProductByType(Product.bakeryTypes.COOKIE), List.of(product1, product3, product4));
+        assertEquals(bakery1.findProductByType(Product.Types.COOKIE), List.of(product1, product3, product4));
     }
 
     @Test
@@ -1104,7 +1104,7 @@ public class BakeryTest {
                 .createBigBakery();
         for (int i = 0; i < 1000; i++) {
             bakery1.addProduct(new ProductBuilder()
-                    .setBakeryTypes(Product.bakeryTypes.PIE)
+                    .setBakeryTypes(Product.Types.PIE)
                     .setName("Pie")
                     .setKilocalories(233.32)
                     .setPrice(3.12)
@@ -1123,19 +1123,19 @@ public class BakeryTest {
                 .setBankAccount(1000.34)
                 .createBigBakery();
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                .setBakeryTypes(Product.Types.COOKIE)
                 .setName("Cookie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product2 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product3 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                .setBakeryTypes(Product.Types.COOKIE)
                 .setName("Cookie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
@@ -1147,9 +1147,9 @@ public class BakeryTest {
         bakery1.addProduct(product1);
         bakery1.addProduct(product2);
         bakery1.addProduct(product3);
-        bakery1.buyProductsByType(customer1, Product.bakeryTypes.PIE);
-        bakery1.buyProductsByType(customer1, Product.bakeryTypes.COOKIE);
-        bakery1.buyProductsByType(customer1, Product.bakeryTypes.COOKIE);
+        bakery1.buyProductsByType(customer1, Product.Types.PIE);
+        bakery1.buyProductsByType(customer1, Product.Types.COOKIE);
+        bakery1.buyProductsByType(customer1, Product.Types.COOKIE);
         assertEquals(bakery1.getProductRating().get(0).getName(), "Cookie");
         assertEquals(bakery1.getProductRating().get(0).getKilocalories(), 400.0);
         assertEquals(bakery1.getProductRating().get(0).getPrice(), 1.2);
@@ -1164,25 +1164,25 @@ public class BakeryTest {
                 .setBankAccount(1000.34)
                 .createBigBakery();
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                .setBakeryTypes(Product.Types.COOKIE)
                 .setName("Cookie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product2 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(200.0)
                 .setPrice(1.1)
                 .createProduct();
         Product product3 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                .setBakeryTypes(Product.Types.COOKIE)
                 .setName("Cookie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product4 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(200.0)
                 .setPrice(1.1)
@@ -1195,10 +1195,10 @@ public class BakeryTest {
         bakery1.addProduct(product2);
         bakery1.addProduct(product3);
         bakery1.addProduct(product4);
-        bakery1.buyProductsByType(customer1, Product.bakeryTypes.PIE);
-        bakery1.buyProductsByType(customer1, Product.bakeryTypes.COOKIE);
-        bakery1.buyProductsByType(customer1, Product.bakeryTypes.COOKIE);
-        bakery1.buyProductsByType(customer1, Product.bakeryTypes.PIE);
+        bakery1.buyProductsByType(customer1, Product.Types.PIE);
+        bakery1.buyProductsByType(customer1, Product.Types.COOKIE);
+        bakery1.buyProductsByType(customer1, Product.Types.COOKIE);
+        bakery1.buyProductsByType(customer1, Product.Types.PIE);
         assertEquals(bakery1.getProductRating(), List.of(product2, product1));
     }
 
@@ -1211,13 +1211,13 @@ public class BakeryTest {
                 .setBankAccount(1000.34)
                 .createSmallBakery();
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                .setBakeryTypes(Product.Types.COOKIE)
                 .setName("Cookie")
                 .setKilocalories(100.0)
                 .setPrice(10.0)
                 .createProduct();
         Product product2 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                .setBakeryTypes(Product.Types.COOKIE)
                 .setName("Pie")
                 .setKilocalories(200.0)
                 .setPrice(10.0)
@@ -1228,8 +1228,8 @@ public class BakeryTest {
                 .createCustomer();
         bakery1.addProduct(product1);
         bakery1.addProduct(product2);
-        bakery1.buyProductsByType(customer1, Product.bakeryTypes.COOKIE);
-        bakery1.buyProductsByType(customer1, Product.bakeryTypes.COOKIE);
+        bakery1.buyProductsByType(customer1, Product.Types.COOKIE);
+        bakery1.buyProductsByType(customer1, Product.Types.COOKIE);
         System.out.println(bakery1.getProductRating());
         assertEquals(bakery1.getProductRating().get(0).getName(), "Cookie"); // 100+10=110
         assertEquals(bakery1.getProductRating().get(1).getName(), "Pie"); // 200+10=210
@@ -1243,31 +1243,31 @@ public class BakeryTest {
                 .setBankAccount(1000.34)
                 .createBigBakery();
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                .setBakeryTypes(Product.Types.COOKIE)
                 .setName("Cookie")
                 .setKilocalories(100.0)
                 .setPrice(1.5)
                 .createProduct();
         Product product5 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                .setBakeryTypes(Product.Types.COOKIE)
                 .setName("Cookie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product2 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product3 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                .setBakeryTypes(Product.Types.COOKIE)
                 .setName("Cookie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product4 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
@@ -1281,11 +1281,11 @@ public class BakeryTest {
         bakery1.addProduct(product3);
         bakery1.addProduct(product4);
         bakery1.addProduct(product5);
-        bakery1.buyProductsByType(customer1, Product.bakeryTypes.PIE);
-        bakery1.buyProductsByType(customer1, Product.bakeryTypes.COOKIE);
-        bakery1.buyProductsByType(customer1, Product.bakeryTypes.COOKIE);
-        bakery1.buyProductsByType(customer1, Product.bakeryTypes.COOKIE);
-        bakery1.buyProductsByType(customer1, Product.bakeryTypes.PIE);
+        bakery1.buyProductsByType(customer1, Product.Types.PIE);
+        bakery1.buyProductsByType(customer1, Product.Types.COOKIE);
+        bakery1.buyProductsByType(customer1, Product.Types.COOKIE);
+        bakery1.buyProductsByType(customer1, Product.Types.COOKIE);
+        bakery1.buyProductsByType(customer1, Product.Types.PIE);
         assertEquals(bakery1.getProductRating().get(0).getName(), "Cookie");
 
     }
@@ -1300,19 +1300,19 @@ public class BakeryTest {
                 .setBankAccount(1000.34)
                 .createSmallBakery();
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                .setBakeryTypes(Product.Types.COOKIE)
                 .setName("Tartu peenleib")
                 .setKilocalories(100.0)
                 .setPrice(10.0)
                 .createProduct();
         Product product2 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                .setBakeryTypes(Product.Types.COOKIE)
                 .setName("Meremehe sai")
                 .setKilocalories(100.0)
                 .setPrice(10.0)
                 .createProduct();
         Product product3 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                .setBakeryTypes(Product.Types.COOKIE)
                 .setName("Tartu peenleib")
                 .setKilocalories(120.0)
                 .setPrice(10.0)
@@ -1324,9 +1324,9 @@ public class BakeryTest {
         bakery1.addProduct(product1);
         bakery1.addProduct(product2);
         bakery1.addProduct(product3);
-        bakery1.buyProductsByType(customer1, Product.bakeryTypes.COOKIE);
-        bakery1.buyProductsByType(customer1, Product.bakeryTypes.COOKIE);
-        bakery1.buyProductsByType(customer1, Product.bakeryTypes.COOKIE);
+        bakery1.buyProductsByType(customer1, Product.Types.COOKIE);
+        bakery1.buyProductsByType(customer1, Product.Types.COOKIE);
+        bakery1.buyProductsByType(customer1, Product.Types.COOKIE);
         System.out.println(bakery1.getProductRating());
         assertEquals(bakery1.getProductRating().get(0).getName(), "Tartu peenleib");
         assertEquals(bakery1.getProductRating().get(1).getName(), "Meremehe sai");
@@ -1341,25 +1341,25 @@ public class BakeryTest {
                 .setBankAccount(1000.34)
                 .createSmallBakery();
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                .setBakeryTypes(Product.Types.COOKIE)
                 .setName("A")
                 .setKilocalories(100.0)
                 .setPrice(10.0)
                 .createProduct();
         Product product2 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                .setBakeryTypes(Product.Types.COOKIE)
                 .setName("B")
                 .setKilocalories(100.0)
                 .setPrice(10.0)
                 .createProduct();
         Product product3 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                .setBakeryTypes(Product.Types.COOKIE)
                 .setName("A")
                 .setKilocalories(100.0)
                 .setPrice(10.0)
                 .createProduct();
         Product product4 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                .setBakeryTypes(Product.Types.COOKIE)
                 .setName("B")
                 .setKilocalories(100.0)
                 .setPrice(10.0)
@@ -1372,10 +1372,10 @@ public class BakeryTest {
         bakery1.addProduct(product2);
         bakery1.addProduct(product3);
         bakery1.addProduct(product4);
-        bakery1.buyProductsByType(customer1, Product.bakeryTypes.COOKIE);
-        bakery1.buyProductsByType(customer1, Product.bakeryTypes.COOKIE);
-        bakery1.buyProductsByType(customer1, Product.bakeryTypes.COOKIE);
-        bakery1.buyProductsByType(customer1, Product.bakeryTypes.COOKIE);
+        bakery1.buyProductsByType(customer1, Product.Types.COOKIE);
+        bakery1.buyProductsByType(customer1, Product.Types.COOKIE);
+        bakery1.buyProductsByType(customer1, Product.Types.COOKIE);
+        bakery1.buyProductsByType(customer1, Product.Types.COOKIE);
         System.out.println(bakery1.getProductRating());
         assertEquals(bakery1.getProductRating().get(0).getName(), "A");
         assertEquals(bakery1.getProductRating().get(1).getName(), "B");
@@ -1396,7 +1396,7 @@ public class BakeryTest {
                 .createCustomer();
         for (int i = 0; i < 101; i++) {
             bakery1.addProduct(new ProductBuilder()
-                    .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                    .setBakeryTypes(Product.Types.COOKIE)
                     .setName("First")
                     .setKilocalories(100.0)
                     .setPrice(1.0)
@@ -1404,7 +1404,7 @@ public class BakeryTest {
         }
         for (int i = 0; i < 151; i++) {
             bakery1.addProduct(new ProductBuilder()
-                    .setBakeryTypes(Product.bakeryTypes.PIE)
+                    .setBakeryTypes(Product.Types.PIE)
                     .setName("Second")
                     .setKilocalories(100.0)
                     .setPrice(1.0)
@@ -1412,7 +1412,7 @@ public class BakeryTest {
         }
         for (int i = 0; i < 201; i++) {
             bakery1.addProduct(new ProductBuilder()
-                    .setBakeryTypes(Product.bakeryTypes.CAKE)
+                    .setBakeryTypes(Product.Types.CAKE)
                     .setName("Third")
                     .setKilocalories(100.0)
                     .setPrice(1.0)
@@ -1420,33 +1420,33 @@ public class BakeryTest {
         }
         for (int i = 0; i < 251; i++) {
             bakery1.addProduct(new ProductBuilder()
-                    .setBakeryTypes(Product.bakeryTypes.BREAD)
+                    .setBakeryTypes(Product.Types.BREAD)
                     .setName("Fourth")
                     .setKilocalories(100.0)
                     .setPrice(1.0)
                     .createProduct());
         }
         for (int i = 0; i < 90; i++) {
-            bakery1.buyProductsByType(customer1, Product.bakeryTypes.COOKIE);
+            bakery1.buyProductsByType(customer1, Product.Types.COOKIE);
         }
         for (int i = 0; i < 120; i++) {
-            bakery1.buyProductsByType(customer1, Product.bakeryTypes.PIE);
+            bakery1.buyProductsByType(customer1, Product.Types.PIE);
         }
         for (int i = 0; i < 190; i++) {
-            bakery1.buyProductsByType(customer1, Product.bakeryTypes.CAKE);
+            bakery1.buyProductsByType(customer1, Product.Types.CAKE);
         }
         for (int i = 0; i < 230; i++) {
-            bakery1.buyProductsByType(customer1, Product.bakeryTypes.BREAD);
+            bakery1.buyProductsByType(customer1, Product.Types.BREAD);
         }
-        double firstPriceBefore = bakery1.findProductByType(Product.bakeryTypes.COOKIE).get(0).getPrice();
-        double secondPriceBefore = bakery1.findProductByType(Product.bakeryTypes.PIE).get(0).getPrice();
-        double thirdPriceBefore = bakery1.findProductByType(Product.bakeryTypes.CAKE).get(0).getPrice();
-        double fourthPriceBefore = bakery1.findProductByType(Product.bakeryTypes.BREAD).get(0).getPrice();
+        double firstPriceBefore = bakery1.findProductByType(Product.Types.COOKIE).get(0).getPrice();
+        double secondPriceBefore = bakery1.findProductByType(Product.Types.PIE).get(0).getPrice();
+        double thirdPriceBefore = bakery1.findProductByType(Product.Types.CAKE).get(0).getPrice();
+        double fourthPriceBefore = bakery1.findProductByType(Product.Types.BREAD).get(0).getPrice();
         bakery1.increasingPrices();
-        assertEquals(bakery1.findProductByType(Product.bakeryTypes.COOKIE).get(3).getPrice(), firstPriceBefore);
-        assertNotEquals(bakery1.findProductByType(Product.bakeryTypes.PIE).get(5).getPrice(), secondPriceBefore);
-        assertNotEquals(bakery1.findProductByType(Product.bakeryTypes.CAKE).get(10).getPrice(), thirdPriceBefore);
-        assertNotEquals(bakery1.findProductByType(Product.bakeryTypes.BREAD).get(15).getPrice(), fourthPriceBefore);
+        assertEquals(bakery1.findProductByType(Product.Types.COOKIE).get(3).getPrice(), firstPriceBefore);
+        assertNotEquals(bakery1.findProductByType(Product.Types.PIE).get(5).getPrice(), secondPriceBefore);
+        assertNotEquals(bakery1.findProductByType(Product.Types.CAKE).get(10).getPrice(), thirdPriceBefore);
+        assertNotEquals(bakery1.findProductByType(Product.Types.BREAD).get(15).getPrice(), fourthPriceBefore);
     }
 
     @Test
@@ -1464,7 +1464,7 @@ public class BakeryTest {
                 .createCustomer();
         for (int i = 0; i < 601; i++) {
             bakery1.addProduct(new ProductBuilder()
-                    .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                    .setBakeryTypes(Product.Types.COOKIE)
                     .setName("First")
                     .setKilocalories(100.0)
                     .setPrice(1.0)
@@ -1472,16 +1472,16 @@ public class BakeryTest {
         }
 
         for (int i = 0; i < 550; i++) {
-            bakery1.buyProductsByType(customer1, Product.bakeryTypes.COOKIE);
+            bakery1.buyProductsByType(customer1, Product.Types.COOKIE);
         }
 
-        double firstPriceBefore = bakery1.findProductByType(Product.bakeryTypes.COOKIE).get(0).getPrice();
+        double firstPriceBefore = bakery1.findProductByType(Product.Types.COOKIE).get(0).getPrice();
         bakery1.increasingPrices();
-        assertEquals(bakery1.findProductByType(Product.bakeryTypes.COOKIE).get(3).getPrice(),
+        assertEquals(bakery1.findProductByType(Product.Types.COOKIE).get(3).getPrice(),
                 firstPriceBefore * 1.5);
-        assertEquals(bakery1.findProductByType(Product.bakeryTypes.COOKIE).get(43).getPrice(),
+        assertEquals(bakery1.findProductByType(Product.Types.COOKIE).get(43).getPrice(),
                 firstPriceBefore * 1.5);
-        assertEquals(bakery1.findProductByType(Product.bakeryTypes.COOKIE).get(13).getPrice(),
+        assertEquals(bakery1.findProductByType(Product.Types.COOKIE).get(13).getPrice(),
                 firstPriceBefore * 1.5);
     }
 
@@ -1499,7 +1499,7 @@ public class BakeryTest {
                 .createCustomer();
         for (int i = 0; i < 201; i++) {
             bakery1.addProduct(new ProductBuilder()
-                    .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                    .setBakeryTypes(Product.Types.COOKIE)
                     .setName("First")
                     .setKilocalories(100.0)
                     .setPrice(1.0)
@@ -1507,7 +1507,7 @@ public class BakeryTest {
         }
         for (int i = 0; i < 301; i++) {
             bakery1.addProduct(new ProductBuilder()
-                    .setBakeryTypes(Product.bakeryTypes.BREAD)
+                    .setBakeryTypes(Product.Types.BREAD)
                     .setName("Second")
                     .setKilocalories(100.0)
                     .setPrice(1.0)
@@ -1515,16 +1515,16 @@ public class BakeryTest {
         }
 
         for (int i = 0; i < 150; i++) {
-            bakery1.buyProductsByType(customer1, Product.bakeryTypes.COOKIE);
+            bakery1.buyProductsByType(customer1, Product.Types.COOKIE);
         }
         for (int i = 0; i < 250; i++) {
-            bakery1.buyProductsByType(customer1, Product.bakeryTypes.BREAD);
+            bakery1.buyProductsByType(customer1, Product.Types.BREAD);
         }
 
-        double firstPriceBefore = bakery1.findProductByType(Product.bakeryTypes.COOKIE).get(0).getPrice();
-        double secondPriceBefore = bakery1.findProductByType(Product.bakeryTypes.BREAD).get(0).getPrice();
+        double firstPriceBefore = bakery1.findProductByType(Product.Types.COOKIE).get(0).getPrice();
+        double secondPriceBefore = bakery1.findProductByType(Product.Types.BREAD).get(0).getPrice();
         bakery1.increasingPrices();
-        assertNotEquals(bakery1.findProductByType(Product.bakeryTypes.COOKIE).get(0).getPrice(), firstPriceBefore);
-        assertNotEquals(bakery1.findProductByType(Product.bakeryTypes.BREAD).get(0).getPrice(), secondPriceBefore);
+        assertNotEquals(bakery1.findProductByType(Product.Types.COOKIE).get(0).getPrice(), firstPriceBefore);
+        assertNotEquals(bakery1.findProductByType(Product.Types.BREAD).get(0).getPrice(), secondPriceBefore);
     }
 }

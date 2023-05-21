@@ -10,19 +10,19 @@ public class ProductTest {
     @Test
     protected void checkProductIdTest() {
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product2 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.BREAD)
+                .setBakeryTypes(Product.Types.BREAD)
                 .setName("Bread")
                 .setKilocalories(233.32)
                 .setPrice(3.12)
                 .createProduct();
         Product product3 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.CAKE)
+                .setBakeryTypes(Product.Types.CAKE)
                 .setName("Cake")
                 .setKilocalories(643.01)
                 .setPrice(10.0)
@@ -36,7 +36,7 @@ public class ProductTest {
     protected void productNameIsNullTest() {
         try {
             new ProductBuilder()
-                    .setBakeryTypes(Product.bakeryTypes.PIE)
+                    .setBakeryTypes(Product.Types.PIE)
                     .setName(null)
                     .setKilocalories(400.0)
                     .setPrice(1.2)
@@ -65,7 +65,7 @@ public class ProductTest {
     protected void productPriceIsWrongTest() {
         try {
             new ProductBuilder()
-                    .setBakeryTypes(Product.bakeryTypes.PIE)
+                    .setBakeryTypes(Product.Types.PIE)
                     .setName("null")
                     .setKilocalories(400.0)
                     .setPrice(-1.3)
@@ -79,7 +79,7 @@ public class ProductTest {
     protected void productCaloriesIsWrongTest() {
         try {
             new ProductBuilder()
-                    .setBakeryTypes(Product.bakeryTypes.PIE)
+                    .setBakeryTypes(Product.Types.PIE)
                     .setName("null")
                     .setKilocalories(-400.0)
                     .setPrice(1.3)

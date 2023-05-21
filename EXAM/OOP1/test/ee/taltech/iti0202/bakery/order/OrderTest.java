@@ -28,19 +28,19 @@ public class OrderTest {
             ProductLimitExceededException, ProductDoesNotContainsInBakeryException, UnconfirmedOrdersException,
             DoNotHaveEnoughMoneyToBuyException, OrderCanNotBeDoneException {
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                .setBakeryTypes(Product.Types.COOKIE)
                 .setName("Cookie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product2 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(233.32)
                 .setPrice(3.17)
                 .createProduct();
         Product product3 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.CAKE)
+                .setBakeryTypes(Product.Types.CAKE)
                 .setName("Cake")
                 .setKilocalories(23.2)
                 .setPrice(6.65)
@@ -66,19 +66,19 @@ public class OrderTest {
             , ProductDoesNotContainsInBakeryException, UnconfirmedOrdersException,
             DoNotHaveEnoughMoneyToBuyException, OrderCanNotBeDoneException {
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                .setBakeryTypes(Product.Types.COOKIE)
                 .setName("Cookie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product2 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(233.32)
                 .setPrice(3.17)
                 .createProduct();
         Product product3 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.CAKE)
+                .setBakeryTypes(Product.Types.CAKE)
                 .setName("Cake")
                 .setKilocalories(23.2)
                 .setPrice(6.65)
@@ -105,19 +105,19 @@ public class OrderTest {
             , ProductDoesNotContainsInBakeryException, UnconfirmedOrdersException,
             DoNotHaveEnoughMoneyToBuyException, OrderCanNotBeDoneException {
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                .setBakeryTypes(Product.Types.COOKIE)
                 .setName("Cookie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product2 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(233.32)
                 .setPrice(3.17)
                 .createProduct();
         Product product3 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.CAKE)
+                .setBakeryTypes(Product.Types.CAKE)
                 .setName("Cake")
                 .setKilocalories(23.2)
                 .setPrice(6.65)
@@ -146,19 +146,19 @@ public class OrderTest {
             , ProductDoesNotContainsInBakeryException, UnconfirmedOrdersException,
             DoNotHaveEnoughMoneyToBuyException, OrderCanNotBeDoneException {
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                .setBakeryTypes(Product.Types.COOKIE)
                 .setName("Cookie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product2 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(233.32)
                 .setPrice(3.17)
                 .createProduct();
         Product product3 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.CAKE)
+                .setBakeryTypes(Product.Types.CAKE)
                 .setName("Cake")
                 .setKilocalories(23.2)
                 .setPrice(6.65)
@@ -188,19 +188,19 @@ public class OrderTest {
             ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException,
             UnconfirmedOrdersException, DoNotHaveEnoughMoneyToBuyException {
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                .setBakeryTypes(Product.Types.COOKIE)
                 .setName("Cookie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product2 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(233.32)
                 .setPrice(3.17)
                 .createProduct();
         Product product3 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.CAKE)
+                .setBakeryTypes(Product.Types.CAKE)
                 .setName("Cake")
                 .setKilocalories(23.2)
                 .setPrice(6.65)
@@ -235,19 +235,19 @@ public class OrderTest {
             ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException,
             UnconfirmedOrdersException, DoNotHaveEnoughMoneyToBuyException {
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                .setBakeryTypes(Product.Types.COOKIE)
                 .setName("Cookie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product2 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(233.32)
                 .setPrice(3.17)
                 .createProduct();
         Product product3 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.CAKE)
+                .setBakeryTypes(Product.Types.CAKE)
                 .setName("Cake")
                 .setKilocalories(23.2)
                 .setPrice(6.65)
@@ -284,19 +284,19 @@ public class OrderTest {
             ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException,
             UnconfirmedOrdersException {
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                .setBakeryTypes(Product.Types.COOKIE)
                 .setName("Cookie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product2 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(233.32)
                 .setPrice(3.17)
                 .createProduct();
         Product product3 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.CAKE)
+                .setBakeryTypes(Product.Types.CAKE)
                 .setName("Cake")
                 .setKilocalories(23.2)
                 .setPrice(6.65)
@@ -334,19 +334,19 @@ public class OrderTest {
             ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException,
             UnconfirmedOrdersException, DoNotHaveEnoughMoneyToBuyException, OrderCanNotBeDoneException {
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                .setBakeryTypes(Product.Types.COOKIE)
                 .setName("Cookie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
                 .createProduct();
         Product product2 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.PIE)
+                .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
                 .setKilocalories(233.32)
                 .setPrice(3.17)
                 .createProduct();
         Product product3 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.CAKE)
+                .setBakeryTypes(Product.Types.CAKE)
                 .setName("Cake")
                 .setKilocalories(23.2)
                 .setPrice(6.65)
@@ -386,7 +386,7 @@ public class OrderTest {
     @Test
     protected void orderCustomerIsNullTest() {
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                .setBakeryTypes(Product.Types.COOKIE)
                 .setName("Cookie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
@@ -406,7 +406,7 @@ public class OrderTest {
     @Test
     protected void orderBakeryIsNullTest() {
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                .setBakeryTypes(Product.Types.COOKIE)
                 .setName("Cookie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
