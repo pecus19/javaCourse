@@ -15,18 +15,13 @@ public class BigBakery extends SmallBakery {
     }
 
     @Override
-    public void addProduct(Product product) throws ProductDoesNotContainsInBakeryException,
-            CanNotAddProductToTheBakeryException {
+    public void addProduct(Product product) throws CanNotAddProductToTheBakeryException {
         if (product.isInTheBakery()) {
             throw new CanNotAddProductToTheBakeryException();
         }
-        if (!products.contains(product)) {
-            products.add(product);
-            product.setInTheBakery(true);
-            logger.info(product.getName() + " has been added to the bakery with name: " + getName());
-        } else {
-            throw new ProductDoesNotContainsInBakeryException();
-        }
+        products.add(product);
+        product.setInTheBakery(true);
+        logger.info(product.getName() + " has been added to the bakery with name: " + getName());
     }
 
     @Override
