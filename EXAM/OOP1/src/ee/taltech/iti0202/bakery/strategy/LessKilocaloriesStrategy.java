@@ -18,7 +18,8 @@ public class LessKilocaloriesStrategy extends Strategy {
     }
 
     @Override
-    public List<Product> useStrategy(SmallBakery bakery) throws SearchProductsNotFoundException, DoNotHaveEnoughMoneyToBuyException {
+    public List<Product> useStrategy(SmallBakery bakery) throws SearchProductsNotFoundException,
+            DoNotHaveEnoughMoneyToBuyException {
         boolean loopCheck = true;
         List<Product> output = new ArrayList<>();
         listToFilter = bakery.getProducts();

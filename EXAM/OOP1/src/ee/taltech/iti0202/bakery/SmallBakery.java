@@ -1,7 +1,13 @@
 package ee.taltech.iti0202.bakery;
 
 import ee.taltech.iti0202.bakery.customer.Customer;
-import ee.taltech.iti0202.bakery.exceptions.*;
+import ee.taltech.iti0202.bakery.exceptions.DoNotHaveEnoughMoneyToBuyException;
+import ee.taltech.iti0202.bakery.exceptions.ProductAlreadyContainsInAnotherBakeryException;
+import ee.taltech.iti0202.bakery.exceptions.ProductAlreadyContainsInTheBakeryException;
+import ee.taltech.iti0202.bakery.exceptions.ProductDoesNotContainsInBakeryException;
+import ee.taltech.iti0202.bakery.exceptions.ProductLimitExceededException;
+import ee.taltech.iti0202.bakery.exceptions.SearchProductsNotFoundException;
+import ee.taltech.iti0202.bakery.exceptions.SmallBakeryCanSellOnlyProductsWithOneTypeException;
 import ee.taltech.iti0202.bakery.order.Order;
 import ee.taltech.iti0202.bakery.product.Product;
 
@@ -24,6 +30,8 @@ public class SmallBakery {
     protected int productLimit = 0;
     protected Logger logger = Logger.getLogger(SmallBakery.class.getName());
     protected Map<Product, Integer> productRating = new HashMap<>();
+    private static final int TEN = 10;
+    private static final double ZEROONE = 0.1;
 
     public SmallBakery(String name, Double bankAccount) {
         if (name == null) {
@@ -83,7 +91,7 @@ public class SmallBakery {
                 }
             }
             price /= entry.getKey().getKilocalories();
-            entry.getKey().setRatingMultiplier(Math.floor(price * 10) / 10);
+            entry.getKey().setRatingMultiplier(Math.floor(price * TEN) / TEN);
         }
         List<Map.Entry<Product, Integer>> entries = new ArrayList<>(productRating.entrySet());
         entries.sort(Map.Entry.<Product, Integer>comparingByValue(Collections.reverseOrder())
@@ -202,7 +210,7 @@ public class SmallBakery {
     }
 
     public boolean productsLimit() {
-        return productLimit < 10;
+        return productLimit < TEN;
     }
 
     public void addProduct(Product product) throws ProductDoesNotContainsInBakeryException,
@@ -239,7 +247,7 @@ public class SmallBakery {
 
         for (int i = 0; i < loopSize; i++) {
             double newPriceCalculation = getProductRating().get(i).getPrice()
-                    + (productRating.get(getProductRating().get(i)) * 0.1 / 100);
+                    + (productRating.get(getProductRating().get(i)) * ZEROONE / 100);
             for (int j = 0; j < getProducts().size(); j++) {
                 Product currentProduct = getProducts().get(j);
                 Product ratingProduct = getProductRating().get(i);

@@ -47,14 +47,6 @@ public class Customer {
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
     public Double getBankAccount() {
         return bankAccount;
     }
@@ -67,9 +59,6 @@ public class Customer {
         return products;
     }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    }
 
     public boolean isConfirmedOrders() {
         return confirmedOrders;

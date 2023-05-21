@@ -2,7 +2,10 @@ package ee.taltech.iti0202.bakery.order;
 
 import ee.taltech.iti0202.bakery.SmallBakery;
 import ee.taltech.iti0202.bakery.customer.Customer;
-import ee.taltech.iti0202.bakery.exceptions.*;
+import ee.taltech.iti0202.bakery.exceptions.DoNotHaveEnoughMoneyToBuyException;
+import ee.taltech.iti0202.bakery.exceptions.OrderCanNotBeDoneException;
+import ee.taltech.iti0202.bakery.exceptions.ProductDoesNotContainsInBakeryException;
+import ee.taltech.iti0202.bakery.exceptions.UnconfirmedOrdersException;
 import ee.taltech.iti0202.bakery.product.Product;
 
 import java.util.ArrayList;
@@ -35,10 +38,6 @@ public class Order {
         return products;
     }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    }
-
     public boolean isApproved() {
         return approved;
     }
@@ -62,7 +61,8 @@ public class Order {
 
     }
 
-    public List<Product> confirmOrder() throws DoNotHaveEnoughMoneyToBuyException, ProductDoesNotContainsInBakeryException,
+    public List<Product> confirmOrder() throws DoNotHaveEnoughMoneyToBuyException,
+            ProductDoesNotContainsInBakeryException,
             OrderCanNotBeDoneException {
         List<Product> output = new ArrayList<>();
         if (isApproved()) {

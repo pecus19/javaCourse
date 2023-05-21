@@ -24,16 +24,8 @@ public abstract class Strategy {
         return price;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
     public Double getKilocalories() {
         return kilocalories;
-    }
-
-    public void setKilocalories(Double kilocalories) {
-        this.kilocalories = kilocalories;
     }
 
     public Customer getCustomer() {

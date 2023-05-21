@@ -25,9 +25,6 @@ public class Product {
         inTheBakery = false;
     }
 
-    public void setBakerytypes(Product.bakeryTypes bakerytypes) {
-        this.bakerytypes = bakerytypes;
-    }
 
     public Product.bakeryTypes getBakerytypes() {
         return bakerytypes;
@@ -39,18 +36,6 @@ public class Product {
 
     public void setRatingMultiplier(double ratingMultiplier) {
         this.ratingMultiplier = ratingMultiplier;
-    }
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "name='" + name + '\'' +
-                ", id=" + id +
-                ", price=" + price +
-                ", kilocalories=" + kilocalories +
-                ", bakerytypes=" + bakerytypes +
-                ", ratingMultiplier=" + ratingMultiplier +
-                '}';
     }
 
     public enum bakeryTypes {
@@ -86,9 +71,6 @@ public class Product {
         return kilocalories;
     }
 
-    public void setKilocalories(Double kilocalories) {
-        this.kilocalories = kilocalories;
-    }
 
     public boolean isInTheBakery() {
         return inTheBakery;

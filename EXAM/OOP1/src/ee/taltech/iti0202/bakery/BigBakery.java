@@ -2,7 +2,6 @@ package ee.taltech.iti0202.bakery;
 
 import ee.taltech.iti0202.bakery.exceptions.ProductAlreadyContainsInAnotherBakeryException;
 import ee.taltech.iti0202.bakery.exceptions.ProductDoesNotContainsInBakeryException;
-import ee.taltech.iti0202.bakery.exceptions.ProductLimitExceededException;
 import ee.taltech.iti0202.bakery.exceptions.SearchProductsNotFoundException;
 import ee.taltech.iti0202.bakery.product.Product;
 
@@ -17,7 +16,7 @@ public class BigBakery extends SmallBakery {
 
     @Override
     public void addProduct(Product product) throws ProductDoesNotContainsInBakeryException,
-            ProductAlreadyContainsInAnotherBakeryException, ProductLimitExceededException {
+            ProductAlreadyContainsInAnotherBakeryException {
         if (product.isInTheBakery()) {
             throw new ProductAlreadyContainsInAnotherBakeryException();
         }
