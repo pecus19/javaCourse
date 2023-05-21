@@ -25,8 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class BakeryTest {
     @Test
-    protected void addProductToBakeryBasicTest() throws CanNotAddProductToTheBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException {
+    protected void addProductToBakeryBasicTest() throws CanNotAddProductToTheBakeryException{
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.PIE)
                 .setName("Pie")
@@ -45,10 +44,6 @@ public class BakeryTest {
                 .setKilocalories(643.01)
                 .setPrice(10.0)
                 .createProduct();
-        SmallBakery bakery1 = new SmallBakeryBuilder()
-                .setName("Small Bakery")
-                .setBankAccount(1000.34)
-                .createSmallBakery();
         BigBakery bakery2 = new BigBakeryBuilder()
                 .setName("Big Bakery")
                 .setBankAccount(13000.82)
@@ -60,8 +55,8 @@ public class BakeryTest {
     }
 
     @Test
-    protected void basicRemoveFromBakeryTest() throws CanNotAddProductToTheBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException {
+    protected void basicRemoveFromBakeryTest() throws CanNotAddProductToTheBakeryException
+            , ProductDoesNotContainsInBakeryException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.COOKIE)
                 .setName("Cookie")
@@ -80,10 +75,6 @@ public class BakeryTest {
                 .setKilocalories(23.2)
                 .setPrice(6.65)
                 .createProduct();
-        Customer customer1 = new CustomerBuilder().setName("Danila")
-                .setAge(21)
-                .setBankAccount(23112.23)
-                .createCustomer();
         BigBakery bakery1 = new BigBakeryBuilder()
                 .setName("Big Bakery")
                 .setBankAccount(1000.34)
@@ -97,8 +88,7 @@ public class BakeryTest {
 
     @Test
     protected void basicRemoveFromBakeryNotContainsInTheBakeryTest()
-            throws CanNotAddProductToTheBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException {
+            throws CanNotAddProductToTheBakeryException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.COOKIE)
                 .setName("Cookie")
@@ -117,10 +107,6 @@ public class BakeryTest {
                 .setKilocalories(23.2)
                 .setPrice(6.65)
                 .createProduct();
-        Customer customer1 = new CustomerBuilder().setName("Danila")
-                .setAge(21)
-                .setBankAccount(23112.23)
-                .createCustomer();
         BigBakery bakery1 = new BigBakeryBuilder()
                 .setName("Big Bakery")
                 .setBankAccount(1000.34)
@@ -254,12 +240,6 @@ public class BakeryTest {
                 .setKilocalories(233.32)
                 .setPrice(3.12)
                 .createProduct();
-        Product product3 = new ProductBuilder()
-                .setBakeryTypes(Product.bakeryTypes.CAKE)
-                .setName("Cake")
-                .setKilocalories(643.01)
-                .setPrice(10.0)
-                .createProduct();
         SmallBakery bakery1 = new SmallBakeryBuilder()
                 .setName("Small Bakery")
                 .setBankAccount(1000.34)
@@ -323,9 +303,8 @@ public class BakeryTest {
     }
 
     @Test
-    protected void checkMoneyAfterBuyingByTypeBakeryTest() throws CanNotAddProductToTheBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException
-            , DoNotHaveEnoughMoneyToBuyException {
+    protected void checkMoneyAfterBuyingByTypeBakeryTest() throws CanNotAddProductToTheBakeryException
+            , ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.PIE)
                 .setName("Pie")
@@ -362,8 +341,8 @@ public class BakeryTest {
 
     @Test
     protected void checkMoneyAfterBuyingALotOfProductsByTypeBakeryTest()
-            throws CanNotAddProductToTheBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException,
+            throws CanNotAddProductToTheBakeryException
+            , ProductDoesNotContainsInBakeryException,
             DoNotHaveEnoughMoneyToBuyException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.PIE)
@@ -403,8 +382,8 @@ public class BakeryTest {
     }
 
     @Test
-    protected void checkMoneyAfterBuyingByTypeCustomerTest() throws CanNotAddProductToTheBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException {
+    protected void checkMoneyAfterBuyingByTypeCustomerTest() throws CanNotAddProductToTheBakeryException
+            , ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.PIE)
                 .setName("Pie")
@@ -441,8 +420,8 @@ public class BakeryTest {
 
     @Test
     protected void checkMoneyAfterBuyingALotOfProductsByTypeCustomerTest()
-            throws CanNotAddProductToTheBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException,
+            throws CanNotAddProductToTheBakeryException
+            , ProductDoesNotContainsInBakeryException,
             DoNotHaveEnoughMoneyToBuyException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.PIE)
@@ -482,8 +461,8 @@ public class BakeryTest {
     }
 
     @Test
-    protected void canNotBuyProductsDueToMoneyTest() throws CanNotAddProductToTheBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException {
+    protected void canNotBuyProductsDueToMoneyTest() throws CanNotAddProductToTheBakeryException
+            , ProductDoesNotContainsInBakeryException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.PIE)
                 .setName("Pie")
@@ -522,8 +501,7 @@ public class BakeryTest {
 
     @Test
     protected void canNotBuyProductsDueToMoneyAfterBuyingSomeProductsTest()
-            throws CanNotAddProductToTheBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException,
+            throws CanNotAddProductToTheBakeryException, ProductDoesNotContainsInBakeryException,
             DoNotHaveEnoughMoneyToBuyException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.PIE)
@@ -564,8 +542,8 @@ public class BakeryTest {
     }
 
     @Test
-    protected void checkProductsThatCustomerBoughtTest() throws CanNotAddProductToTheBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException {
+    protected void checkProductsThatCustomerBoughtTest() throws CanNotAddProductToTheBakeryException
+            , ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.PIE)
                 .setName("Pie")
@@ -602,8 +580,8 @@ public class BakeryTest {
     }
 
     @Test
-    protected void checkProductsInTheBakeryAfterBuyingTest() throws CanNotAddProductToTheBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException {
+    protected void checkProductsInTheBakeryAfterBuyingTest() throws CanNotAddProductToTheBakeryException
+            , ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.PIE)
                 .setName("Pie")
@@ -640,8 +618,8 @@ public class BakeryTest {
     }
 
     @Test
-    protected void onlyOneCustomerCanBuyOneProductTest() throws CanNotAddProductToTheBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException {
+    protected void onlyOneCustomerCanBuyOneProductTest() throws CanNotAddProductToTheBakeryException
+            , ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.PIE)
                 .setName("Pie")
@@ -736,8 +714,8 @@ public class BakeryTest {
     }
 
     @Test
-    protected void findProductByNameTest() throws CanNotAddProductToTheBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, SearchProductsNotFoundException {
+    protected void findProductByNameTest() throws CanNotAddProductToTheBakeryException
+            , SearchProductsNotFoundException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.PIE)
                 .setName("Pie")
@@ -768,7 +746,7 @@ public class BakeryTest {
 
     @Test
     protected void findProductByPriceTest() throws CanNotAddProductToTheBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, SearchProductsNotFoundException {
+            SearchProductsNotFoundException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.PIE)
                 .setName("Pie")
@@ -798,8 +776,7 @@ public class BakeryTest {
     }
 
     @Test
-    protected void findProductByPriceWithWrongPriceTest() throws CanNotAddProductToTheBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException {
+    protected void findProductByPriceWithWrongPriceTest() throws CanNotAddProductToTheBakeryException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.PIE)
                 .setName("Pie")
@@ -833,8 +810,7 @@ public class BakeryTest {
     }
 
     @Test
-    protected void findProductByPriceWithWrongNameTest() throws CanNotAddProductToTheBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException {
+    protected void findProductByPriceWithWrongNameTest() throws CanNotAddProductToTheBakeryException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.PIE)
                 .setName("Pie")
@@ -931,8 +907,7 @@ public class BakeryTest {
     }
 
     @Test
-    protected void findProductByPriceWithWrongIdTest() throws CanNotAddProductToTheBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException {
+    protected void findProductByPriceWithWrongIdTest() throws CanNotAddProductToTheBakeryException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.PIE)
                 .setName("Pie")
@@ -1122,8 +1097,7 @@ public class BakeryTest {
     }
 
     @Test
-    protected void bigBakeryAddALotOfProductsTest() throws CanNotAddProductToTheBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException {
+    protected void bigBakeryAddALotOfProductsTest() throws CanNotAddProductToTheBakeryException {
         BigBakery bakery1 = new BigBakeryBuilder()
                 .setName("Big Bakery")
                 .setBankAccount(1000.34)
@@ -1141,8 +1115,8 @@ public class BakeryTest {
 
     // Pagaritoodete pingerida(4 part)
     @Test
-    protected void getRatingSimpleTest() throws CanNotAddProductToTheBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException,
+    protected void getRatingSimpleTest() throws CanNotAddProductToTheBakeryException
+            , ProductDoesNotContainsInBakeryException,
             DoNotHaveEnoughMoneyToBuyException {
         BigBakery bakery1 = new BigBakeryBuilder()
                 .setName("Big Bakery")
@@ -1409,8 +1383,8 @@ public class BakeryTest {
 
     @Test
     protected void priceIncreasingBestThreeProductsChangePriceTest()
-            throws CanNotAddProductToTheBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException,
+            throws CanNotAddProductToTheBakeryException, ProductDoesNotContainsInBakeryException,
+            DoNotHaveEnoughMoneyToBuyException,
             SearchProductsNotFoundException {
         BigBakery bakery1 = new BigBakeryBuilder()
                 .setName("Big Bakery")
@@ -1477,8 +1451,8 @@ public class BakeryTest {
 
     @Test
     protected void priceIncreasingPriceCanNotBeMoreThanMaxPriceTest()
-            throws CanNotAddProductToTheBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException,
+            throws CanNotAddProductToTheBakeryException, ProductDoesNotContainsInBakeryException,
+            DoNotHaveEnoughMoneyToBuyException,
             SearchProductsNotFoundException {
         BigBakery bakery1 = new BigBakeryBuilder()
                 .setName("Big Bakery")
