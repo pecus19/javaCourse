@@ -341,8 +341,7 @@ public class BakeryTest {
 
     @Test
     protected void checkMoneyAfterBuyingALotOfProductsByTypeBakeryTest()
-            throws CanNotAddProductToTheBakeryException
-            , ProductDoesNotContainsInBakeryException,
+            throws CanNotAddProductToTheBakeryException, ProductDoesNotContainsInBakeryException,
             DoNotHaveEnoughMoneyToBuyException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.Types.PIE)
