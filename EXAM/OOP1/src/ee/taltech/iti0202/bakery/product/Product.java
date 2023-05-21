@@ -10,6 +10,11 @@ public class Product {
     private Product.bakeryTypes bakeryTypes;
     private double ratingMultiplier = 0;
 
+
+    public double getMaxPrice() {
+        return getPrice() * 1.5;
+    }
+
     public Product(String name, double price, Double kilocalories, Product.bakeryTypes bakeryTypes) {
         this.name = name;
         this.price = price;
@@ -74,7 +79,7 @@ public class Product {
     }
 
     public void setPrice(double price) {
-        this.price = price;
+        this.price = Math.min(price, getMaxPrice());
     }
 
     public Double getKilocalories() {

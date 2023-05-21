@@ -46,12 +46,12 @@ public class SmallBakery {
         this.bankAccount = bankAccount;
     }
 
-    public void transaction(Customer customer, Product product) {
+    private void transaction(Customer customer, Product product) {
         setBankAccount(getBankAccount() + product.getPrice());
         customer.setBankAccount(customer.getBankAccount() - product.getPrice());
     }
 
-    public void ratingCalculation(Product product) {
+    private void ratingCalculation(Product product) {
         boolean check = true;
         for (Map.Entry<Product, Integer> entry : productRating.entrySet()) {
             if (entry.getKey().getName().equals(product.getName())
@@ -223,6 +223,36 @@ public class SmallBakery {
                 product.setInTheBakery(true);
                 productLimit++;
                 logger.info(product.getName() + " has been added to the bakery with name: " + getName());
+            }
+        }
+    }
+
+    public void increasingPrices() {
+        if (getProductRating().size() > 2) {
+            for (int i = 0; i < 3; i++) {
+                double newPriceCalculation = getProductRating().get(i).getPrice()
+                        + (productRating.get(getProductRating().get(i)) * 0.1 / 100);
+                for (int j = 0; j < getProducts().size(); j++) {
+                    if (getProducts().get(j).getName().equals(getProductRating().get(i).getName())
+                            && getProducts().get(j).getPrice() == getProductRating().get(i).getPrice()
+                            && Objects.equals(getProducts().get(j).getKilocalories(), getProductRating()
+                            .get(i).getKilocalories())) {
+                        getProducts().get(j).setPrice(newPriceCalculation);
+                    }
+                }
+            }
+        } else {
+            for (int i = 0; i < getProductRating().size(); i++) {
+                double newPriceCalculation = getProductRating().get(i).getPrice()
+                        + (productRating.get(getProductRating().get(i)) * 0.1 / 100);
+                for (int j = 0; j < getProducts().size(); j++) {
+                    if (getProducts().get(j).getName().equals(getProductRating().get(i).getName())
+                            && getProducts().get(j).getPrice() == getProductRating().get(i).getPrice()
+                            && Objects.equals(getProducts().get(j).getKilocalories(), getProductRating()
+                            .get(i).getKilocalories())) {
+                        getProducts().get(j).setPrice(newPriceCalculation);
+                    }
+                }
             }
         }
     }
