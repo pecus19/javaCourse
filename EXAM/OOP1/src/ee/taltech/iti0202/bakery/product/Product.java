@@ -7,12 +7,13 @@ public class Product {
     private Double kilocalories;
     private static int idCounter = -1;
     private boolean inTheBakery;
-    private Product.bakeryTypes bakerytypes;
+    private Product.bakeryTypes bakeryTypes;
     private double ratingMultiplier = 0;
+    private static final double multiplier = 1.5;
 
 
     public double getMaxPrice() {
-        return getPrice() * 1.5;
+        return getPrice() * multiplier;
     }
 
     public Product(String name, double price, Double kilocalories, Product.bakeryTypes bakeryTypes) {
@@ -33,15 +34,15 @@ public class Product {
         this.name = name;
         this.price = price;
         this.kilocalories = kilocalories;
-        this.bakerytypes = bakeryTypes;
+        this.bakeryTypes = bakeryTypes;
         idCounter++;
         setId(idCounter);
         inTheBakery = false;
     }
 
 
-    public Product.bakeryTypes getBakerytypes() {
-        return bakerytypes;
+    public Product.bakeryTypes getBakeryTypes() {
+        return bakeryTypes;
     }
 
     public double getRatingMultiplier() {
@@ -56,13 +57,8 @@ public class Product {
         CAKE, BREAD, COOKIE, BUN, PIE
     }
 
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int getId() {
@@ -84,7 +80,6 @@ public class Product {
     public Double getKilocalories() {
         return kilocalories;
     }
-
 
     public boolean isInTheBakery() {
         return inTheBakery;
