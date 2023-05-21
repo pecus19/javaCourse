@@ -1,7 +1,6 @@
 package ee.taltech.iti0202.bakery.product;
 
 import ee.taltech.iti0202.bakery.builder.ProductBuilder;
-import ee.taltech.iti0202.bakery.exceptions.UnconfirmedOrdersException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
