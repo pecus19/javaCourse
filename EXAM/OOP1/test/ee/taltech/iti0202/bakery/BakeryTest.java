@@ -1079,7 +1079,39 @@ public class BakeryTest {
         bakery1.buyProductsByType(customer1, Product.bakeryTypes.COOKIE);
         bakery1.buyProductsByType(customer1, Product.bakeryTypes.PIE);
         assertEquals(bakery1.getProductRating(), List.of(product2, product1));
+    }
 
+    @Test
+    protected void getRatingProductsSortByPriceAndCalories() throws ProductAlreadyContainsInAnotherBakeryException,
+            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException,
+            ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException {
+        SmallBakery bakery1 = new SmallBakeryBuilder()
+                .setName("Small Bakery")
+                .setBankAccount(1000.34)
+                .createSmallBakery();
+        Product product1 = new ProductBuilder()
+                .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                .setName("Cookie")
+                .setKilocalories(100.0)
+                .setPrice(10.0)
+                .createProduct();
+        Product product2 = new ProductBuilder()
+                .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                .setName("Pie")
+                .setKilocalories(200.0)
+                .setPrice(10.0)
+                .createProduct();
+        Customer customer1 = new CustomerBuilder().setName("Danila")
+                .setAge(21)
+                .setBankAccount(11232.2)
+                .createCustomer();
+        bakery1.addProduct(product1);
+        bakery1.addProduct(product2);
+        bakery1.buyProductsByType(customer1, Product.bakeryTypes.COOKIE);
+        bakery1.buyProductsByType(customer1, Product.bakeryTypes.COOKIE);
+        System.out.println(bakery1.getProductRating());
+        assertEquals(bakery1.getProductRating().get(0).getName(), "Cookie"); // 100+10=110
+        assertEquals(bakery1.getProductRating().get(1).getName(), "Pie"); // 200+10=210
     }
 
     @Test
@@ -1136,13 +1168,15 @@ public class BakeryTest {
         assertEquals(bakery1.getProductRating().get(0).getName(), "Cookie");
 
     }
+
     @Test
-    protected void getRatingProductsThirdSortingLevelMoodleExampleTest() throws ProductAlreadyContainsInAnotherBakeryException,
-            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException {
-        BigBakery bakery1 = new BigBakeryBuilder()
+    protected void getRatingProductsThirdSortingLevelThreeProductsTest() throws ProductAlreadyContainsInAnotherBakeryException,
+            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException,
+            ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException {
+        SmallBakery bakery1 = new SmallBakeryBuilder()
                 .setName("Big Bakery")
                 .setBankAccount(1000.34)
-                .createBigBakery();
+                .createSmallBakery();
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.COOKIE)
                 .setName("Tartu peenleib")
@@ -1152,25 +1186,61 @@ public class BakeryTest {
         Product product2 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.COOKIE)
                 .setName("Meremehe sai")
-                .setKilocalories(10.0)
+                .setKilocalories(100.0)
                 .setPrice(10.0)
                 .createProduct();
         Product product3 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.COOKIE)
                 .setName("Tartu peenleib")
                 .setKilocalories(120.0)
-                .setPrice(20.0)
+                .setPrice(10.0)
+                .createProduct();
+        Customer customer1 = new CustomerBuilder().setName("Danila")
+                .setAge(21)
+                .setBankAccount(11232.2)
+                .createCustomer();
+        bakery1.addProduct(product1);
+        bakery1.addProduct(product2);
+        bakery1.addProduct(product3);
+        bakery1.buyProductsByType(customer1, Product.bakeryTypes.COOKIE);
+        bakery1.buyProductsByType(customer1, Product.bakeryTypes.COOKIE);
+        bakery1.buyProductsByType(customer1, Product.bakeryTypes.COOKIE);
+        System.out.println(bakery1.getProductRating());
+        assertEquals(bakery1.getProductRating().get(0).getName(), "Tartu peenleib");
+        assertEquals(bakery1.getProductRating().get(1).getName(), "Meremehe sai");
+    }
+    @Test
+    protected void getRatingProductsSortByAlphabetTest() throws ProductAlreadyContainsInAnotherBakeryException,
+            ProductLimitExceededException, ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException,
+            ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException {
+        SmallBakery bakery1 = new SmallBakeryBuilder()
+                .setName("Big Bakery")
+                .setBankAccount(1000.34)
+                .createSmallBakery();
+        Product product1 = new ProductBuilder()
+                .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                .setName("A")
+                .setKilocalories(100.0)
+                .setPrice(10.0)
+                .createProduct();
+        Product product2 = new ProductBuilder()
+                .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                .setName("B")
+                .setKilocalories(100.0)
+                .setPrice(10.0)
+                .createProduct();
+        Product product3 = new ProductBuilder()
+                .setBakeryTypes(Product.bakeryTypes.COOKIE)
+                .setName("A")
+                .setKilocalories(100.0)
+                .setPrice(10.0)
                 .createProduct();
         Product product4 = new ProductBuilder()
                 .setBakeryTypes(Product.bakeryTypes.COOKIE)
-                .setName("Meremehe sai")
-                .setKilocalories(150.0)
-                .setPrice(1.0)
+                .setName("B")
+                .setKilocalories(100.0)
+                .setPrice(10.0)
                 .createProduct();
-//        1. (nimi: "Meremehe sai", id: 2, hind: 10.0, kilokalorid: 10) - (10.0) / 10 = 1
-//        2. (nimi: "Tartu peenleib", id: 1, hind: 10.0, kilokalorid: 100) - (10.0 + 20.0) / 100 = 0.3
-//        3. (nimi: "Tartu peenleib", id: 3, hind: 20.0, kilokalorid: 120) - (10.0 + 20.0) / 120 = 0.2
-//        4. (nimi: "Meremehe sai1", id: 4, hind: 1.0, kilokalorid: 150) - (1.0) / 150 = 0.0
         Customer customer1 = new CustomerBuilder().setName("Danila")
                 .setAge(21)
                 .setBankAccount(11232.2)
@@ -1183,9 +1253,9 @@ public class BakeryTest {
         bakery1.buyProductsByType(customer1, Product.bakeryTypes.COOKIE);
         bakery1.buyProductsByType(customer1, Product.bakeryTypes.COOKIE);
         bakery1.buyProductsByType(customer1, Product.bakeryTypes.COOKIE);
-//        assertEquals(bakery1.getProductRating().get(0).getName(), "Cookie");
         System.out.println(bakery1.getProductRating());
-
+        assertEquals(bakery1.getProductRating().get(0).getName(), "A");
+        assertEquals(bakery1.getProductRating().get(1).getName(), "B");
     }
 
 
