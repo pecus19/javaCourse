@@ -959,6 +959,7 @@ public class Exam {
 //        System.out.println(findWordBothSide("aaa", "aa", true)); //-> 1
 //        System.out.println(findWordBothSide("hahaha", "ha", false)); // -> 2
         findWordBothSide("hahaha", "ha", false); // -> 2
+
 //        System.out.println(findWordBothSide("babananaan", "banana", true)); // -> 1
 
     }
