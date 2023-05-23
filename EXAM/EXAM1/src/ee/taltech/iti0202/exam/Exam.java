@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Exam {
+    private static final int big = 10000000;
 
     /**
      * Find the prime factors of a number and return the sum of all the factors.
@@ -21,14 +22,14 @@ public class Exam {
      * primeFactorsSum(8881) => 190
      * primeFactorsSum(999961) => 999961
      *
-     * @param num input number. 1 <= num <= 1000000
+     * @param num input number. 1 <= num <= big0
      * @return sum of all prime factors
      */
     public static int primeFactorsSum(int num) {
         List<Integer> primeNumbers = new ArrayList<>(List.of(2, 3, 5, 7));
         int output = 0;
         int newNum = num;
-        for (int i = 8; i < 100000; i++) {
+        for (int i = 8; i < big; i++) {
             if (i % 2 != 0 | i % 3 != 0 | i % 5 != 0 | i % 7 != 0) {
                 primeNumbers.add(i);
             }
@@ -63,11 +64,12 @@ public class Exam {
      * @return longest distance
      */
     public static int longestDistanceBetweenEqualSymbols(String s) {
+        List<Integer> primeNumbers = new ArrayList<>(List.of(2, 3, 5, 7));
         int dict = -1;
         List<String> list = new ArrayList<>();
         for (int i = 0; i < s.length(); i++) {
             char char1 = s.charAt(i);
-            String s1 =String.valueOf(char1);
+            String s1 = String.valueOf(char1);
             list.add(s1.toLowerCase());
         }
         for (int i = 0; i < list.size(); i++) {
@@ -89,12 +91,14 @@ public class Exam {
 //        System.out.println(primeFactorsSum(8881));  // => 190
 //        System.out.println(primeFactorsSum(999961));  // => 999961
         //2
-        System.out.println(longestDistanceBetweenEqualSymbols("abcda")); // => 3
-        System.out.println(longestDistanceBetweenEqualSymbols("aaaa")); // => 2
-        System.out.println(longestDistanceBetweenEqualSymbols("aia")); // => 1
-        System.out.println(longestDistanceBetweenEqualSymbols("aiu")); // => -1
-        System.out.println(longestDistanceBetweenEqualSymbols("")); // => -1
-        System.out.println(longestDistanceBetweenEqualSymbols("abcdabbg")); // => 4
-        System.out.println(longestDistanceBetweenEqualSymbols("aaaaaaaaaaaaa")); // => 11
+//        System.out.println(longestDistanceBetweenEqualSymbols("abcda")); // => 3
+//        System.out.println(longestDistanceBetweenEqualSymbols("aaaa")); // => 2
+//        System.out.println(longestDistanceBetweenEqualSymbols("aia")); // => 1
+//        System.out.println(longestDistanceBetweenEqualSymbols("aiu")); // => -1
+//        System.out.println(longestDistanceBetweenEqualSymbols("")); // => -1
+//        System.out.println(longestDistanceBetweenEqualSymbols("abcdabbg")); // => 4
+//        System.out.println(longestDistanceBetweenEqualSymbols("aaaaaaaaaaaaa")); // => 11
+
     }
+
 }
