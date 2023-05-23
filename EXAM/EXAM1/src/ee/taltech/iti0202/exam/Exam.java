@@ -28,7 +28,7 @@ public class Exam {
         List<Integer> primeNumbers = new ArrayList<>(List.of(2, 3, 5, 7));
         int output = 0;
         int newNum = num;
-        for (int i = 8; i < 10000; i++) {
+        for (int i = 8; i < 9999999; i++) {
             int counter = 0;
             if (i % 2 == 0) {
                 counter++;
