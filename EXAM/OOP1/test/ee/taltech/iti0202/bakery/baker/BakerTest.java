@@ -336,4 +336,55 @@ class BakerTest {
         bakery2.addProduct(product2);
         assertEquals(bakery2.getProducts().size(), 2);
     }
+    @Test
+    protected void cannotAddProductToTheBakeryALotOfBakersTest() throws BakerAlreadyInTheBakeryException,
+            BakerAlreadyContainsInAnotherBakeryException, BakerLimitException,CanNotAddProductToTheBakeryException {
+        Baker baker = new BakerBuilder()
+                .setName("Danila")
+                .setAge(12)
+                .setBankAccount(123.4)
+                .setTypes(List.of(Product.Types.BUN, Product.Types.PIE))
+                .createBaker();
+        Baker baker2 = new BakerBuilder()
+                .setName("Danila")
+                .setAge(12)
+                .setBankAccount(123.4)
+                .setTypes(List.of(Product.Types.BREAD))
+                .createBaker();
+        Baker baker3 = new BakerBuilder()
+                .setName("Danila")
+                .setAge(12)
+                .setBankAccount(123.4)
+                .setTypes(List.of(Product.Types.CAKE, Product.Types.PIE))
+                .createBaker();
+        Product product1 = new ProductBuilder()
+                .setBakeryTypes(Product.Types.PIE)
+                .setName("Pie")
+                .setKilocalories(400.0)
+                .setPrice(1.2)
+                .createProduct();
+        Product product2 = new ProductBuilder()
+                .setBakeryTypes(Product.Types.COOKIE)
+                .setName("Pie")
+                .setKilocalories(400.0)
+                .setPrice(1.2)
+                .createProduct();
+        SmallBakery bakery1 = new SmallBakeryBuilder()
+                .setName("Small Bakery")
+                .setBankAccount(13000.82)
+                .createSmallBakery();
+        BigBakery bakery2 = new BigBakeryBuilder()
+                .setName("Big Bakery")
+                .setBankAccount(13000.82)
+                .createBigBakery();
+        bakery2.addBaker(baker);
+        bakery2.addBaker(baker2);
+        bakery2.addBaker(baker3);
+        try {
+            bakery1.addProduct(product2);
+        } catch (CanNotAddProductToTheBakeryException | ProductLimitExceededException |
+                 ProductAlreadyContainsInTheBakeryException | SmallBakeryCanSellOnlyProductsWithOneTypeException ex) {
+            Assertions.assertEquals("Cannot add product to the bakery!", ex.getMessage());
+        }
+    }
 }
