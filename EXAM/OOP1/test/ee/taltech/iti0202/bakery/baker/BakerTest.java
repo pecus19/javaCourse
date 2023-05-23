@@ -5,7 +5,15 @@ import ee.taltech.iti0202.bakery.SmallBakery;
 import ee.taltech.iti0202.bakery.builder.BigBakeryBuilder;
 import ee.taltech.iti0202.bakery.builder.ProductBuilder;
 import ee.taltech.iti0202.bakery.builder.SmallBakeryBuilder;
-import ee.taltech.iti0202.bakery.exceptions.*;
+import ee.taltech.iti0202.bakery.exceptions.BakerAlreadyContainsInAnotherBakeryException;
+import ee.taltech.iti0202.bakery.exceptions.BakerAlreadyInTheBakeryException;
+import ee.taltech.iti0202.bakery.exceptions.BakerLimitException;
+import ee.taltech.iti0202.bakery.exceptions.CanNotAddProductToTheBakeryException;
+import ee.taltech.iti0202.bakery.exceptions.DoNotHaveEnoughMoneyToBuyException;
+import ee.taltech.iti0202.bakery.exceptions.ProductAlreadyContainsInTheBakeryException;
+import ee.taltech.iti0202.bakery.exceptions.ProductDoesNotContainsInBakeryException;
+import ee.taltech.iti0202.bakery.exceptions.ProductLimitExceededException;
+import ee.taltech.iti0202.bakery.exceptions.SmallBakeryCanSellOnlyProductsWithOneTypeException;
 import ee.taltech.iti0202.bakery.product.Product;
 import org.junit.jupiter.api.Test;
 
@@ -338,7 +346,7 @@ class BakerTest {
     }
     @Test
     protected void cannotAddProductToTheBakeryALotOfBakersTest() throws BakerAlreadyInTheBakeryException,
-            BakerAlreadyContainsInAnotherBakeryException, BakerLimitException,CanNotAddProductToTheBakeryException {
+            BakerAlreadyContainsInAnotherBakeryException, BakerLimitException {
         Baker baker = new BakerBuilder()
                 .setName("Danila")
                 .setAge(12)
