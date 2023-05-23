@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Library {
     List<Book> books = new ArrayList<>();
-    Map<String, Integer> booksMap = new HashMap<>();
+    private Map<String, Integer> booksMap = new HashMap<>();
 
     /**
      * Adds a book to the library.
@@ -33,19 +33,27 @@ public class Library {
      * If there is a book, then this book will not be available any more (it is lent out).
      */
     public Optional<Book> lendBook(String name) {
-        for (int i = 0; i < books.size(); i++) {
-            if (books.get(i).getTitle().contains(name) && !books.get(i).isLend()) {
-                if (!booksMap.containsKey(books.get(i).getTitle())) {
-                    booksMap.put(books.get(i).getTitle(), 1);
-                } else {
-                    booksMap.put(books.get(i).getTitle(), booksMap.get(books.get(i).getTitle()) + 1);
-                }
-                return Optional.of(books.get(i));
-            } else {
-                return Optional.empty();
-            }
+        Optional<Book> result;
+        result = books.stream()
+                .filter(book -> book.getTitle().equals(name))
+                .filter(book -> !book.isLend())
+                .findFirst();
+        if (result.isEmpty()) {
+            result = books.stream()
+                    .filter(book -> book.getTitle().contains(name))
+                    .filter(book -> !book.isLend())
+                    .findFirst();
         }
-        return Optional.empty();
+        if (result.isPresent()) {
+            Book book = result.get();
+            book.setLend(true);
+            if (!booksMap.containsKey(book.getIsbn())) {
+                    booksMap.put(book.getIsbn(), 1);
+                } else {
+                    booksMap.put(book.getIsbn(), booksMap.get(book.getIsbn()) + 1);
+                }
+        }
+        return result;
     }
 
     /**
@@ -57,12 +65,12 @@ public class Library {
      * After returning, the book can be lent again.
      */
     public boolean returnBook(Book book) {
-        if (book.isLend()) {
+        if (books.contains(book) && book.isLend()) {
             book.setLend(false);
+            booksMap.put(book.getIsbn(), booksMap.get(book.getIsbn()) + 1);
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
     /**
