@@ -36,7 +36,7 @@ public class LessPriceStrategy extends Strategy {
                 if (checkerPrice > -1) {
                     output.add(listToFilter.get(i));
                     priceToCheck = priceToCheck - listToFilter.get(i).getPrice();
-//                    removeProductWithSomeNameAndType(listToFilter.get(i));
+                    listToFilter.remove(getListToFilter().get(i));
                     break;
                 }
                 if (i == listToFilter.size() - 1) {
@@ -53,16 +53,6 @@ public class LessPriceStrategy extends Strategy {
             return output;
         }
     }
-
-//    public void removeProductWithSomeNameAndType(Product product) {
-//        for (int i = 0; i < getListToFilter().size(); i++) {
-//            if (getListToFilter().get(i).getName().equals(product.getName())
-//                    && getListToFilter().get(i).getTypes().equals(product.getTypes())) {
-//                listToFilter.remove(getListToFilter().get(i));
-//                i = -1;
-//            }
-//        }
-//    }
 
     public List<Product> getListToFilter() {
         return listToFilter;
