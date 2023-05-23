@@ -84,9 +84,7 @@ public class Library {
      * If the book is not in the library, returns -1.
      */
     public int getBookLendCount(Book book) {
-        if (!booksMap.containsKey(book.getTitle())) {
-            return -1;
-        }
-        return booksMap.get(book.getTitle());
+        return booksMap.getOrDefault(book.getTitle(), -1);
+
     }
 }
