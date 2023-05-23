@@ -25,9 +25,24 @@ public class Exam {
      * @return sum of all prime factors
      */
     public static int primeFactorsSum(int num) {
-        List<Integer> primeNumbers = new ArrayList<>(List.of(2, 3, 5, 7));
         int output = 0;
         int newNum = num;
+        while (newNum != 1) {
+            for (int i = 0; i < getPrimeNum().size(); i++) {
+                List<Integer> list = getPrimeNum();
+                if (newNum % list.get(i) == 0) {
+                    newNum = newNum / list.get(i);
+                    output += list.get(i);
+                    i = -1;
+                }
+            }
+        }
+        return output;
+    }
+
+    public static List<Integer> getPrimeNum() {
+        List<Integer> primeNumbers = new ArrayList<>(List.of(2, 3, 5, 7));
+
         for (int i = 8; i < 100000; i++) {
             int counter = 0;
             if (i % 2 == 0 || i % 3 == 0 || i % 5 == 0 || i % 7 == 0) {
@@ -37,16 +52,7 @@ public class Exam {
                 primeNumbers.add(i);
             }
         }
-        while (newNum != 1) {
-            for (int i = 0; i < primeNumbers.size(); i++) {
-                if (newNum % primeNumbers.get(i) == 0) {
-                    newNum = newNum / primeNumbers.get(i);
-                    output += primeNumbers.get(i);
-                    i = -1;
-                }
-            }
-        }
-        return output;
+        return primeNumbers;
     }
 
     /**
