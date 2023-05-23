@@ -1,5 +1,7 @@
 package ee.taltech.iti0202.bakery;
 
+import ee.taltech.iti0202.bakery.BigBakery;
+import ee.taltech.iti0202.bakery.SmallBakery;
 import ee.taltech.iti0202.bakery.builder.BigBakeryBuilder;
 import ee.taltech.iti0202.bakery.builder.CustomerBuilder;
 import ee.taltech.iti0202.bakery.builder.ProductBuilder;
