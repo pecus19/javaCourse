@@ -53,7 +53,6 @@ public class Library {
         }
         return output;
     }
-
     /**
      * Returns a book.
      * <p>
