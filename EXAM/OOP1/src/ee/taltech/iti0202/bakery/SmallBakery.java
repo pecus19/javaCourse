@@ -2,7 +2,16 @@ package ee.taltech.iti0202.bakery;
 
 import ee.taltech.iti0202.bakery.baker.Baker;
 import ee.taltech.iti0202.bakery.customer.Customer;
-import ee.taltech.iti0202.bakery.exceptions.*;
+import ee.taltech.iti0202.bakery.exceptions.BakerAlreadyContainsInAnotherBakeryException;
+import ee.taltech.iti0202.bakery.exceptions.BakerAlreadyInTheBakeryException;
+import ee.taltech.iti0202.bakery.exceptions.BakerLimitException;
+import ee.taltech.iti0202.bakery.exceptions.CanNotAddProductToTheBakeryException;
+import ee.taltech.iti0202.bakery.exceptions.DoNotHaveEnoughMoneyToBuyException;
+import ee.taltech.iti0202.bakery.exceptions.ProductAlreadyContainsInTheBakeryException;
+import ee.taltech.iti0202.bakery.exceptions.ProductDoesNotContainsInBakeryException;
+import ee.taltech.iti0202.bakery.exceptions.ProductLimitExceededException;
+import ee.taltech.iti0202.bakery.exceptions.SearchProductsNotFoundException;
+import ee.taltech.iti0202.bakery.exceptions.SmallBakeryCanSellOnlyProductsWithOneTypeException;
 import ee.taltech.iti0202.bakery.order.Order;
 import ee.taltech.iti0202.bakery.product.Product;
 
@@ -47,7 +56,8 @@ public class SmallBakery {
         return name;
     }
 
-    public void addBaker(Baker baker) throws BakerAlreadyInTheBakeryException, BakerAlreadyContainsInAnotherBakeryException, BakerLimitException {
+    public void addBaker(Baker baker) throws BakerAlreadyInTheBakeryException,
+            BakerAlreadyContainsInAnotherBakeryException, BakerLimitException {
         if (bakers.contains(baker)) {
             throw new BakerAlreadyInTheBakeryException();
         }
