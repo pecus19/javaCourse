@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Exam {
-    private static final int BIG = 10000000;
+    private static final int BIG = 100000;
     private static final int SEVEN = 7;
     private static final int EIGHT = 8;
 
