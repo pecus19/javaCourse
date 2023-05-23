@@ -33,19 +33,12 @@ public class Library {
      * If there is a book, then this book will not be available any more (it is lent out).
      */
     public Optional<Book> lendBook(String name) {
-        Optional<Book> result;
-        result = books.stream()
-                .filter(book -> book.getTitle().equals(name))
-                .filter(book -> !book.isLend())
+        Optional<Book> output;
+        output = books.stream()
+                .filter(book -> !book.isLend() | book.getTitle().equals(name))
                 .findFirst();
-        if (result.isEmpty()) {
-            result = books.stream()
-                    .filter(book -> book.getTitle().contains(name))
-                    .filter(book -> !book.isLend())
-                    .findFirst();
-        }
-        if (result.isPresent()) {
-            Book book = result.get();
+        if (output.isPresent()) {
+            Book book = output.get();
             book.setLend(true);
             if (!booksMap.containsKey(book.getIsbn())) {
                 booksMap.put(book.getIsbn(), 1);
@@ -53,8 +46,9 @@ public class Library {
                 booksMap.put(book.getIsbn(), booksMap.get(book.getIsbn()) + 1);
             }
         }
-        return result;
+        return output;
     }
+
     /**
      * Returns a book.
      * <p>
