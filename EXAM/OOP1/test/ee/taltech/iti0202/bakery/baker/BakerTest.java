@@ -29,7 +29,7 @@ class BakerTest {
 
     @Test
     protected void addBakerToBakeryBasicTest() throws BakerAlreadyInTheBakeryException,
-            BakerAlreadyContainsInAnotherBakeryException, BakerLimitException {
+            BakerAlreadyContainsInAnotherBakeryException {
         Baker baker = new BakerBuilder()
                 .setName("Danila")
                 .setAge(12)
