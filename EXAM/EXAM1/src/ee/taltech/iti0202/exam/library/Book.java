@@ -5,6 +5,8 @@ import java.util.Optional;
 public class Book {
     private String title;
     private String isbn;
+    private boolean isLend = false;
+
     /**
      * Creates a new book with the given title and ISBN.
      */
@@ -19,6 +21,14 @@ public class Book {
 
     public String getIsbn() {
         return isbn;
+    }
+
+    public boolean isLend() {
+        return isLend;
+    }
+
+    public void setLend(boolean isLend) {
+        this.isLend = isLend;
     }
 
     public static void main(String[] args) {
