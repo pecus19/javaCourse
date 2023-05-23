@@ -1,12 +1,10 @@
 package ee.taltech.iti0202.exam.library;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 public class Library {
     List<Book> books = new ArrayList<>();
+    Map<Book, Integer> booksMap = new HashMap<>();
 
     /**
      * Adds a book to the library.
@@ -35,6 +33,16 @@ public class Library {
      * If there is a book, then this book will not be available any more (it is lent out).
      */
     public Optional<Book> lendBook(String name) {
+        for (int i = 0; i < books.size(); i++) {
+            if (books.get(i).getTitle().equals(name) && !books.get(i).isLend()) {
+                if (!booksMap.containsKey(books.get(i))) {
+                    booksMap.put(books.get(i), 1);
+                } else {
+                    booksMap.put(books.get(i), booksMap.get(books.get(i)) + 1);
+                }
+                return Optional.of(books.get(i));
+            }
+        }
         return Optional.empty();
     }
 
@@ -47,7 +55,12 @@ public class Library {
      * After returning, the book can be lent again.
      */
     public boolean returnBook(Book book) {
-        return false;
+        if (book.isLend()) {
+            book.setLend(false);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -63,6 +76,11 @@ public class Library {
      * If the book is not in the library, returns -1.
      */
     public int getBookLendCount(Book book) {
-        return 0;
+        if (!booksMap.containsKey(book)) {
+            return -1;
+        } else {
+            booksMap.get(book);
+        }
+        return -1;
     }
 }
