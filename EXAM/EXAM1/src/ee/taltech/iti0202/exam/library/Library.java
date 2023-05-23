@@ -34,9 +34,9 @@ public class Library {
      */
     public Optional<Book> lendBook(String name) {
         Optional<Book> output;
-        output = books.stream().filter(book -> !book.isLend() | book.getTitle().equals(name)).findFirst();
+        output = books.stream().filter(book -> !book.isLend() && book.getTitle().equals(name)).findFirst();
         if (output.isEmpty()) {
-            output = books.stream().filter(book -> book.getTitle().contains(name) | !book.isLend()).findFirst();
+            output = books.stream().filter(book -> book.getTitle().contains(name) && !book.isLend()).findFirst();
         }
         if (output.isPresent()) {
             Book book = output.get();
