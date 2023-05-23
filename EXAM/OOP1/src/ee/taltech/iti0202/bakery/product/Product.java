@@ -53,6 +53,19 @@ public class Product {
         this.ratingMultiplier = ratingMultiplier;
     }
 
+    @Override
+    public String toString() {
+        return "Product{" +
+                "name='" + name + '\'' +
+                ", id=" + id +
+                ", price=" + price +
+                ", kilocalories=" + kilocalories +
+                ", inTheBakery=" + inTheBakery +
+                ", types=" + types +
+                ", ratingMultiplier=" + ratingMultiplier +
+                '}';
+    }
+
     public enum Types {
         CAKE, BREAD, COOKIE, BUN, PIE
     }
