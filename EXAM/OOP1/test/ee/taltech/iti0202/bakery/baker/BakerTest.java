@@ -275,7 +275,7 @@ class BakerTest {
                 .setTypes(List.of(Product.Types.BUN, Product.Types.PIE))
                 .createBaker();
         Product product1 = new ProductBuilder()
-                .setBakeryTypes(Product.Types.PIE)
+                .setBakeryTypes(Product.Types.BUN)
                 .setName("Pie")
                 .setKilocalories(400.0)
                 .setPrice(1.2)
@@ -284,12 +284,8 @@ class BakerTest {
                 .setName("Small Bakery")
                 .setBankAccount(13000.82)
                 .createSmallBakery();
-        BigBakery bakery2 = new BigBakeryBuilder()
-                .setName("Big Bakery")
-                .setBankAccount(13000.82)
-                .createBigBakery();
-        bakery2.addBaker(baker);
-            bakery1.addProduct(product1);
+        bakery1.addBaker(baker);
+        bakery1.addProduct(product1);
         assertEquals(bakery1.getProducts().size(), 1);
     }
     @Test
