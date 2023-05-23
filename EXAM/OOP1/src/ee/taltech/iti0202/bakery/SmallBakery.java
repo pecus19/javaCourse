@@ -145,7 +145,7 @@ public class SmallBakery {
 
     public boolean checkTypes(Product product) {
         boolean checker = false;
-        for (int i = 0; i < getProducts().size(); i++) {
+        for (int i = 0; i < getBakers().size(); i++) {
             if (getBakers().get(i).getTypes().contains(product.getTypes())) {
                 checker = true;
             }
@@ -245,7 +245,7 @@ public class SmallBakery {
 
     public void addProduct(Product product) throws CanNotAddProductToTheBakeryException, ProductLimitExceededException,
             ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException {
-        if (checkTypes(product)) {
+        if (!checkTypes(product)) {
             throw new CanNotAddProductToTheBakeryException();
         }
         if (products.contains(product)) {

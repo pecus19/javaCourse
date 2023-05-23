@@ -18,6 +18,9 @@ public class BigBakery extends SmallBakery {
         if (product.isInTheBakery()) {
             throw new CanNotAddProductToTheBakeryException();
         }
+        if (!checkTypes(product)) {
+            throw new CanNotAddProductToTheBakeryException();
+        }
         products.add(product);
         product.setInTheBakery(true);
         logger.info(product.getName() + " has been added to the bakery with name: " + getName());
