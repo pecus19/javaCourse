@@ -67,7 +67,8 @@ public class Exam {
         List<String> list = new ArrayList<>();
         for (int i = 0; i < s.length(); i++) {
             char char1 = s.charAt(i);
-            list.add(String.valueOf(char1));
+            String s1 =String.valueOf(char1);
+            list.add(s1.toLowerCase());
         }
         for (int i = 0; i < list.size(); i++) {
             int first = list.indexOf(list.get(i));
@@ -94,5 +95,6 @@ public class Exam {
         System.out.println(longestDistanceBetweenEqualSymbols("aiu")); // => -1
         System.out.println(longestDistanceBetweenEqualSymbols("")); // => -1
         System.out.println(longestDistanceBetweenEqualSymbols("abcdabbg")); // => 4
+        System.out.println(longestDistanceBetweenEqualSymbols("aaaaaaaaaaaaa")); // => 11
     }
 }
