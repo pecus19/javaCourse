@@ -63,16 +63,30 @@ public class Exam {
      * @return longest distance
      */
     public static int longestDistanceBetweenEqualSymbols(String s) {
-        return -2;
+        int dict = -1;
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < s.length(); i++) {
+            char char1 = s.charAt(i);
+            list.add(String.valueOf(char1));
+        }
+        for (int i = 0; i < list.size(); i++) {
+            int first = list.indexOf(list.get(i));
+            int last = list.lastIndexOf(list.get(i));
+            if (first != last) {
+                dict = last - first - 1;
+            }
+
+        }
+        return dict;
     }
 
     public static void main(String[] args) {
         //1
-        System.out.println(primeFactorsSum(1));  // => 0
-        System.out.println(primeFactorsSum(1));  // => 0
-        System.out.println(primeFactorsSum(40));  // => 11 (2 + 2 + 2 + 5)
-        System.out.println(primeFactorsSum(8881));  // => 190
-        System.out.println(primeFactorsSum(999961));  // => 999961
+//        System.out.println(primeFactorsSum(1));  // => 0
+//        System.out.println(primeFactorsSum(1));  // => 0
+//        System.out.println(primeFactorsSum(40));  // => 11 (2 + 2 + 2 + 5)
+//        System.out.println(primeFactorsSum(8881));  // => 190
+//        System.out.println(primeFactorsSum(999961));  // => 999961
         //2
         System.out.println(longestDistanceBetweenEqualSymbols("abcda")); // => 3
         System.out.println(longestDistanceBetweenEqualSymbols("aaaa")); // => 2
