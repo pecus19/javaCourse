@@ -30,16 +30,7 @@ public class Exam {
         int newNum = num;
         for (int i = 8; i < 9999999; i++) {
             int counter = 0;
-            if (i % 2 == 0) {
-                counter++;
-            }
-            if (i % 3 == 0) {
-                counter++;
-            }
-            if (i % 5 == 0) {
-                counter++;
-            }
-            if (i % 7 == 0) {
+            if (i % 2 == 0 || i % 3 == 0 || i % 5 == 0 || i % 7 == 0) {
                 counter++;
             }
             if (counter == 0) {
