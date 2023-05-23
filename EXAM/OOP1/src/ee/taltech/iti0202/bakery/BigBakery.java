@@ -1,8 +1,7 @@
 package ee.taltech.iti0202.bakery;
 
-import ee.taltech.iti0202.bakery.exceptions.CanNotAddProductToTheBakeryException;
-import ee.taltech.iti0202.bakery.exceptions.ProductDoesNotContainsInBakeryException;
-import ee.taltech.iti0202.bakery.exceptions.SearchProductsNotFoundException;
+import ee.taltech.iti0202.bakery.baker.Baker;
+import ee.taltech.iti0202.bakery.exceptions.*;
 import ee.taltech.iti0202.bakery.product.Product;
 
 import java.util.ArrayList;
@@ -22,6 +21,21 @@ public class BigBakery extends SmallBakery {
         products.add(product);
         product.setInTheBakery(true);
         logger.info(product.getName() + " has been added to the bakery with name: " + getName());
+    }
+
+    @Override
+    public void addBaker(Baker baker) throws BakerAlreadyInTheBakeryException, BakerAlreadyContainsInAnotherBakeryException, BakerLimitException {
+        if (bakers.contains(baker)) {
+            throw new BakerAlreadyInTheBakeryException();
+        }
+        if (baker.isWorks()) {
+            throw new BakerAlreadyContainsInAnotherBakeryException();
+        }
+
+        bakers.add(baker);
+        baker.setWorks(true);
+        logger.info(baker.getName() + " has been added to the bakery with name: " + getName());
+
     }
 
     @Override

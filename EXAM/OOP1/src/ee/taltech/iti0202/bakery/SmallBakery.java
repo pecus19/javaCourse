@@ -1,13 +1,8 @@
 package ee.taltech.iti0202.bakery;
 
+import ee.taltech.iti0202.bakery.baker.Baker;
 import ee.taltech.iti0202.bakery.customer.Customer;
-import ee.taltech.iti0202.bakery.exceptions.DoNotHaveEnoughMoneyToBuyException;
-import ee.taltech.iti0202.bakery.exceptions.CanNotAddProductToTheBakeryException;
-import ee.taltech.iti0202.bakery.exceptions.ProductAlreadyContainsInTheBakeryException;
-import ee.taltech.iti0202.bakery.exceptions.ProductDoesNotContainsInBakeryException;
-import ee.taltech.iti0202.bakery.exceptions.ProductLimitExceededException;
-import ee.taltech.iti0202.bakery.exceptions.SearchProductsNotFoundException;
-import ee.taltech.iti0202.bakery.exceptions.SmallBakeryCanSellOnlyProductsWithOneTypeException;
+import ee.taltech.iti0202.bakery.exceptions.*;
 import ee.taltech.iti0202.bakery.order.Order;
 import ee.taltech.iti0202.bakery.product.Product;
 
@@ -26,11 +21,14 @@ public class SmallBakery {
     protected String name;
     protected Double bankAccount;
     protected List<Product> products = new ArrayList<>();
+    protected List<Baker> bakers = new ArrayList<>();
     protected List<Order> orders = new ArrayList<>();
     protected int productLimit = 0;
+    protected int bakersLimit = 0;
     protected Logger logger = Logger.getLogger(SmallBakery.class.getName());
     protected Map<Product, Integer> productRating = new HashMap<>();
     private static final int TEN = 10;
+    private static final int FIVE = 5;
     private static final double ZEROONE = 0.1;
 
     public SmallBakery(String name, Double bankAccount) {
@@ -49,9 +47,23 @@ public class SmallBakery {
         return name;
     }
 
-//    public void setName(String name) {
-//        this.name = name;
-//    }
+    public void addBaker(Baker baker) throws BakerAlreadyInTheBakeryException, BakerAlreadyContainsInAnotherBakeryException, BakerLimitException {
+        if (bakers.contains(baker)) {
+            throw new BakerAlreadyInTheBakeryException();
+        }
+        if (!bakersLimit()) {
+            throw new BakerLimitException();
+        }
+        if (baker.isWorks()) {
+            throw new BakerAlreadyContainsInAnotherBakeryException();
+        }
+
+        bakers.add(baker);
+        bakersLimit++;
+        baker.setWorks(true);
+        logger.info(baker.getName() + " has been added to the bakery with name: " + getName());
+
+    }
 
     public Double getBankAccount() {
         return bankAccount;
@@ -62,8 +74,13 @@ public class SmallBakery {
     }
 
     private void transaction(Customer customer, Product product) {
-        setBankAccount(getBankAccount() + product.getPrice());
-        customer.setBankAccount(customer.getBankAccount() - product.getPrice());
+        if (bakers.contains(customer)) {
+            setBankAccount(getBankAccount() + (product.getPrice() / 2));
+            customer.setBankAccount(customer.getBankAccount() - (product.getPrice() / 2));
+        } else {
+            setBankAccount(getBankAccount() + product.getPrice());
+            customer.setBankAccount(customer.getBankAccount() - product.getPrice());
+        }
     }
 
     private void ratingCalculation(Product product) {
@@ -124,6 +141,16 @@ public class SmallBakery {
             }
         }
         throw new ProductDoesNotContainsInBakeryException();
+    }
+
+    public boolean checkTypes(Product product) {
+        boolean checker = false;
+        for (int i = 0; i < getProducts().size(); i++) {
+            if (getBakers().get(i).getTypes().contains(product.getTypes())) {
+                checker = true;
+            }
+        }
+        return checker;
     }
 
     public Product buyProducts(Customer customer, Product product) throws DoNotHaveEnoughMoneyToBuyException,
@@ -212,9 +239,15 @@ public class SmallBakery {
         return productLimit < TEN;
     }
 
-    public void addProduct(Product product) throws ProductDoesNotContainsInBakeryException,
-            CanNotAddProductToTheBakeryException, ProductLimitExceededException,
+    public boolean bakersLimit() {
+        return bakersLimit < FIVE;
+    }
+
+    public void addProduct(Product product) throws CanNotAddProductToTheBakeryException, ProductLimitExceededException,
             ProductAlreadyContainsInTheBakeryException, SmallBakeryCanSellOnlyProductsWithOneTypeException {
+        if (checkTypes(product)) {
+            throw new CanNotAddProductToTheBakeryException();
+        }
         if (products.contains(product)) {
             throw new ProductAlreadyContainsInTheBakeryException();
         }
@@ -271,5 +304,9 @@ public class SmallBakery {
         if (!orders.contains(order)) {
             orders.add(order);
         }
+    }
+
+    public List<Baker> getBakers() {
+        return bakers;
     }
 }
