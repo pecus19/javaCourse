@@ -111,11 +111,11 @@ class BakerTest {
         Baker baker = new BakerBuilder().setName("Danila")
                 .setAge(21)
                 .setBankAccount(23112.23)
-                .setTypes(List.of(Product.Types.BUN, Product.Types.CAKE, Product.Types.BREAD))
+                .setTypes(List.of(Product.Types.BUN, Product.Types.CAKE, Product.Types.BREAD, Product.Types.PIE))
                 .createBaker();
         bakery1.addBaker(baker);
         bakery1.addProduct(product2);
-        bakery1.addProduct(product1);;
+        bakery1.addProduct(product1);
         double moneyBefore = bakery1.getBankAccount();
         double discount = product1.getPrice() / 2;
         bakery1.buyProductsByType(baker, Product.Types.PIE);
@@ -125,7 +125,9 @@ class BakerTest {
     @Test
     protected void checkBakersMoneyAfterBuyingWhenHeNotInTheBakeryTest() throws CanNotAddProductToTheBakeryException,
             ProductDoesNotContainsInBakeryException, DoNotHaveEnoughMoneyToBuyException,
-            BakerAlreadyInTheBakeryException, BakerAlreadyContainsInAnotherBakeryException, BakerLimitException, ProductAlreadyContainsInTheBakeryException, ProductLimitExceededException, SmallBakeryCanSellOnlyProductsWithOneTypeException {
+            BakerAlreadyInTheBakeryException, BakerAlreadyContainsInAnotherBakeryException, BakerLimitException,
+            ProductAlreadyContainsInTheBakeryException, ProductLimitExceededException,
+            SmallBakeryCanSellOnlyProductsWithOneTypeException {
         Product product1 = new ProductBuilder()
                 .setBakeryTypes(Product.Types.PIE)
                 .setName("Pie")
@@ -157,13 +159,20 @@ class BakerTest {
                 .setBankAccount(23112.23)
                 .setTypes(List.of(Product.Types.BUN, Product.Types.BREAD, Product.Types.PIE, Product.Types.CAKE))
                 .createBaker();
-        bakery2.addBaker(baker);
-        bakery2.addProduct(product2);
-        bakery2.addProduct(product1);
+        Baker baker2 = new BakerBuilder().setName("Danila")
+                .setAge(21)
+                .setBankAccount(23112.23)
+                .setTypes(List.of(Product.Types.BUN, Product.Types.BREAD, Product.Types.PIE, Product.Types.CAKE))
+                .createBaker();
+        bakery1.addBaker(baker);
+        bakery2.addBaker(baker2);
+        bakery1.addProduct(product2);
+        bakery1.addProduct(product1);
+        bakery2.addProduct(product3);
         double moneyBefore = bakery1.getBankAccount();
-        double discount = product1.getPrice();
-        bakery2.buyProductsByType(baker, Product.Types.PIE);
-        assertEquals(bakery1.getBankAccount(), moneyBefore + discount);
+        double discount = product3.getPrice();
+        bakery2.buyProductsByType(baker, Product.Types.CAKE);
+        assertEquals(bakery2.getBankAccount(), moneyBefore + discount);
     }
 
     @Test
