@@ -34,17 +34,18 @@ public class Library {
      */
     public Optional<Book> lendBook(String name) {
         Optional<Book> output;
-        output = books.stream()
-                .filter(book -> !book.isLend() | book.getTitle().equals(name))
-                .findFirst();
+        output = books.stream().filter(book -> !book.isLend() | book.getTitle().equals(name)).findFirst();
+        if (output.isEmpty()) {
+            output = books.stream().filter(book -> book.getTitle().contains(name) | !book.isLend()).findFirst();
+        }
         if (output.isPresent()) {
             Book book = output.get();
-            book.setLend(true);
             if (!booksMap.containsKey(book.getIsbn())) {
                 booksMap.put(book.getIsbn(), 1);
             } else {
                 booksMap.put(book.getIsbn(), booksMap.get(book.getIsbn()) + 1);
             }
+            book.setLend(true);
         }
         return output;
     }
