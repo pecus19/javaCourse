@@ -33,27 +33,25 @@ public class Library {
      * If there is a book, then this book will not be available any more (it is lent out).
      */
     public Optional<Book> lendBook(String name) {
-        Optional<Book> result;
-        result = books.stream()
-                .filter(book -> book.getTitle().equals(name))
-                .filter(book -> !book.isLend())
-                .findFirst();
-        if (result.isEmpty()) {
-            result = books.stream()
-                    .filter(book -> book.getTitle().contains(name))
-                    .filter(book -> !book.isLend())
-                    .findFirst();
+        Optional<Book> output = null;
+        for (int i = 0; i < books.size(); i++) {
+            if (books.get(i).getTitle().equals(name) && !books.get(i).isLend()) {
+                output = Optional.of(books.get(i));
+            }
+            if (books.get(i).getTitle().contains(name) && !books.get(i).isLend()) {
+                output = Optional.of(books.get(i));
+            }
         }
-        if (result.isPresent()) {
-            Book book = result.get();
+        if (output.isPresent()) {
+            Book book = output.get();
             book.setLend(true);
             if (!booksMap.containsKey(book.getIsbn())) {
-                    booksMap.put(book.getIsbn(), 1);
-                } else {
-                    booksMap.put(book.getIsbn(), booksMap.get(book.getIsbn()) + 1);
-                }
+                booksMap.put(book.getIsbn(), 1);
+            } else {
+                booksMap.put(book.getIsbn(), booksMap.get(book.getIsbn()) + 1);
+            }
         }
-        return result;
+        return output;
     }
 
     /**
@@ -88,9 +86,7 @@ public class Library {
     public int getBookLendCount(Book book) {
         if (!booksMap.containsKey(book.getTitle())) {
             return -1;
-        } else {
-            booksMap.get(book.getTitle());
         }
-        return -1;
+        return booksMap.get(book.getTitle());
     }
 }
