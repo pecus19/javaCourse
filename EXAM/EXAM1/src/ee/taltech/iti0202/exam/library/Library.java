@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Library {
     List<Book> books = new ArrayList<>();
-    Map<Book, Integer> booksMap = new HashMap<>();
+    Map<String, Integer> booksMap = new HashMap<>();
 
     /**
      * Adds a book to the library.
@@ -34,13 +34,15 @@ public class Library {
      */
     public Optional<Book> lendBook(String name) {
         for (int i = 0; i < books.size(); i++) {
-            if (books.get(i).getTitle().equals(name) && !books.get(i).isLend()) {
-                if (!booksMap.containsKey(books.get(i))) {
-                    booksMap.put(books.get(i), 1);
+            if (books.get(i).getTitle().contains(name) && !books.get(i).isLend()) {
+                if (!booksMap.containsKey(books.get(i).getTitle())) {
+                    booksMap.put(books.get(i).getTitle(), 1);
                 } else {
-                    booksMap.put(books.get(i), booksMap.get(books.get(i)) + 1);
+                    booksMap.put(books.get(i).getTitle(), booksMap.get(books.get(i).getTitle()) + 1);
                 }
                 return Optional.of(books.get(i));
+            } else {
+                return Optional.empty();
             }
         }
         return Optional.empty();
@@ -67,7 +69,7 @@ public class Library {
      * Returns a map of ISBN and corresponding count of available books.
      */
     public Map<String, Integer> getBookAmounts() {
-        return null;
+        return booksMap;
     }
 
     /**
@@ -76,10 +78,10 @@ public class Library {
      * If the book is not in the library, returns -1.
      */
     public int getBookLendCount(Book book) {
-        if (!booksMap.containsKey(book)) {
+        if (!booksMap.containsKey(book.getTitle())) {
             return -1;
         } else {
-            booksMap.get(book);
+            booksMap.get(book.getTitle());
         }
         return -1;
     }
