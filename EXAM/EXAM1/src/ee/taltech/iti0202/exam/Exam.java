@@ -4,33 +4,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Exam {
-    private static final int big = 10000000;
+    private static final int BIG = 10000000;
+    private static final int SEVEN = 7;
+    private static final int EIGHT = 8;
 
     /**
      * Find the prime factors of a number and return the sum of all the factors.
      * 0 and 1 are not prime.
      * <p>
      * Examples:
-     * primeFactorsSum(10) => 2 + 5 => 7
-     * Prime factors of 10 are 2 * 5 => 2 + 5 => answer is 7
+     * primeFactorsSum(10) => 2 + 5 => SEVEN
+     * Prime factors of 10 are 2 * 5 => 2 + 5 => answer is SEVEN
      * <p>
      * primeFactorsSum(102) => 22
-     * Prime factors of 102 are 2 * 3 * 17 => 2 + 3 + 17 => answer is 22
+     * Prime factors of 102 are 2 * 3 * 1SEVEN => 2 + 3 + 1SEVEN => answer is 22
      * <p>
      * primeFactorsSum(1) => 0
      * primeFactorsSum(40) => 11 (2 + 2 + 2 + 5)
-     * primeFactorsSum(8881) => 190
+     * primeFactorsSum(EIGHTEIGHTEIGHT1) => 190
      * primeFactorsSum(999961) => 999961
      *
      * @param num input number. 1 <= num <= big0
      * @return sum of all prime factors
      */
     public static int primeFactorsSum(int num) {
-        List<Integer> primeNumbers = new ArrayList<>(List.of(2, 3, 5, 7));
+        List<Integer> primeNumbers = new ArrayList<>(List.of(2, 3, 5, SEVEN));
         int output = 0;
         int newNum = num;
-        for (int i = 8; i < big; i++) {
-            if (i % 2 != 0 | i % 3 != 0 | i % 5 != 0 | i % 7 != 0) {
+        for (int i = EIGHT; i < BIG; i++) {
+            if (i % 2 != 0 | i % 3 != 0 | i % 5 != 0 | i % SEVEN != 0) {
                 primeNumbers.add(i);
             }
         }
@@ -64,7 +66,7 @@ public class Exam {
      * @return longest distance
      */
     public static int longestDistanceBetweenEqualSymbols(String s) {
-        List<Integer> primeNumbers = new ArrayList<>(List.of(2, 3, 5, 7));
+        List<Integer> primeNumbers = new ArrayList<>(List.of(2, 3, 5, SEVEN));
         int dict = -1;
         List<String> list = new ArrayList<>();
         for (int i = 0; i < s.length(); i++) {
@@ -88,7 +90,7 @@ public class Exam {
 //        System.out.println(primeFactorsSum(1));  // => 0
 //        System.out.println(primeFactorsSum(1));  // => 0
 //        System.out.println(primeFactorsSum(40));  // => 11 (2 + 2 + 2 + 5)
-//        System.out.println(primeFactorsSum(8881));  // => 190
+//        System.out.println(primeFactorsSum(EIGHTEIGHTEIGHT1));  // => 190
 //        System.out.println(primeFactorsSum(999961));  // => 999961
         //2
 //        System.out.println(longestDistanceBetweenEqualSymbols("abcda")); // => 3
