@@ -28,7 +28,6 @@ public final class Database {
             instance = new Database();
         }
         return instance;
-
     }
 
     public void saveComponent(Component component) throws ProductAlreadyExistsException {
@@ -36,7 +35,6 @@ public final class Database {
             throw new ProductAlreadyExistsException();
         } else {
             components.put(component.getId(), component);
-
         }
     }
 

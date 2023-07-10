@@ -15,6 +15,8 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
+import static org.junit.jupiter.api.Assertions.assertSame;
+
 class ComputerStoreTest {
     @Test
     protected void buyBasicLaptopTest() throws ProductAlreadyExistsException, OutOfStockException,
@@ -39,10 +41,10 @@ class ComputerStoreTest {
         database.saveComponent(component4);
         database.saveComponent(component5);
         Computer laptop1 = store.assembleComputer(order, customer);
-        Assertions.assertSame(component5, laptop1.getKeyboard());
-        Assertions.assertSame(component2, laptop1.getTouchpad());
-        Assertions.assertSame(component3, laptop1.getScreen());
-        Assertions.assertSame(component5, laptop1.getKeyboard());
+        assertSame(component5, laptop1.getKeyboard());
+        assertSame(component2, laptop1.getTouchpad());
+        assertSame(component3, laptop1.getScreen());
+        assertSame(component5, laptop1.getKeyboard());
     }
 
     @Test
@@ -62,16 +64,16 @@ class ComputerStoreTest {
                 0, 70);
         Component component5 = new Component("component5", Component.ComponentType.KEYBOARD, new BigDecimal(42), "MSI",
                 66, 200);
+        database.saveComponent(component5);
         database.saveComponent(component);
         database.saveComponent(component2);
         database.saveComponent(component3);
         database.saveComponent(component4);
-        database.saveComponent(component5);
         Computer laptop1 = store.assembleComputer(order, customer);
-        Assertions.assertSame(component5, laptop1.getKeyboard());
-        Assertions.assertSame(component2, laptop1.getTouchpad());
-        Assertions.assertSame(component3, laptop1.getScreen());
-        Assertions.assertSame(component5, laptop1.getKeyboard());
+        assertSame(component5, laptop1.getKeyboard());
+        assertSame(component2, laptop1.getTouchpad());
+        assertSame(component3, laptop1.getScreen());
+        assertSame(component5, laptop1.getKeyboard());
     }
 
     @Test
@@ -148,7 +150,43 @@ class ComputerStoreTest {
 //        assertSame(component4, computer.getPsu());
 //        assertSame(component5, computer.getaCase());
 //        assertSame(component6, computer.getCpu());
-        Assertions.assertSame(component7, computer.getMotherboard());
+        assertSame(component7, computer.getMotherboard());
+    }
+
+    @Test
+    protected void test2() throws ProductAlreadyExistsException, OutOfStockException {
+        Database database = Database.getInstance();
+        Store store = new Store("Store", new BigDecimal(100), new BigDecimal(123));
+        Customer customer = new Customer("Danila", new BigDecimal(1000));
+        Order order = new Order(101330, Computer.UseCase.GAMING, Computer.ComputerType.Desktop);
+        Component component = new Component("graphicsCard", Component.ComponentType.GPU, new BigDecimal(43), "MSI",
+                144, 2030);
+        Component component2 = new Component("ram", Component.ComponentType.RAM, new BigDecimal(34), "MSI",
+                344, 2031);
+        Component component3 = new Component("hdd", Component.ComponentType.HDD, new BigDecimal(12), "MSI",
+                225, 232);
+        Component component4 = new Component("psu", Component.ComponentType.PSU, new BigDecimal(24), "MSI",
+                322, 43);
+        Component component5 = new Component("case", Component.ComponentType.CASE, new BigDecimal(22), "MSI",
+                6336, 2034);
+        Component component6 = new Component("cpu", Component.ComponentType.CPU, new BigDecimal(22), "MSI",
+                6226, 2035);
+        Component component7 = new Component("motherboard", Component.ComponentType.MOTHERBOARD,
+                new BigDecimal(22), "MSI",
+                6336, 2063);
+        database.saveComponent(component);
+        database.saveComponent(component2);
+        database.saveComponent(component3);
+        database.saveComponent(component4);
+        database.saveComponent(component5);
+        database.saveComponent(component6);
+        database.saveComponent(component7);
+        try {
+            store.assembleComputer(order, customer);
+        } catch (ProductNotFoundException ex) {
+            Assertions.assertEquals("We don't have all components in the store or this price is too "
+                    + "small to create a computer!", ex.getMessage());
+        }
     }
 
     @Test
@@ -184,13 +222,13 @@ class ComputerStoreTest {
         database.saveComponent(component7);
         database.saveComponent(component8);
         Computer computer = store.assembleComputer(order5, customer);
-//        assertSame(component, computer.getGpu());
-//        assertSame(component2, computer.getRam());
-//        assertSame(component3, computer.getHdd());
-//        assertSame(component4, computer.getPsu());
-//        assertSame(component5, computer.getaCase());
-//        assertSame(component8, computer.getCpu());
-        Assertions.assertSame(component7, computer.getMotherboard());
+        assertSame(component, computer.getGpu());
+        assertSame(component2, computer.getRam());
+        assertSame(component3, computer.getHdd());
+        assertSame(component4, computer.getPsu());
+        assertSame(component5, computer.getaCase());
+        assertSame(component8, computer.getCpu());
+        assertSame(component7, computer.getMotherboard());
     }
 
     @Test
@@ -229,7 +267,7 @@ class ComputerStoreTest {
 //        assertSame(component4, computer.getPsu());
 //        assertSame(component5, computer.getaCase());
 //        assertSame(component6, computer.getCpu());
-        Assertions.assertSame(component7, computer.getMotherboard());
+        assertSame(component7, computer.getMotherboard());
     }
 
     @Test
@@ -267,11 +305,11 @@ class ComputerStoreTest {
         Computer computer = store.assembleComputer(order, customer);
 //        assertSame(component, computer.getGpu());
 //        assertSame(component2, computer.getRam());
-//        assertSame(component3, computer.getSsd());
+        assertSame(component3, computer.getSsd());
 //        assertSame(component4, computer.getPsu());
 //        assertSame(component5, computer.getaCase());
 //        assertSame(component6, computer.getCpu());
-        Assertions.assertSame(component7, computer.getMotherboard());
+        assertSame(component7, computer.getMotherboard());
     }
 
     @Test
@@ -340,13 +378,13 @@ class ComputerStoreTest {
         database.saveComponent(component7);
         database.saveComponent(component8);
         Computer computer = store.assembleComputer(order, customer);
-        Assertions.assertSame(component, computer.getGpu());
-        Assertions.assertSame(component2, computer.getRam());
-        Assertions.assertSame(component3, computer.getSsd());
-        Assertions.assertSame(component4, computer.getPsu());
-        Assertions.assertSame(component5, computer.getaCase());
-        Assertions.assertSame(component6, computer.getCpu());
-        Assertions.assertSame(component7, computer.getMotherboard());
+        assertSame(component, computer.getGpu());
+        assertSame(component2, computer.getRam());
+        assertSame(component3, computer.getSsd());
+        assertSame(component4, computer.getPsu());
+        assertSame(component5, computer.getaCase());
+        assertSame(component6, computer.getCpu());
+        assertSame(component7, computer.getMotherboard());
     }
 
     @Test
@@ -382,13 +420,13 @@ class ComputerStoreTest {
         database.saveComponent(component7);
         database.saveComponent(component8);
         Computer computer = store.assembleComputer(order, customer);
-        Assertions.assertSame(component, computer.getGpu());
-        Assertions.assertSame(component2, computer.getRam());
-        Assertions.assertSame(component3, computer.getSsd());
-        Assertions.assertSame(component4, computer.getPsu());
-        Assertions.assertSame(component5, computer.getaCase());
-        Assertions.assertSame(component6, computer.getCpu());
-        Assertions.assertSame(component7, computer.getMotherboard());
+        assertSame(component, computer.getGpu());
+        assertSame(component2, computer.getRam());
+        assertSame(component3, computer.getSsd());
+        assertSame(component4, computer.getPsu());
+        assertSame(component5, computer.getaCase());
+        assertSame(component6, computer.getCpu());
+        assertSame(component7, computer.getMotherboard());
     }
 
     @Test
@@ -692,7 +730,7 @@ class ComputerStoreTest {
                 .get(store4.getComponentsSortedByAmount().size() - 1));
         Assertions.assertEquals("Assd", store4.getComponentsSortedByName()
                 .get(0).getName());
-        Assertions.assertSame(11, store4.getComponentsSortedByPrice()
+        assertSame(11, store4.getComponentsSortedByPrice()
                 .get(0).getPrice().intValue());
         try {
             store4.setProfitMargin(BigDecimal.valueOf(0));
